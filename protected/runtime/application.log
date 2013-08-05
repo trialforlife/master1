@@ -281,3 +281,6 @@ REQUEST_URI=/index.php?r=gii/model/code&id=0
 ---
 2013/08/05 20:12:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'now.theate' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `theate`.
 in C:\Winginx\home\now\public_html\index.php (13)
+2013/08/05 23:17:51 [warning] [application] Failed to set unsafe attribute "c_published" of "Cinema".
+in C:\Winginx\home\now\public_html\protected\controllers\CinemaController.php (72)
+in C:\Winginx\home\now\public_html\index.php (13)
