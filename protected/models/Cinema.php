@@ -37,7 +37,9 @@ class Cinema extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('c_name, c_adress', 'required'),
-			array('c_name', 'length', 'max'=>40),
+			array('c_name', 'length', 'max'=>1000),
+			array('c_published', 'in', 'range'=>array(0,1)),
+
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('c_id, c_name, c_adress', 'safe', 'on'=>'search'),
@@ -52,6 +54,13 @@ class Cinema extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			/*'c_id' => array(self::BELONGS_TO, 'cinema_banner', 'c_id'),
+        	'cinema' => array(self::HAS_MANY, 'cinema_banner', 'c_id',
+            'condition'=>'cinema_banner.cb_published = 1',//для админки нужно убрать
+            //'order'=>'comments.create_time DESC'),
+        	'cinemaCount' => array(self::STAT, 'cinema', 'c_id',
+            'condition'=>'status='cinemaCount.c_published::STATUS_APPROVED),
+            */
 		);
 	}
 
