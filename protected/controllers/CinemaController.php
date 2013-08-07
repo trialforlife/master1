@@ -28,7 +28,7 @@ class CinemaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','GetCinema'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -50,10 +50,18 @@ class CinemaController extends Controller
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id)
-	{
+	{	
+		/*header('Content-type: application/json');
+		$cinema = Cinema::model()->findByPK((int)$id);
+		echo CJSON::encode($cinema);
+		Yii::app()->end();
+*/
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+
+		
+
 	}
 
 	/**
@@ -126,6 +134,7 @@ class CinemaController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+
 	}
 
 	/**
@@ -141,6 +150,16 @@ class CinemaController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+		public function actionGetCinema($id)
+	{
+		  header('Content-type: application/json');
+
+		  $cinema = Cinema::model()->findByPK((int)$c_id);
+
+		  echo CJSON::encode($cinema);
+
+		  Yii::app()->end();
 	}
 
 	/**
@@ -170,4 +189,5 @@ class CinemaController extends Controller
 			Yii::app()->end();
 		}
 	}
+
 }
