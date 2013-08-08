@@ -14,8 +14,14 @@ $dbresult = mysql_query($query);
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
-		array_push($result["cinema"],array("id"=>$row["c_id"],
-			"name"=>addslashes((string)$row["c_name"])));
+		array_push($result["cinema"],array(
+			"id"=>$row["c_id"],
+			"name"=>addslashes((string)$row["c_name"]),
+
+			"image"=>addslashes((string)$row["c_image"]),
+			"adress"=>addslashes((string)$row["c_adress"]),
+			"published"=>addslashes((string)$row["c_published"])));
+			
 	}
 }
 

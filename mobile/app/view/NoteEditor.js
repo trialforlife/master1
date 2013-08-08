@@ -33,7 +33,7 @@ Ext.define("SenchaNote.view.NoteEditor",{
 					xtype: "textfield"
 				},
 				items: [
-					{ name: "content", label: "Content" },
+					//{ name: "content", label: "Content" },
 					{ name: "categoryid", label: "Category", xtype: "selectfield", store: "Category", displayField: "name", valueField: "id" }
 				]
 			}
