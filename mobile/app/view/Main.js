@@ -168,7 +168,7 @@ Ext.create('Ext.NestedList', {
                         type: 'tree',
  
                         fields: [
-                            'name', 'link', 'list', 'contentSnippet', 'adress',
+                            'name', 'link', 'list', 'image', 'adress', 'img_full',
                             {name: 'leaf', defaultValue: true}
                         ],
  
@@ -194,7 +194,7 @@ Ext.create('Ext.NestedList', {
  
                     listeners: {
                         itemtap: function(nestedList, list, index, element, post) {
-                            this.getDetailCard().setHtml(post.get('adress'));
+                            this.getDetailCard().setHtml(post.get('img_full'));
                         }
                     }
 
