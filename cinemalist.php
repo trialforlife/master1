@@ -2,9 +2,9 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: value=Origin, X-Requested-With, Content-Type, Accept');
 
-$link = mysql_connect("now","rot","rot");
+$link = mysql_connect("now","now-yakutsk","E327D28999");
 
-mysql_select_db("now", $link);
+mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
@@ -20,9 +20,9 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["c_image"]),
 			"adress"=>addslashes((string)$row["c_adress"]),
 			"published"=>addslashes((string)$row["c_published"]),
-			"list"=>addslashes((string)$row["c_name"]).'</br>'.addslashes((string)$row["c_adress"])
+			"list"=>addslashes((string)$row["c_name"]).'<br>'.addslashes((string)$row["c_adress"]),
 
-
+			"img_full"=> "<img src=http://now/".addslashes((string)$row["c_image"]).">"
 			));
 			
 	}
