@@ -12,6 +12,4 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);
 Yii::createWebApplication($config)->run();
 
-if(function_exists("date_default_timezone_set") and
-function_exists("date_default_timezone_get"))
-@date_default_timezone_set(@date_default_timezone_get());
+date_default_timezone_set('America/New_York');
