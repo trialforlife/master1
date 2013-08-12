@@ -17,10 +17,13 @@ if (mysql_affected_rows() > 0) {
 		array_push($result["cinema"],array(
 			"id"=>$row["c_id"],
 			"name"=>addslashes((string)$row["c_name"]),
-
 			"image"=>addslashes((string)$row["c_image"]),
 			"adress"=>addslashes((string)$row["c_adress"]),
-			"published"=>addslashes((string)$row["c_published"])));
+			"published"=>addslashes((string)$row["c_published"]),
+			"list"=>addslashes((string)$row["c_name"]).'</br>'.addslashes((string)$row["c_adress"])
+
+
+			));
 			
 	}
 }

@@ -73,8 +73,7 @@ var treeStore = Ext.create('Ext.data.TreeStore', {
                     {
                         text: 'Кино',
                         leaf: true ,
-                            
-       
+
                     },
                     {
                         text: 'Театры',
@@ -147,8 +146,8 @@ Ext.create('Ext.NestedList', {
     fullscreen: true,
     store: treeStore,
     detailCard: {   
- //    html: 'You are viewing the detail card!'
- },
+    //    html: 'You are viewing the detail card!'
+    },
     listeners: {
     leafitemtap: function(nestedList, list, index, target, record) {
 
@@ -159,17 +158,17 @@ Ext.create('Ext.NestedList', {
             
 
                 items: [
-                {   text:name,
+                {   
                     xtype: 'nestedlist',
                     //title: 'Blog',
                     iconCls: 'star',
-                    displayField: 'name',
+                    displayField: 'list',
  
                     store: {
                         type: 'tree',
  
                         fields: [
-                            'name', 'link', 'author', 'contentSnippet', 'adress',
+                            'name', 'link', 'list', 'contentSnippet', 'adress',
                             {name: 'leaf', defaultValue: true}
                         ],
  
@@ -211,17 +210,26 @@ Ext.create('Ext.NestedList', {
            case "Кино":
               //alert(cat);
                nestedList.setDetailCard(cin);
+
+               break;
            case "Театры":
-                alert(cat);
+                //alert(cat);
+                nestedList.setDetailCard(theatre);
+                break;
            case "Городские мероприятия":
-                alert(cat);
+                //alert(cat);
+                nestedList.setDetailCard(events);
+                break;
            case "Театры":
-                alert(cat);
+                //alert(cat);
+                break;
            case "Театры":
-                alert(cat);
+                //alert(cat);
+                break;
            case labelN:
       
            default:
+           break;
         };
 
 
