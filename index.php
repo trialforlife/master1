@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Chongqing');
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
@@ -12,6 +12,3 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);
 Yii::createWebApplication($config)->run();
 
-if(function_exists("date_default_timezone_set") and
-function_exists("date_default_timezone_get"))
-@date_default_timezone_set(@date_default_timezone_get());
