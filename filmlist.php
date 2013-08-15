@@ -21,6 +21,9 @@ if (mysql_affected_rows() > 0) {
 			"id"=>$row["f_id"],
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
+			"time"=>addslashes((string)$row["f_time"]),
+			"filmpage"=>$row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
+
 
 			));
 			
