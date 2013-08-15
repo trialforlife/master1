@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 05 2013 г., 23:02
+-- Время создания: Авг 15 2013 г., 16:38
 -- Версия сервера: 5.1.62-community
 -- Версия PHP: 5.3.21
 
@@ -17,8 +17,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- База данных: `now`
+-- База данных: `now-yakutsk`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `cat_id` int(10) NOT NULL AUTO_INCREMENT,
+  `cat_title` varchar(100) NOT NULL,
+  `cat_code` varchar(100) NOT NULL,
+  PRIMARY KEY (`cat_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100 ;
+
+--
+-- Дамп данных таблицы `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_title`, `cat_code`) VALUES
+(4, 'Афиша', 'poster'),
+(1, 'Кинотеатры', 'cinema'),
+(2, 'Театры', 'theatre'),
+(3, 'Городские мероприятия', 'events'),
+(6, 'Рестораны', 'restaurants'),
+(7, 'Доставка', 'shipment'),
+(8, 'Развлечения', 'entertainment'),
+(9, 'Красота и здоровье', 'beautyandhealh'),
+(10, 'Избранное', 'favorite'),
+(5, 'Ночная жизнь', 'nightlife');
 
 -- --------------------------------------------------------
 
@@ -29,10 +58,22 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `cinema` (
   `c_id` int(10) NOT NULL AUTO_INCREMENT,
   `c_name` varchar(40) NOT NULL,
+  `c_image` text NOT NULL,
   `c_adress` text NOT NULL,
   `c_published` tinyint(1) NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Дамп данных таблицы `cinema`
+--
+
+INSERT INTO `cinema` (`c_id`, `c_name`, `c_image`, `c_adress`, `c_published`) VALUES
+(1, 'Первый кионтеатр', 't', 'Улица кино номер 34', 0),
+(2, 'Одесский киноетатр', 'cartinka', 'Улица пушкина 3', 1),
+(3, 'Довженка кинотетр', '', 'Улица серверная 1', 0),
+(4, 'Мир', 'сылка', 'Проспект асеибера 2а', 0),
+(5, 'АйМакс', 'картина', 'Переулок модема 54', 1);
 
 -- --------------------------------------------------------
 
@@ -46,7 +87,16 @@ CREATE TABLE IF NOT EXISTS `cinema_banner` (
   `cb_banner` varchar(10000) NOT NULL,
   `cb_published` tinyint(1) NOT NULL,
   PRIMARY KEY (`cb_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `cinema_banner`
+--
+
+INSERT INTO `cinema_banner` (`cb_id`, `c_id`, `cb_banner`, `cb_published`) VALUES
+(1, 1, '/kino.png', 1),
+(2, 1, '/kino1.png', 1),
+(3, 1, '/kino1.png', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +176,15 @@ CREATE TABLE IF NOT EXISTS `films` (
   `f_image` text NOT NULL,
   `f_published` tinyint(1) NOT NULL,
   PRIMARY KEY (`f_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `films`
+--
+
+INSERT INTO `films` (`f_id`, `c_id`, `f_name`, `f_time`, `f_price`, `f_content`, `f_image`, `f_published`) VALUES
+(1, 1, 'Росомаха', 'Сегодня вечером', 'очень дешево налетай!', 'Росомаха это очень интерсный фильм', 'картинко', 1),
+(2, 2, 'Гадкий Я', '12:00 по гринвичу', '12 руппий', 'мультик веселый', '', 1);
 
 -- --------------------------------------------------------
 
@@ -167,11 +225,12 @@ CREATE TABLE IF NOT EXISTS `restaurants` (
 --
 
 CREATE TABLE IF NOT EXISTS `restaurants_banner` (
-  `rb_id` int(10) NOT NULL,
+  `rb_id` int(10) NOT NULL AUTO_INCREMENT,
   `r_id` int(10) NOT NULL,
   `rb_banner` text NOT NULL,
-  `rb_published` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `rb_published` tinyint(1) NOT NULL,
+  PRIMARY KEY (`rb_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -197,12 +256,13 @@ CREATE TABLE IF NOT EXISTS `restaurant_special` (
 --
 
 CREATE TABLE IF NOT EXISTS `shipment` (
-  `s_id` int(10) NOT NULL,
+  `s_id` int(10) NOT NULL AUTO_INCREMENT,
   `s_name` varchar(1000) NOT NULL,
   `s_content` text NOT NULL,
   `s_image` text NOT NULL,
-  `s_published` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `s_published` tinyint(1) NOT NULL,
+  PRIMARY KEY (`s_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -211,10 +271,11 @@ CREATE TABLE IF NOT EXISTS `shipment` (
 --
 
 CREATE TABLE IF NOT EXISTS `shipment_banner` (
-  `sb_id` int(10) NOT NULL,
+  `sb_id` int(10) NOT NULL AUTO_INCREMENT,
   `s_id` int(10) NOT NULL,
-  `sb_banner` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `sb_banner` text NOT NULL,
+  PRIMARY KEY (`sb_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -245,7 +306,14 @@ CREATE TABLE IF NOT EXISTS `theatre` (
   `t_image` varchar(10000) NOT NULL,
   `t_published` tinyint(1) NOT NULL,
   PRIMARY KEY (`t_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `theatre`
+--
+
+INSERT INTO `theatre` (`t_id`, `t_name`, `t_image`, `t_published`) VALUES
+(1, '12', 'dwd', 0);
 
 -- --------------------------------------------------------
 
