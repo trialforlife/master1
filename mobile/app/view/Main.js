@@ -151,7 +151,7 @@ Ext.define('ListItem', {
                                                 type: 'tree',
                          
                                                 fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner',
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
                          
@@ -177,10 +177,10 @@ Ext.define('ListItem', {
                          
                                             listeners: {
                                             activate : function() {     
-                                            tb1.show();
-                                            tb2 = this.getToolbar();
-                                            tb2.hide();
-                                            tb.hide(); 
+                                                tb1.show();
+                                                tb2 = this.getToolbar();
+                                                tb2.hide();
+                                                tb.hide(); 
 
 
                                             //this.getToolbar(treeStore2).hide();
@@ -190,10 +190,84 @@ Ext.define('ListItem', {
                                                 tb.show();                             
                                                 tb1.hide();
                                                 //this.getToolbar().hide();
-                                            }
+                                                                        
+                    }
                                             ,
+                                                
                                                 leafitemtap: function(nestedList, list, index, element, post) {
-                                                    this.getDetailCard().setHtml(post.get('banner'));
+                                                var f_cid = post.get('cid');
+                                                //alert(tqt);
+                                                var fil = Ext.create("Ext.NestedList", {
+                                                fullscreen: true,
+                                                tabBarPosition: 'bottom',
+                                                //useToolbar:false,
+                                                        //title: 'Blog',
+                                                        iconCls: 'star',
+                                                        displayField: 'name',
+                                     
+                                                        store: {
+                                                            type: 'tree',
+                                     
+                                                            fields: [
+                                                                'name','image','id',
+                                                                {name: 'leaf', defaultValue: true}
+                                                            ],
+                                     
+                                                            root: {
+                                                                leaf: false
+                                                            },
+                                     
+                                                            proxy: {
+                                                                type: 'jsonp',
+                                                                url: 'http://now/filmlist.php?f_cid='+f_cid,
+                                                                reader: {
+                                                                    type: 'json',
+                                                                    rootProperty: 'films',
+           
+                                                                }
+                                                            }
+                                                        },
+                                                 
+                                                        detailCard: {
+                                                            xtype: 'panel',
+                                                            scrollable: true,
+                                                            styleHtmlContent: true
+                                                        },
+                                     
+                                                        listeners: {
+                                                        activate : function() {     
+                                                                tb1.hide();
+                                                                tb2.show();
+                                                                tb3 = this.getToolbar();
+                                                                tb3.hide();
+                                                                tb.hide(); 
+
+
+                                                        //this.getToolbar(treeStore2).hide();
+                                                        
+                                                         } ,
+                                                         deactivate: function() {
+                                                            //tb.show();                             
+                                                            tb1.show();
+                                                            tb2.hide();
+                                                            //this.getToolbar().hide();
+                                                                                    
+                                }
+                                                        ,
+                                                            
+                                                            leafitemtap: function(nestedList, list, index, element, post) {
+                                                                
+                                                                alert("wow");
+                                                                
+                                                                //this.getDetailCard().setHtml(post.get('banner'));
+                                                            }
+                                                        }
+
+                                               
+                                            });     
+
+                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.setDetailCard(fil);
                                                 }
                                             }
 
@@ -209,9 +283,10 @@ Ext.define('ListItem', {
                                               //alert(cat);
                                                nestedList.setDetailCard(cin);
                                                break;
-                                           case "Театры":
+                                           case "film":
                                                 //alert(cat);
-                                                nestedList.setDetailCard(theatre);
+                                                                                               
+
                                                 break;
                                            case "Городские мероприятия":
                                                 //alert(cat);
