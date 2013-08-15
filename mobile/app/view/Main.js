@@ -203,13 +203,13 @@ Ext.define('ListItem', {
                                                 //useToolbar:false,
                                                         //title: 'Blog',
                                                         iconCls: 'star',
-                                                        displayField: 'name',
+                                                        displayField: 'filmpage',
                                      
                                                         store: {
                                                             type: 'tree',
                                      
                                                             fields: [
-                                                                'name','image','id',
+                                                                'name','image','id','filmpage',
                                                                 {name: 'leaf', defaultValue: true}
                                                             ],
                                      
