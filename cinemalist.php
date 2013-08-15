@@ -8,14 +8,15 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from `cinema` left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
+$query = 'select * from `cinema` 
+';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["cinema"],array(
-			"id"=>$row["c_id"],
+			"cid"=>$row["c_id"],
 			"name"=>addslashes((string)$row["c_name"]),
 			"image"=>addslashes((string)$row["c_image"]),
 			"adress"=>addslashes((string)$row["c_adress"]),
