@@ -22,7 +22,9 @@ if (mysql_affected_rows() > 0) {
 			"published"=>addslashes((string)$row["c_published"]),
 			"list"=>addslashes((string)$row["c_name"]).'<br>'.addslashes((string)$row["c_adress"]),
 
-			"img_full"=> "<img src=http://now/".addslashes((string)$row["c_image"]).">"
+			"img_full"=> "<img src=http://now/".addslashes((string)$row["c_image"]).">",
+			"banner"=>"<img src=http://now/".addslashes((string)$row["cb_banner"]).">",
+
 			));
 			
 	}
