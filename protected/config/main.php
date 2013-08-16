@@ -5,10 +5,10 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
-$homePath      = dirname(__FILE__) . '/../..';
-$runtimePath   = $homePath.DIRECTORY_SEPARATOR.'assets';
+//$homePath      = dirname(__FILE__) . '/../..';
+//$runtimePath   = $homePath.DIRECTORY_SEPARATOR.'assets';
 return array(
-	'runtimePath' => $runtimePath,
+//	'runtimePath' => $runtimePath,
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'NoW Yakutsk',
 	// preloading 'log' component
