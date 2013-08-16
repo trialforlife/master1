@@ -5,7 +5,10 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+$homePath      = dirname(__FILE__) . '/../..';
+$runtimePath   = $homePath.DIRECTORY_SEPARATOR.'assets';
 return array(
+	'runtimePath' => $runtimePath,
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'NoW Yakutsk',
 	// preloading 'log' component
@@ -51,7 +54,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost; dbname=now-yakutsk',
+			'connectionString' => 'mysql:host=127.0.0.1; dbname=now-yakutsk',
 			'emulatePrepare' => true,
 			'username' => 'now-yakutsk',
 			'password' => 'E327D28999',

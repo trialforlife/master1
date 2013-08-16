@@ -3,15 +3,12 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: value=Origin, X-Requested-With, Content-Type, Accept');
 
 $link = mysql_connect("now","now-yakutsk","E327D28999");
-/*
-
-*/
 mysql_select_db("now-yakutsk", $link);
 $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select * from films where c_id = '$f_cid' ";
+$query = "select * from films, cinema_banner where films.c_id = '$f_cid' and cinema_banner.c_id = '$f_cid' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
@@ -22,12 +19,11 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
 			"time"=>addslashes((string)$row["f_time"]),
-			"filmpage"=>$row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
-
-
+			"filmpage"=>"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". $row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
 			));
 			
 	}
+
 }
 
 mysql_close();
