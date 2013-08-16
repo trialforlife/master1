@@ -203,26 +203,31 @@ Ext.define('ListItem', {
                                                                             Ext.define("Favorite", {
                                                                                 extend: "Ext.data.Model",
                                                                                 config: {
-                                                                                fields: ["name","phone",]
+                                                                                fields: ["name","ftype","image","link","res"]
                                                                             }
                                                                             });
 
                                                                             Ext.create("Ext.data.Store", {
                                                                             model: "Favorite",
-                                                                                storeId: 'Users',
+                                                                                storeId: 'Favorite',
                                                                                 proxy: {
                                                                                 type: "sql"
                                                                                 }
                                                                             });
 
-                                                                            Ext.getStore('Users').add([{
+                                                                            Ext.getStore('Favorite').add([{
                                                                                 name: c_nam,
-                                                                                phone: c_nam1,
+                                                                                ftype: c_nam1,
+                                                                                image: 'kartinko',
+                                                                                link: '',
+                                                                                res : '',
                                                                             }]);
 
-                                                                            Ext.getStore('Users').sync();
+                                                                            Ext.getStore('Favorite').sync();
                                                                             
-                                                                            Ext.getStore("Users").getModel('Users').getProxy().dropTable('Users');
+                                                                            //Ext.getStore("Users").getModel("Users").getProxy("Users").dropTable("Favorite");
+                                                                            //Ext.getStore("Favorite").getModel("Ext.data.Model").getProxy().dropTable();
+                                                                            
                                                                             }
                                                                     }
                                                                 ]
