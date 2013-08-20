@@ -52,7 +52,7 @@ Ext.define('ListItem', {
 
             proxy: {
                 type: 'jsonp',
-                url: 'http://now-yakutsk.stairwaysoft.net/catlist.php',
+                url: '../catlist.php',
 
                 reader: {
                     type: 'json',
