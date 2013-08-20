@@ -53,7 +53,6 @@ Ext.define('ListItem', {
             proxy: {
                 type: 'jsonp',
                 url: 'http://now-yakutsk.stairwaysoft.net/catlist.php',
-
                 reader: {
                     type: 'json',
                     rootProperty: 'cat',
@@ -292,53 +291,22 @@ Ext.define('ListItem', {
                                                                                     favStore.sync();
                                                                                 }
 
-                                                                                });
-                                                                                
-                                                                               
+                                                                                },
+                                                                                function (tx, error)
+                                                                                {
+                                                                                favStore.add([{
+                                                                                        name: s_name,
+                                                                                        ftype: cat,
+                                                                                        image: s_image,
+                                                                                        link: '',
+                                                                                        res : '',
+                                                                                        fid : cfid,
 
-
-                                                                            /*
-                                                                            tx.executeSql("SELECT id FROM Favorite WhERE fid = ? ", [cfid], function(tx, data){
-                                                                                //lel = result.rows.length;
-                                                                               
-
-                                                                                
-                                                                                console.log(d);
-
-                                                                            }                   ,
-                                                                            function (tx, error) {
-                                                                                console.log(error);
-                                                                             }
-
-                                                                                )*/
-                                                                        });
-                                                                            
-                                                                                
-                                                         
-        
-
-
-                                                                            /*db.transaction(function(tx1) {
-                                                                            tx1.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){
-                                                                                //console.log(result.rows['1']);
-                                                                                //alert(result.length);
-                                                                                //f = console.log(result.rows.length);
-                                                                                var ft = result1.rows;
-                                                                                    if(ft == undefined){               
-                                                                                        alert('ol');      
-                                                                                         }
-                                                                                  
+                                                                                    }]);
+                                                                                    favStore.sync();
                                                                                 }
-                                                                                //function(tx, error){}
-                                                                                );                                                                            
-                                                                            });*/
-
-                                                                            
-                                                                            
-
-                                                                            //console.log(Ext.getStore('Favorite').getAt(index));
-                                                                            //Ext.getStore('Favorite').sync();
-                                                                            //Ext.getStore('Favorite').sync();
+                                                                                )});
+                                                                                
 
                                                                             }
                                                                     }
