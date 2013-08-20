@@ -9,7 +9,22 @@ Ext.define('ListItem', {
           this.callParent(arguments);// required to make back button work
     }
 
-});
+}); 
+        Ext.require(['Ext.data.proxy.SQL']);
+        Ext.define("Favorite", {
+        extend: "Ext.data.Model",
+        config: {
+        fields: ["id","name","ftype","image","link","res", "fid"]
+        }
+        });
+
+        var favStore = Ext.create("Ext.data.Store", {
+        model: "Favorite",
+        storeId: 'Favorite',
+        proxy: {
+        type: "sql"
+        }
+        });
 
 
     var treeStore = Ext.create("Ext.NestedList", {
@@ -151,11 +166,12 @@ Ext.define('ListItem', {
                                                 tb.show();                             
                                                 tb1.hide();
                                                 //this.getToolbar().hide();
-                    }
+                                            }
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
                                                 var c_nam = post.get('name');
+                                                fid = post.get('cid');
                                                 //alert(tqt);
                                                 var fil = Ext.create("Ext.NestedList", {
 
@@ -195,39 +211,134 @@ Ext.define('ListItem', {
                                                                         text: '+',
                                                                         ui: 'decline',
                                                                         handler: function(){ 
-                                                                            var c_nam1 = post.get('list');
+                                                                            var s_name = post.get('list');
+                                                                            var s_image = post.get('image');
+                                                                            cfid = post.get('cid');
+
+                                                                            //var s_type = record.get('code');
                                                                             //var c_content = post.get('filmpage');
                                                                             //alert('РаботаетЬ');
 
-                                                                            Ext.require(['Ext.data.proxy.SQL']);
-                                                                            Ext.define("Favorite", {
-                                                                                extend: "Ext.data.Model",
-                                                                                config: {
-                                                                                fields: ["name","ftype","image","link","res"]
-                                                                            }
-                                                                            });
-
-                                                                            Ext.create("Ext.data.Store", {
-                                                                            model: "Favorite",
-                                                                                storeId: 'Favorite',
-                                                                                proxy: {
-                                                                                type: "sql"
-                                                                                }
-                                                                            });
-
-                                                                            Ext.getStore('Favorite').add([{
-                                                                                name: c_nam,
-                                                                                ftype: c_nam1,
-                                                                                image: 'kartinko',
+                                                                            /*favStore.add([{
+                                                                                name: s_name,
+                                                                                ftype: cat,
+                                                                                image: s_image,
                                                                                 link: '',
                                                                                 res : '',
-                                                                            }]);
+                                                                                fid : cfid,
 
-                                                                            Ext.getStore('Favorite').sync();
+                                                                            }]);
+                                                                            favStore.sync();*/
+
+                                                                            /*function prepareDatabase(ready, error) {
+                                                                              return openDatabase('Sencha', '1.0', 'Sencha', 5*1024*1024, function (db) {
+                                                                                db.changeVersion('', '1.0', function (t) {
+                                                                                  t.executeSql('CREATE TABLE Favorite (id, name,ftype,image,link,res,fid)');
+                                                                                }, error);
+                                                                              });
+                                                                            }
+
+                                                                            function showDocCount(db, span) {
+                                                                              db.readTransaction(function (t) {
+                                                                                t.executeSql('SELECT COUNT(*) AS c FROM Favorite', [], function (t, r) {
+                                                                                  span.textContent = r.rows[0].c;alert('e.message');
+                                                                                }, function (t, e) {
+                                                                                  // couldn't read database
+                                                                                  span.textContent = '(unknown: ' + e.message + ')';alert('es.message');
+                                                                                });
+                                                                              });
+                                                                            }
+
+                                                                            prepareDatabase(function(db) {
+                                                                              // got database
+                                                                              var span = document.getElementsByTagName('body');alert('message');
+                                                                              showDocCount(db, span);
+                                                                            }, function (e) {
+                                                                              // error getting database
+                                                                              alert(e.message);
+                                                                            });*/
+                                                                            favStore.sync();
+
+                                                                            db = openDatabase("Sencha", "1.0", "Sencha", 200000);
+                                                                                if(!db)
+                                                                                    {alert("Failed to connect to database.");}   
+                                                                                else 
+                                                                                    {//alert('fuck yeah');
+                                                                            }
+                                    
                                                                             
-                                                                            //Ext.getStore("Users").getModel("Users").getProxy("Users").dropTable("Favorite");
-                                                                            //Ext.getStore("Favorite").getModel("Ext.data.Model").getProxy().dropTable();
+                                                                            db.transaction(function(tx) {
+                                                                                tx.executeSql('SELECT * FROM Favorite WhERE fid = ?', [cfid] , function (tx, results) {
+                                                                                  len = results.rows.length;
+                                                                                  console.log(len);
+                                                                                  if (len  > 0 ) {
+                                                                                    alert("bolshe");
+                                                                                    tx.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){
+
+                                                                                    });
+                                                                                }
+                                                                                else{
+                                                                                    alert('inS');
+                                                                                    favStore.add([{
+                                                                                        name: s_name,
+                                                                                        ftype: cat,
+                                                                                        image: s_image,
+                                                                                        link: '',
+                                                                                        res : '',
+                                                                                        fid : cfid,
+
+                                                                                    }]);
+                                                                                    favStore.sync();
+                                                                                }
+
+                                                                                });
+                                                                                
+                                                                               
+
+
+                                                                            /*
+                                                                            tx.executeSql("SELECT id FROM Favorite WhERE fid = ? ", [cfid], function(tx, data){
+                                                                                //lel = result.rows.length;
+                                                                               
+
+                                                                                
+                                                                                console.log(d);
+
+                                                                            }                   ,
+                                                                            function (tx, error) {
+                                                                                console.log(error);
+                                                                             }
+
+                                                                                )*/
+                                                                        });
                                                                             
+                                                                                
+                                                         
+        
+
+
+                                                                            /*db.transaction(function(tx1) {
+                                                                            tx1.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){
+                                                                                //console.log(result.rows['1']);
+                                                                                //alert(result.length);
+                                                                                //f = console.log(result.rows.length);
+                                                                                var ft = result1.rows;
+                                                                                    if(ft == undefined){               
+                                                                                        alert('ol');      
+                                                                                         }
+                                                                                  
+                                                                                }
+                                                                                //function(tx, error){}
+                                                                                );                                                                            
+                                                                            });*/
+
+                                                                            
+                                                                            
+
+                                                                            //console.log(Ext.getStore('Favorite').getAt(index));
+                                                                            //Ext.getStore('Favorite').sync();
+                                                                            //Ext.getStore('Favorite').sync();
+
                                                                             }
                                                                     }
                                                                 ]

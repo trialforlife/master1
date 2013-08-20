@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Europe/Minsk");
 
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/framework/yii.php';
@@ -12,4 +13,3 @@ defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);
 Yii::createWebApplication($config)->run();
 
-date_default_timezone_set("Asia/Bangkok");
