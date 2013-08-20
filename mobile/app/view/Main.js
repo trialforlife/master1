@@ -99,7 +99,7 @@ Ext.define('ListItem', {
 
                             proxy: {
                                 type: 'jsonp',
-                                url: 'http://now/catlist2.php',
+                                url: 'http://now-yakutsk.stairwaysoft.net/catlist2.php',
                                 reader: {
                                     type: 'json',
                                     rootProperty: 'cat'
@@ -142,7 +142,7 @@ Ext.define('ListItem', {
                                                 },                        
                                                 proxy: {
                                                     type: 'jsonp',
-                                                    url: 'http://now/cinemalist.php',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/cinemalist.php',
                                                     reader: {
                                                         type: 'json',
                                                         rootProperty: 'cinema'
@@ -194,7 +194,7 @@ Ext.define('ListItem', {
                                                             },
                                                             proxy: {
                                                                 type: 'jsonp',
-                                                                url: 'http://now/filmlist.php?f_cid='+f_cid,
+                                                                url: 'http://now-yakutsk.stairwaysoft.net/filmlist.php?f_cid='+f_cid,
                                                                 reader: {
                                                                     type: 'json',
                                                                     rootProperty: 'films',
