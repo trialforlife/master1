@@ -5,6 +5,8 @@ header('Access-Control-Allow-Headers: value=Origin, X-Requested-With, Content-Ty
 $link = mysql_connect("localhost","now-yakutsk","E327D28999");
 
 mysql_select_db("now-yakutsk", $link);
+mysql_set_charset('utf8' ,  $link);
+
 
 $result = array("cat"=>array());
 
