@@ -119,7 +119,7 @@ Ext.define('ListItem', {
                                           console.log(ftyp);
                                           console.log(lens);
                                           str1= '';
-                                          for (var i=0; i< lens; i++)
+                                          for (var i=0; i<= lens; i++)
                                           {     
                                                 //alert(results.rows.item(i).name);
                                                   str1 = str1+ "<br>Row = " + i +" ID = "+ results.rows.item(i).fid +" <br>type = " +results.rows.item(i).ftype+" <br>name = " + results.rows.item(i).name;
