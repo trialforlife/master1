@@ -9,7 +9,13 @@ Ext.define('ListItem', {
           this.callParent(arguments);// required to make back button work
     }
 
-}); 
+});     
+        db = openDatabase("Sencha", "1.0", "Sencha", 200000);
+            if(!db)
+                {alert("Failed to connect to database.");}   
+            else 
+                {//alert('fuck yeah');
+        };
         Ext.require(['Ext.data.proxy.SQL']);
             Ext.define("Favorite", {
             extend: "Ext.data.Model",
@@ -18,22 +24,30 @@ Ext.define('ListItem', {
             }
         });
 
-        Ext.create("Ext.data.Store", {
-            model: "Favorite",
+        var favestore = Ext.create("Ext.data.Store", {
+            model: "Favorite",defaultRootProperty: 'items',
             storeId: 'Favorite',
             proxy: {
-            type: "sql"
-            }
+                type: "sql"
+            },
+            autoLoad: true
+                 });
+
+
+
+
+        /*var favestorage = Ext.create("Ext.data.Store", {
+            model: "Favorite",
+            storeId: 'Favorite',
+
+            proxy: {
+                type: "sql",
+
+            },
+            autoLoad: true
         });
 
-
-        db = openDatabase("Sencha", "1.0", "Sencha", 200000);
-            if(!db)
-                {alert("Failed to connect to database.");}   
-            else 
-                {//alert('fuck yeah');
-        }
-
+*/
 
     var treeStore = Ext.create("Ext.NestedList", {
         fullscreen: true,
@@ -57,7 +71,6 @@ Ext.define('ListItem', {
                 leaf: false,
 
             },
-
             proxy: {
                 type: 'jsonp',
                 url: 'http://now-yakutsk.stairwaysoft.net/catlist.php',
@@ -78,32 +91,53 @@ Ext.define('ListItem', {
                             }
                             ,                       
                     leafitemtap: function(nestedList, list, index, target, record) {
+                                var favestore = Ext.create("Ext.data.Store", {
+                                model: "Favorite",defaultRootProperty: 'items',
+                                storeId: 'Favorite',
+                                proxy: {
+                                    type: "sql"
+                                },
+                                autoLoad: true
+                                     });
 
-                        var faveritelist  = Ext.create("Ext.NestedList", {
+                        var flist = Ext.create("Ext.List", {
+                            fullscreen: true,
+                            store: favestore,
+                            displayField: 'id',
+                            text: 'name',
+                            itemTpl: "{name}, {id} ",
+                        });
+
+                        /*var faveritelist  = Ext.create("Ext.List", {
                             fullscreen: true,
                             tabBarPosition: 'bottom',
+                            //useToolbar:false,
 
-                        //useToolbar:false,
-                                //title: 'Blog',
+                                //leaf: true ,
                                 iconCls: 'star',
-                                displayField: 'filmpage',
-                                store: {
-                                    type: 'tree',
-             
-                                    fields: [
-                                        'html','code',
-                                        {name: 'leaf', defaultValue: true}
-                                    ],
-                                    root: {
-                                        leaf: false
-                                    },
-                            detailCard: {
-                                xtype: 'panel',
-                                scrollable: true,
-                                styleHtmlContent: true
+                                displayField: 'name',
+                            treestore: {
+                                type: 'tree',
+                                id: 'name',
+
+                                fields: [
+                                    'name','id',
+                                    {name: 'leaf', defaultValue: true}
+                                ],
+
+                                root: {
+                                    leaf: true,
+                                },
+                                
+                                name : 'favestore',
+                                storeId: 'Favorite',
+                                
+                                proxy: {
+                                    type: "sql",
+                                },
                             },
-                        },
-                        listeners: {
+
+                                listeners: {
                              activate : function() { 
 
 
@@ -119,16 +153,12 @@ Ext.define('ListItem', {
                                           console.log(ftyp);
                                           console.log(lens);
                                           str1= '';
-                                          for (var i=0; i< lens; i++)
+                                          for (var i=0; i<= lens; i++)
                                           {     
                                                 //alert(results.rows.item(i).name);
-                                                  str1 = str1+ "<br>Row = " + i +" ID = "+ results.rows.item(i).fid +" <br>type = " +results.rows.item(i).ftype+" <br>name = " + results.rows.item(i).name;
-                                                                                            nestedList.getDetailCard().el.setHtml(str1);
-
-
-                                                    
-
-                                          }console.log(str1); nestedList.getDetailCard().el.setHtml(str1);
+                                                  //str1 = str1+ "<br>Row = " + i +" ID = "+ results.rows.item(i).fid +" <br>type = " +results.rows.item(i).ftype+" <br>name = " + results.rows.item(i).name;
+                                                                                            //nestedList.getDetailCard().el.setHtml(str1);
+                                          }//console.log(str1); nestedList.getDetailCard().el.setHtml(str1);
                                           if (lens  > 0 ) {
                                             //alert("bolshe");
                                             //tx.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){                               });
@@ -144,7 +174,8 @@ Ext.define('ListItem', {
                                             alert('It empty');
 
                                         }
-                                        )}
+                                        )
+}
                            
 );                        
                           
@@ -161,7 +192,7 @@ Ext.define('ListItem', {
                         }
 
 
-                        });
+                        });*/
 
 
                         
@@ -320,7 +351,7 @@ Ext.define('ListItem', {
                                                                                 }
                                                                                 else{
                                                                                     alert('inS');
-                                                                                    Ext.getStore("Favorite").add([{
+                                                                                    favestore.add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
                                                                                         image: s_image,
@@ -329,13 +360,13 @@ Ext.define('ListItem', {
                                                                                         fid : cfid,
 
                                                                                     }]);
-                                                                                    Ext.getStore("Favorite").sync();
+                                                                                    favestore.sync();
                                                                                 }
 
                                                                                 },
                                                                                 function (tx, error)
                                                                                 {
-                                                                                Ext.getStore("Favorite").add([{
+                                                                                favestore .add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
                                                                                         image: s_image,
@@ -344,7 +375,7 @@ Ext.define('ListItem', {
                                                                                         fid : cfid,
 
                                                                                     }]);
-                                                                                    Ext.getStore("Favorite").sync();
+                                                                                   favestore.sync();
                                                                                 }
                                                                                 )});
                                                                                 
@@ -425,7 +456,7 @@ Ext.define('ListItem', {
                                     case "favorite":
                                         var detailCard = nestedList.getDetailCard();//nestedList.getDetailCard().setHtml('<div>HI</div>');
                                             
-                                            nestedList.setDetailCard(faveritelist);
+                                            nestedList.setDetailCard(flist);
          
                                                                         
 
