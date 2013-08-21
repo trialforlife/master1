@@ -411,7 +411,7 @@ Ext.define('ListItem', {
                                            default:
                                            break;
                                         };
-                                        }                                            
+                                        }                                             
                                     }                                 
                                 });
                                         
