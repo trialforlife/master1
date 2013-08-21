@@ -11,20 +11,28 @@ Ext.define('ListItem', {
 
 }); 
         Ext.require(['Ext.data.proxy.SQL']);
-        Ext.define("Favorite", {
-        extend: "Ext.data.Model",
-        config: {
-        fields: ["id","name","ftype","image","link","res", "fid"]
-        }
+            Ext.define("Favorite", {
+            extend: "Ext.data.Model",
+            config: {
+            fields: ["id","name","ftype","image","link","res", "fid"]
+            }
         });
 
-        var favStore = Ext.create("Ext.data.Store", {
-        model: "Favorite",
-        storeId: 'Favorite',
-        proxy: {
-        type: "sql"
-        }
+        Ext.create("Ext.data.Store", {
+            model: "Favorite",
+            storeId: 'Favorite',
+            proxy: {
+            type: "sql"
+            }
         });
+
+
+        db = openDatabase("Sencha", "1.0", "Sencha", 200000);
+            if(!db)
+                {alert("Failed to connect to database.");}   
+            else 
+                {//alert('fuck yeah');
+        }
 
 
     var treeStore = Ext.create("Ext.NestedList", {
@@ -70,11 +78,95 @@ Ext.define('ListItem', {
                             }
                             ,                       
                     leafitemtap: function(nestedList, list, index, target, record) {
-                        //this.getToolbar().hide();  
-                        //favorite                              
-                       
 
-                        //subreee
+                        var faveritelist  = Ext.create("Ext.NestedList", {
+                            fullscreen: true,
+                            tabBarPosition: 'bottom',
+
+                        //useToolbar:false,
+                                //title: 'Blog',
+                                iconCls: 'star',
+                                displayField: 'filmpage',
+                                store: {
+                                    type: 'tree',
+             
+                                    fields: [
+                                        'html','code',
+                                        {name: 'leaf', defaultValue: true}
+                                    ],
+                                    root: {
+                                        leaf: false
+                                    },
+                            detailCard: {
+                                xtype: 'panel',
+                                scrollable: true,
+                                styleHtmlContent: true
+                            },
+                        },
+                        listeners: {
+                             activate : function() { 
+
+
+                                tb1 = this.getToolbar();
+                                tb1.hide();
+                                tb.show(); 
+
+                                        var favoritecard =  db.transaction(function(tx) {
+
+                                        tx.executeSql('SELECT * FROM Favorite ', [] , function (tx, results) {
+                                          lens = results.rows.length;
+                                          ftyp = results.rows.item(0).ftype;
+                                          console.log(ftyp);
+                                          console.log(lens);
+                                          str1= '';
+                                          for (var i=0; i< 2; i++)
+                                          {     
+                                                //alert(results.rows.item(i).name);
+                                                  str1 = str1+ "<br>Row = " + i +" ID = "+ results.rows.item(i).fid +" <br>type = " +results.rows.item(i).ftype+" <br>name = " + results.rows.item(i).name;
+                                                                                            nestedList.getDetailCard().el.setHtml(str1);
+
+
+                                                    
+
+                                          }console.log(str1); nestedList.getDetailCard().el.setHtml(str1);
+                                          if (lens  > 0 ) {
+                                            //alert("bolshe");
+                                            //tx.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){                               });
+                                        }
+                                        else{
+                                            alert('It empty');
+                                            
+                                        }
+
+                                        },
+                                        function (tx, error)
+                                        {
+                                            alert('It empty');
+
+                                        }
+                                        )}
+                           
+);                        
+                          
+                            //nestedList.getDetailCard().insertHtml("VOYVOY");
+
+
+                            //this.getToolbar().hide();
+                             } ,
+                             deactivate: function() {       
+                                //tb.show(); 
+                                //alert('dd');
+                            //this.getToolbar().hide();                           
+                            }
+                        }
+
+
+                        });
+
+
+                        
+
+
                         var treeStore2 = Ext.create("Ext.NestedList", {
 
                         fullscreen: true,
@@ -214,59 +306,8 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
+                                                                            //adding to favorite
 
-                                                                            //var s_type = record.get('code');
-                                                                            //var c_content = post.get('filmpage');
-                                                                            //alert('РаботаетЬ');
-
-                                                                            /*favStore.add([{
-                                                                                name: s_name,
-                                                                                ftype: cat,
-                                                                                image: s_image,
-                                                                                link: '',
-                                                                                res : '',
-                                                                                fid : cfid,
-
-                                                                            }]);
-                                                                            favStore.sync();*/
-
-                                                                            /*function prepareDatabase(ready, error) {
-                                                                              return openDatabase('Sencha', '1.0', 'Sencha', 5*1024*1024, function (db) {
-                                                                                db.changeVersion('', '1.0', function (t) {
-                                                                                  t.executeSql('CREATE TABLE Favorite (id, name,ftype,image,link,res,fid)');
-                                                                                }, error);
-                                                                              });
-                                                                            }
-
-                                                                            function showDocCount(db, span) {
-                                                                              db.readTransaction(function (t) {
-                                                                                t.executeSql('SELECT COUNT(*) AS c FROM Favorite', [], function (t, r) {
-                                                                                  span.textContent = r.rows[0].c;alert('e.message');
-                                                                                }, function (t, e) {
-                                                                                  // couldn't read database
-                                                                                  span.textContent = '(unknown: ' + e.message + ')';alert('es.message');
-                                                                                });
-                                                                              });
-                                                                            }
-
-                                                                            prepareDatabase(function(db) {
-                                                                              // got database
-                                                                              var span = document.getElementsByTagName('body');alert('message');
-                                                                              showDocCount(db, span);
-                                                                            }, function (e) {
-                                                                              // error getting database
-                                                                              alert(e.message);
-                                                                            });*/
-                                                                            favStore.sync();
-
-                                                                            db = openDatabase("Sencha", "1.0", "Sencha", 200000);
-                                                                                if(!db)
-                                                                                    {alert("Failed to connect to database.");}   
-                                                                                else 
-                                                                                    {//alert('fuck yeah');
-                                                                            }
-                                    
-                                                                            
                                                                             db.transaction(function(tx) {
                                                                                 tx.executeSql('SELECT * FROM Favorite WhERE fid = ?', [cfid] , function (tx, results) {
                                                                                   len = results.rows.length;
@@ -279,7 +320,7 @@ Ext.define('ListItem', {
                                                                                 }
                                                                                 else{
                                                                                     alert('inS');
-                                                                                    favStore.add([{
+                                                                                    Ext.getStore("Favorite").add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
                                                                                         image: s_image,
@@ -288,13 +329,13 @@ Ext.define('ListItem', {
                                                                                         fid : cfid,
 
                                                                                     }]);
-                                                                                    favStore.sync();
+                                                                                    Ext.getStore("Favorite").sync();
                                                                                 }
 
                                                                                 },
                                                                                 function (tx, error)
                                                                                 {
-                                                                                favStore.add([{
+                                                                                Ext.getStore("Favorite").add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
                                                                                         image: s_image,
@@ -303,11 +344,10 @@ Ext.define('ListItem', {
                                                                                         fid : cfid,
 
                                                                                     }]);
-                                                                                    favStore.sync();
+                                                                                    Ext.getStore("Favorite").sync();
                                                                                 }
                                                                                 )});
                                                                                 
-
                                                                             }
                                                                     }
                                                                 ]
@@ -335,8 +375,8 @@ Ext.define('ListItem', {
                                                             }
                                                         ,
                                                             leafitemtap: function(nestedList, list, index, element, post) {
-                                                                
                                                                 alert("wow");
+                                                                nestedList.getDetailCard().setHtml('Got it');
                                                                 //this.getDetailCard().setHtml(post.get('banner'));
                                                             }
                                                         }
@@ -346,16 +386,18 @@ Ext.define('ListItem', {
                                                 }
                                             }
                                 });
-                                        var detailCard = nestedList.getDetailCard();
+                                        
                                         var cat = (record.get('code'));
                                         switch (cat) {
                                            case "cinema":
                                               //alert(cat);
+                                               var detailCard = nestedList.getDetailCard();
                                                nestedList.setDetailCard(cin);
                                                break;
-                                           case "favorite":
+                                           case "theatre":
+                                                    nestedList.setDetailCard(theatre);
                                                 break;
-                                           case "Городские мероприятия":
+                                           case "events":
                                                 //alert(cat);
                                                 nestedList.setDetailCard(events);
                                                 break;
@@ -369,23 +411,28 @@ Ext.define('ListItem', {
                                            default:
                                            break;
                                         };
-                                        //detailCard.setHtml('You selected: '  + record.get('text'));
-                                                           }                                            
-                                            }                                 
+                                        }                                            
+                                    }                                 
                                 });
+                                        
+
                                 var code = (record.get('code'));
                                 switch (code) {
                                     case "poster":
-                                        //alert(cat);
+                                        var detailCard = nestedList.getDetailCard();
                                         nestedList.setDetailCard(treeStore2);
                                         break;
                                     case "favorite":
-                                        nestedList.setDetailCard(us);
+                                        var detailCard = nestedList.getDetailCard();//nestedList.getDetailCard().setHtml('<div>HI</div>');
+                                            
+                                            nestedList.setDetailCard(faveritelist);
+         
+                                                                        
+
                                         break;   
-                                    default: 
-                                        alert("Pals");
-                                        //nestedList.setDetailCard(treeStoreS2);
-                                        break;
+                                    case labelN:
+                                           default:
+                                           break;
                                     }                               //Ext.viewPort.setActiveItem('treeStore2');    
                                         //this.getToolbar().hide();
                                 } 
