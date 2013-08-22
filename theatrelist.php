@@ -24,7 +24,7 @@ if (mysql_affected_rows() > 0) {
 			"list"=>addslashes((string)$row["t_name"]).'<br>'.addslashes((string)$row["t_adress"]),
 
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["t_image"]).">",
-			"banner"=>"<img src=http://now/".addslashes((string)$row["tb_banner"]).">",
+
 
 			));
 			
