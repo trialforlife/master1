@@ -89,7 +89,7 @@ Ext.define('ListItem', {
                             store: favestore,
                             //displayField: 'id',
                             text: 'name',
-                            itemTpl: "{name}, {id} ",
+                            itemTpl: "{name}",
                         });
 
                         /*var faveritelist  = Ext.create("Ext.List", {
@@ -397,14 +397,15 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
+                                                                            alert(cat);
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
-                                                                                tx.executeSql('SELECT * FROM Favorite WhERE fid = ?', [cfid] , function (tx, results) {
+                                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                                   len = results.rows.length;
                                                                                   console.log(len);
                                                                                   if (len  > 0 ) {
                                                                                     alert("bolshe");
-                                                                                    tx.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){
+                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
                                                                                     });
                                                                                 }
