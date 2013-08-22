@@ -18,7 +18,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
-			"id"=>addslashes($row["f_id"]),
+			"id"=>$row["f_id"],
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
 			"time"=>addslashes((string)$row["f_time"]),
