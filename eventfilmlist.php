@@ -11,7 +11,7 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select * from films, cinema_banner where films.c_id = '$f_cid' and cinema_banner.c_id = '$f_cid' ";
+$query = "select * from events where films.c_id = '$f_cid' and cinema_banner.c_id = '$f_cid' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
