@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from `theatre` ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
+$query = 'select * from `restaurant` ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
@@ -17,12 +17,12 @@ if (mysql_affected_rows() > 0) {
 	{
 		array_push($result["cinema"],array(
 			"cid"=>$row["t_id"],
-			"name"=>addslashes((string)$row["t_name"]),
-			"image"=>addslashes((string)$row["t_image"]),
-			"adress"=>addslashes((string)$row["t_adress"]),
-			"published"=>addslashes((string)$row["t_published"]),
-			"list"=>"<div>".addslashes((string)$row["t_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["t_image"]."><br><div>",
-			"img_full"=> "<img src=http://now/".addslashes((string)$row["t_image"]).">",
+			"name"=>addslashes((string)$row["r_name"]),
+			"image"=>addslashes((string)$row["r_image"]),
+			"adress"=>addslashes((string)$row["r_adress"]),
+			"published"=>addslashes((string)$row["r_published"]),
+			"list"=>"<div>".addslashes((string)$row["r_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["r_image"]."><br><div>",
+			"img_full"=> "<img src=http://now/".addslashes((string)$row["r_image"]).">",
 			));
 			
 	}

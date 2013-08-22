@@ -11,20 +11,20 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select * from play where play.t_id = '$f_cid' ";
+$query = "select * from shipment where shipment.s_id = '$f_cid' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["p_id"],
-			"name"=>addslashes((string)$row["p_name"]),
-			"image"=>addslashes((string)$row["p_image"]),
-			"time"=>addslashes((string)$row["p_time"]),
+			"id"=>$row["s_id"],
+			"name"=>addslashes((string)$row["s_name"]),
+			"image"=>addslashes((string)$row["s_image"]),
+			"time"=>addslashes((string)$row["s_time"]),
 			"filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["p_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["p_image"]."><br>".$row["p_time"]."</br><small>".$row["p_content"]."</small></br>",
+			$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["s_time"]."</br><small>".$row["s_content"]."</small></br>",
 			));
 			
 	}

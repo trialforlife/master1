@@ -11,7 +11,7 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select * from play where play.t_id = '$f_cid' ";
+$query = "select * from restaurant where restaurant.r_id = '$f_cid' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
@@ -19,12 +19,12 @@ if (mysql_affected_rows() > 0) {
 	{
 		array_push($result["films"],array(
 			"id"=>$row["p_id"],
-			"name"=>addslashes((string)$row["p_name"]),
-			"image"=>addslashes((string)$row["p_image"]),
-			"time"=>addslashes((string)$row["p_time"]),
+			"name"=>addslashes((string)$row["r_name"]),
+			"image"=>addslashes((string)$row["r_image"]),
+			"time"=>addslashes((string)$row["r_time"]),
 			"filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["p_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["p_image"]."><br>".$row["p_time"]."</br><small>".$row["p_content"]."</small></br>",
+			$row["r_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["r_image"]."><br>".$row["r_time"]."</br><small>".$row["r_content"]."</small></br>",
 			));
 			
 	}
