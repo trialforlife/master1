@@ -68,6 +68,7 @@ Ext.define('ListItem', {
         listeners: {  activate : function() { 
                             //this.getToolbar().hide();
                             tb = this.getToolbar();
+
                             
                              } ,
                              deactivate: function() {
@@ -75,6 +76,9 @@ Ext.define('ListItem', {
                             }
                             ,                       
                     leafitemtap: function(nestedList, list, index, target, record) {
+                        cat = record.get('code');
+                                var catdyn = cat;
+                                
                         var favestore = Ext.create("Ext.data.Store", {
                         model: "Favorite",defaultRootProperty: 'items',
                         storeId: 'Favorite',
@@ -91,99 +95,252 @@ Ext.define('ListItem', {
                             text: 'name',
                             itemTpl: "{name}",
                         });
-
-                        /*var faveritelist  = Ext.create("Ext.List", {
-                            fullscreen: true,
-                            tabBarPosition: 'bottom',
-                            //useToolbar:false,
-
-                                //leaf: true ,
-                                iconCls: 'star',
-                                displayField: 'name',
-                            treestore: {
-                                type: 'tree',
-                                id: 'name',
-
-                                fields: [
-                                    'name','id',
-                                    {name: 'leaf', defaultValue: true}
-                                ],
-
-                                root: {
-                                    leaf: true,
-                                },
                                 
-                                name : 'favestore',
-                                storeId: 'Favorite',
-                                
-                                proxy: {
-                                    type: "sql",
-                                },
-                            },
-
-                                listeners: {
-                             activate : function() { 
-
-
-                                tb1 = this.getToolbar();
-                                tb1.hide();
-                                tb.show(); 
-
-                                        var favoritecard =  db.transaction(function(tx) {
-
-                                        tx.executeSql('SELECT * FROM Favorite ', [] , function (tx, results) {
-                                          lens = results.rows.length;
-                                          ftyp = results.rows.item(0).ftype;
-                                          console.log(ftyp);
-                                          console.log(lens);
-                                          str1= '';
-                                          for (var i=0; i<= lens; i++)
-                                          {     
-                                                //alert(results.rows.item(i).name);
-                                                  //str1 = str1+ "<br>Row = " + i +" ID = "+ results.rows.item(i).fid +" <br>type = " +results.rows.item(i).ftype+" <br>name = " + results.rows.item(i).name;
-                                                                                            //nestedList.getDetailCard().el.setHtml(str1);
-                                          }//console.log(str1); nestedList.getDetailCard().el.setHtml(str1);
-                                          if (lens  > 0 ) {
-                                            //alert("bolshe");
-                                            //tx.executeSql("DELETE FROM Favorite WhERE fid = ? ", [cfid], function(result1){                               });
-                                        }
-                                        else{
-                                            alert('It empty');
+                                cin1 = Ext.create("Ext.NestedList", {
+                                    fullscreen: true,
+                                    tabBarPosition: 'bottom',
+                                    //useToolbar:false,
+                                            //title: 'Blog',
+                                            iconCls: 'star',
+                                            displayField: 'list',
                                             
-                                        }
+                                                store: {
+                                                type: 'tree',
+                         
+                                                fields: [
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    {name: 'leaf', defaultValue: true}
+                                                ],
+                                                root: {
+                                                    leaf: false
+                                                },                        
+                                                proxy: {
+                                                    type: 'jsonp',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'list.php',
+                                                    reader: {
+                                                        type: 'json',
+                                                        rootProperty: 'cinema'
+                                                    }
+                                                }
+                                            },
+                                            detailCard: {
+                                                xtype: 'panel',
+                                                scrollable: true,
+                                                styleHtmlContent: true
+                                            },
+                                            listeners: {
+                                            activate : function() {     
+                                                //tb1.show();
+                                                tb2 = this.getToolbar();
+                                                tb2.hide();
+                                                //tb.hide(); 
 
-                                        },
-                                        function (tx, error)
-                                        {
-                                            alert('It empty');
+                                            //this.getToolbar(treeStore2).hide();
+                                             } ,
+                                             deactivate: function() {
+                                                tb.show();                             
+                                                //tb1.hide();
+                                                //this.getToolbar().hide();
+                                            }
+                                            ,
+                                                leafitemtap: function(nestedList, list, index, element, post) {
+                                                var f_cid = post.get('cid');
+                                                //var c_nam = post.get('name');
+                                                //fid = post.get('cid');
 
-                                        }
-                                        )
-}
-                           
-);                        
-                          
-                            //nestedList.getDetailCard().insertHtml("VOYVOY");
+                                                //alert(tqt);                             
+                                                /*interval = 1000  //интервал повтора 1 секунда
+                                                coef = 1349788541   // случайный коэффициент разницы текущего времени
+
+                                                setInterval(function() {
+                                                raccons = Math.round((new Date()).getTime() / 1000) - coef
+                                                    console.log(raccons); //выводим в консоль. заменить на нужное, например $('#counter').text(raccons);
+                                                }, interval);
+                                                dd = 'background-color: blueviolet';*/
+                                                //   =  'background-color: red';   
+
+                                                //alert(cat);
+                                                var fil = Ext.create('Ext.Container', {
+                                                fullscreen: true,
+                                                useToolbar:false,
+                                                /*getItemTextTpl: function(node){
+                                                    return '{filmpage}';
+                                                }  */
+                                                layout: 'vbox',
+                                                items: [           {    
+                                                                        xtype: 'carousel',
+                                                                        height: '100px',
+                        
+                                                                        store: {
+                                                                            type: 'tree',
+                                                                            fields: [
+                                                                                'b_image',
+                                                                                 {name: 'leaf', defaultValue: true}
+                                                                            ],
+
+                                                                            root: {
+                                                                                leaf: false
+                                                                            },
+
+                                                                            proxy: {
+                                                                                type: 'jsonp',
+                                                                                url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'bannerlist.php',
+                                                                                reader: {
+                                                                                    type: 'json',
+                                                                                    rootProperty: 'banner'
+                                                                                }
+                                                                            }},
+
+                                                    
+                                                                           items: [
+                                                                                {
+                                                                                    html : 'banner 1',
+                                                                                    style: 'background-color: #5E99CC'
+                                                                                },
+                                                                                {
+                                                                                    html : 'banner 2',
+                                                                                    style: 'background-color: #759E60'
+                                                                                },
+                                                                                {
+                                                                                    html : 'banner 3'
+                                                                                }
+                                                                            ]
+                                                                     
+                                                                    },
+                                                                    {
+                                                                        xtype : 'panel',
+                                                                        height: '20px',
+                                                                        html:'place for adress',
+                                                                    },
+                                                                   
+                                                                    {
+                                                                    scroll:'vertical',
+                                                                    flex: 1,
+                                                                    useToolbar:false,
+                                                                    xtype: 'nestedlist', 
+                                                                    iconCls: 'star',
+                                                                    displayField: 'filmpage', 
+                                                                    store:{
+                                                                    
+                                                                    type: 'tree',
+                                             
+                                                                    fields: [
+                                                                        'name','image','id','filmpage',
+                                                                        {name: 'leaf', defaultValue: true}
+                                                                    ],
+                                                                    root: {
+                                                                        leaf: false
+                                                                    },
+                                                                    proxy: {
+                                                                        type: 'jsonp',
+                                                                        url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                                        reader: {
+                                                                            type: 'json',
+                                                                            rootProperty: 'films',
+                                                                        }
+                                                                    }}},
+                                                                     
+
+                                                                ],
+                                                        
+                                                          dockedItems: [
+                                                            {   
+                                                                xtype: 'toolbar',
+                                                                docked: 'top',                                                            
+                                                                items: [
+                                                                    {   
+                                                                        text: '+',
+                                                                        ui: 'decline',
+                                                                        handler: function(){ 
+                                                                            var s_name = post.get('list');
+                                                                            var s_image = post.get('image');
+                                                                            cfid = post.get('cid');
+                                                                            alert(cat);
+                                                                            //adding to favorite
+                                                                           db.transaction(function(tx) {
+                                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
+                                                                                  len = results.rows.length;
+                                                                                  console.log(len);
+                                                                                  if (len  > 0 ) {
+                                                                                    alert("bolshe");
+                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
+
+                                                                                    });
+                                                                                }
+                                                                                else{
+                                                                                    alert('inS');
+                                                                                    favestore.add([{
+                                                                                        name: s_name,
+                                                                                        ftype: cat,
+                                                                                        image: s_image,
+                                                                                        link: '',
+                                                                                        res : '',
+                                                                                        fid : cfid,
+
+                                                                                    }]);
+                                                                                    favestore.sync();
+                                                                                }
+
+                                                                                },
+                                                                                function (tx, error)
+                                                                                {
+                                                                                favestore .add([{
+                                                                                        name: s_name,
+                                                                                        ftype: cat,
+                                                                                        image: s_image,
+                                                                                        link: '',
+                                                                                        res : '',
+                                                                                        fid : cfid,
+
+                                                                                    }]);
+                                                                                   favestore.sync();
+                                                                                }
+                                                                                )});
+                                                                                
+                                                                            }
+                                                                    }
+                                                                    ,
+
+                                                                ]
+                                                            
+
+                                                            }
+                                                        ],                                         
+                                                        detailCard: {
+                                                            xtype: 'panel',
+                                                            scrollable: true,
+                                                            styleHtmlContent: true
+                                                        },
+                                                        listeners: {
+                                                        activate : function() {     
+                                                                //tb1.hide();
+                                                                tb2.show();
+                                                                //tb3 = this.getToolbar();tb3.hide();
+                                                                tb.hide(); 
 
 
-                            //this.getToolbar().hide();
-                             } ,
-                             deactivate: function() {       
-                                //tb.show(); 
-                                //alert('dd');
-                            //this.getToolbar().hide();                           
-                            }
-                        }
+                                                        //this.getToolbar(treeStore2).hide();
+                                                         } ,
+                                                         deactivate: function() {
+                                                            tb.show();                             
+                                                            //tb1.show();
+                                                            tb2.hide();
+                                                            //this.getToolbar().hide();
+                                                            }
+                                                        ,
+                                                        }
 
-
-                        });*/
-
+                                            });     
+                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.setDetailCard(fil);
+                                                }
+                                            }
+                                });
 
                         
 
 
                         var treeStore2 = Ext.create("Ext.NestedList", {
-
                         fullscreen: true,
                         tabBarPosition: 'bottom',
                         //useToolbar:false,
@@ -191,7 +348,6 @@ Ext.define('ListItem', {
                             //leaf: true ,
                             iconCls: 'star',
                             displayField: 'title',
-
 
                         store: {
                             type: 'tree',
@@ -230,15 +386,10 @@ Ext.define('ListItem', {
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
-                                cat = record.get('code');
                                 
-                                //if (cat == 'cinema'){
-                                    //alert(cat);
+                                cat = record.get('code');
                                 var catdyn = cat;
-                                    
-                                //}
-
-                                var cin = Ext.create("Ext.NestedList", {
+                                cin = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     tabBarPosition: 'bottom',
                                     //useToolbar:false,
@@ -493,8 +644,9 @@ Ext.define('ListItem', {
                                                 //alert(cat);
                                                 nestedList.setDetailCard(cin);
                                                 break;
-                                           case labelN:
+                                          
                                            default:
+                                                //nestedList.setDetailCard(cin);
                                            break;
                                         };
                                         }                                            
@@ -507,18 +659,18 @@ Ext.define('ListItem', {
                                     case "poster":
                                         var detailCard = nestedList.getDetailCard();
                                         nestedList.setDetailCard(treeStore2);
-                                        break;
+                                       break;
                                     case "favorite":
                                         var detailCard = nestedList.getDetailCard();//nestedList.getDetailCard().setHtml('<div>HI</div>');
-                                            
-                                            nestedList.setDetailCard(flist);
-         
-                                                                        
-
-                                        break;   
-                                    case labelN:
-                                           default:
-                                           break;
+                                        nestedList.setDetailCard(flist);
+                                        break;
+  
+                                      
+                                   default:
+                                        var detailCard = nestedList.getDetailCard();
+                                        nestedList.setDetailCard(cin1);
+                                       
+                                        break;
                                     }                               //Ext.viewPort.setActiveItem('treeStore2');    
                                         //this.getToolbar().hide();
                                 } 
