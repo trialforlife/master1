@@ -11,20 +11,20 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select * from events where films.c_id = '$f_cid' and cinema_banner.c_id = '$f_cid' ";
+$query = "select * from events where events.ev_id = '$f_cid'  ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["f_id"],
-			"name"=>addslashes((string)$row["f_name"]),
-			"image"=>addslashes((string)$row["f_image"]),
-			"time"=>addslashes((string)$row["f_time"]),
+			"id"=>$row["ev_id"],
+			"name"=>addslashes((string)$row["ev_name"]),
+			"image"=>addslashes((string)$row["ev_image"]),
+			"time"=>addslashes((string)$row["ev_time"]),
 			"filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
+			$row["ev_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["ev_image"]."><br>".$row["ev_time"]."</br><small>".$row["ev_content"]."</small></br>",
 			));
 			
 	}
