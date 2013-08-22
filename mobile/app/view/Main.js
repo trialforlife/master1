@@ -78,7 +78,7 @@ Ext.define('ListItem', {
                     leafitemtap: function(nestedList, list, index, target, record) {
                         cat = record.get('code');
                                 var catdyn = cat;
-                                
+
                         var favestore = Ext.create("Ext.data.Store", {
                         model: "Favorite",defaultRootProperty: 'items',
                         storeId: 'Favorite',
@@ -194,15 +194,15 @@ Ext.define('ListItem', {
                                                     
                                                                            items: [
                                                                                 {
-                                                                                    html : 'banner 1',
+                                                                                    html : 'Здесь будет 1 баннер',
                                                                                     style: 'background-color: #5E99CC'
                                                                                 },
                                                                                 {
-                                                                                    html : 'banner 2',
+                                                                                    html : 'А здесь второй',
                                                                                     style: 'background-color: #759E60'
                                                                                 },
                                                                                 {
-                                                                                    html : 'banner 3'
+                                                                                    html : 'или третий'
                                                                                 }
                                                                             ]
                                                                      
@@ -210,7 +210,7 @@ Ext.define('ListItem', {
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'place for adress',
+                                                                        html:'...место для адресса... ',
                                                                     },
                                                                    
                                                                     {
@@ -487,15 +487,15 @@ Ext.define('ListItem', {
                                                     
                                                                            items: [
                                                                                 {
-                                                                                    html : 'banner 1',
+                                                                                    html : 'Здесь будет 1 баннер',
                                                                                     style: 'background-color: #5E99CC'
                                                                                 },
                                                                                 {
-                                                                                    html : 'banner 2',
+                                                                                    html : 'А здесь второй',
                                                                                     style: 'background-color: #759E60'
                                                                                 },
                                                                                 {
-                                                                                    html : 'banner 3'
+                                                                                    html : 'или третий'
                                                                                 }
                                                                             ]
                                                                      
@@ -503,7 +503,7 @@ Ext.define('ListItem', {
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'place for adress',
+                                                                        html:'...место для адресса... ',
                                                                     },
                                                                    
                                                                     {
