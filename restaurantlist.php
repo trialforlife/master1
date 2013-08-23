@@ -16,7 +16,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["cinema"],array(
-			"cid"=>$row["t_id"],
+			"cid"=>$row["r_id"],
 			"name"=>addslashes((string)$row["r_name"]),
 			"image"=>addslashes((string)$row["r_image"]),
 			"adress"=>addslashes((string)$row["r_adress"]),
