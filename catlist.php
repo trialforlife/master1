@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cat"=>array());
 
-$query = 'select * from category where cat_id > 3  ';
+$query = 'select * from category where cat_id > 3  order by cat_id';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
