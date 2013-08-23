@@ -57,7 +57,7 @@ Ext.define('ListItem', {
             },
             proxy: {
                 type: 'jsonp',
-                url: 'http://now-yakutsk.stairwaysoft.net/catlist.php',
+                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist.php',
                 reader: {
                     type: 'json',
                     rootProperty: 'cat',
@@ -116,7 +116,7 @@ Ext.define('ListItem', {
                                                 },                        
                                                 proxy: {
                                                     type: 'jsonp',
-                                                    url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'list.php',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
                                                     reader: {
                                                         type: 'json',
                                                         rootProperty: 'cinema'
@@ -184,7 +184,7 @@ Ext.define('ListItem', {
 
                                                                             proxy: {
                                                                                 type: 'jsonp',
-                                                                                url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'bannerlist.php',
+                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
                                                                                 reader: {
                                                                                     type: 'json',
                                                                                     rootProperty: 'banner'
@@ -233,7 +233,7 @@ Ext.define('ListItem', {
                                                                     },
                                                                     proxy: {
                                                                         type: 'jsonp',
-                                                                        url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
                                                                         reader: {
                                                                             type: 'json',
                                                                             rootProperty: 'films',
@@ -409,7 +409,7 @@ Ext.define('ListItem', {
                                                 },                        
                                                 proxy: {
                                                     type: 'jsonp',
-                                                    url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'list.php',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
                                                     reader: {
                                                         type: 'json',
                                                         rootProperty: 'cinema'
@@ -477,7 +477,7 @@ Ext.define('ListItem', {
 
                                                                             proxy: {
                                                                                 type: 'jsonp',
-                                                                                url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'bannerlist.php',
+                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
                                                                                 reader: {
                                                                                     type: 'json',
                                                                                     rootProperty: 'banner'
@@ -526,7 +526,7 @@ Ext.define('ListItem', {
                                                                     },
                                                                     proxy: {
                                                                         type: 'jsonp',
-                                                                        url: 'http://now-yakutsk.stairwaysoft.net/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
                                                                         reader: {
                                                                             type: 'json',
                                                                             rootProperty: 'films',
