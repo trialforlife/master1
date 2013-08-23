@@ -84,22 +84,15 @@ Ext.define('ListItem', {
                         var flist = Ext.create("Ext.List", {
                             fullscreen: true,
                             store: favestore,
-                            //displayField: 'id',
                             text: 'name',
                             itemTpl: "{name}",
                         });
                                 //displa for default category
                                 cin1 = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
-                                    tabBarPosition: 'bottom',
-                                    //useToolbar:false,
-                                            //title: 'Blog',
-                                            iconCls: 'star',
-                                            displayField: 'list',
-                                            
+                                    displayField: 'list',
                                                 store: {
                                                 type: 'tree',
-                         
                                                 fields: [
                                                     'name', 'link', 'list', 'image', 'adress', 'banner','cid',
                                                     {name: 'leaf', defaultValue: true}
@@ -248,20 +241,20 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
-                                                                            alert(cat);
+                                                                            
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                                   len = results.rows.length;
                                                                                   console.log(len);
                                                                                   if (len  > 0 ) {
-                                                                                    alert("bolshe");
+                                                                                    Ext.Msg.alert("Удалено");
                                                                                     tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
                                                                                     });
                                                                                 }
                                                                                 else{
-                                                                                    alert('inS');
+                                                                                    Ext.Msg.alert('Добавлено');
                                                                                     favestore.add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
@@ -337,14 +330,23 @@ Ext.define('ListItem', {
                                     defaults: {
                                         styleHtmlContent: true
                                     },
-
+                                    detailCard: {
+                                        xtype: 'panel',
+                                        scrollable: true,
+                                        styleHtmlContent: true
+                                            },
+                                    listeners:{
+                                            activate : function() {     
+                                                //tb1.show();
+                                                tb2 = this.getTabBar();
+                                                tb2.hide();
+                                                    //tb.hide(); 
+                                                }
+                                            //this.getToolbar(treeStore2).hide();
+                                             } ,
                                     items: [
                                         
                                         {   //xtype: 'nestedList',
-                                            items: [{
-                                                xtype:'panel',
-                                                html: 'op',
-                                            }],
                                             
                                             title: 'Сегодня',
                                             scroll:'vertical',
@@ -371,64 +373,26 @@ Ext.define('ListItem', {
                                                         type: 'json',
                                                         rootProperty: 'cinema'
                                                     }
-                                                }
-                                        }
-                                    },
-                                        {
-                                            title: 'Клубы',
-                                            html: 'Contact Screen'
-                                        }
-                                    ]
-                                });
-                                cin23 = Ext.create("Ext.NestedList", {
-                                    fullscreen: true,
-                                    tabBarPosition: 'bottom',
-                                    //useToolbar:false,
-                                            title: 'nigh ',
-                                            //iconCls: 'star',
-                                            displayField: 'list',
-                                            
-                                                store: {
-                                                type: 'tree',
-                         
-                                                fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
-                                                    {name: 'leaf', defaultValue: true}
-                                                ],
-                                                root: {
-                                                    leaf: false
-                                                },                        
-                                                proxy: {
-                                                    type: 'jsonp',
-                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
-                                                    reader: {
-                                                        type: 'json',
-                                                        rootProperty: 'cinema'
                                                     }
-                                                }
-                                            },
-                                            detailCard: {
-                                                xtype: 'panel',
-                                                scrollable: true,
-                                                styleHtmlContent: true
                                             },
                                             listeners: {
-                                            activate : function() {     
+                                                activate : function() {     
                                                 //tb1.show();
                                                 tb2 = this.getToolbar();
-                                                tb2.hide();
+                                                //tb2.hide();
                                                 //tb.hide(); 
 
-                                            //this.getToolbar(treeStore2).hide();
-                                             } ,
-                                             deactivate: function() {
-                                                tb.show();                             
-                                                //tb1.hide();
-                                                //this.getToolbar().hide();
-                                            }
-                                            ,
+                                                //this.getToolbar(treeStore2).hide();
+                                                 } ,
+                                                 deactivate: function() {
+                                                    tb.show();                             
+                                                    //tb1.hide();
+                                                    //this.getToolbar().hide();
+                                                },
+
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
+                                                //alert(cat);
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
                                                 useToolbar:false,
@@ -524,20 +488,20 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
-                                                                            alert(cat);
+                                                                            //alert(cat);
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                                   len = results.rows.length;
                                                                                   console.log(len);
                                                                                   if (len  > 0 ) {
-                                                                                    alert("bolshe");
+                                                                                    Ext.Msg.alert("Удалено");
                                                                                     tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
                                                                                     });
                                                                                 }
                                                                                 else{
-                                                                                    alert('inS');
+                                                                                    Ext.Msg.alert("Добавлено");
                                                                                     favestore.add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
@@ -571,8 +535,6 @@ Ext.define('ListItem', {
                                                                     ,
 
                                                                 ]
-                                                            
-
                                                             }
                                                         ],                                         
                                                         detailCard: {
@@ -583,17 +545,16 @@ Ext.define('ListItem', {
                                                         listeners: {
                                                         activate : function() {     
                                                                 //tb1.hide();
-                                                                tb2.show();
+                                                                //tb2.show();
                                                                 //tb3 = this.getToolbar();tb3.hide();
-                                                                tb.hide(); 
-
+                                                                //tb.hide(); 
 
                                                         //this.getToolbar(treeStore2).hide();
                                                          } ,
                                                          deactivate: function() {
-                                                            tb.show();                             
+                                                            //tb.show();                             
                                                             //tb1.show();
-                                                            tb2.hide();
+                                                            //tb2.hide();
                                                             //this.getToolbar().hide();
                                                             }
                                                         ,
@@ -604,11 +565,14 @@ Ext.define('ListItem', {
                                                     nestedList.setDetailCard(fil);
                                                 }
                                             }
-                                });
-
-
-                        
-
+                                            }
+                                        ,
+                                            {
+                                                title: 'Клубы',
+                                                html: 'Contact Screen'
+                                            }
+                                        ]
+                                    });
 
                         var treeStore2 = Ext.create("Ext.NestedList", {
                         fullscreen: true,
@@ -818,20 +782,20 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
-                                                                            alert(cat);
+                                                                            //alert(cat);
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                                   len = results.rows.length;
                                                                                   console.log(len);
                                                                                   if (len  > 0 ) {
-                                                                                    alert("bolshe");
+                                                                                    Ext.Msg.alert("Удалено");
                                                                                     tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
                                                                                     });
                                                                                 }
                                                                                 else{
-                                                                                    alert('inS');
+                                                                                    Ext.Msg.alert("Добавлено");
                                                                                     favestore.add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
