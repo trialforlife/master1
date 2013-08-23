@@ -326,7 +326,6 @@ Ext.define('ListItem', {
                                 cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
                                     fullscreen: true,
-
                                     defaults: {
                                         styleHtmlContent: true
                                     },
@@ -337,12 +336,11 @@ Ext.define('ListItem', {
                                             },
                                     listeners:{
                                             activate : function() {     
-                                                //tb1.show();
-                                                tb2 = this.getTabBar();
-                                                tb2.hide();
-                                                    //tb.hide(); 
+                                                    tb.show(); 
+                                                },
+                                            deactivate: function(){
+
                                                 }
-                                            //this.getToolbar(treeStore2).hide();
                                              } ,
                                     items: [
                                         
@@ -351,7 +349,6 @@ Ext.define('ListItem', {
                                             title: 'Сегодня',
                                             scroll:'vertical',
                                             //sflex: 1,
-                                            useToolbar:false,
                                             xtype: 'nestedlist', 
                                             iconCls: 'star',
                                             displayField: 'list', 
@@ -379,14 +376,14 @@ Ext.define('ListItem', {
                                                 activate : function() {     
                                                 //tb1.show();
                                                 tb2 = this.getToolbar();
-                                                //tb2.hide();
+                                                tb2.hide();
                                                 //tb.hide(); 
 
                                                 //this.getToolbar(treeStore2).hide();
                                                  } ,
                                                  deactivate: function() {
-                                                    tb.show();                             
-                                                    //tb1.hide();
+                                                    //b.show();                             
+                                                    tb1.hide();
                                                     //this.getToolbar().hide();
                                                 },
 
@@ -488,7 +485,7 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
-                                                                            //alert(cat);
+
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
@@ -544,18 +541,12 @@ Ext.define('ListItem', {
                                                         },
                                                         listeners: {
                                                         activate : function() {     
-                                                                //tb1.hide();
-                                                                //tb2.show();
-                                                                //tb3 = this.getToolbar();tb3.hide();
-                                                                //tb.hide(); 
-
-                                                        //this.getToolbar(treeStore2).hide();
+                                                                tb.hide(); 
+                                                                tb2.show();
                                                          } ,
                                                          deactivate: function() {
-                                                            //tb.show();                             
-                                                            //tb1.show();
-                                                            //tb2.hide();
-                                                            //this.getToolbar().hide();
+                                                            tb.show();                             
+                                                            tb2.hide();
                                                             }
                                                         ,
                                                         }
