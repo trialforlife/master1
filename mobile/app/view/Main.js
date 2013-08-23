@@ -365,7 +365,7 @@ Ext.define('ListItem', {
                                                 },
                                                 proxy: {
                                                     type: 'jsonp',
-                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'listtoday.php',
                                                     reader: {
                                                         type: 'json',
                                                         rootProperty: 'cinema'
@@ -374,17 +374,10 @@ Ext.define('ListItem', {
                                             },
                                             listeners: {
                                                 activate : function() {     
-                                                //tb1.show();
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
-                                                //tb.hide(); 
-
-                                                //this.getToolbar(treeStore2).hide();
                                                  } ,
                                                  deactivate: function() {
-                                                    //b.show();                             
-                                                    tb1.hide();
-                                                    //this.getToolbar().hide();
                                                 },
 
                                                 leafitemtap: function(nestedList, list, index, element, post) {
@@ -558,10 +551,213 @@ Ext.define('ListItem', {
                                             }
                                             }
                                         ,
-                                            {
-                                                title: 'Клубы',
-                                                html: 'Contact Screen'
+                                            {   //xtype: 'nestedList',
+                                            
+                                            title: 'Клубы',
+                                            scroll:'vertical',
+                                            //sflex: 1,
+                                            xtype: 'nestedlist', 
+                                            iconCls: 'star',
+                                            displayField: 'list', 
+                                            
+                                            store: {
+                                                type: 'tree',
+                                                fields: [
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    {name: 'leaf', defaultValue: true}
+                                                ],
+
+                                                root: {
+                                                    leaf: false
+                                                },
+                                                proxy: {
+                                                    type: 'jsonp',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
+                                                    reader: {
+                                                        type: 'json',
+                                                        rootProperty: 'cinema'
+                                                    }
+                                                    }
+                                            },
+                                            listeners: {
+                                                activate : function() {     
+                                                tb2 = this.getToolbar();
+                                                tb2.hide();
+                                                 } ,
+                                                 deactivate: function() {
+                                                },
+
+                                                leafitemtap: function(nestedList, list, index, element, post) {
+                                                var f_cid = post.get('cid');
+                                                //alert(cat);
+                                                var fil = Ext.create('Ext.Container', {
+                                                fullscreen: true,
+                                                useToolbar:false,
+                                                /*getItemTextTpl: function(node){
+                                                    return '{filmpage}';
+                                                }  */
+                                                layout: 'vbox',
+                                                items: [           {    
+                                                                        xtype: 'carousel',
+                                                                        height: '100px',
+                        
+                                                                        store: {
+                                                                            type: 'tree',
+                                                                            fields: [
+                                                                                'b_image',
+                                                                                 {name: 'leaf', defaultValue: true}
+                                                                            ],
+
+                                                                            root: {
+                                                                                leaf: false
+                                                                            },
+
+                                                                            proxy: {
+                                                                                type: 'jsonp',
+                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
+                                                                                reader: {
+                                                                                    type: 'json',
+                                                                                    rootProperty: 'banner'
+                                                                                }
+                                                                            }},
+
+                                                    
+                                                                           items: [
+                                                                                {
+                                                                                    html : 'Здесь будет 1 баннер',
+                                                                                    style: 'background-color: #5E99CC'
+                                                                                },
+                                                                                {
+                                                                                    html : 'А здесь второй',
+                                                                                    style: 'background-color: #759E60'
+                                                                                },
+                                                                                {
+                                                                                    html : 'или третий'
+                                                                                }
+                                                                            ]
+                                                                     
+                                                                    },
+                                                                    {
+                                                                        xtype : 'panel',
+                                                                        height: '20px',
+                                                                        html:'...место для адресса... ',
+                                                                    },
+                                                                   
+                                                                    {
+                                                                    scroll:'vertical',
+                                                                    flex: 1,
+                                                                    useToolbar:false,
+                                                                    xtype: 'nestedlist', 
+                                                                    iconCls: 'star',
+                                                                    displayField: 'filmpage', 
+                                                                    store:{
+                                                                    
+                                                                    type: 'tree',
+                                             
+                                                                    fields: [
+                                                                        'name','image','id','filmpage',
+                                                                        {name: 'leaf', defaultValue: true}
+                                                                    ],
+                                                                    root: {
+                                                                        leaf: false
+                                                                    },
+                                                                    proxy: {
+                                                                        type: 'jsonp',
+                                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                                        reader: {
+                                                                            type: 'json',
+                                                                            rootProperty: 'films',
+                                                                        }
+                                                                    }}},
+                                                                     
+
+                                                                ],
+                                                        
+                                                          dockedItems: [
+                                                            {   
+                                                                xtype: 'toolbar',
+                                                                docked: 'top',                                                            
+                                                                items: [
+                                                                    {   
+                                                                        text: '+',
+                                                                        ui: 'decline',
+                                                                        handler: function(){ 
+                                                                            var s_name = post.get('list');
+                                                                            var s_image = post.get('image');
+                                                                            cfid = post.get('cid');
+
+                                                                            //adding to favorite
+                                                                           db.transaction(function(tx) {
+                                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
+                                                                                  len = results.rows.length;
+                                                                                  console.log(len);
+                                                                                  if (len  > 0 ) {
+                                                                                    Ext.Msg.alert("Удалено");
+                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
+
+                                                                                    });
+                                                                                }
+                                                                                else{
+                                                                                    Ext.Msg.alert("Добавлено");
+                                                                                    favestore.add([{
+                                                                                        name: s_name,
+                                                                                        ftype: cat,
+                                                                                        image: s_image,
+                                                                                        link: '',
+                                                                                        res : '',
+                                                                                        fid : cfid,
+
+                                                                                    }]);
+                                                                                    favestore.sync();
+                                                                                }
+
+                                                                                },
+                                                                                function (tx, error)
+                                                                                {
+                                                                                favestore .add([{
+                                                                                        name: s_name,
+                                                                                        ftype: cat,
+                                                                                        image: s_image,
+                                                                                        link: '',
+                                                                                        res : '',
+                                                                                        fid : cfid,
+
+                                                                                    }]);
+                                                                                   favestore.sync();
+                                                                                }
+                                                                                )});
+                                                                                
+                                                                            }
+                                                                    }
+                                                                    ,
+
+                                                                ]
+                                                            }
+                                                        ],                                         
+                                                        detailCard: {
+                                                            xtype: 'panel',
+                                                            scrollable: true,
+                                                            styleHtmlContent: true
+                                                        },
+                                                        listeners: {
+                                                        activate : function() {     
+                                                                tb.hide(); 
+                                                                tb2.show();
+                                                         } ,
+                                                         deactivate: function() {
+                                                            tb.show();                             
+                                                            tb2.hide();
+                                                            }
+                                                        ,
+                                                        }
+
+                                            });     
+                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.setDetailCard(fil);
+                                                }
                                             }
+                                            }
+                                        
                                         ]
                                     });
 
