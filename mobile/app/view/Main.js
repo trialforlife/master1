@@ -87,7 +87,7 @@ Ext.define('ListItem', {
                             text: 'name',
                             itemTpl: "{name}",
                         });
-                                //displa for default category
+                                //display for default category
                                 cin1 = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     displayField: 'list',
@@ -322,6 +322,31 @@ Ext.define('ListItem', {
                                                 }
                                             }
                                 });
+                                //display for about us +
+                                var about = Ext.create('Ext.List' , {
+                                    fullscreen: true,
+                                    store: {
+                                    type: 'tree',
+                                    fields: [
+                                        'quote','logo',
+                                        {name: 'leaf', defaultValue: true}
+                                    ],
+                                    itemTpl: "{quote}",
+                                    root: {
+                                        leaf: false,
+
+                                    },
+                                    proxy: {
+                                        type: 'jsonp',
+                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/about.php',
+                                        reader: {
+                                            type: 'json',
+                                            rootProperty: 'about',
+                                            }
+                                        }
+                                    }     
+                                    
+                                }),
                                 //disply for nightlife category
                                 cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
@@ -339,7 +364,6 @@ Ext.define('ListItem', {
                                                     tb.show(); 
                                                 },
                                             deactivate: function(){
-
                                                 }
                                              } ,
                                     items: [
@@ -348,7 +372,6 @@ Ext.define('ListItem', {
                                             
                                             title: 'Сегодня',
                                             scroll:'vertical',
-                                            //sflex: 1,
                                             xtype: 'nestedlist', 
                                             iconCls: 'star',
                                             displayField: 'list', 
@@ -382,13 +405,9 @@ Ext.define('ListItem', {
 
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
-                                                //alert(cat);
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
                                                 useToolbar:false,
-                                                /*getItemTextTpl: function(node){
-                                                    return '{filmpage}';
-                                                }  */
                                                 layout: 'vbox',
                                                 items: [           {    
                                                                         xtype: 'carousel',
@@ -593,9 +612,6 @@ Ext.define('ListItem', {
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
                                                 useToolbar:false,
-                                                /*getItemTextTpl: function(node){
-                                                    return '{filmpage}';
-                                                }  */
                                                 layout: 'vbox',
                                                 items: [           {    
                                                                         xtype: 'carousel',
@@ -621,7 +637,6 @@ Ext.define('ListItem', {
                                                                                 }
                                                                             }},
 
-                                                    
                                                                            items: [
                                                                                 {
                                                                                     html : 'Здесь будет 1 баннер',
@@ -670,7 +685,6 @@ Ext.define('ListItem', {
                                                                         }
                                                                     }}},
                                                                      
-
                                                                 ],
                                                         
                                                           dockedItems: [
@@ -730,7 +744,6 @@ Ext.define('ListItem', {
                                                                             }
                                                                     }
                                                                     ,
-
                                                                 ]
                                                             }
                                                         ],                                         
@@ -797,13 +810,9 @@ Ext.define('ListItem', {
                                 tb1 = this.getToolbar();
                                 tb1.hide();
                                 tb.show(); 
-
-                            //this.getToolbar().hide();
                              } ,
                              deactivate: function() {       
                                 //tb.show(); 
-                                //alert('dd');
-                            //this.getToolbar().hide();                           
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
@@ -817,7 +826,6 @@ Ext.define('ListItem', {
                                             //title: 'Blog',
                                             iconCls: 'star',
                                             displayField: 'list',
-                                            
                                                 store: {
                                                 type: 'tree',
                          
@@ -848,7 +856,6 @@ Ext.define('ListItem', {
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
                                                 tb.hide(); 
-
                                             //this.getToolbar(treeStore2).hide();
                                              } ,
                                              deactivate: function() {
@@ -859,27 +866,9 @@ Ext.define('ListItem', {
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
-                                                //var c_nam = post.get('name');
-                                                //fid = post.get('cid');
-
-                                                //alert(tqt);                             
-                                                /*interval = 1000  //интервал повтора 1 секунда
-                                                coef = 1349788541   // случайный коэффициент разницы текущего времени
-
-                                                setInterval(function() {
-                                                raccons = Math.round((new Date()).getTime() / 1000) - coef
-                                                    console.log(raccons); //выводим в консоль. заменить на нужное, например $('#counter').text(raccons);
-                                                }, interval);
-                                                dd = 'background-color: blueviolet';*/
-                                                //   =  'background-color: red';   
-
-                                                //alert(cat);
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
                                                 useToolbar:false,
-                                                /*getItemTextTpl: function(node){
-                                                    return '{filmpage}';
-                                                }  */
                                                 layout: 'vbox',
                                                 items: [           {    
                                                                         xtype: 'carousel',
@@ -952,10 +941,8 @@ Ext.define('ListItem', {
                                                                             type: 'json',
                                                                             rootProperty: 'films',
                                                                         }
-                                                                    }}},
-                                                                     
-
-                                                                ],
+                                                                    }}},                                                                     
+                                                               ],
                                                         
                                                           dockedItems: [
                                                             {   
@@ -969,7 +956,6 @@ Ext.define('ListItem', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
-                                                                            //alert(cat);
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
@@ -1027,16 +1013,12 @@ Ext.define('ListItem', {
                                                         activate : function() {     
                                                                 tb1.hide();
                                                                 tb2.show();
-                                                                //tb3 = this.getToolbar();tb3.hide();
                                                                 tb.hide(); 
 
-                                                        //this.getToolbar(treeStore2).hide();
                                                          } ,
                                                          deactivate: function() {
-                                                            //tb.show();                             
                                                             tb1.show();
                                                             tb2.hide();
-                                                            //this.getToolbar().hide();
                                                             }
                                                         ,
                                                         }
@@ -1050,7 +1032,6 @@ Ext.define('ListItem', {
                                         var cat = (record.get('code'));
                                         switch (cat) {
                                            case "cinema":
-                                              //alert(cat);
                                                var detailCard = nestedList.getDetailCard();
                                                nestedList.setDetailCard(cin);
                                                break;
@@ -1058,11 +1039,9 @@ Ext.define('ListItem', {
                                                 nestedList.setDetailCard(cin);
                                                 break;
                                            case "events":
-                                                //alert(cat);
                                                 nestedList.setDetailCard(cin);
                                                 break;
                                            default:
-                                                //nestedList.setDetailCard(cin);
                                            break;
                                         };
                                         }                                            
@@ -1075,19 +1054,23 @@ Ext.define('ListItem', {
                                         nestedList.setDetailCard(treeStore2);
                                        break;
                                     case "favorite":
-                                        var detailCard = nestedList.getDetailCard();//nestedList.getDetailCard().setHtml('<div>HI</div>');
+                                        var detailCard = nestedList.getDetailCard(); 
                                         nestedList.setDetailCard(flist);
                                         break;
                                     case "nightlife":
-                                        var detailCard = nestedList.getDetailCard();//nestedList.getDetailCard().setHtml('<div>HI</div>');
+                                        var detailCard = nestedList.getDetailCard(); 
                                         nestedList.setDetailCard(cin2);
+                                        break                                    
+                                    case "aboutus":
+                                        var detailCard = nestedList.getDetailCard(); 
+                                        nestedList.setDetailCard(about);
                                         break;
+                                    
                                     default:
                                         var detailCard = nestedList.getDetailCard();
                                         nestedList.setDetailCard(cin1);
                                         break;
-                                    }                               //Ext.viewPort.setActiveItem('treeStore2');    
-                                        //this.getToolbar().hide();
+                                    }                              
                                 } 
                         } 
             });
