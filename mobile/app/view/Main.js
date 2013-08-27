@@ -1,7 +1,7 @@
 Ext.define('ListItem', {
 
     extend: 'Ext.data.Model',
-    require: ["Ext.data.proxy.SQL"],
+    require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList"],
     config: {
         fields: ['text'],
     },
@@ -42,6 +42,112 @@ Ext.define('ListItem', {
         iconCls: 'star',
         displayField: 'title',
         layout: 'card',
+        dockedItems: [
+                {   
+                    xtype: 'toolbar',
+                    docked: 'top',   
+            items: [
+ 
+                        {   iconCls : 'search',
+
+                           handler: function(){
+                                         
+
+                                    about = Ext.create("Ext.NestedList", {
+                                        xtype: 'nestedlist',
+                                        fullscreen: true,
+                                        displayField: 'list',
+                                                store: {
+                                                type: 'tree',
+                                                leaf: true,
+                                                fields: [
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    {name: 'leaf', defaultValue: true}
+                                                ],
+                                                root: {
+                                                    leaf: false
+                                                },                        
+                                                proxy: {
+                                                    type: 'jsonp',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+'aboutus'+'list.php',
+                                                    reader: {
+                                                        type: 'json',
+                                                        rootProperty: 'cinema'
+                                                    }
+                                                }
+                                            },
+                                            listeners: {
+                                            activate : function() {     
+                                                //tb1.show();
+                                                tb2 = this.getToolbar();
+                                                tb2.hide();
+                                                //tb.hide(); 
+
+                                            //this.getToolbar(treeStore2).hide();
+                                             } ,
+                                             deactivate: function() {
+                                                tb.show();                             
+                                                //tb1.hide();
+                                                //this.getToolbar().hide();
+                                            }
+                                            ,
+                                                leafitemtap: function(nestedList, list, index, element, post) {
+                                                
+
+                                                }
+                                            }
+                                }); 
+                                    
+                                    }
+                                //var s_name = post.get('list');var s_image = post.get('image'); cfid = post.get('cid');
+                                //adding to favorite
+                               /*db.transaction(function(tx) {
+                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
+                                      len = results.rows.length;
+                                      console.log(len);
+                                      if (len  > 0 ) {
+                                        Ext.Msg.alert("Удалено");
+                                        tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
+
+                                        });
+                                    }
+                                    else{
+                                        Ext.Msg.alert("Добавлено");
+                                        favestore.add([{
+                                            name: s_name,
+                                            ftype: cat,
+                                            image: s_image,
+                                            link: '',
+                                            res : '',
+                                            fid : cfid,
+
+                                        }]);
+                                        favestore.sync();
+                                    }
+
+                                    },
+                                    function (tx, error)
+                                    {
+                                    favestore .add([{
+                                            name: s_name,
+                                            ftype: cat,
+                                            image: s_image,
+                                            link: '',
+                                            res : '',
+                                            fid : cfid,
+
+                                        }]);
+                                       favestore.sync();
+                                    }
+                                    )});*/
+                                    
+                                //}
+                        }
+                        ,
+
+                    ]
+                }
+            ], 
 
         store: {
             type: 'tree',
@@ -323,30 +429,7 @@ Ext.define('ListItem', {
                                             }
                                 });
                                 //display for about us +
-                                var about = Ext.create('Ext.List' , {
-                                    fullscreen: true,
-                                    store: {
-                                    type: 'tree',
-                                    fields: [
-                                        'quote','logo',
-                                        {name: 'leaf', defaultValue: true}
-                                    ],
-                                    itemTpl: "{quote}",
-                                    root: {
-                                        leaf: false,
 
-                                    },
-                                    proxy: {
-                                        type: 'jsonp',
-                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/about.php',
-                                        reader: {
-                                            type: 'json',
-                                            rootProperty: 'about',
-                                            }
-                                        }
-                                    }     
-                                    
-                                }),
                                 //disply for nightlife category
                                 cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
@@ -773,6 +856,52 @@ Ext.define('ListItem', {
                                         
                                         ]
                                     });
+                                
+
+                                about = Ext.create("Ext.NestedList", {
+                                    fullscreen: true,
+                                    displayField: 'list',
+                                                store: {
+                                                type: 'tree',
+                                                leaf: true,
+                                                fields: [
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    {name: 'leaf', defaultValue: true}
+                                                ],
+                                                root: {
+                                                    leaf: false
+                                                },                        
+                                                proxy: {
+                                                    type: 'jsonp',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
+                                                    reader: {
+                                                        type: 'json',
+                                                        rootProperty: 'cinema'
+                                                    }
+                                                }
+                                            },
+                                            listeners: {
+                                            activate : function() {     
+                                                //tb1.show();
+                                                tb2 = this.getToolbar();
+                                                tb2.hide();
+                                                //tb.hide(); 
+
+                                            //this.getToolbar(treeStore2).hide();
+                                             } ,
+                                             deactivate: function() {
+                                                tb.show();                             
+                                                //tb1.hide();
+                                                //this.getToolbar().hide();
+                                            }
+                                            ,
+                                                leafitemtap: function(nestedList, list, index, element, post) {
+                                                
+
+                                                }
+                                            }
+                                });
+            
 
                         var treeStore2 = Ext.create("Ext.NestedList", {
                         fullscreen: true,
