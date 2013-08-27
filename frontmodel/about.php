@@ -7,7 +7,7 @@ mysql_set_charset('utf8' ,  $link);
 
 mysql_select_db("now-yakutsk", $link);
 
-$result = array("about"=>array());
+$result = array("cat"=>array());
 
 $query = 'select * from company';
 $dbresult = mysql_query($query);
@@ -15,7 +15,7 @@ $dbresult = mysql_query($query);
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
-		array_push($result["about"],array(
+		array_push($result["cat"],array(
 			"id" =>addslashes((int)$row["com_id"]),
 			"quote"=>$row["com_quote"],
 			"logo"=>addslashes((string)$row["com_logo"]),
