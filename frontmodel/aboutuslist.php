@@ -7,21 +7,25 @@ mysql_set_charset('utf8' ,  $link);
 
 mysql_select_db("now-yakutsk", $link);
 
-$result = array("cat"=>array());
+$result = array("cinema"=>array());
 
-$query = 'select * from company';
+$query = 'select * from `company` 
+';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
-		array_push($result["cat"],array(
-			"id" =>addslashes((int)$row["com_id"]),
-			"quote"=>$row["com_quote"],
+		array_push($result["cinema"],array(
+			"cid"=>$row["com_id"],
+			"quote"=>addslashes((string)$row["com_quote"]),
 			"logo"=>addslashes((string)$row["com_logo"]),
-			"description"=>addslashes((string)$row["com_description"]),
-			"phone"=>addslashes((string)$row["com_phone"]),
 			"site"=>addslashes((string)$row["com_site"]),
+			"description"=>addslashes((string)$row["com_decription"]),
+			"list"=>addslashes((string)$row["com_quote"]).'<br>'.addslashes((string)$row["com_decription"]),
+
+			"img_full"=> "<img src=http://now/".addslashes((string)$row["com_logo"]).">",
+
 			));
 			
 	}
