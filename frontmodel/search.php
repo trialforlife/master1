@@ -12,7 +12,7 @@ $search = $_GET["value"];
 
 $result = array("films"=>array());
 
-$query = "SELECT * FROM films f_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query = "SELECT * FROM films where f_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
