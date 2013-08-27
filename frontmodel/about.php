@@ -16,6 +16,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["about"],array(
+			"id" =>addslashes((int)$row["com_id"]),
 			"quote"=>$row["com_quote"],
 			"logo"=>addslashes((string)$row["com_logo"]),
 			"description"=>addslashes((string)$row["com_description"]),
