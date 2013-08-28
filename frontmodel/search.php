@@ -50,6 +50,82 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
+$query2 = "SELECT * FROM entertainment where en_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$dbresult2 = mysql_query($query2);
+
+if (mysql_affected_rows() > 0) {
+	while($row = mysql_fetch_array($dbresult2))
+	{
+		array_push($result["films"],array(
+			"id"=>$row["en_id"],
+			"name"=>addslashes((string)$row["en_name"]),
+			"image"=>addslashes((string)$row["en_image"]),
+			"time"=>addslashes((string)$row["en_time"]),
+			"filmpage"=>
+			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
+			$row["en_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["en_image"]."><br>".$row["en_time"]."</br><small>".$row["en_content"]."</small></br>",
+			));
+			
+	}
+
+}
+$query3 = "SELECT * FROM events where ev_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$dbresult3 = mysql_query($query3);
+
+if (mysql_affected_rows() > 0) {
+	while($row = mysql_fetch_array($dbresult3))
+	{
+		array_push($result["films"],array(
+			"id"=>$row["ev_id"],
+			"name"=>addslashes((string)$row["ev_name"]),
+			"image"=>addslashes((string)$row["ev_image"]),
+			"time"=>addslashes((string)$row["ev_time"]),
+			"filmpage"=>
+			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
+			$row["ev_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["ev_image"]."><br>".$row["ev_time"]."</br><small>".$row["ev_content"]."</small></br>",
+			));
+			
+	}
+
+}
+$query4 = "SELECT * FROM nightlife where n_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$dbresult4 = mysql_query($query4);
+
+if (mysql_affected_rows() > 0) {
+	while($row = mysql_fetch_array($dbresult4))
+	{
+		array_push($result["films"],array(
+			"id"=>$row["n_id"],
+			"name"=>addslashes((string)$row["n_name"]),
+			"image"=>addslashes((string)$row["n_image"]),
+			"time"=>addslashes((string)$row["n_time"]),
+			"filmpage"=>
+			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
+			$row["n_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["n_image"]."><br>".$row["n_time"]."</br><small>".$row["n_content"]."</small></br>",
+			));
+			
+	}
+
+}
+$query5 = "SELECT * FROM shipment where s_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$dbresult5 = mysql_query($query5);
+
+if (mysql_affected_rows() > 0) {
+	while($row = mysql_fetch_array($dbresult5))
+	{
+		array_push($result["films"],array(
+			"id"=>$row["s_id"],
+			"name"=>addslashes((string)$row["s_name"]),
+			"image"=>addslashes((string)$row["s_image"]),
+			"time"=>addslashes((string)$row["s_time"]),
+			"filmpage"=>
+			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
+			$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
+			));
+			
+	}
+
+}
 
 
 mysql_close();
