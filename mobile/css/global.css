@@ -1,0 +1,36 @@
+.nav_container{
+	background:url(../img/bg.jpg) repeat-x;
+}
+.nav_container .nav-element{
+	height:117px;	
+}
+.nav_container .nav-element .txt{
+	color:#fff;
+	font:40px/117px Arial;
+	text-shadow:0 0 46px rgba(180,12,255,0.8),
+				0 4px 0 rgba(0,0,0,0.36);
+	padding:0 0 0 133px;
+}
+.nav_container .nav-element .calc{
+	float:right;
+	font:24px/117px Arial;
+	color:#fff;
+	padding:0 72px 0 0;
+}
+.nav-element.tap{
+	background:rgba(255,255,255,0.1);
+}
+.nav-element.in-time .txt{
+	text-shadow:none;
+	color:rgba(255,255,255,0.3);
+}
+.nav-element.in-time .calc{
+	background:url(../img/clock-ico.png) no-repeat;
+	width:40px;
+	height:40px;
+	display:block;
+	text-indent:-9999px;
+	overflow:hidden;
+	margin:53px 0 0;
+	padding:0 62px 0 0;
+}

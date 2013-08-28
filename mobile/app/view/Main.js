@@ -1,7 +1,8 @@
+var value;
 Ext.define('ListItem', {
 
     extend: 'Ext.data.Model',
-    require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList"],
+    require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
     config: {
         fields: ['text'],
     },
@@ -24,6 +25,29 @@ Ext.define('ListItem', {
         }
     });
 
+    Ext.define("search", {
+        extend: "Ext.data.Model",
+        config: {
+            fields: [
+                {name: "name", type: "string"},
+                {name: "filmpage",  type: "string"},
+                {name: "id",       type: "int"},
+                {name: 'leaf', defaultValue: true},
+                
+            ]
+        }
+    });
+    var search = Ext.create("Ext.data.Store", {
+    type: 'tree',
+
+    root: {
+    leaf: false
+    },
+    storeId: "search",
+    model: "search"
+});
+
+
     var favestore = Ext.create("Ext.data.Store", {
         model: "Favorite",defaultRootProperty: 'items',
         storeId: 'Favorite',
@@ -32,6 +56,8 @@ Ext.define('ListItem', {
         },
         autoLoad: true
              });
+    
+
 
     var treeStore = Ext.create("Ext.NestedList", {
         fullscreen: true,
@@ -42,112 +68,7 @@ Ext.define('ListItem', {
         iconCls: 'star',
         displayField: 'title',
         layout: 'card',
-        dockedItems: [
-                {   
-                    xtype: 'toolbar',
-                    docked: 'top',   
-            items: [
- 
-                        {   iconCls : 'search',
-
-                           handler: function(){
-                                         
-
-                                    about = Ext.create("Ext.NestedList", {
-                                        xtype: 'nestedlist',
-                                        fullscreen: true,
-                                        displayField: 'list',
-                                                store: {
-                                                type: 'tree',
-                                                leaf: true,
-                                                fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
-                                                    {name: 'leaf', defaultValue: true}
-                                                ],
-                                                root: {
-                                                    leaf: false
-                                                },                        
-                                                proxy: {
-                                                    type: 'jsonp',
-                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+'aboutus'+'list.php',
-                                                    reader: {
-                                                        type: 'json',
-                                                        rootProperty: 'cinema'
-                                                    }
-                                                }
-                                            },
-                                            listeners: {
-                                            activate : function() {     
-                                                //tb1.show();
-                                                tb2 = this.getToolbar();
-                                                tb2.hide();
-                                                //tb.hide(); 
-
-                                            //this.getToolbar(treeStore2).hide();
-                                             } ,
-                                             deactivate: function() {
-                                                tb.show();                             
-                                                //tb1.hide();
-                                                //this.getToolbar().hide();
-                                            }
-                                            ,
-                                                leafitemtap: function(nestedList, list, index, element, post) {
-                                                
-
-                                                }
-                                            }
-                                }); 
-                                    
-                                    }
-                                //var s_name = post.get('list');var s_image = post.get('image'); cfid = post.get('cid');
-                                //adding to favorite
-                               /*db.transaction(function(tx) {
-                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
-                                      len = results.rows.length;
-                                      console.log(len);
-                                      if (len  > 0 ) {
-                                        Ext.Msg.alert("Удалено");
-                                        tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
-
-                                        });
-                                    }
-                                    else{
-                                        Ext.Msg.alert("Добавлено");
-                                        favestore.add([{
-                                            name: s_name,
-                                            ftype: cat,
-                                            image: s_image,
-                                            link: '',
-                                            res : '',
-                                            fid : cfid,
-
-                                        }]);
-                                        favestore.sync();
-                                    }
-
-                                    },
-                                    function (tx, error)
-                                    {
-                                    favestore .add([{
-                                            name: s_name,
-                                            ftype: cat,
-                                            image: s_image,
-                                            link: '',
-                                            res : '',
-                                            fid : cfid,
-
-                                        }]);
-                                       favestore.sync();
-                                    }
-                                    )});*/
-                                    
-                                //}
-                        }
-                        ,
-
-                    ]
-                }
-            ], 
+        
 
         store: {
             type: 'tree',
@@ -170,7 +91,8 @@ Ext.define('ListItem', {
                 }
             }
         },                                                                      
-        listeners: {  activate : function() { 
+        listeners: { 
+                    activate : function() { 
                             tb = this.getToolbar();
                              } ,
                              deactivate: function() {
@@ -1202,7 +1124,120 @@ Ext.define('ListItem', {
                                     }                              
                                 } 
                         } 
-            });
+            ,
+
+            dockedItems: [
+                {   
+                    xtype: 'toolbar',
+                    docked: 'top',   
+                        items: [
+                        { xtype: 'spacer' },
+ 
+                        {   
+                            iconCls : 'search',
+                            xtype: 'button',
+                            scope: this,
+                            handler: 
+                                function(button) {
+        // Mask the viewport        
+        //Ext.Viewport.mask();
+                                button.hide();
+                                /*if(value == undefined) {
+                                    var value = 0;
+                                }
+                                else{value == value };*/
+                                var obj = {}; 
+                                var obj2 = obj;
+                                var ser = Ext.create('Ext.Container', {
+                                    fullscreen: true,
+                                    toolbar : true,
+                                    layout:'vbox',
+                                    dockedItems: {   
+                                        xtype: 'toolbar',
+                                        docked: 'top', 
+
+                                            items: [
+                                 
+                                                    {
+                                                    ui: 'back',   
+                                                    xtype: 'button',
+                                                    text: 'back',
+                                                    handler: function () {
+                                                        ser.hide();
+                                                        button.show();
+                                                    },
+                                                }
+                                                ]
+                                            },
+                                            items: [                
+                                            {
+                                            xtype: 'fieldset',
+                                            items: [{
+                                                xtype: 'searchfield',
+                                                placeHolder: 'Search...',
+                                                name: 'title',
+                                                id: 'inpt',
+                                                listeners: {
+                                                    scope: this,
+                                        //clearicontap: this.onSearchClearIconTap,
+                                                    keyup: function(){
+                                                   
+                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
+                                                    
+                                                    Ext.Ajax.request({
+                                                        
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,
+                                                      
+                                                        success: function(response){
+                                                            var text = Ext.decode(response.responseText.trim());
+                                                            
+                                                            search.removeAll()
+                                                            search.add(text.films);
+                                                            console.log(search);
+
+                                                            // process server response here
+                                                        }
+                                                    });
+                                                    
+                                                                },
+
+                                                            },
+
+                                                        }],
+
+                            }, 
+                            {   
+
+                                useToolbar:false,
+                                xtype: 'list', 
+                                iconCls: 'star',
+                                flex:1,
+                               // displayField: 'filmpage', 
+                                itemTpl: "{filmpage}",
+                                store: search,                                                            
+                                            
+                            }],
+                        });
+
+
+        
+                        ser.show();
+
+    }
+    
+
+                        }
+                        ,
+
+                    ]
+                }
+            ], 
+
+        }
+
+
+
+            );
 
 
         
