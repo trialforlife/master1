@@ -31,6 +31,26 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
+$query1 = "SELECT * FROM play where p_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$dbresult1 = mysql_query($query1);
+
+if (mysql_affected_rows() > 0) {
+	while($row = mysql_fetch_array($dbresult1))
+	{
+		array_push($result["films"],array(
+			"id"=>$row["p_id"],
+			"name"=>addslashes((string)$row["p_name"]),
+			"image"=>addslashes((string)$row["p_image"]),
+			"time"=>addslashes((string)$row["p_time"]),
+			"filmpage"=>
+			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
+			$row["p_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["p_image"]."><br>".$row["p_time"]."</br><small>".$row["p_content"]."</small></br>",
+			));
+			
+	}
+
+}
+
 
 mysql_close();
 
