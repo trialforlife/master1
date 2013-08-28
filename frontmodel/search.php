@@ -12,7 +12,7 @@ $search = $_GET["value"];
 
 $result = array("films"=>array());
 
-$query = "SELECT * FROM films where f_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query = "SELECT * FROM films where f_name LIKE '%" . $search . "%' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
@@ -31,7 +31,7 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
-$query1 = "SELECT * FROM play where p_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query1 = "SELECT * FROM play where p_name LIKE '%" . $search . "%'  ";
 $dbresult1 = mysql_query($query1);
 
 if (mysql_affected_rows() > 0) {
@@ -50,7 +50,7 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
-$query2 = "SELECT * FROM entertainment where en_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query2 = "SELECT * FROM entertainment where en_name LIKE '%" . $search . "%' ";
 $dbresult2 = mysql_query($query2);
 
 if (mysql_affected_rows() > 0) {
@@ -69,7 +69,7 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
-$query3 = "SELECT * FROM events where ev_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query3 = "SELECT * FROM events where ev_name LIKE '%" . $search . "%' ";
 $dbresult3 = mysql_query($query3);
 
 if (mysql_affected_rows() > 0) {
@@ -88,7 +88,7 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
-$query4 = "SELECT * FROM nightlife where n_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query4 = "SELECT * FROM nightlife where n_name LIKE '%" . $search . "%'  ";
 $dbresult4 = mysql_query($query4);
 
 if (mysql_affected_rows() > 0) {
@@ -107,7 +107,7 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
-$query5 = "SELECT * FROM shipment where s_name LIKE '%" . $search . "%' LIMIT  0, 30 ";
+$query5 = "SELECT * FROM shipment where s_name LIKE '%" . $search . "%'  ";
 $dbresult5 = mysql_query($query5);
 
 if (mysql_affected_rows() > 0) {
