@@ -11,12 +11,19 @@ Ext.define('ListItem', {
     }
 
 });     
+
+Ext.require([
+    'Ext.grid.List',
+    'Ext.grid.feature.Feature',
+    'Ext.grid.feature.CheckboxSelection'
+]);
+
     db = openDatabase("Sencha", "1.0", "Sencha", 200000);
         if(!db)
             {alert("Failed to connect to database.");}   
         else 
             {//alert('fuck yeah');
-    };
+            };
     Ext.require(['Ext.data.proxy.SQL']);
         Ext.define("Favorite", {
         extend: "Ext.data.Model",
@@ -53,6 +60,11 @@ Ext.define('ListItem', {
         storeId: 'Favorite',
         proxy: {
             type: "sql"
+        },
+        grouper: {
+            groupFn: function(record) {
+                return record.get('name');
+            }
         },
         autoLoad: true
              });
@@ -94,8 +106,84 @@ Ext.define('ListItem', {
         listeners: { 
                     activate : function() { 
                             tb = this.getToolbar();
-                             } ,
-                             deactivate: function() {
+                            tb.setTitle('Now-Yakutsk');
+                            tb.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'search', 
+                                scope: this,
+                                handler: 
+                                    function(button) {
+                                    button.hide();
+                                    ser = Ext.create('Ext.Container', {
+                                    fullscreen: true,
+                                    toolbar : true,
+                                    layout:'vbox',
+                                    dockedItems: {   
+                                        xtype: 'toolbar',
+                                        docked: 'top', 
+                                            items: [
+                                 
+                                                    {
+                                                    ui: 'back',   
+                                                    xtype: 'button',
+                                                    text: 'back',
+                                                    handler: function () {
+                                                        ser.hide();
+                                                        button.show();
+                                                    },
+                                                }
+                                                ]
+                                            },
+                                            items: [                
+                                            {
+                                            xtype: 'fieldset',
+                                            items: [{
+                                                xtype: 'searchfield',
+                                                placeHolder: 'Search...',
+                                                name: 'title',
+                                                id: 'inpt',
+                                                listeners: {
+                                                    scope: this,
+                                                     //clearicontap: this.onSearchClearIconTap,
+                                                    keyup: function(){
+                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
+                                                    Ext.Ajax.request({
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,                                                   
+                                                        success: function(response){
+                                                            var text = Ext.decode(response.responseText.trim());                      
+                                                            search.removeAll()
+                                                            search.add(text.films);
+                                                            console.log(search);
+                                                                    }
+                                                                });
+                                                                
+                                                                },
+
+                                                            },
+
+                                                        }],
+
+                            }, 
+                            {   
+                                useToolbar:false,
+                                xtype: 'list', 
+                                iconCls: 'star',
+                                flex:1,
+                               // displayField: 'filmpage', 
+                                itemTpl: "{filmpage}",
+                                store: search,                                                            
+                                            
+                            }],
+                        });
+                        ser.show();
+
+ 
+
+                                    }
+
+
+                        }]);
+                            tb.doLayout();
+                            } ,
+                    deactivate: function() {
                             }
                             ,                       
                     leafitemtap: function(nestedList, list, index, target, record) {
@@ -107,13 +195,180 @@ Ext.define('ListItem', {
                         proxy: {
                             type: "sql"
                         },
+                        grouper: {
+                            groupFn: function(record) {
+                                var ind = record.get('ftype');
+                                switch (ind) {
+                                    case "cinema":
+                                    gr = "Кино";
+                                    break;
+                                    case "theatre":
+                                    gr = "Театры";
+                                    break;
+                                    case "events":
+                                    gr = "Мероприятия";
+                                    break;
+                                    case "restaurant":
+                                    gr = "Рестораны";
+                                    break;
+                                    case "beautyandhealh":
+                                    gr = "Здоровье и красота";
+                                    break;
+                                    case "shipment":
+                                    gr = "Доставка";
+                                    break;
+                                    case "nightlife":
+                                    gr = "Ночная жизнь";
+                                    break;
+                                    case "entertainment":
+                                    gr = "Развлечение";
+                                    break;
+                                };
+                                return (gr);
+                        }},
                         autoLoad: true
                              });
-                        var flist = Ext.create("Ext.List", {
+
+                        var flist = Ext.create("Ext.grid.List", {
+                               grouped     : true,
+                               indexBar    : false,
+                                features : [
+                                 {
+                                    ftype    : 'Ext.grid.feature.CheckboxSelection',
+                                    launchFn : 'constructor'
+                                }
+                                ],
+                                 columns  : [
+                                {
+                                dataIndex : 'name',
+                                style     : 'padding-left: 1em;',
+                                width     : '40%',
+                                filter    : { type : 'string' }
+                                },
+                                ],
+                                hideOnMaskTap: true,
+                                dockedItems: {   
+                                        xtype: 'toolbar',
+                                        docked: 'top', 
+                                            items: [{xtype: 'spacer'},
+                                                    {
+                                                    ui: 'round',   
+                                                    xtype: 'button',
+                                                    text: 'Правка',
+                                                        handler: function (button) {
+                                                        //name = record.    get(ftype); 
+                                                        var favestore = Ext.create("Ext.data.Store", {
+                                                                model: "Favorite",defaultRootProperty: 'items',
+                                                                storeId: 'Favorite',
+                                                                proxy: {
+                                                                    type: "sql"
+                                                                },
+                                                                grouper: {
+                                                                    groupFn: function(record) {
+                                                                        var ind = record.get('ftype');
+                                                                        switch (ind) {
+                                                                            case "cinema":
+                                                                            gr = "Кино";
+                                                                            break;
+
+                                                                            case "theatre":
+                                                                            gr = "Театры";
+                                                                            break;
+                                                                            case "events":
+                                                                            gr = "Мероприятия";
+                                                                            break;
+                                                                            case "restaurant":
+                                                                            gr = "Рестораны";
+                                                                            break;
+                                                                            case "beautyandhealh":
+                                                                            gr = "Здоровье и красота";
+                                                                            break;
+                                                                            case "shipment":
+                                                                            gr = "Доставка";
+                                                                            break;
+                                                                            case "nightlife":
+                                                                            gr = "Ночная жизнь";
+                                                                            break;
+                                                                            case "entertainment":
+                                                                            gr = "Развлечение";
+                                                                            break;
+                                                           
+                                                           
+                                                                        };
+                                                                        return (gr);
+                                                                }},
+                                                                autoLoad: true
+                                                                     });
+
+                                                            var flist1 = Ext.create("Ext.grid.List", {
+                                                            features : [
+                                                             {
+                                                                ftype    : 'Ext.grid.feature.CheckboxSelection',
+                                                                launchFn : 'constructor'
+                                                            }
+                                                            ],
+                                                             columns  : [
+                                                            {
+                                                            //header    : 'Name',
+                                                            dataIndex : 'name',
+                                                            style     : 'padding-left: 1em;',
+                                                            width     : '40%',
+                                                            filter    : { type : 'string' }
+                                                            },
+                                                            ],
+                                                            hideOnMaskTap: true,
+                                                            fullscreen: true,
+                                                            store: favestore,
+                                                            text: 'name',
+                                                            
+                                                            listeners: {
+                                                            itemtap: function( h, index, target, record, e, eOpts ){
+                                                                console.log(record.raw.id);
+                                                                did = record.raw.id;
+                                                                db.transaction(function(tx) {
+                                                                    
+                                                                        Ext.Msg.alert("Удалено");
+                                                                        tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
+                                                                       
+                                                                        favestore.sync();
+                                                                        }); favestore.sync();
+                                                                    }); favestore.sync();
+                                                                record.destroy();
+                                                                
+                                                            }
+
+                                                            },
+                                                            dockedItems: {   
+                                                                    xtype: 'toolbar',
+                                                                    docked: 'top', 
+
+                                                                        items: [{xtype: 'spacer'},
+                                                             
+                                                                                {
+                                                                                ui: 'round',   
+                                                                                xtype: 'button',
+                                                                                text: 'Готово',
+                                                                                handler: function () {
+                                                                                    
+                                                                                    button.show();
+                                                                                    flist1.hide();
+                                                                                    flist.show();
+                                                                                },
+                                                                            }
+                                                                            ]
+                                                                        },
+                                            
+                                                    });
+                                                        flist1.show();
+
+                                                    },
+                                                }
+                                                ]
+                                            },
                             fullscreen: true,
                             store: favestore,
                             text: 'name',
-                            itemTpl: "{name}",
+                             displayField: "name",
                         });
                                 //display for default category
                                 cin1 = Ext.create("Ext.NestedList", {
@@ -146,34 +401,19 @@ Ext.define('ListItem', {
                                             activate : function() {     
                                                 //tb1.show();
                                                 tb2 = this.getToolbar();
-                                                tb2.hide();
+                                                tb2.hide(); 
                                                 //tb.hide(); 
 
                                             //this.getToolbar(treeStore2).hide();
                                              } ,
                                              deactivate: function() {
                                                 tb.show();                             
-                                                //tb1.hide();
-                                                //this.getToolbar().hide();
+
                                             }
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
-                                                //var c_nam = post.get('name');
-                                                //fid = post.get('cid');
 
-                                                //alert(tqt);                             
-                                                /*interval = 1000  //интервал повтора 1 секунда
-                                                coef = 1349788541   // случайный коэффициент разницы текущего времени
-
-                                                setInterval(function() {
-                                                raccons = Math.round((new Date()).getTime() / 1000) - coef
-                                                    console.log(raccons); //выводим в консоль. заменить на нужное, например $('#counter').text(raccons);
-                                                }, interval);
-                                                dd = 'background-color: blueviolet';*/
-                                                //   =  'background-color: red';   
-
-                                                //alert(cat);
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
                                                 useToolbar:false,
@@ -262,9 +502,23 @@ Ext.define('ListItem', {
                                                                 xtype: 'toolbar',
                                                                 docked: 'top',                                                            
                                                                 items: [
+                                                                {
+                                                    align:'left',
+                                                    ui: 'back',   
+                                                    xtype: 'button',
+                                                    text: 'back',
+                                                    handler: function () {
+                                                       nestedList.back();
+
+                                                    }},
+                                                    {
+                                                                    xtype:'spacer',
+                                                                },
                                                                     {   
-                                                                        text: '+',
-                                                                        ui: 'decline',
+                                                                        xtype: 'button',
+                                                                        align: 'right',
+                                                                        iconCls: 'star',
+
                                                                         handler: function(){ 
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
@@ -328,7 +582,8 @@ Ext.define('ListItem', {
                                                         listeners: {
                                                         activate : function() {     
                                                                 //tb1.hide();
-                                                                tb2.show();
+                                                                tb2.hide();
+
                                                                 //tb3 = this.getToolbar();tb3.hide();
                                                                 tb.hide(); 
 
@@ -496,8 +751,7 @@ Ext.define('ListItem', {
                                                                 docked: 'top',                                                            
                                                                 items: [
                                                                     {   
-                                                                        text: '+',
-                                                                        ui: 'decline',
+                                                                        iconCls: 'star',
                                                                         handler: function(){ 
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
@@ -698,8 +952,7 @@ Ext.define('ListItem', {
                                                                 docked: 'top',                                                            
                                                                 items: [
                                                                     {   
-                                                                        text: '+',
-                                                                        ui: 'decline',
+                                                                        iconCls: 'star',
                                                                         handler: function(){ 
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
@@ -859,6 +1112,76 @@ Ext.define('ListItem', {
                         listeners: {
                              activate : function() {         
                                 tb1 = this.getToolbar();
+                                tb1.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'search', 
+                                                
+                                                scope: this,
+                                                handler: 
+                                                    function(button) {
+                                                    button.hide();
+                                                    ser = Ext.create('Ext.Container', {
+                                                    fullscreen: true,
+                                                    toolbar : true,
+                                                    layout:'vbox',
+                                                    dockedItems: {   
+                                                        xtype: 'toolbar',
+                                                        docked: 'top', 
+                                                            items: [
+                                                 
+                                                                    {
+                                                                    ui: 'back',   
+                                                                    xtype: 'button',
+                                                                    text: 'back',
+                                                                    handler: function () {
+                                                                        ser.hide();
+                                                                        button.show();
+                                                                    },
+                                                                }
+                                                                ]
+                                                            },
+                                                            items: [                
+                                            {
+                                            xtype: 'fieldset',
+                                            items: [{
+                                                xtype: 'searchfield',
+                                                placeHolder: 'Search...',
+                                                name: 'title',
+                                                id: 'inpt',
+                                                listeners: {
+                                                    scope: this,
+                                                     //clearicontap: this.onSearchClearIconTap,
+                                                    keyup: function(){
+                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
+                                                    Ext.Ajax.request({
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,                                                   
+                                                        success: function(response){
+                                                            var text = Ext.decode(response.responseText.trim());                      
+                                                            search.removeAll()
+                                                            search.add(text.films);
+                                                            console.log(search);
+                                                                    }
+                                                                });
+                                                                
+                                                                },
+
+                                                            },
+
+                                                        }],
+
+                                                    }, 
+                                                    {   
+                                                        useToolbar:false,
+                                                        xtype: 'list', 
+                                                        iconCls: 'star',
+                                                        flex:1,
+                                                       // displayField: 'filmpage', 
+                                                        itemTpl: "{filmpage}",
+                                                        store: search,                                                            
+                                                                    
+                                                    }],
+                                                });
+                                                ser.show();
+                                                }
+                                                }]);
                                 tb1.hide();
                                 tb.show(); 
                              } ,
@@ -904,27 +1227,43 @@ Ext.define('ListItem', {
                                             listeners: {
                                             activate : function() {     
                                                 tb1.show();
+
+                                                
+                                                
+                                                
+                                                
+
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
                                                 tb.hide(); 
+
                                             //this.getToolbar(treeStore2).hide();
-                                             } ,
+                                             
+                                         } ,
                                              deactivate: function() {
-                                                tb.show();                             
+                                                tb.show(); 
+
                                                 tb1.hide();
+                                                tb2.hide();delete window.ttt;
+
                                                 //this.getToolbar().hide();
-                                            }
-                                            ,
+                                            },
+                                            
+                                               
                                                 leafitemtap: function(nestedList, list, index, element, post) {
-                                                var f_cid = post.get('cid');
-                                                var fil = Ext.create('Ext.Container', {
-                                                fullscreen: true,
-                                                useToolbar:false,
-                                                layout: 'vbox',
-                                                items: [           {    
+                                                                        var f_cid = post.get('cid');
+                                                
+                                                
+                                                                        var fil = Ext.create('Ext.Container', {
+                                                                        fullscreen: true,
+                                                                        //useToolbar:true,
+                                                                        layout: 'vbox',
+                                                                        items: [           {    
                                                                         xtype: 'carousel',
                                                                         height: '100px',
-                        
+                                                                        
+
+
                                                                         store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -995,20 +1334,27 @@ Ext.define('ListItem', {
                                                                     }}},                                                                     
                                                                ],
                                                         
-                                                          dockedItems: [
-                                                            {   
-                                                                xtype: 'toolbar',
-                                                                docked: 'top',                                                            
-                                                                items: [
-                                                                    {   
-                                                                        text: '+',
-                                                                        ui: 'decline',
-                                                                        handler: function(){ 
+                                                                                                 
+                                                                    detailCard: {
+                                                                        xtype: 'panel',
+                                                                        scrollable: true,
+                                                                        styleHtmlContent: true
+                                                                    },
+                                                                    listeners: {
+
+                                                                    initialize : function(button) {
+                                                                            if (typeof ttt != 'undefined'){
+                                                                                //alert(1);
+                                                                            }
+                                                                            else{//alert(2);
+                                                                                ttt = (tb2.insert(3,[ {xtype:'spacer'},{ xtype:'button', iconCls: 'star',
+                                                                            handler: function(button){ 
+
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
                                                                             //adding to favorite
-                                                                           db.transaction(function(tx) {
+                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                                   len = results.rows.length;
                                                                                   console.log(len);
@@ -1049,30 +1395,25 @@ Ext.define('ListItem', {
                                                                                 )});
                                                                                 
                                                                             }
-                                                                    }
+                                                                    
+                                                                            }]));
+
+                                                                            }
+                                                                            
+                                                                           
+                                                                            tb2.show();
+                                                                            
+                                                                            tb1.hide(); 
+
+                                                                     } ,
+                                                                     deactivate: function() {
+                                                                        
+                                                                        tb1.show();
+                                                                        tb2.hide();
+                                                                        tb.hide();
+                                                                        }
                                                                     ,
-
-                                                                ]
-                                                            }
-                                                        ],                                         
-                                                        detailCard: {
-                                                            xtype: 'panel',
-                                                            scrollable: true,
-                                                            styleHtmlContent: true
-                                                        },
-                                                        listeners: {
-                                                        activate : function() {     
-                                                                tb1.hide();
-                                                                tb2.show();
-                                                                tb.hide(); 
-
-                                                         } ,
-                                                         deactivate: function() {
-                                                            tb1.show();
-                                                            tb2.hide();
-                                                            }
-                                                        ,
-                                                        }
+                                                                    }
 
                                             });     
                                                 var detailCard = nestedList.getDetailCard();
@@ -1126,7 +1467,7 @@ Ext.define('ListItem', {
                         } 
             ,
 
-            dockedItems: [
+            /*dockedItems: [
                 {   
                     xtype: 'toolbar',
                     docked: 'top',   
@@ -1142,12 +1483,8 @@ Ext.define('ListItem', {
         // Mask the viewport        
         //Ext.Viewport.mask();
                                 button.hide();
-                                /*if(value == undefined) {
-                                    var value = 0;
-                                }
-                                else{value == value };*/
-                                var obj = {}; 
-                                var obj2 = obj;
+  
+                                
                                 var ser = Ext.create('Ext.Container', {
                                     fullscreen: true,
                                     toolbar : true,
@@ -1179,7 +1516,7 @@ Ext.define('ListItem', {
                                                 id: 'inpt',
                                                 listeners: {
                                                     scope: this,
-                                        //clearicontap: this.onSearchClearIconTap,
+                                                     //clearicontap: this.onSearchClearIconTap,
                                                     keyup: function(){
                                                    
                                                     value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
@@ -1196,9 +1533,9 @@ Ext.define('ListItem', {
                                                             console.log(search);
 
                                                             // process server response here
-                                                        }
-                                                    });
-                                                    
+                                                                    }
+                                                                });
+                                                                
                                                                 },
 
                                                             },
@@ -1207,7 +1544,6 @@ Ext.define('ListItem', {
 
                             }, 
                             {   
-
                                 useToolbar:false,
                                 xtype: 'list', 
                                 iconCls: 'star',
@@ -1218,26 +1554,17 @@ Ext.define('ListItem', {
                                             
                             }],
                         });
-
-
-        
                         ser.show();
-
-    }
-    
-
+                        }
                         }
                         ,
 
                     ]
                 }
-            ], 
+            ], */
 
         }
-
-
-
-            );
+        );
 
 
         
