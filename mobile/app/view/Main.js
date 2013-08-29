@@ -108,7 +108,7 @@ Ext.require([
                             tbr = this.getToolbar();
                             tb = this.getToolbar();
                             tb.setTitle('Now-Yakutsk');
-                            tb.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'search', 
+                            tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'search', 
                                 scope: this,
                                 handler: 
                                     function(button) {
@@ -232,73 +232,78 @@ Ext.require([
                                useHeader: false,
                                listeners:{ 
                                activate: function(button){
+                                favestore.sync();
+                                Ext.getCmp('serch').hide();
+                                fed = Ext.getCmp('ed');
+                                if(typeof fed != 'undefined') {
+                                Ext.getCmp('ed').destroy();
+                                }
+                                //Ext.getCmp('ed').destroy();
+                                
                                 fh = this.getHeader();
                                 fh.hide();
-                                //tb.removeAll();
-                                tb.hide();
-                               
 
-                               },
-                               deactivate: function(button){
-                                tb.show();
-                                
-                               }
-                                },
-                                features : [
-                                 {
-                                    ftype    : 'Ext.grid.feature.CheckboxSelection',
-                                    launchFn : 'constructor'
-                                }
-                                ],
-                                 columns  : [
-                                {
-                                dataIndex : 'name',
-                                style     : 'padding-left: 1em;',
-                                width     : '40%',
-                                filter    : { type : 'string' }
-                                },
-                                ],
-                                hideOnMaskTap: true,
-                                dockedItems: {   
-                                        xtype: 'toolbar',
-                                        docked: 'top', 
-                                            items: [{xtype: 'button',
-                                                        ui: 'back',
-                                                        text:'back',
-                                                        handler: function (button){
-                                                            button.hide();
-                                                            nestedList.setActiveItem(0);
-                                                            Ext.getCmp('mainPanel').setTitle('Now-Yakutsk');
-                                                            
-                                                            //Ext.ViewPort.onBackButtonTap();
-                                                            //tb.show();
-                                                            
+                                tb.insert(4,[ {xtype:'spacer'},{ id:'ed', align:'right',xtype:'button', ui: 'round', text: 'Правка',
+                                    handler: function (button) {
+                                            var favestore = Ext.create("Ext.data.Store", {
+                                            model: "Favorite",defaultRootProperty: 'items',
+                                            storeId: 'Favorite',
+                                            proxy: {
+                                                type: "sql"
+                                            },
+                                            grouper: {
+                                                    groupFn: function(record) {
+                                                    var ind = record.get('ftype');
+                                                    switch (ind) {
+                                                        case "cinema":
+                                                        gr = "Кино";
+                                                        break;
+                                                        case "theatre":
+                                                        gr = "Театры";
+                                                        break;
+                                                        case "events":
+                                                        gr = "Мероприятия";
+                                                        break;
+                                                        case "restaurant":
+                                                        gr = "Рестораны";
+                                                        break;
+                                                        case "beautyandhealh":
+                                                        gr = "Здоровье и красота";
+                                                        break;
+                                                        case "shipment":
+                                                        gr = "Доставка";
+                                                        break;
+                                                        case "nightlife":
+                                                        gr = "Ночная жизнь";
+                                                        break;
+                                                        case "entertainment":
+                                                        gr = "Развлечение";
+                                                        break;
+                                                    };
+                                                        return (gr);
+                                                }},
+                                                autoLoad: true });
+                                                        
+                                                        var flist1 = Ext.create("Ext.grid.List", {
+                                                        grouped     : true,
+                                                        indexBar    : false,
+                                                        useToolbar:false,
+                                                        useHeader: false,
+                                                        features : [
+                                                        {
+                                                            ftype    : 'Ext.grid.feature.CheckboxSelection',
+                                                            launchFn : 'constructor'
                                                         }
-                                                    },
-                                                    {xtype: 'spacer'},
-                                                    {
-                                                    ui: 'round',   
-                                                    xtype: 'button',
-                                                    text: 'Правка',
-                                                        handler: function (button) {
-                                                            var flist1 = Ext.create("Ext.grid.List", {
-                                                            features : [
-                                                             {
-                                                                ftype    : 'Ext.grid.feature.CheckboxSelection',
-                                                                launchFn : 'constructor'
-                                                            }
-                                                            ],
-                                                             useToolbar:false,
-                                                             useHeader: false,
+                                                        ],
                                                              columns  : [
                                                             {
-                                                            //header    : 'Name',
                                                             dataIndex : 'name',
                                                             style     : 'padding-left: 1em;',
                                                             width     : '40%',
                                                             filter    : { type : 'string' }
                                                             },
                                                             ],
+                                                            
                                                             hideOnMaskTap: true,
                                                             fullscreen: true,
                                                             store: favestore,
@@ -306,10 +311,16 @@ Ext.require([
                                                             
                                                             listeners: {
                                                             activate: function(){
-                                                            fh1 = this.getHeader();
-                                                            fh1.hide();
-                                                            ftb = this.getToolbar();
-                                                            ftb.hide();
+                                                            //fh2 = nestedList.getHeader();
+                                                            console.log(nestedList.getHeader());
+                                                            fh2.hide();
+                                                            flist.hide();
+                                                            
+
+                                                            favestore.sync();
+                                                            Ext.getCmp('ed').hide();
+                                                            //fh1.show();
+        
                                                             },
                                 
                                                             itemtap: function( h, index, target, record, e, eOpts ){
@@ -338,9 +349,8 @@ Ext.require([
                                                                                 ui: 'round',   
                                                                                 xtype: 'button',
                                                                                 text: 'Готово',
-                                                                                handler: function () {
-                                                                                    
-                                                                                    button.show();
+                                                                                handler: function (button) {
+                                                                                    //button.show();
                                                                                     flist1.hide();
                                                                                     flist.show();
                                                                                 },
@@ -348,13 +358,38 @@ Ext.require([
                                                                             ]
                                                                         },
                                             
-                                                    });
+                                                    }); fd = (flist1.getHeader());
+                                                        fd.destroy();
                                                         flist1.show();
 
                                                     },
-                                                }
-                                                ]
-                                            },
+                                                                            }
+                                                                            ]
+                                                                            );                          
+
+                               },
+                               deactivate: function(button){
+                                //tb.show();
+                                Ext.getCmp('serch').show();
+                                Ext.getCmp('ed').hide();
+                                
+                               }
+                                },
+                                features : [
+                                 {
+                                    ftype    : 'Ext.grid.feature.CheckboxSelection',
+                                    launchFn : 'constructor'
+                                }
+                                ],
+                                 columns  : [
+                                {
+                                dataIndex : 'name',
+                                style     : 'padding-left: 1em;',
+                                width     : '40%',
+                                filter    : { type : 'string' }
+                                },
+                                ],
+                                hideOnMaskTap: true,
                                 fullscreen: true,
                                 store: favestore,
                                 text: 'name',
