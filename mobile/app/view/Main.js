@@ -1062,6 +1062,7 @@ Ext.require([
                                             listeners: {
                                             activate : function() {     
                                                 //tb1.show();
+                                                Ext.getCmp('serch').hide();
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
                                                 //tb.hide(); 
@@ -1069,7 +1070,8 @@ Ext.require([
                                             //this.getToolbar(treeStore2).hide();
                                              } ,
                                              deactivate: function() {
-                                                tb.show();                             
+                                                tb.show();   
+                                                Ext.getCmp('serch').show();                          
                                                 //tb1.hide();
                                                 //this.getToolbar().hide();
                                             }
