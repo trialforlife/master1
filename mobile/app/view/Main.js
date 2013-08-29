@@ -399,11 +399,10 @@ Ext.require([
                                             },
                                             listeners: {
                                             activate : function() {     
-                                                //tb1.show();
+                                                
                                                 tb2 = this.getToolbar();
                                                 tb2.hide(); 
-                                                //tb.hide(); 
-
+                                                
                                             //this.getToolbar(treeStore2).hide();
                                              } ,
                                              deactivate: function() {
@@ -416,7 +415,7 @@ Ext.require([
 
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
-                                                useToolbar:false,
+                                                //useToolbar:false,
                                                 /*getItemTextTpl: function(node){
                                                     return '{filmpage}';
                                                 }  */
@@ -497,35 +496,22 @@ Ext.require([
 
                                                                 ],
                                                         
-                                                          dockedItems: [
-                                                            {   
-                                                                xtype: 'toolbar',
-                                                                docked: 'top',                                                            
-                                                                items: [
-                                                                {
-                                                    align:'left',
-                                                    ui: 'back',   
-                                                    xtype: 'button',
-                                                    text: 'back',
-                                                    handler: function () {
-                                                       nestedList.back();
 
-                                                    }},
-                                                    {
-                                                                    xtype:'spacer',
-                                                                },
-                                                                    {   
-                                                                        xtype: 'button',
-                                                                        align: 'right',
-                                                                        iconCls: 'star',
+                                                        listeners: {
+                                                        activate : function() {     
+                                                                //tb1.hide();
+                                                                if (typeof ttt != 'undefined'){
+                                                                                
+                                                                            }
+                                                                            else{
+                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{ xtype:'button', iconCls: 'star',
+                                                                            handler: function(button){ 
 
-                                                                        handler: function(){ 
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
-                                                                            
                                                                             //adding to favorite
-                                                                           db.transaction(function(tx) {
+                                                                            db.transaction(function(tx) {
                                                                                 tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                                   len = results.rows.length;
                                                                                   console.log(len);
@@ -536,7 +522,7 @@ Ext.require([
                                                                                     });
                                                                                 }
                                                                                 else{
-                                                                                    Ext.Msg.alert('Добавлено');
+                                                                                    Ext.Msg.alert("Добавлено");
                                                                                     favestore.add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
@@ -566,23 +552,15 @@ Ext.require([
                                                                                 )});
                                                                                 
                                                                             }
-                                                                    }
-                                                                    ,
+                                                                    
+                                                                            }]));
 
-                                                                ]
-                                                            
+                                                                            }
+                                                                            
+                                                                           
+                                                                tb2.show();
+                                                                            
 
-                                                            }
-                                                        ],                                         
-                                                        detailCard: {
-                                                            xtype: 'panel',
-                                                            scrollable: true,
-                                                            styleHtmlContent: true
-                                                        },
-                                                        listeners: {
-                                                        activate : function() {     
-                                                                //tb1.hide();
-                                                                tb2.hide();
 
                                                                 //tb3 = this.getToolbar();tb3.hide();
                                                                 tb.hide(); 
@@ -592,7 +570,7 @@ Ext.require([
                                                          } ,
                                                          deactivate: function() {
                                                             tb.show();                             
-                                                            //tb1.show();
+                                                            
                                                             tb2.hide();
                                                             //this.getToolbar().hide();
                                                             }
@@ -658,7 +636,7 @@ Ext.require([
                                             listeners: {
                                                 activate : function() {     
                                                 tb2 = this.getToolbar();
-                                                tb2.hide();
+                                                tb2.hide();delete window.ttt;
                                                  } ,
                                                  deactivate: function() {
                                                 },
@@ -818,6 +796,7 @@ Ext.require([
                                                          deactivate: function() {
                                                             tb.show();                             
                                                             tb2.hide();
+                                                            
                                                             }
                                                         ,
                                                         }
@@ -1344,10 +1323,10 @@ Ext.require([
 
                                                                     initialize : function(button) {
                                                                             if (typeof ttt != 'undefined'){
-                                                                                //alert(1);
+                                                                                
                                                                             }
-                                                                            else{//alert(2);
-                                                                                ttt = (tb2.insert(3,[ {xtype:'spacer'},{ xtype:'button', iconCls: 'star',
+                                                                            else{
+                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{ xtype:'button', iconCls: 'star',
                                                                             handler: function(button){ 
 
                                                                             var s_name = post.get('list');
@@ -1467,101 +1446,6 @@ Ext.require([
                         } 
             ,
 
-            /*dockedItems: [
-                {   
-                    xtype: 'toolbar',
-                    docked: 'top',   
-                        items: [
-                        { xtype: 'spacer' },
- 
-                        {   
-                            iconCls : 'search',
-                            xtype: 'button',
-                            scope: this,
-                            handler: 
-                                function(button) {
-        // Mask the viewport        
-        //Ext.Viewport.mask();
-                                button.hide();
-  
-                                
-                                var ser = Ext.create('Ext.Container', {
-                                    fullscreen: true,
-                                    toolbar : true,
-                                    layout:'vbox',
-                                    dockedItems: {   
-                                        xtype: 'toolbar',
-                                        docked: 'top', 
-
-                                            items: [
-                                 
-                                                    {
-                                                    ui: 'back',   
-                                                    xtype: 'button',
-                                                    text: 'back',
-                                                    handler: function () {
-                                                        ser.hide();
-                                                        button.show();
-                                                    },
-                                                }
-                                                ]
-                                            },
-                                            items: [                
-                                            {
-                                            xtype: 'fieldset',
-                                            items: [{
-                                                xtype: 'searchfield',
-                                                placeHolder: 'Search...',
-                                                name: 'title',
-                                                id: 'inpt',
-                                                listeners: {
-                                                    scope: this,
-                                                     //clearicontap: this.onSearchClearIconTap,
-                                                    keyup: function(){
-                                                   
-                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
-                                                    
-                                                    Ext.Ajax.request({
-                                                        
-                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,
-                                                      
-                                                        success: function(response){
-                                                            var text = Ext.decode(response.responseText.trim());
-                                                            
-                                                            search.removeAll()
-                                                            search.add(text.films);
-                                                            console.log(search);
-
-                                                            // process server response here
-                                                                    }
-                                                                });
-                                                                
-                                                                },
-
-                                                            },
-
-                                                        }],
-
-                            }, 
-                            {   
-                                useToolbar:false,
-                                xtype: 'list', 
-                                iconCls: 'star',
-                                flex:1,
-                               // displayField: 'filmpage', 
-                                itemTpl: "{filmpage}",
-                                store: search,                                                            
-                                            
-                            }],
-                        });
-                        ser.show();
-                        }
-                        }
-                        ,
-
-                    ]
-                }
-            ], */
 
         }
         );
