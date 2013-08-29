@@ -105,6 +105,7 @@ Ext.require([
         },                                                                      
         listeners: { 
                     activate : function() { 
+                            tbr = this.getToolbar();
                             tb = this.getToolbar();
                             tb.setTitle('Now-Yakutsk');
                             tb.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'search', 
@@ -174,12 +175,7 @@ Ext.require([
                             }],
                         });
                         ser.show();
-
- 
-
-                                    }
-
-
+                        }
                         }]);
                             tb.doLayout();
                             } ,
@@ -232,6 +228,22 @@ Ext.require([
                         var flist = Ext.create("Ext.grid.List", {
                                grouped     : true,
                                indexBar    : false,
+                               useToolbar:false,
+                               useHeader: false,
+                               listeners:{ 
+                               activate: function(button){
+                                fh = this.getHeader();
+                                fh.hide();
+                                //tb.removeAll();
+                                tb.hide();
+                               
+
+                               },
+                               deactivate: function(button){
+                                tb.show();
+                                
+                               }
+                                },
                                 features : [
                                  {
                                     ftype    : 'Ext.grid.feature.CheckboxSelection',
@@ -250,56 +262,25 @@ Ext.require([
                                 dockedItems: {   
                                         xtype: 'toolbar',
                                         docked: 'top', 
-                                            items: [{xtype: 'spacer'},
+                                            items: [{xtype: 'button',
+                                                        ui: 'back',
+                                                        text:'back',
+                                                        handler: function (button){
+                                                            button.hide();
+                                                            nestedList.setActiveItem(0);
+                                                            Ext.getCmp('mainPanel').setTitle('Now-Yakutsk');
+                                                            
+                                                            //Ext.ViewPort.onBackButtonTap();
+                                                            //tb.show();
+                                                            
+                                                        }
+                                                    },
+                                                    {xtype: 'spacer'},
                                                     {
                                                     ui: 'round',   
                                                     xtype: 'button',
                                                     text: 'Правка',
                                                         handler: function (button) {
-                                                        //name = record.    get(ftype); 
-                                                        var favestore = Ext.create("Ext.data.Store", {
-                                                                model: "Favorite",defaultRootProperty: 'items',
-                                                                storeId: 'Favorite',
-                                                                proxy: {
-                                                                    type: "sql"
-                                                                },
-                                                                grouper: {
-                                                                    groupFn: function(record) {
-                                                                        var ind = record.get('ftype');
-                                                                        switch (ind) {
-                                                                            case "cinema":
-                                                                            gr = "Кино";
-                                                                            break;
-
-                                                                            case "theatre":
-                                                                            gr = "Театры";
-                                                                            break;
-                                                                            case "events":
-                                                                            gr = "Мероприятия";
-                                                                            break;
-                                                                            case "restaurant":
-                                                                            gr = "Рестораны";
-                                                                            break;
-                                                                            case "beautyandhealh":
-                                                                            gr = "Здоровье и красота";
-                                                                            break;
-                                                                            case "shipment":
-                                                                            gr = "Доставка";
-                                                                            break;
-                                                                            case "nightlife":
-                                                                            gr = "Ночная жизнь";
-                                                                            break;
-                                                                            case "entertainment":
-                                                                            gr = "Развлечение";
-                                                                            break;
-                                                           
-                                                           
-                                                                        };
-                                                                        return (gr);
-                                                                }},
-                                                                autoLoad: true
-                                                                     });
-
                                                             var flist1 = Ext.create("Ext.grid.List", {
                                                             features : [
                                                              {
@@ -307,6 +288,8 @@ Ext.require([
                                                                 launchFn : 'constructor'
                                                             }
                                                             ],
+                                                             useToolbar:false,
+                                                             useHeader: false,
                                                              columns  : [
                                                             {
                                                             //header    : 'Name',
@@ -322,6 +305,13 @@ Ext.require([
                                                             text: 'name',
                                                             
                                                             listeners: {
+                                                            activate: function(){
+                                                            fh1 = this.getHeader();
+                                                            fh1.hide();
+                                                            ftb = this.getToolbar();
+                                                            ftb.hide();
+                                                            },
+                                
                                                             itemtap: function( h, index, target, record, e, eOpts ){
                                                                 console.log(record.raw.id);
                                                                 did = record.raw.id;
@@ -365,11 +355,11 @@ Ext.require([
                                                 }
                                                 ]
                                             },
-                            fullscreen: true,
-                            store: favestore,
-                            text: 'name',
-                             displayField: "name",
-                        });
+                                fullscreen: true,
+                                store: favestore,
+                                text: 'name',
+                                displayField: "name",
+                            });
                                 //display for default category
                                 cin1 = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
