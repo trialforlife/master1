@@ -23,7 +23,11 @@ Ext.application({
     name: 'front',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.data.Store',
+        'Ext.data.proxy.Sql',
+        'Ext.dataview.NestedList',
+        'Ext.data.proxy.JsonP'
     ],
 
     views: [
@@ -53,7 +57,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('front.view.Main'));
+        //Ext.Viewport.add(Ext.create('front.view.Main'));
     },
 
     onUpdated: function() {

@@ -1,9 +1,7 @@
 body{
-
-	background:url(../img/bg.jpg) repeat-x !important;
+	background:url(../img/bg.jpg) repeat-x;
 	min-width:320px;
 	max-width:640px;
-
 }
 @font-face {
     font-family: Hlvl;
@@ -13,17 +11,22 @@ body{
     font-family: Hlvb;
     src: url('HelveticaNeue-Bold.otf');
 }
-
-.nav-element{
-	height:117px !important;	
+.nav_container{
+	background:url(../img/bg.jpg) repeat-x;
+	float:left;
+	width:100%;
 }
-.nav-element .txt{
+.nav_container .nav-element{
+	height:117px;	
+}
+.nav_container .nav-element .txt{
 	color:#fff;
 	font:40px/117px Arial;
-	text-shadow:0 0 46px rgba(180,12,255,0.8),0 4px 0 rgba(0,0,0,0.36);
+	text-shadow:0 0 46px rgba(180,12,255,0.8),
+				0 4px 0 rgba(0,0,0,0.36);
 	padding:0 0 0 133px;
 }
-.nav-element .calc{
+.nav_container .nav-element .calc{
 	float:right;
 	font:24px/117px Arial;
 	color:#fff;
@@ -173,18 +176,18 @@ body{
 	text-shadow:none;
 	margin:0;
 }
-.sm_padding .txt{
+.nav_container.sm_padding .txt{
 	padding:0 0 0 40px;
 	color:#fff;
 	font:40px/139px Hlvl;
 }
-.sm_padding .nav-element{
+.nav_container.sm_padding .nav-element{
 	height:142px;
 	border-bottom:1px solid #820cff;
 	box-shadow:0 1px 0 rgba(255,255,255,0.24);
 	position:relative;
 }
-.r_arrow{
+.nav_container .r_arrow{
 	display:block;
 	position:absolute;
 	right:10px;
@@ -195,7 +198,7 @@ body{
 	z-index:10;
 	background:url(../img/arrow-next.png) no-repeat;
 }
- .location{
+.nav_container .location{
 	padding:0 0 0 30px;
 	color:rgba(255,255,255,0.5);
 	position:absolute;
@@ -205,20 +208,20 @@ body{
 	background:url(../img/locate-ico.png) left 5px no-repeat;
 	left:8px;
 }
-.event .img_box{
+.nav_container.event .img_box{
 	position:absolute;
 	width:200px;
 	height:138px;
 	right:0;
 	top:0;
 }
-.event .img_box .time.b{
+.nav_container.event .img_box .time.b{
 	font:40px Hlvl;
 	float:right;
 	top:12px;
 	right:5px;
 }
-.event .img_box .time{
+.nav_container.event .img_box .time{
 	color:#fff;
 	text-shadow:-2px -2px 0 rgba(0,0,0,0.2),
 				2px -2px 0 rgba(0,0,0,0.2),
@@ -230,13 +233,13 @@ body{
 	right:5px;
 	font:24px Hlvl;
 }
-.event .location{
+.nav_container.event .location{
 	top:70px;
 }
-.event .txt{
+.nav_container.event .txt{
 	line-height:60px;
 }
- .category{
+.nav_container .category{
 	color:#fff;
 	font:34px/44px Hlvb;
 	text-shadow:1px 0 0 rgba(0,0,0,0.42);
@@ -319,11 +322,11 @@ body{
 	width:374px;
 	margin:0 auto;
 }
-.sm_padding.delete .nav-element{
+.nav_container.sm_padding.delete .nav-element{
 	border:none;
 	box-shadow:none;
 }
-.delete .delete{
+.nav_container.delete .delete{
 	display:block;
 	position:absolute;
 	left:0;
@@ -331,7 +334,7 @@ body{
 	background:url(../img/delete.png) center center no-repeat;
 	height:140px;
 }
-.delete .box{
+.nav_container.delete .box{
 	position:absolute;
 	left:85px;
 	height:140px;
@@ -480,10 +483,10 @@ body{
 	max-width:282px;
 	max-height:400px;
 }
-.sm_padding.event.search{
+.nav_container.sm_padding.event.search{
 	background:#1e3244;
 }
-.sm_padding.event.search .txt{
+.nav_container.sm_padding.event.search .txt{
 	text-shadow:none;
 }
 .search-box{
@@ -521,73 +524,4 @@ body{
 	text-align:center;
 	display:block;
 	padding:0 0 50px;
-}
-.x-scroll-scroller{
-	background: url(../img/bg.jpg) repeat-x;
-	float: left;
-	width: 100%;
-}
-.x-center, .x-centered {
-	padding: 0px;
-	margin: 0px;
-}
-.x-toolbar.x-docked-top {
-	border-bottom: 1px solid;
-	height: 88px;
-	width: 100%;
-	height: 88px;
-	padding: 0 0 2px;
-	float: left;
-	position: relative;
-	background: url(../img/headbg.jpg) repeat-x rgba(10, 0, 83, 1) !important;
-},
-.x-toolbar-light .x-title {
-	color: #69d2e7 !important;
-	text-shadow: 0 0 40px rgba(180,12,255,1), 0 4px 0 rgba(0,0,0,0.36) !important;
-}
-.x-toolbar-light {
-	background-image: none !important;
-	background-color: none !important;
-	background-image: none !important;
-	background-image: none !important;
-	background-image: none !important;
-	background-image: none !important;
-	background-image: none !important;
-}
-.x-title .x-innerhtml{
-	width: 368px !important;
-	color: #69d2e7;
-	font: 52px/88px Hlvb;
-	text-shadow: 0 0 40px rgba(180,12,255,1),
-	 0 4px 0 rgba(0,0,0,0.36);
-	width: 100%;
-	text-align: center;
-	display: block;
-}
-.x-button .x-button-icon{
-	width: 40px !important;
-	height: 40px !important;
-	background: url(../img/ico_search.png) no-repeat !important;
-}
-.x-button {
-	width: 20px !important;
-	height: 20px !important;
-
-}
-.x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after {
-	width: 66px!important;
-	height: 70px !important;
- }
- .x-button .x-button-icon.x-shown {
-	margin-left: -20px !important;
-	margin-top: 8px !important;
-}
-.x-list .x-list-item .x-list-item-body, .x-list .x-list-item.x-list-item-tpl .x-innerhtml {
-	padding: 0 !important;
-}
-.x-list .x-list-item .x-list-item-body, .x-list .x-list-item.x-list-item-tpl .x-innerhtml {
-	padding: 0 !important;
-}
-.x-list-normal .x-list-item.x-list-item-tpl, .x-list-normal .x-list-item .x-dock-horizontal {
-border-top: none !important;
 }

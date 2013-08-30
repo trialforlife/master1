@@ -1,5 +1,5 @@
 var value;
-Ext.define('ListItem', {
+Ext.define('front.view.Main', {
 
     extend: 'Ext.data.Model',
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
@@ -78,7 +78,9 @@ Ext.require([
         id: 'mainPanel',                  
         title: 'Now-Yakutsk',
         iconCls: 'star',
+        
         displayField: 'title',
+        
         layout: 'card',
         
 
@@ -108,7 +110,7 @@ Ext.require([
                             tbr = this.getToolbar();
                             tb = this.getToolbar();
                             tb.setTitle('Now-Yakutsk');
-                            tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'search', 
+                            tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none', 
                                 scope: this,
                                 handler: 
                                     function(button) {
@@ -177,7 +179,7 @@ Ext.require([
                         ser.show();
                         }
                         }]);
-                            tb.doLayout();
+
                             } ,
                     deactivate: function() {
                             }
@@ -1118,7 +1120,7 @@ Ext.require([
                         listeners: {
                              activate : function() {         
                                 tb1 = this.getToolbar();
-                                tb1.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'search', 
+                                tb1.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'none', 
                                                 
                                                 scope: this,
                                                 handler: 
