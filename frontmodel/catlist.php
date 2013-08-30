@@ -17,7 +17,7 @@ if (mysql_affected_rows() > 0) {
 	{
 		array_push($result["cat"],array(
 			"id"=>$row["cat_id"],
-			"title"=>addslashes((string)$row["cat_title"]),
+			"title"=>	'<div class="nav-element"><span class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">98</span></div>',
 			"code"=>addslashes((string)$row["cat_code"]),
 			));
 			
