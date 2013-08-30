@@ -27,7 +27,8 @@ Ext.application({
         'Ext.data.Store',
         'Ext.data.proxy.Sql',
         'Ext.dataview.NestedList',
-        'Ext.data.proxy.JsonP'
+        'Ext.data.proxy.JsonP',
+        'Ext.tab.Panel'
     ],
 
     views: [

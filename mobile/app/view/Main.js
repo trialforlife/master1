@@ -398,6 +398,7 @@ Ext.require([
                                 displayField: "name",
                             });
                                 //display for default category
+                                if(catdyn!= 'poster') {
                                 cin1 = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     displayField: 'list',
@@ -494,7 +495,7 @@ Ext.require([
                                                                     },
                                                                    
                                                                     {
-                                                                    scroll:'vertical',
+                                                                    scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist', 
@@ -610,9 +611,11 @@ Ext.require([
                                                 }
                                             }
                                 });
+                                }
                                 //display for about us +
 
                                 //disply for nightlife category
+                                if(catdyn!= 'poster') {
                                 cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
                                     fullscreen: true,
@@ -636,7 +639,7 @@ Ext.require([
                                         {   //xtype: 'nestedList',
                                             
                                             title: 'Сегодня',
-                                            scroll:'vertical',
+                                            scrollable:'vertical',
                                             xtype: 'nestedlist', 
                                             iconCls: 'star',
                                             displayField: 'list', 
@@ -721,7 +724,7 @@ Ext.require([
                                                                     },
                                                                    
                                                                     {
-                                                                    scroll:'vertical',
+                                                                    scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist', 
@@ -838,7 +841,7 @@ Ext.require([
                                             {   //xtype: 'nestedList',
                                             
                                             title: 'Клубы',
-                                            scroll:'vertical',
+                                            scrollable:'vertical',
                                             //sflex: 1,
                                             xtype: 'nestedlist', 
                                             iconCls: 'star',
@@ -924,7 +927,7 @@ Ext.require([
                                                                     },
                                                                    
                                                                     {
-                                                                    scroll:'vertical',
+                                                                    scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist', 
@@ -1038,7 +1041,8 @@ Ext.require([
                                         ]
                                     });
                                 
-
+                                }
+                                if(catdyn!= 'poster') {
                                 about = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     displayField: 'list',
@@ -1085,7 +1089,7 @@ Ext.require([
                                             }
                                 });
             
-
+                                }
                         var treeStore2 = Ext.create("Ext.NestedList", {
                         fullscreen: true,
                         tabBarPosition: 'bottom',
@@ -1315,7 +1319,7 @@ Ext.require([
                                                                     },
                                                                    
                                                                     {
-                                                                    scroll:'vertical',
+                                                                    scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist', 
