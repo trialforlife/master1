@@ -1,4 +1,4 @@
-body{
+html,body{
 
 	background:url(../img/bg.jpg) repeat-x !important;
 	/*min-width:320px;
@@ -589,5 +589,8 @@ body{
 	padding: 0 !important;
 }
 .x-list-normal .x-list-item.x-list-item-tpl, .x-list-normal .x-list-item .x-dock-horizontal {
-border-top: none !important;
+	border-top: none !important;
+}
+.x-inner, .x-body {
+	background: url(../img/bg.jpg) repeat-x;
 }
