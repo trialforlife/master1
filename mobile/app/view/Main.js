@@ -1,14 +1,10 @@
 var value;
 Ext.define('front.view.Main', {
-
     extend: 'Ext.data.Model',
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
     config: {
         fields: ['text'],
     },
-    initialize: function() {
-          this.callParent(arguments);// required to make back button work
-    }
 
 });     
 
@@ -40,20 +36,17 @@ Ext.require([
                 {name: "filmpage",  type: "string"},
                 {name: "id",       type: "int"},
                 {name: 'leaf', defaultValue: true},
-                
             ]
         }
     });
     var search = Ext.create("Ext.data.Store", {
     type: 'tree',
-
     root: {
     leaf: false
     },
     storeId: "search",
     model: "search"
 });
-
 
     var favestore = Ext.create("Ext.data.Store", {
         model: "Favorite",defaultRootProperty: 'items',
@@ -69,21 +62,20 @@ Ext.require([
         autoLoad: true
              });
     
-
-
     var treeStore = Ext.create("Ext.NestedList", {
+        updateTitleText :false,
+        useTitleAsBackText: false,
+        defaultBackButtonText : null,
+        backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:5px; height:40px;\" src=../img/main-ico.png><div style=\"margin-left:29px; margin-top:6px;\">Главная</div>',
+       // backButton: 'img/main-ico.png',
         fullscreen: true,
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',                  
         title: 'Now-Yakutsk',
         iconCls: 'star',
-        
         displayField: 'title',
-        
         layout: 'card',
-        
-
         store: {
             type: 'tree',
             id: 'ListCard',
@@ -109,7 +101,7 @@ Ext.require([
                     activate : function() { 
                             tbr = this.getToolbar();
                             tb = this.getToolbar();
-                            tb.setTitle('Now-Yakutsk');
+                            //tb.setTitle('Now-Yakutsk');
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none', 
                                 scope: this,
                                 handler: 
@@ -185,6 +177,7 @@ Ext.require([
                             }
                             ,                       
                     leafitemtap: function(nestedList, list, index, target, record) {
+
                         cat = record.get('code');
                         var catdyn = cat;
                         var favestore = Ext.create("Ext.data.Store", {
@@ -1090,14 +1083,17 @@ Ext.require([
                                 });
             
                                 }
+
                         var treeStore2 = Ext.create("Ext.NestedList", {
                         fullscreen: true,
                         tabBarPosition: 'bottom',
+                        useTitleAsBackText: false,
+                        defaultBackButtonText : null,
+                        backText: 'Go Bsack!',
                         //useToolbar:false,
-
-                            //leaf: true ,
-                            iconCls: 'star',
-                            displayField: 'title',
+                        //leaf: true ,
+                        iconCls: 'star',
+                        displayField: 'title',
 
                         store: {
                             type: 'tree',
@@ -1112,7 +1108,7 @@ Ext.require([
 
                             proxy: {
                                 type: 'jsonp',
-                                url: 'http://now-yakutsk.stairwaysoft.net/catlist2.php',
+                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist2.php',
                                 reader: {
                                     type: 'json',
                                     rootProperty: 'cat'
@@ -1122,10 +1118,9 @@ Ext.require([
 
 
                         listeners: {
-                             activate : function() {         
-                                tb1 = this.getToolbar();
+                             activate : function() {
+                                tb1 = this.getToolbar();  
                                 tb1.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'none', 
-                                                
                                                 scope: this,
                                                 handler: 
                                                     function(button) {
@@ -1194,10 +1189,16 @@ Ext.require([
                                                 ser.show();
                                                 }
                                                 }]);
+                                    //console.log(tb1.getTitle());
+                                   
+ 
                                 tb1.hide();
-                                tb.show(); 
+                                tb.setTitle('Афиша');
+
+
                              } ,
-                             deactivate: function() {       
+                             deactivate: function() { 
+                                tb.setTitle('Now-Yakutsk');      
                                 //tb.show(); 
                             }
                             ,
@@ -1237,7 +1238,8 @@ Ext.require([
                                                 styleHtmlContent: true
                                             },
                                             listeners: {
-                                            activate : function() {     
+                                            activate : function() {   
+                                                
                                                 tb1.show();
 
                                                 
@@ -1456,6 +1458,7 @@ Ext.require([
                                     case "poster":
                                         var detailCard = nestedList.getDetailCard();
                                         nestedList.setDetailCard(treeStore2);
+
                                        break;
                                     case "favorite":
                                         var detailCard = nestedList.getDetailCard(); 
@@ -1482,6 +1485,7 @@ Ext.require([
 
         }
         );
+
 
 
         

@@ -570,9 +570,9 @@ html,body{
 	background: url(../img/ico_search.png) no-repeat !important;
 }
 .x-button {
-	width: 20px !important;
+	/*width: 20px !important;
 	height: 20px !important;
-
+*/
 }
 .x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after {
 	width: 66px!important;
@@ -593,4 +593,40 @@ html,body{
 }
 .x-inner, .x-body {
 	background: url(../img/bg.jpg) repeat-x;
+}
+.x-webkit .x-button-back, .x-webkit .x-toolbar .x-button-back {
+	min-width: 150px !important;
+	font: 34px/40px Hlvb !important;	
+	color: #fff;		
+}
+.x-toolbar-light .x-button.x-button-back:before, .x-toolbar-light .x-button.x-button-forward:before, .x-toolbar .x-toolbar-light .x-button.x-button-back:before, .x-toolbar .x-toolbar-light .x-button.x-button-forward:before,
+.x-toolbar-light .x-field-select .x-component-outer.x-button-back:before,
+.x-toolbar-light .x-field-select .x-component-outer.x-button-forward:before, .x-toolbar
+.x-toolbar-light .x-field-select .x-component-outer.x-button-back:before, .x-toolbar
+.x-toolbar-light .x-field-select .x-component-outer.x-button-forward:before,
+.x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:before,
+.x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:before, .x-toolbar
+.x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:before, .x-toolbar
+.x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:before {
+  /*background: #0b3c5e;
+ 	background: url(../img/main-ico.png);*/
+ 	background-repeat: no-repeat;
+ 	width: 0px !important; 
+ 	margin-top: 29px;
+ 	height: 0px !important; 
+}
+.x-webkit .x-button-back, .x-webkit .x-toolbar .x-button-back {
+	margin-left: 0 !important; 
+	padding-left: 0 !important; 
+}
+.nav-element1{
+	height:142px;
+	border-bottom:1px solid #820cff;
+	box-shadow:0 1px 0 rgba(255,255,255,0.24);
+	position:relative;
+}
+.nav-element1 .txt {
+	padding: 0 0 0 40px;
+	color: #fff;
+	font: 40px/139px Hlvl;
 }

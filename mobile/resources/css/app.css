@@ -3812,7 +3812,7 @@ body.x-desktop {
 }
 /* line 20, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/mixins/_Class.scss */
 .x-button.x-button-back:before, .x-button.x-button-forward:before, .x-toolbar .x-button.x-button-back:before, .x-toolbar .x-button.x-button-forward:before {
-  background: #999999;
+  /*background: #999999;*/
 }
 /* line 26, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/mixins/_Class.scss */
 .x-button, .x-button.x-button-back:after, .x-button.x-button-forward:after, .x-toolbar .x-button, .x-toolbar .x-button.x-button-back:after, .x-toolbar .x-button.x-button-forward:after {
@@ -5169,7 +5169,10 @@ body.x-desktop {
 .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:before, .x-toolbar
 .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:before, .x-toolbar
 .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:before {
-  background: #0b3c5e;
+  /*background: #0b3c5e;*/
+/* 	background-color: red;
+*/
+
 }
 /* line 26, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/mixins/_Class.scss */
 .x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after,
