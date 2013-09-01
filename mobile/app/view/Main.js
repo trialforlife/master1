@@ -12,7 +12,7 @@ Ext.require([
     'Ext.grid.List',
     'Ext.grid.feature.Feature',
     'Ext.grid.feature.CheckboxSelection'
-]);
+]); 
 
     db = openDatabase("Sencha", "1.0", "Sencha", 200000);
         if(!db)
