@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from `events` 
+$query = 'select * from events
 ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
@@ -22,10 +22,10 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["ev_image"]),
 			"adress"=>addslashes((string)$row["ev_adress"]),
 			"published"=>addslashes((string)$row["ev_published"]),
-			"list"=>"<div>".addslashes((string)$row["ev_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["ev_image"]."><br></div>",
+			//"list"=>"<div>".addslashes((string)$row["ev_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["ev_image"]."><br></div>",
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["ev_image"]).">",
-			
-			));
+            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["ev_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["ev_adress"]).'</span></div>',
+        ));
 			
 	}
 }
