@@ -21,9 +21,11 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["t_image"]),
 			"adress"=>addslashes((string)$row["t_adress"]),
 			"published"=>addslashes((string)$row["t_published"]),
-			"list"=>"<div>".addslashes((string)$row["t_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["t_image"]."><br><div>",
+			//"list"=>"<div>".addslashes((string)$row["t_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["t_image"]."><br><div>",
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["t_image"]).">",
-			));
+            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["t_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["t_adress"]).'</span></div>',
+
+        ));
 			
 	}
 }
