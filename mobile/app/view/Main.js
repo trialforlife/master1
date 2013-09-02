@@ -3,8 +3,8 @@ Ext.define('front.view.Main', {
     extend: 'Ext.data.Model',
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
     config: {
-        fields: ['text'],
-    },
+        fields: ['text']
+    }
 
 });     
 
@@ -19,7 +19,7 @@ Ext.require([
             {alert("Failed to connect to database.");}   
         else 
             {//alert('fuck yeah');
-            };
+            }
     Ext.require(['Ext.data.proxy.SQL']);
         Ext.define("Favorite", {
         extend: "Ext.data.Model",
@@ -35,7 +35,7 @@ Ext.require([
                 {name: "name", type: "string"},
                 {name: "filmpage",  type: "string"},
                 {name: "id",       type: "int"},
-                {name: 'leaf', defaultValue: true},
+                {name: 'leaf', defaultValue: true}
             ]
         }
     });
@@ -48,7 +48,7 @@ Ext.require([
     model: "search"
 });
 
-    var favestore = Ext.create("Ext.data.Store", {
+    /*var favestore = Ext.create("Ext.data.Store", {
         model: "Favorite",defaultRootProperty: 'items',
         storeId: 'Favorite',
         proxy: {
@@ -60,9 +60,9 @@ Ext.require([
             }
         },
         autoLoad: true
-             });
+             });*/
     
-    var treeStore = Ext.create("Ext.NestedList", {
+    Ext.create("Ext.NestedList", {
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
@@ -85,15 +85,14 @@ Ext.require([
             ],
 
             root: {
-                leaf: false,
-
+                leaf: false
             },
             proxy: {
                 type: 'jsonp',
                 url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist.php',
                 reader: {
                     type: 'json',
-                    rootProperty: 'cat',
+                    rootProperty: 'cat'
                 }
             }
         },                                                                      
@@ -123,7 +122,7 @@ Ext.require([
                                                     handler: function () {
                                                         ser.hide();
                                                         button.show();
-                                                    },
+                                                    }
                                                 }
                                                 ]
                                             },
@@ -144,17 +143,17 @@ Ext.require([
                                                         url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,                                                   
                                                         success: function(response){
                                                             var text = Ext.decode(response.responseText.trim());                      
-                                                            search.removeAll()
+                                                            search.removeAll();
                                                             search.add(text.films);
                                                             console.log(search);
                                                                     }
                                                                 });
                                                                 
-                                                                },
+                                                                }
 
-                                                            },
+                                                            }
 
-                                                        }],
+                                                        }]
 
                             }, 
                             {   
@@ -164,9 +163,9 @@ Ext.require([
                                 flex:1,
                                // displayField: 'filmpage', 
                                 itemTpl: "{filmpage}",
-                                store: search,                                                            
+                                store: search
                                             
-                            }],
+                            }]
                         });
                         ser.show();
                         }
@@ -296,7 +295,7 @@ Ext.require([
                                                             style     : 'padding-left: 1em;',
                                                             width     : '40%',
                                                             filter    : { type : 'string' }
-                                                            },
+                                                            }
                                                             ],
                                                             
                                                             hideOnMaskTap: true,
@@ -348,16 +347,17 @@ Ext.require([
                                                                                     //button.show();
                                                                                     flist1.hide();
                                                                                     flist.show();
-                                                                                },
+                                                                                }
                                                                             }
                                                                             ]
-                                                                        },
+                                                                        }
                                             
-                                                    }); fd = (flist1.getHeader());
+                                                    });
+                                                        fd = (flist1.getHeader());
                                                         fd.destroy();
                                                         flist1.show();
 
-                                                    },
+                                                    }
                                                                             }
                                                                             ]
                                                                             );                          
@@ -382,16 +382,16 @@ Ext.require([
                                 style     : 'padding-left: 1em;',
                                 width     : '40%',
                                 filter    : { type : 'string' }
-                                },
+                                }
                                 ],
                                 hideOnMaskTap: true,
                                 fullscreen: true,
                                 store: favestore,
                                 text: 'name',
-                                displayField: "name",
+                                displayField: "name"
                             });
                                 //display for default category
-                                if(catdyn!= 'poster') {
+                                if(catdyn!= 'poster' && catdyn!= 'favorite' ) {
                                 cin1 = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     displayField: 'list',
@@ -428,7 +428,6 @@ Ext.require([
                                              } ,
                                              deactivate: function() {
                                                 tb.show();                             
-
                                             }
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
@@ -484,7 +483,7 @@ Ext.require([
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'...место для адресса... ',
+                                                                        html:'...место для адресса... '
                                                                     },
                                                                    
                                                                     {
@@ -510,9 +509,9 @@ Ext.require([
                                                                         url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
                                                                         reader: {
                                                                             type: 'json',
-                                                                            rootProperty: 'films',
+                                                                            rootProperty: 'films'
                                                                         }
-                                                                    }}},
+                                                                    }}}
                                                                      
 
                                                                 ],
@@ -550,7 +549,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                     favestore.sync();
@@ -565,7 +564,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                    favestore.sync();
@@ -595,11 +594,11 @@ Ext.require([
                                                             tb2.hide();
                                                             //this.getToolbar().hide();
                                                             }
-                                                        ,
+
                                                         }
 
                                             });     
-                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
                                             }
@@ -608,7 +607,7 @@ Ext.require([
                                 //display for about us +
 
                                 //disply for nightlife category
-                                if(catdyn!= 'poster') {
+                                if(catdyn!= 'poster' && catdyn!= 'aboutus' && catdyn!= 'beautyandhealh' && catdyn!= 'shipment' && catdyn!= 'entertainment' && catdyn!= 'restaurant' && catdyn!= 'favorite' ) {
                                 cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
                                     fullscreen: true,
@@ -713,7 +712,7 @@ Ext.require([
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'...место для адресса... ',
+                                                                        html:'...место для адресса... '
                                                                     },
                                                                    
                                                                     {
@@ -739,9 +738,9 @@ Ext.require([
                                                                         url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
                                                                         reader: {
                                                                             type: 'json',
-                                                                            rootProperty: 'films',
+                                                                            rootProperty: 'films'
                                                                         }
-                                                                    }}},
+                                                                    }}}
                                                                      
 
                                                                 ],
@@ -777,7 +776,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                     favestore.sync();
@@ -792,7 +791,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                    favestore.sync();
@@ -801,7 +800,7 @@ Ext.require([
                                                                                 
                                                                             }
                                                                     }
-                                                                    ,
+
 
                                                                 ]
                                                             }
@@ -821,11 +820,11 @@ Ext.require([
                                                             tb2.hide();
                                                             
                                                             }
-                                                        ,
+
                                                         }
 
                                             });     
-                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
                                             }
@@ -916,7 +915,7 @@ Ext.require([
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'...место для адресса... ',
+                                                                        html:'...место для адресса... '
                                                                     },
                                                                    
                                                                     {
@@ -942,9 +941,9 @@ Ext.require([
                                                                         url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
                                                                         reader: {
                                                                             type: 'json',
-                                                                            rootProperty: 'films',
+                                                                            rootProperty: 'films'
                                                                         }
-                                                                    }}},
+                                                                    }}}
                                                                      
                                                                 ],
                                                         
@@ -979,7 +978,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                     favestore.sync();
@@ -994,7 +993,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                    favestore.sync();
@@ -1003,7 +1002,7 @@ Ext.require([
                                                                                 
                                                                             }
                                                                     }
-                                                                    ,
+
                                                                 ]
                                                             }
                                                         ],                                         
@@ -1021,11 +1020,11 @@ Ext.require([
                                                             tb.show();                             
                                                             tb2.hide();
                                                             }
-                                                        ,
+
                                                         }
 
                                             });     
-                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
                                             }
@@ -1035,7 +1034,7 @@ Ext.require([
                                     });
                                 
                                 }
-                                if(catdyn!= 'poster') {
+                                if(catdyn!= 'poster' && catdyn!= 'favorite' ) {
                                 about = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     displayField: 'list',
@@ -1141,7 +1140,7 @@ Ext.require([
                                                                     handler: function () {
                                                                         ser.hide();
                                                                         button.show();
-                                                                    },
+                                                                    }
                                                                 }
                                                                 ]
                                                             },
@@ -1162,17 +1161,17 @@ Ext.require([
                                                         url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,                                                   
                                                         success: function(response){
                                                             var text = Ext.decode(response.responseText.trim());                      
-                                                            search.removeAll()
+                                                            search.removeAll();
                                                             search.add(text.films);
                                                             console.log(search);
                                                                     }
                                                                 });
                                                                 
-                                                                },
+                                                                }
 
-                                                            },
+                                                            }
 
-                                                        }],
+                                                        }]
 
                                                     }, 
                                                     {   
@@ -1182,9 +1181,9 @@ Ext.require([
                                                         flex:1,
                                                        // displayField: 'filmpage', 
                                                         itemTpl: "{filmpage}",
-                                                        store: search,                                                            
+                                                        store: search
                                                                     
-                                                    }],
+                                                    }]
                                                 });
                                                 ser.show();
                                                 }
@@ -1317,7 +1316,7 @@ Ext.require([
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'...место для адресса... ',
+                                                                        html:'...место для адресса... '
                                                                     },
                                                                    
                                                                     {
@@ -1343,9 +1342,9 @@ Ext.require([
                                                                         url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
                                                                         reader: {
                                                                             type: 'json',
-                                                                            rootProperty: 'films',
+                                                                            rootProperty: 'films'
                                                                         }
-                                                                    }}},                                                                     
+                                                                    }}}
                                                                ],
                                                         
                                                                                                  
@@ -1386,8 +1385,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
-
+                                                                                        fid : cfid
                                                                                     }]);
                                                                                     favestore.sync();
                                                                                 }
@@ -1401,7 +1399,7 @@ Ext.require([
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
-                                                                                        fid : cfid,
+                                                                                        fid : cfid
 
                                                                                     }]);
                                                                                    favestore.sync();
@@ -1426,11 +1424,11 @@ Ext.require([
                                                                         tb2.hide();
                                                                         tb.hide();
                                                                         }
-                                                                    ,
+
                                                                     }
 
                                             });     
-                                                var detailCard = nestedList.getDetailCard();
+                                                    nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
                                             }
@@ -1438,7 +1436,6 @@ Ext.require([
                                         var cat = (record.get('code'));
                                         switch (cat) {
                                            case "cinema":
-                                               var detailCard = nestedList.getDetailCard();
                                                nestedList.setDetailCard(cin);
                                                break;
                                            case "theatre":
@@ -1449,41 +1446,31 @@ Ext.require([
                                                 break;
                                            default:
                                            break;
-                                        };
+                                        }
                                         }                                            
                                     }                                 
                                 });
                                 var code = (record.get('code'));
                                 switch (code) {
                                     case "poster":
-                                        var detailCard = nestedList.getDetailCard();
-                                        nestedList.setDetailCard(treeStore2);
-
+                                       nestedList.setDetailCard(treeStore2);
                                        break;
                                     case "favorite":
-                                        var detailCard = nestedList.getDetailCard(); 
                                         nestedList.setDetailCard(flist);
                                         break;
                                     case "nightlife":
-                                        var detailCard = nestedList.getDetailCard(); 
                                         nestedList.setDetailCard(cin2);
-                                        break                                    
-                                    case "aboutus":
-                                        var detailCard = nestedList.getDetailCard(); 
+                                        break;
+                                    case "about":
                                         nestedList.setDetailCard(about);
                                         break;
-                                    
                                     default:
-                                        var detailCard = nestedList.getDetailCard();
                                         nestedList.setDetailCard(cin1);
                                         break;
                                     }                              
                                 } 
                         } 
-            ,
-
-
-        }
+         }
         );
 
 
