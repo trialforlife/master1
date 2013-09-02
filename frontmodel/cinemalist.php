@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from `cinema` 
+$query = 'select * from cinema
 ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
@@ -22,9 +22,10 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["c_image"]),
 			"adress"=>addslashes((string)$row["c_adress"]),
 			"published"=>addslashes((string)$row["c_published"]),
-			"list"=>addslashes((string)$row["c_name"]).'<br>'.addslashes((string)$row["c_adress"]),
+			"list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["c_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["c_adress"]).'</span></div>',
 
-			"img_full"=> "<img src=http://now/".addslashes((string)$row["c_image"]).">",
+
+            "img_full"=> "<img src=http://now/".addslashes((string)$row["c_image"]).">",
 			"banner"=>"<img src=http://now/".addslashes((string)$row["cb_banner"]).">",
 
 			));
