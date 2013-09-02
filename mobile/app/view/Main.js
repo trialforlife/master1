@@ -224,8 +224,11 @@ Ext.require([
                                indexBar    : false,
                                useToolbar:false,
                                useHeader: false,
-                               listeners:{ 
+                                updateTitleText :false,
+
+                            listeners:{
                                activate: function(button){
+                                tb.setTitle('Избранное');
                                 favestore.sync();
                                 Ext.getCmp('serch').hide();
                                 fed = Ext.getCmp('ed');
@@ -283,6 +286,8 @@ Ext.require([
                                                         indexBar    : false,
                                                         useToolbar:false,
                                                         useHeader: false,
+                                                        updateTitleText :false,
+
                                                         features : [
                                                         {
                                                             ftype    : 'Ext.grid.feature.CheckboxSelection',
@@ -309,6 +314,7 @@ Ext.require([
                                                             console.log(nestedList.getHeader());
                                                             fh2.hide();
                                                             flist.hide();
+
                                                             
 
                                                             favestore.sync();
@@ -336,7 +342,7 @@ Ext.require([
                                                             dockedItems: {   
                                                                     xtype: 'toolbar',
                                                                     docked: 'top', 
-
+                                                                    title: 'Избранное',
                                                                         items: [{xtype: 'spacer'},
                                                              
                                                                                 {
@@ -356,8 +362,7 @@ Ext.require([
                                                         fd = (flist1.getHeader());
                                                         fd.destroy();
                                                         flist1.show();
-
-                                                    }
+                                    }
                                                                             }
                                                                             ]
                                                                             );                          
@@ -365,6 +370,7 @@ Ext.require([
                                },
                                deactivate: function(button){
                                 //tb.show();
+                                tb.setTitle('Now-Yakutsk');
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
                                 
@@ -1086,9 +1092,10 @@ Ext.require([
                         var treeStore2 = Ext.create("Ext.NestedList", {
                         fullscreen: true,
                         tabBarPosition: 'bottom',
+                        updateTitleText :false,
                         useTitleAsBackText: false,
                         defaultBackButtonText : null,
-                        backText: 'Go Bsack!',
+                        backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:5px; height:40px;\" src=../img/main-ico.png><div style=\"margin-left:29px; margin-top:6px;\">Афиша</div>',
                         //useToolbar:false,
                         //leaf: true ,
                         iconCls: 'star',
@@ -1202,8 +1209,16 @@ Ext.require([
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
-                                
                                 cat = record.get('code');
+                                if(cat== 'cinema' ){
+                                    tb1.setTitle('Кинотеатры');
+                                }
+                                else if(cat== 'theatre'){
+                                    tb1.setTitle('Театры');
+                                }
+                                else if(cat== 'events'){
+                                    tb1.setTitle('Мероприятия');
+                                }
                                 var catdyn = cat;
                                 cin = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
