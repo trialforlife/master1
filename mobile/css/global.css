@@ -427,7 +427,7 @@ html,body{
 	background:url(../img/m-clock.png) left center no-repeat;
 	display:block;
 }
-.item-element p{
+.item-element pf{
 	color:#fff;
 	font:24px Hlvl;
 	padding:0 0 0 38px;
