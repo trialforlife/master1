@@ -1126,7 +1126,7 @@ Ext.require([
                         listeners: {
                              activate : function() {
                                 tb1 = this.getToolbar();  
-                                tb1.insert(3,[ {xtype:'spacer'}, {align: 'right', xtype:'button', iconCls: 'none', 
+                                tb1.insert(3,[ {xtype:'spacer'}, {id:'serch', align: 'right', xtype:'button', iconCls: 'none',
                                                 scope: this,
                                                 handler: 
                                                     function(button) {
@@ -1223,6 +1223,10 @@ Ext.require([
                                 cin = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     tabBarPosition: 'bottom',
+                                    defaultBackButtonText : null,
+                                    updateTitleText:false,
+                                    backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:5px; height:40px;\" src=./img/main-ico.png></div>',
+
                                     //useToolbar:false,
                                             //title: 'Blog',
                                             iconCls: 'star',
@@ -1252,21 +1256,14 @@ Ext.require([
                                                 styleHtmlContent: true
                                             },
                                             listeners: {
-                                            activate : function() {   
-                                                
+                                            activate : function() {
                                                 tb1.show();
-
-                                                
-                                                
-                                                
-                                                
 
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
-                                                tb.hide(); 
+                                                tb.hide();
 
-                                            //this.getToolbar(treeStore2).hide();
-                                             
+
                                          } ,
                                              deactivate: function() {
                                                 tb.show(); 
@@ -1274,14 +1271,13 @@ Ext.require([
                                                 tb1.hide();
                                                 tb2.hide();delete window.ttt;
 
-                                                //this.getToolbar().hide();
                                             },
                                             
                                                
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                                         var f_cid = post.get('cid');
-                                                
-                                                
+                                                    
+                                                                        tb2.setTitle(post.get('name'));
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
                                                                         //useToolbar:true,
@@ -1375,7 +1371,7 @@ Ext.require([
                                                                                 
                                                                             }
                                                                             else{
-                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{ xtype:'button', iconCls: 'star',
+                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                             handler: function(button){ 
 
                                                                             var s_name = post.get('list');
