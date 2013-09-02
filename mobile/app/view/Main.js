@@ -1226,7 +1226,7 @@ Ext.require([
                                     defaultBackButtonText : null,
                                     updateTitleText:false,
                                     backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:5px; height:40px;\" src=./img/main-ico.png></div>',
-
+                                    scrollable:'vertical',
                                     //useToolbar:false,
                                             //title: 'Blog',
                                             iconCls: 'star',
@@ -1276,7 +1276,7 @@ Ext.require([
                                                
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                                         var f_cid = post.get('cid');
-                                                    
+
                                                                         tb2.setTitle(post.get('name'));
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
@@ -1284,8 +1284,8 @@ Ext.require([
                                                                         layout: 'vbox',
                                                                         items: [           {    
                                                                         xtype: 'carousel',
-                                                                        height: '100px',
-                                                                        
+                                                                        height: '225px',
+
 
 
                                                                         store: {
@@ -1331,7 +1331,7 @@ Ext.require([
                                                                     },
                                                                    
                                                                     {
-                                                                    scrollable:'vertical',
+ 
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist', 

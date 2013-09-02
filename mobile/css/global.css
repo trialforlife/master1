@@ -553,7 +553,7 @@ html,body{
 	background-image: none !important;
 }
 .x-title .x-innerhtml{
-	width: 368px !important;
+	min-width: 368px !important;
 	color: #69d2e7;
 	font: 52px/88px Hlvb;
 	text-shadow: 0 0 40px rgba(180,12,255,1),
