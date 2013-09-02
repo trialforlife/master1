@@ -1284,7 +1284,7 @@ Ext.require([
                                                                         layout: 'vbox',
                                                                         items: [           {    
                                                                         xtype: 'carousel',
-                                                                        height: '225px',
+                                                                        height: '125px',
 
 
 
@@ -1331,7 +1331,7 @@ Ext.require([
                                                                     },
                                                                    
                                                                     {
- 
+
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist', 

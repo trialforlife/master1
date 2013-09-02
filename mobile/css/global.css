@@ -413,13 +413,13 @@ html,body{
 	box-shadow:0 1px 0 rgba(255,255,255,0.24);
 	float:left;
 }
-.item-element .h2{
+.h2{
 	color:#fff;
 	font:40px Hlvl;
 	display:block;
 	padding:0 0 0 38px;
 }
-.item-element .time{
+.time{
 	font:36px Hlvl;
 	color:rgba(255,255,255,0.5);
 	padding:0 0 0 30px;
