@@ -24,7 +24,7 @@ if (mysql_affected_rows() > 0) {
 			"time"=>addslashes((string)$row["f_time"]),
 			"filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
+            '<span class="h2">'.$row["f_name"]."</span><span class='time'>".$row["f_time"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br></br><small>".$row["f_content"]."</small></br>",
 			));
 			
 	}
