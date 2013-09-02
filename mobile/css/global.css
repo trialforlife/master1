@@ -21,13 +21,13 @@ html,body{
 	color:#fff;
 	font:40px/117px Arial;
 	text-shadow:0 0 46px rgba(180,12,255,0.8),0 4px 0 rgba(0,0,0,0.36);
-	padding:0 0 0 11%;
+	padding:0 0 0 12%;
 }
 .nav-element .calc{
 	float:right;
 	font:24px/117px Arial;
 	color:#fff;
-	padding:0 72px 0 0;
+    padding: 0 7% 0 0;
 }
 .nav-element.tap{
 	background:rgba(255,255,255,0.1);
