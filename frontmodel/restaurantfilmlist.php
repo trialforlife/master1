@@ -26,7 +26,7 @@ if (mysql_affected_rows() > 0) {
 
             "filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["rs_name"]."<img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["rs_image"]."><br>".$row["rs_time"]."</br><small>".$row["rs_content"]."</small></br>".$row["rs_price"],
+			'<span class="h2">'.$row["rs_name"]."</span><img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["rs_image"]."><br>".$row["rs_time"]."</br><small>".$row["rs_content"]."</small></br>".$row["rs_price"],
 			));
 			
 	}
