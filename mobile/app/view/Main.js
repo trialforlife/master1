@@ -6,18 +6,18 @@ Ext.define('front.view.Main', {
         fields: ['text']
     }
 
-});     
+});
 
 Ext.require([
     'Ext.grid.List',
     'Ext.grid.feature.Feature',
     'Ext.grid.feature.CheckboxSelection'
-]); 
+]);
 
     db = openDatabase("Sencha", "1.0", "Sencha", 200000);
         if(!db)
-            {alert("Failed to connect to database.");}   
-        else 
+            {alert("Failed to connect to database.");}
+        else
             {//alert('fuck yeah');
             }
     Ext.require(['Ext.data.proxy.SQL']);
@@ -61,7 +61,7 @@ Ext.require([
         },
         autoLoad: true
              });*/
-    
+
     Ext.create("Ext.NestedList", {
         updateTitleText :false,
         useTitleAsBackText: false,
@@ -71,7 +71,7 @@ Ext.require([
         fullscreen: true,
         tabBarPosition: 'bottom',
         useToolbar:true,
-        id: 'mainPanel',                  
+        id: 'mainPanel',
         title: 'Now-Yakutsk',
         iconCls: 'star',
         displayField: 'title',
@@ -95,28 +95,28 @@ Ext.require([
                     rootProperty: 'cat'
                 }
             }
-        },                                                                      
-        listeners: { 
-                    activate : function() { 
+        },
+        listeners: {
+                    activate : function() {
                             tbr = this.getToolbar();
                             tb = this.getToolbar();
                             //tb.setTitle('Now-Yakutsk');
-                            tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none', 
+                            tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
                                 scope: this,
-                                handler: 
+                                handler:
                                     function(button) {
                                     button.hide();
                                     ser = Ext.create('Ext.Container', {
                                     fullscreen: true,
                                     toolbar : true,
                                     layout:'vbox',
-                                    dockedItems: {   
+                                    dockedItems: {
                                         xtype: 'toolbar',
-                                        docked: 'top', 
+                                        docked: 'top',
                                             items: [
-                                 
+
                                                     {
-                                                    ui: 'back',   
+                                                    ui: 'back',
                                                     xtype: 'button',
                                                     text: 'back',
                                                     handler: function () {
@@ -126,7 +126,7 @@ Ext.require([
                                                 }
                                                 ]
                                             },
-                                            items: [                
+                                            items: [
                                             {
                                             xtype: 'fieldset',
                                             items: [{
@@ -138,33 +138,33 @@ Ext.require([
                                                     scope: this,
                                                      //clearicontap: this.onSearchClearIconTap,
                                                     keyup: function(){
-                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
+                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();
                                                     Ext.Ajax.request({
-                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,                                                   
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,
                                                         success: function(response){
-                                                            var text = Ext.decode(response.responseText.trim());                      
+                                                            var text = Ext.decode(response.responseText.trim());
                                                             search.removeAll();
                                                             search.add(text.films);
                                                             console.log(search);
                                                                     }
                                                                 });
-                                                                
+
                                                                 }
 
                                                             }
 
                                                         }]
 
-                            }, 
-                            {   
+                            },
+                            {
                                 useToolbar:false,
-                                xtype: 'list', 
+                                xtype: 'list',
                                 iconCls: 'star',
                                 flex:1,
-                               // displayField: 'filmpage', 
+                               // displayField: 'filmpage',
                                 itemTpl: "{filmpage}",
                                 store: search
-                                            
+
                             }]
                         });
                         ser.show();
@@ -174,7 +174,7 @@ Ext.require([
                             } ,
                     deactivate: function() {
                             }
-                            ,                       
+                            ,
                     leafitemtap: function(nestedList, list, index, target, record) {
 
                         cat = record.get('code');
@@ -236,7 +236,7 @@ Ext.require([
                                 Ext.getCmp('ed').destroy();
                                 }
                                 //Ext.getCmp('ed').destroy();
-                                
+
                                 fh = this.getHeader();
                                 fh.hide();
 
@@ -280,7 +280,7 @@ Ext.require([
                                                         return (gr);
                                                 }},
                                                 autoLoad: true });
-                                                        
+
                                                         var flist1 = Ext.create("Ext.grid.List", {
                                                         grouped     : true,
                                                         indexBar    : false,
@@ -302,12 +302,12 @@ Ext.require([
                                                             filter    : { type : 'string' }
                                                             }
                                                             ],
-                                                            
+
                                                             hideOnMaskTap: true,
                                                             fullscreen: true,
                                                             store: favestore,
                                                             text: 'name',
-                                                            
+
                                                             listeners: {
                                                             activate: function(){
                                                             //fh2 = nestedList.getHeader();
@@ -315,38 +315,38 @@ Ext.require([
                                                             fh2.hide();
                                                             flist.hide();
 
-                                                            
+
 
                                                             favestore.sync();
                                                             Ext.getCmp('ed').hide();
                                                             //fh1.show();
-        
+
                                                             },
-                                
+
                                                             itemtap: function( h, index, target, record, e, eOpts ){
                                                                 console.log(record.raw.id);
                                                                 did = record.raw.id;
                                                                 db.transaction(function(tx) {
-                                                                    
+
                                                                         Ext.Msg.alert("Удалено");
                                                                         tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
-                                                                       
+
                                                                         favestore.sync();
                                                                         }); favestore.sync();
                                                                     }); favestore.sync();
                                                                 record.destroy();
-                                                                
+
                                                             }
 
                                                             },
-                                                            dockedItems: {   
+                                                            dockedItems: {
                                                                     xtype: 'toolbar',
-                                                                    docked: 'top', 
+                                                                    docked: 'top',
                                                                     title: 'Избранное',
                                                                         items: [{xtype: 'spacer'},
-                                                             
+
                                                                                 {
-                                                                                ui: 'round',   
+                                                                                ui: 'round',
                                                                                 xtype: 'button',
                                                                                 text: 'Готово',
                                                                                 handler: function (button) {
@@ -357,7 +357,7 @@ Ext.require([
                                                                             }
                                                                             ]
                                                                         }
-                                            
+
                                                     });
                                                         fd = (flist1.getHeader());
                                                         fd.destroy();
@@ -365,7 +365,7 @@ Ext.require([
                                     }
                                                                             }
                                                                             ]
-                                                                            );                          
+                                                                            );
 
                                },
                                deactivate: function(button){
@@ -373,7 +373,7 @@ Ext.require([
                                 tb.setTitle('Now-Yakutsk');
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
-                                
+
                                }
                                 },
                                 features : [
@@ -412,7 +412,7 @@ Ext.require([
                                                 ],
                                                 root: {
                                                     leaf: false
-                                                },                        
+                                                },
                                                 proxy: {
                                                     type: 'jsonp',
                                                     url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
@@ -434,7 +434,7 @@ Ext.require([
                                                 tb2.hide();
 
                                                 tb.setTitle(record.get('name'));
-                                                
+
                                             //this.getToolbar(treeStore2).hide();
                                              } ,
                                              deactivate: function() {
@@ -444,17 +444,25 @@ Ext.require([
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
-                                                console.log(post.get('special'));
+
+                                                    console.log(post.get('special'));
+                                                if((post.get('special'))!= undefined ) {
+                                                    bh='132px';
+                                                    hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
+                                                }else{
+                                                    bh = '90px';
+                                                    hinsert = '';
+                                                }
 
 
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
 
                                                 layout: 'vbox',
-                                                items: [           {    
+                                                items: [           {
                                                                         xtype: 'carousel',
                                                                         height: '220px',
-                        
+
                                                                         store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -475,7 +483,7 @@ Ext.require([
                                                                                 }
                                                                             }},
 
-                                                    
+
                                                                            items: [
                                                                                 {
                                                                                 style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
@@ -489,33 +497,26 @@ Ext.require([
                                                                                     html : 'или третий'
                                                                                 }
                                                                             ]
-                                                                     
-                                                                    },
-                                                                    {
-                                                                        xtype : 'panel',
-                                                                        height: '90px',
-                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '50px',
-                                                                        style: 'background:none',
-                                                                        html: '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
-
+                                                                        height: bh,
+                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a></div>'+hinsert  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                                                     },
-                                                                   
+
+
                                                                     {
                                                                     scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
-                                                                    xtype: 'nestedlist', 
+                                                                    xtype: 'nestedlist',
                                                                     iconCls: 'star',
-                                                                    displayField: 'filmpage', 
+                                                                    displayField: 'filmpage',
                                                                     store:{
-                                                                    
+
                                                                     type: 'tree',
-                                             
+
                                                                     fields: [
                                                                         'name','image','id','filmpage',
                                                                         {name: 'leaf', defaultValue: true}
@@ -531,20 +532,20 @@ Ext.require([
                                                                             rootProperty: 'films'
                                                                         }
                                                                     }}}
-                                                                     
+
 
                                                                 ],
-                                                        
+
 
                                                         listeners: {
-                                                        activate : function() {     
+                                                        activate : function() {
                                                                 //tb1.hide();
                                                                 if (typeof ttt != 'undefined'){
-                                                                                
+
                                                                             }
                                                                             else{
                                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
-                                                                            handler: function(button){ 
+                                                                            handler: function(button){
 
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
@@ -589,34 +590,34 @@ Ext.require([
                                                                                    favestore.sync();
                                                                                 }
                                                                                 )});
-                                                                                
+
                                                                             }
-                                                                    
+
                                                                             }]));
 
                                                                             }
-                                                                            
-                                                                           
+
+
                                                                 tb2.show();
-                                                                            
+
 
 
                                                                 //tb3 = this.getToolbar();tb3.hide();
-                                                                tb.hide(); 
+                                                                tb.hide();
 
 
                                                         //this.getToolbar(treeStore2).hide();
                                                          } ,
                                                          deactivate: function() {
-                                                            tb.show();                             
-                                                            
+                                                            tb.show();
+
                                                             tb2.hide();
                                                             //this.getToolbar().hide();
                                                             }
 
                                                         }
 
-                                            });     
+                                            });
                                                     nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
@@ -639,22 +640,22 @@ Ext.require([
                                         styleHtmlContent: true
                                             },
                                     listeners:{
-                                            activate : function() {     
-                                                    tb.show(); 
+                                            activate : function() {
+                                                    tb.show();
                                                 },
                                             deactivate: function(){
                                                 }
                                              } ,
                                     items: [
-                                        
+
                                         {   //xtype: 'nestedList',
-                                            
+
                                             title: 'Сегодня',
                                             scrollable:'vertical',
-                                            xtype: 'nestedlist', 
+                                            xtype: 'nestedlist',
                                             iconCls: 'star',
-                                            displayField: 'list', 
-                                            
+                                            displayField: 'list',
+
                                             store: {
                                                 type: 'tree',
                                                 fields: [
@@ -675,7 +676,7 @@ Ext.require([
                                                     }
                                             },
                                             listeners: {
-                                                activate : function() {     
+                                                activate : function() {
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();delete window.ttt;
                                                  } ,
@@ -688,10 +689,10 @@ Ext.require([
                                                 fullscreen: true,
                                                 useToolbar:false,
                                                 layout: 'vbox',
-                                                items: [           {    
+                                                items: [           {
                                                                         xtype: 'carousel',
                                                                         height: '100px',
-                        
+
                                                                         store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -712,7 +713,7 @@ Ext.require([
                                                                                 }
                                                                             }},
 
-                                                    
+
                                                                            items: [
                                                                                 {
                                                                                     style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
@@ -726,7 +727,7 @@ Ext.require([
                                                                                     html : 'или третий'
                                                                                 }
                                                                             ]
-                                                                     
+
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
@@ -734,18 +735,18 @@ Ext.require([
                                                                         html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                     },
-                                                                   
+
                                                                     {
                                                                     scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
-                                                                    xtype: 'nestedlist', 
+                                                                    xtype: 'nestedlist',
                                                                     iconCls: 'star',
-                                                                    displayField: 'filmpage', 
+                                                                    displayField: 'filmpage',
                                                                     store:{
-                                                                    
+
                                                                     type: 'tree',
-                                             
+
                                                                     fields: [
                                                                         'name','image','id','filmpage',
                                                                         {name: 'leaf', defaultValue: true}
@@ -761,18 +762,18 @@ Ext.require([
                                                                             rootProperty: 'films'
                                                                         }
                                                                     }}}
-                                                                     
+
 
                                                                 ],
-                                                        
+
                                                           dockedItems: [
-                                                            {   
+                                                            {
                                                                 xtype: 'toolbar',
-                                                                docked: 'top',                                                            
+                                                                docked: 'top',
                                                                 items: [
-                                                                    {   
+                                                                    {
                                                                         iconCls: 'star',
-                                                                        handler: function(){ 
+                                                                        handler: function(){
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
@@ -817,33 +818,33 @@ Ext.require([
                                                                                    favestore.sync();
                                                                                 }
                                                                                 )});
-                                                                                
+
                                                                             }
                                                                     }
 
 
                                                                 ]
                                                             }
-                                                        ],                                         
+                                                        ],
                                                         detailCard: {
                                                             xtype: 'panel',
                                                             scrollable: true,
                                                             styleHtmlContent: true
                                                         },
                                                         listeners: {
-                                                        activate : function() {     
-                                                                tb.hide(); 
+                                                        activate : function() {
+                                                                tb.hide();
                                                                 tb2.show();
                                                          } ,
                                                          deactivate: function() {
-                                                            tb.show();                             
+                                                            tb.show();
                                                             tb2.hide();
-                                                            
+
                                                             }
 
                                                         }
 
-                                            });     
+                                            });
                                                     nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
@@ -851,14 +852,14 @@ Ext.require([
                                             }
                                         ,
                                             {   //xtype: 'nestedList',
-                                            
+
                                             title: 'Клубы',
                                             scrollable:'vertical',
                                             //sflex: 1,
-                                            xtype: 'nestedlist', 
+                                            xtype: 'nestedlist',
                                             iconCls: 'star',
-                                            displayField: 'list', 
-                                            
+                                            displayField: 'list',
+
                                             store: {
                                                 type: 'tree',
                                                 fields: [
@@ -879,7 +880,7 @@ Ext.require([
                                                     }
                                             },
                                             listeners: {
-                                                activate : function() {     
+                                                activate : function() {
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
                                                  } ,
@@ -893,10 +894,10 @@ Ext.require([
                                                 fullscreen: true,
                                                 useToolbar:false,
                                                 layout: 'vbox',
-                                                items: [           {    
+                                                items: [           {
                                                                         xtype: 'carousel',
                                                                         height: '100px',
-                        
+
                                                                         store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -930,25 +931,25 @@ Ext.require([
                                                                                     html : 'или третий'
                                                                                 }
                                                                             ]
-                                                                     
+
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
                                                                         html:'...место для адресса... '
                                                                     },
-                                                                   
+
                                                                     {
                                                                     scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
-                                                                    xtype: 'nestedlist', 
+                                                                    xtype: 'nestedlist',
                                                                     iconCls: 'star',
-                                                                    displayField: 'filmpage', 
+                                                                    displayField: 'filmpage',
                                                                     store:{
-                                                                    
+
                                                                     type: 'tree',
-                                             
+
                                                                     fields: [
                                                                         'name','image','id','filmpage',
                                                                         {name: 'leaf', defaultValue: true}
@@ -964,17 +965,17 @@ Ext.require([
                                                                             rootProperty: 'films'
                                                                         }
                                                                     }}}
-                                                                     
+
                                                                 ],
-                                                        
+
                                                           dockedItems: [
-                                                            {   
+                                                            {
                                                                 xtype: 'toolbar',
-                                                                docked: 'top',                                                            
+                                                                docked: 'top',
                                                                 items: [
-                                                                    {   
+                                                                    {
                                                                         iconCls: 'star',
-                                                                        handler: function(){ 
+                                                                        handler: function(){
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
@@ -1019,40 +1020,40 @@ Ext.require([
                                                                                    favestore.sync();
                                                                                 }
                                                                                 )});
-                                                                                
+
                                                                             }
                                                                     }
 
                                                                 ]
                                                             }
-                                                        ],                                         
+                                                        ],
                                                         detailCard: {
                                                             xtype: 'panel',
                                                             scrollable: true,
                                                             styleHtmlContent: true
                                                         },
                                                         listeners: {
-                                                        activate : function() {     
-                                                                tb.hide(); 
+                                                        activate : function() {
+                                                                tb.hide();
                                                                 tb2.show();
                                                          } ,
                                                          deactivate: function() {
-                                                            tb.show();                             
+                                                            tb.show();
                                                             tb2.hide();
                                                             }
 
                                                         }
 
-                                            });     
+                                            });
                                                     nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
                                             }
                                             }
-                                        
+
                                         ]
                                     });
-                                
+
                                 }
                                 if(catdyn!= 'poster' && catdyn!= 'favorite' ) {
                                 about = Ext.create("Ext.NestedList", {
@@ -1078,27 +1079,19 @@ Ext.require([
                                                 }
                                             },
                                             listeners: {
-                                            activate : function() {     
+                                            activate : function() {
                                                 //tb1.show();
                                                 Ext.getCmp('serch').hide();
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
-                                                //tb.hide(); 
-
-                                            //this.getToolbar(treeStore2).hide();
-                                             } ,
+                                            } ,
                                              deactivate: function() {
-                                                tb.show();   
-                                                Ext.getCmp('serch').show();                          
-                                                //tb1.hide();
-                                                //this.getToolbar().hide();
+                                                tb.show();
+                                                Ext.getCmp('serch').show();
                                             }
-                                            ,
-                                                //leafitemtap: function(nestedList, list, index, element, post) {
-                                                //alert();   }
                                             }
                                 });
-            
+
                                 }
 
                         var treeStore2 = Ext.create("Ext.NestedList", {
@@ -1137,23 +1130,23 @@ Ext.require([
 
                         listeners: {
                              activate : function() {
-                                tb1 = this.getToolbar();  
+                                tb1 = this.getToolbar();
                                 tb1.insert(3,[ {xtype:'spacer'}, {id:'serch', align: 'right', xtype:'button', iconCls: 'none',
                                                 scope: this,
-                                                handler: 
+                                                handler:
                                                     function(button) {
                                                     button.hide();
                                                     ser = Ext.create('Ext.Container', {
                                                     fullscreen: true,
                                                     toolbar : true,
                                                     layout:'vbox',
-                                                    dockedItems: {   
+                                                    dockedItems: {
                                                         xtype: 'toolbar',
-                                                        docked: 'top', 
+                                                        docked: 'top',
                                                             items: [
-                                                 
+
                                                                     {
-                                                                    ui: 'back',   
+                                                                    ui: 'back',
                                                                     xtype: 'button',
                                                                     text: 'back',
                                                                     handler: function () {
@@ -1163,7 +1156,7 @@ Ext.require([
                                                                 }
                                                                 ]
                                                             },
-                                                            items: [                
+                                                            items: [
                                             {
                                             xtype: 'fieldset',
                                             items: [{
@@ -1175,49 +1168,49 @@ Ext.require([
                                                     scope: this,
                                                      //clearicontap: this.onSearchClearIconTap,
                                                     keyup: function(){
-                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();   
+                                                    value = Ext.ComponentQuery.query('#inpt')[0].getValue();
                                                     Ext.Ajax.request({
-                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,                                                   
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/search.php?value='+value,
                                                         success: function(response){
-                                                            var text = Ext.decode(response.responseText.trim());                      
+                                                            var text = Ext.decode(response.responseText.trim());
                                                             search.removeAll();
                                                             search.add(text.films);
                                                             console.log(search);
                                                                     }
                                                                 });
-                                                                
+
                                                                 }
 
                                                             }
 
                                                         }]
 
-                                                    }, 
-                                                    {   
+                                                    },
+                                                    {
                                                         useToolbar:false,
-                                                        xtype: 'list', 
+                                                        xtype: 'list',
                                                         iconCls: 'star',
                                                         flex:1,
-                                                       // displayField: 'filmpage', 
+                                                       // displayField: 'filmpage',
                                                         itemTpl: "{filmpage}",
                                                         store: search
-                                                                    
+
                                                     }]
                                                 });
                                                 ser.show();
                                                 }
                                                 }]);
                                     //console.log(tb1.getTitle());
-                                   
- 
+
+
                                 tb1.hide();
                                 tb.setTitle('Афиша');
 
 
                              } ,
-                             deactivate: function() { 
-                                tb.setTitle('Now-Yakutsk');      
-                                //tb.show(); 
+                             deactivate: function() {
+                                tb.setTitle('Now-Yakutsk');
+                                //tb.show();
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
@@ -1245,14 +1238,14 @@ Ext.require([
                                             displayField: 'list',
                                                 store: {
                                                 type: 'tree',
-                         
+
                                                 fields: [
                                                     'name', 'link', 'list', 'image', 'adress', 'banner','cid','phone','site',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
                                                 root: {
                                                     leaf: false
-                                                },                        
+                                                },
                                                 proxy: {
                                                     type: 'jsonp',
                                                     url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
@@ -1275,7 +1268,7 @@ Ext.require([
                                                 tb.hide();
                                          } ,
                                              deactivate: function() {
-                                                tb.show(); 
+                                                tb.show();
                                                 tb1.hide();
                                                 tb2.hide();delete window.ttt;
                                             },
@@ -1288,7 +1281,7 @@ Ext.require([
                                                                         fullscreen: true,
                                                                         //useToolbar:true,
                                                                         layout: 'vbox',
-                                                                        items: [           {    
+                                                                        items: [           {
                                                                         xtype: 'carousel',
                                                                         height: '225px',
                                                                         store: {
@@ -1311,7 +1304,7 @@ Ext.require([
                                                                                 }
                                                                             }},
 
-                                                    
+
                                                                            items: [
                                                                                 {
                                                                                     //html : '<span class="locate"><i>Улица кино номер 34</i><b>111</b></span>',
@@ -1325,7 +1318,7 @@ Ext.require([
                                                                                     html : 'или третий'
                                                                                 }
                                                                             ]
-                                                                     
+
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
@@ -1333,18 +1326,18 @@ Ext.require([
                                                                         html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                         },
-                                                                   
+
                                                                     {
 
                                                                     flex: 1,
                                                                     useToolbar:false,
-                                                                    xtype: 'nestedlist', 
+                                                                    xtype: 'nestedlist',
                                                                     iconCls: 'star',
-                                                                    displayField: 'filmpage', 
+                                                                    displayField: 'filmpage',
                                                                     store:{
-                                                                    
+
                                                                     type: 'tree',
-                                             
+
                                                                     fields: [
                                                                         'name','image','id','filmpage',
                                                                         {name: 'leaf', defaultValue: true}
@@ -1361,8 +1354,8 @@ Ext.require([
                                                                         }
                                                                     }}}
                                                                ],
-                                                        
-                                                                                                 
+
+
                                                                     detailCard: {
                                                                         xtype: 'panel',
                                                                         scrollable: true,
@@ -1372,11 +1365,11 @@ Ext.require([
 
                                                                     initialize : function(button) {
                                                                             if (typeof ttt != 'undefined'){
-                                                                                
+
                                                                             }
                                                                             else{
                                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
-                                                                            handler: function(button){ 
+                                                                            handler: function(button){
 
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
@@ -1420,21 +1413,21 @@ Ext.require([
                                                                                    favestore.sync();
                                                                                 }
                                                                                 )});
-                                                                                
+
                                                                             }
-                                                                    
+
                                                                             }]));
 
                                                                             }
-                                                                            
-                                                                           
+
+
                                                                             tb2.show();
-                                                                            
-                                                                            tb1.hide(); 
+
+                                                                            tb1.hide();
 
                                                                      } ,
                                                                      deactivate: function() {
-                                                                        
+
                                                                         tb1.show();
                                                                         tb2.hide();
                                                                         tb.hide();
@@ -1442,7 +1435,7 @@ Ext.require([
 
                                                                     }
 
-                                            });     
+                                            });
                                                     nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
@@ -1462,8 +1455,8 @@ Ext.require([
                                            default:
                                            break;
                                         }
-                                        }                                            
-                                    }                                 
+                                        }
+                                    }
                                 });
                                 var code = (record.get('code'));
                                 switch (code) {
@@ -1482,13 +1475,13 @@ Ext.require([
                                     default:
                                         nestedList.setDetailCard(cin1);
                                         break;
-                                    }                              
-                                } 
-                        } 
+                                    }
+                                }
+                        }
          }
         );
 
 
 
-        
+
 
