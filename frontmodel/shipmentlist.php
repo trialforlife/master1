@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from `shipment` ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
+$query = 'select * from shipment ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {

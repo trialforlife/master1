@@ -47,7 +47,7 @@ Ext.require([
     model: "search"
 });
 
-    /*var favestore = Ext.create("Ext.data.Store", {
+    var favestore = Ext.create("Ext.data.Store", {
         model: "Favorite",defaultRootProperty: 'items',
         storeId: 'Favorite',
         proxy: {
@@ -59,7 +59,7 @@ Ext.require([
             }
         },
         autoLoad: true
-             });*/
+             });
 
     Ext.create("Ext.NestedList", {
         updateTitleText :false,
@@ -536,7 +536,10 @@ Ext.require([
 
                                                         listeners: {
                                                         initialize : function() {
-                                                                //tb1.hide();
+                                                            s_name = post.get('list');
+                                                            s_image = post.get('image');
+                                                            cfid = post.get('cid');
+                                                            cat1 = record.get('code');
                                                             if (typeof ttt != 'undefined'){
 
                                                             }
@@ -544,17 +547,15 @@ Ext.require([
                                                                 ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                     handler: function(button){
 
-                                                                        var s_name = post.get('list');
-                                                                        var s_image = post.get('image');
-                                                                        cfid = post.get('cid');
+
                                                                         //adding to favorite
                                                                         db.transaction(function(tx) {
-                                                                            tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
+                                                                            tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                                     len = results.rows.length;
                                                                                     console.log(len);
                                                                                     if (len  > 0 ) {
                                                                                         Ext.Msg.alert("Удалено");
-                                                                                        tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
+                                                                                        tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
 
                                                                                         });
                                                                                     }
@@ -562,7 +563,7 @@ Ext.require([
                                                                                         Ext.Msg.alert("Добавлено");
                                                                                         favestore.add([{
                                                                                             name: s_name,
-                                                                                            ftype: cat,
+                                                                                            ftype: cat1,
                                                                                             image: s_image,
                                                                                             link: '',
                                                                                             res : '',
@@ -576,7 +577,7 @@ Ext.require([
                                                                                 {
                                                                                     favestore .add([{
                                                                                         name: s_name,
-                                                                                        ftype: cat,
+                                                                                        ftype: cat1,
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
@@ -628,7 +629,7 @@ Ext.require([
                                     tabBarPosition: 'bottom',
                                     fullscreen: true,
                                     defaults: {
-                                        styleHtmlContent: true
+                                     styleHtmlContent: true
                                     },
                                     detailCard: {
                                         xtype: 'panel',
@@ -674,7 +675,8 @@ Ext.require([
                                             listeners: {
                                                 activate : function() {
                                                 tb2 = this.getToolbar();
-                                                tb2.hide();delete window.ttt;
+                                                tb2.hide();
+                                                delete window.ttt;
                                                  } ,
                                                  deactivate: function() {
                                                 },
@@ -796,7 +798,7 @@ Ext.require([
                                                                                     Ext.Msg.alert("Добавлено");
                                                                                     favestore.add([{
                                                                                         name: s_name,
-                                                                                        ftype: cat,
+                                                                                        ftype: cat1,
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
@@ -811,7 +813,7 @@ Ext.require([
                                                                                 {
                                                                                 favestore .add([{
                                                                                         name: s_name,
-                                                                                        ftype: cat,
+                                                                                        ftype: cat1,
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
@@ -998,7 +1000,7 @@ Ext.require([
                                                                                     Ext.Msg.alert("Добавлено");
                                                                                     favestore.add([{
                                                                                         name: s_name,
-                                                                                        ftype: cat,
+                                                                                        ftype: cat1,
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
@@ -1013,7 +1015,7 @@ Ext.require([
                                                                                 {
                                                                                 favestore .add([{
                                                                                         name: s_name,
-                                                                                        ftype: cat,
+                                                                                        ftype: cat1,
                                                                                         image: s_image,
                                                                                         link: '',
                                                                                         res : '',
@@ -1367,56 +1369,63 @@ Ext.require([
                                                                     },
                                                                     listeners: {
 
-                                                                    initialize : function(button) {
+                                                                    activate : function() {
+                                                                        s_name = post.get('list');
+                                                                        s_image = post.get('image');
+                                                                        cfid = post.get('cid');
+                                                                        cat1 = record.get('code');
+                                                                        console.log(cat);
                                                                             if (typeof ttt != 'undefined'){
 
                                                                             }
                                                                             else{
                                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
-                                                                            handler: function(button){
+                                                                            handler: function(){
 
-                                                                            var s_name = post.get('list');
-                                                                            var s_image = post.get('image');
-                                                                            cfid = post.get('cid');
-                                                                            //adding to favorite
-                                                                            db.transaction(function(tx) {
-                                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
-                                                                                  len = results.rows.length;
-                                                                                  console.log(len);
-                                                                                  if (len  > 0 ) {
-                                                                                    Ext.Msg.alert("Удалено");
-                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
-                                                                                    });
-                                                                                }
-                                                                                else{
-                                                                                    Ext.Msg.alert("Добавлено");
-                                                                                    favestore.add([{
-                                                                                        name: s_name,
-                                                                                        ftype: cat,
-                                                                                        image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
-                                                                                        fid : cfid
-                                                                                    }]);
-                                                                                    favestore.sync();
-                                                                                }
 
-                                                                                },
-                                                                                function (tx, error)
-                                                                                {
-                                                                                favestore .add([{
-                                                                                        name: s_name,
-                                                                                        ftype: cat,
-                                                                                        image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
-                                                                                        fid : cfid
+                                                                                //adding to favorite
+                                                                                db.transaction(function(tx) {
+                                                                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
+                                                                                            len = results.rows.length;
+                                                                                            console.log(len);
+                                                                                            if (len  > 0 ) {
+                                                                                                Ext.Msg.alert("Удалено");
+                                                                                                tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
 
-                                                                                    }]);
-                                                                                   favestore.sync();
-                                                                                }
-                                                                                )});
+                                                                                                });
+                                                                                            }
+                                                                                            else{
+                                                                                                Ext.Msg.alert("Добавлено");
+                                                                                                favestore.add([{
+                                                                                                    name: s_name,
+                                                                                                    ftype: cat1,
+                                                                                                    image: s_image,
+                                                                                                    link: '',
+                                                                                                    res : '',
+                                                                                                    fid : cfid
+
+                                                                                                }]);
+                                                                                                favestore.sync();
+                                                                                            }
+
+                                                                                        },
+                                                                                        function (tx, error)
+                                                                                        {
+                                                                                            favestore .add([{
+                                                                                                name: s_name,
+                                                                                                ftype: cat1,
+                                                                                                image: s_image,
+                                                                                                link: '',
+                                                                                                res : '',
+                                                                                                fid : cfid
+
+                                                                                            }]);
+                                                                                            favestore.sync();
+                                                                                        }
+                                                                                    )});
+
+
 
                                                                             }
 
@@ -1425,13 +1434,12 @@ Ext.require([
                                                                             }
 
 
-                                                                            tb2.show();
+                                                                        tb2.show();
 
                                                                             tb1.hide();
 
                                                                      } ,
                                                                      deactivate: function() {
-
                                                                         tb1.show();
                                                                         tb2.hide();
                                                                         tb.hide();
