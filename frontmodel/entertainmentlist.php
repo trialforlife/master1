@@ -22,6 +22,7 @@ if (mysql_affected_rows() > 0) {
 			"adress"=>addslashes((string)$row["en_adress"]),
             "photo"=>addslashes((string)$row["en_photo"]),
             "site"=>addslashes((string)$row["en_site"]),
+            "banner"=>addslashes((string)$row["en_banner"]),
 			"published"=>addslashes((string)$row["en_published"]),
 			//"list"=>"<div>".addslashes((string)$row["en_name"])."<br><small>".$row["en_type"]."</small><img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["en_image"]."><br><div>",
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["en_image"]).">",
