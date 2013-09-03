@@ -685,3 +685,29 @@ pf{
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap, .x-list-normal .x-list-item.x-list-footer-wrap .x-dock-horizontal {
     border: none !important;
 }
+.x-tabbar.x-docked-bottom .x-tab{
+    width: 50% !important;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0!important;
+
+}
+.x-tabbar.x-docked-bottom {
+    margin: 0 !important;
+    padding: 0!important;
+    height: 88px !important;
+    background: #0a0456;
+}
+
+.x-tabbar-dark.x-docked-bottom .x-tab-active{
+    background: none !important;
+    color: #69d2e7 !important;
+    text-shadow: 0 0 40px rgba(180,12,255,1),   0 4px 0 rgba(0,0,0,0.36) !important;
+
+}
+.x-tabbar.x-docked-bottom .x-tab .x-button-label, .x-tabbar.x-docked-bottom .x-tab .x-badge {
+     margin-top: -30px !important;
+
+     font: 34px/88px Hlvb !important;
+     height: 86px !important;
+ }
