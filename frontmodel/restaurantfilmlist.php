@@ -21,8 +21,10 @@ if (mysql_affected_rows() > 0) {
 			"id"=>$row["rs_id"],
 			"name"=>addslashes((string)$row["rs_name"]),
 			"image"=>addslashes((string)$row["rs_image"]),
-			"time"=>addslashes((string)$row["rs_time"]),
-			"filmpage"=>
+            "time"=>addslashes((string)$row["rs_time"]),
+
+
+            "filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
 			$row["rs_name"]."<img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["rs_image"]."><br>".$row["rs_time"]."</br><small>".$row["rs_content"]."</small></br>".$row["rs_price"],
 			));
