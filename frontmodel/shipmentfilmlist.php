@@ -24,8 +24,9 @@ if (mysql_affected_rows() > 0) {
 			"time"=>addslashes((string)$row["ss_time"]),
 			"filmpage"=>
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["ss_title"]."<br><img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["ss_image"].">".$row["ss_name"]."<br>".$row["ss_time"]."</br><small>".$row["ss_content"]."</small></br>".$row["ss_price"],
-			));
+			//$row["ss_title"]."<br><img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["ss_image"].">".$row["ss_name"]."<br>".$row["ss_time"]."</br><small>".$row["ss_content"]."</small></br>".$row["ss_price"],
+            '<div class="restaurant"><span class="h2">'.$row["ss_name"]."</span><span class='image_mask'><img style=\"width:200px; float:rirght ; height:140px;\" src=http://now-yakutsk.stairwaysoft.net/mobile/img/".$row["ss_image"]."></span>".$row["ss_time"].$row["ss_content"]."<span class='price'>".$row["ss_price"]."</span></div>",
+        ));
 			
 	}
 
