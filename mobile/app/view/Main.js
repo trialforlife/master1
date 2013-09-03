@@ -80,7 +80,7 @@ Ext.require([
             type: 'tree',
             id: 'ListCard',
             fields: [
-                'title','code',
+                'title','code','name',
                 {name: 'leaf', defaultValue: true}
             ],
 
@@ -399,6 +399,7 @@ Ext.require([
                                 //display for default category
                                 if(catdyn!= 'poster' && catdyn!= 'favorite' && catdyn!= 'aboutus' ) {
                                 cin1 = Ext.create("Ext.NestedList", {
+                                    updateTitleText:false,
                                     fullscreen: true,
                                     displayField: 'list',
                                                 store: {
@@ -425,15 +426,18 @@ Ext.require([
                                                 styleHtmlContent: true
                                             },
                                             listeners: {
-                                            activate : function() {     
-                                                
+                                            activate : function() {
+
                                                 tb2 = this.getToolbar();
-                                                tb2.hide(); 
+                                                tb2.hide();
+
+                                                tb.setTitle(record.get('name'));
                                                 
                                             //this.getToolbar(treeStore2).hide();
                                              } ,
                                              deactivate: function() {
-                                                tb.show();                             
+                                                tb.show();
+                                                tb.setTitle('Now-Yakutsk');
                                             }
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
@@ -448,7 +452,7 @@ Ext.require([
                                                 layout: 'vbox',
                                                 items: [           {    
                                                                         xtype: 'carousel',
-                                                                        height: '100px',
+                                                                        height: '220px',
                         
                                                                         store: {
                                                                             type: 'tree',
@@ -473,8 +477,8 @@ Ext.require([
                                                     
                                                                            items: [
                                                                                 {
-                                                                                    html : 'Здесь будет 1 баннер',
-                                                                                    style: 'background-color: #5E99CC'
+                                                                                    style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
+
                                                                                 },
                                                                                 {
                                                                                     html : 'А здесь второй',
@@ -488,8 +492,9 @@ Ext.require([
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '20px',
-                                                                        html:'...место для адресса... '
+                                                                        height: '90px',
+                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
+
                                                                     },
                                                                    
                                                                     {
@@ -530,7 +535,7 @@ Ext.require([
                                                                                 
                                                                             }
                                                                             else{
-                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{ xtype:'button', iconCls: 'star',
+                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                             handler: function(button){ 
 
                                                                             var s_name = post.get('list');
@@ -645,7 +650,7 @@ Ext.require([
                                             store: {
                                                 type: 'tree',
                                                 fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid','phone',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
 
@@ -702,8 +707,8 @@ Ext.require([
                                                     
                                                                            items: [
                                                                                 {
-                                                                                    html : 'Здесь будет 1 баннер',
-                                                                                    style: 'background-color: #5E99CC'
+                                                                                    style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
+
                                                                                 },
                                                                                 {
                                                                                     html : 'А здесь второй',
@@ -717,8 +722,9 @@ Ext.require([
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '20px',
-                                                                        html:'...место для адресса... '
+                                                                        height: '90px',
+                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
+
                                                                     },
                                                                    
                                                                     {
