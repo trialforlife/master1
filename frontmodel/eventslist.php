@@ -22,9 +22,10 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["ev_image"]),
 			"adress"=>addslashes((string)$row["ev_adress"]),
 			"published"=>addslashes((string)$row["ev_published"]),
-            "phone"=>addslashes((string)$row["c_phone"]),
-            "site"=>addslashes((string)$row["c_site"]),
-			//"list"=>"<div>".addslashes((string)$row["ev_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["ev_image"]."><br></div>",
+            "phone"=>addslashes((string)$row["ev_phone"]),
+            "site"=>addslashes((string)$row["ev_site"]),
+            "banner"=>addslashes((string)$row["ev_banner"]),
+            //"list"=>"<div>".addslashes((string)$row["ev_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["ev_image"]."><br></div>",
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["ev_image"]).">",
             "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["ev_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["ev_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["ev_image"].'></span></div>',
         ));
