@@ -24,7 +24,7 @@ if (mysql_affected_rows() > 0) {
             "banner"=>addslashes((string)$row["bh_banner"]),
             "phone"=>addslashes((string)$row["bh_phone"]),
 			"published"=>addslashes((string)$row["bh_published"]),
-			"list"=>"<div>".addslashes((string)$row["bh_name"])."<br><small>".$row["bh_type"]."</small><img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["bh_image"]."><br><div>",
+            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["bh_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["bh_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["bh_image"].'></span></div>',
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["s_image"]).">",
 			));
 			
