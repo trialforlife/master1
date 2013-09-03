@@ -397,7 +397,7 @@ Ext.require([
                                 displayField: "name"
                             });
                                 //display for default category
-                                if(catdyn!= 'poster' && catdyn!= 'favorite' ) {
+                                if(catdyn!= 'poster' && catdyn!= 'favorite' && catdyn!= 'aboutus' ) {
                                 cin1 = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
                                     displayField: 'list',
@@ -1053,7 +1053,7 @@ Ext.require([
                                                 ],
                                                 root: {
                                                     leaf: false
-                                                },                        
+                                                },
                                                 proxy: {
                                                     type: 'jsonp',
                                                     url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'list.php',
@@ -1079,8 +1079,9 @@ Ext.require([
                                                 //tb1.hide();
                                                 //this.getToolbar().hide();
                                             }
-                                            
-                                                //leafitemtap: function(nestedList, list, index, element, post) {      }
+                                            ,
+                                                //leafitemtap: function(nestedList, list, index, element, post) {
+                                                //alert();   }
                                             }
                                 });
             
@@ -1299,7 +1300,7 @@ Ext.require([
                                                                            items: [
                                                                                 {
                                                                                     //html : '<span class="locate"><i>Улица кино номер 34</i><b>111</b></span>',
-                                                                                    style: 'background:   url(../img/'+post.get('banner')+')'
+                                                                                    style: 'background:   url(../img/'+ post.get('banner')+')'
                                                                                 },
                                                                                 {
                                                                                     html : 'А здесь второй',
@@ -1460,7 +1461,7 @@ Ext.require([
                                     case "nightlife":
                                         nestedList.setDetailCard(cin2);
                                         break;
-                                    case "about":
+                                    case "aboutus":
                                         nestedList.setDetailCard(about);
                                         break;
                                     default:
