@@ -1079,11 +1079,8 @@ Ext.require([
                                                 //tb1.hide();
                                                 //this.getToolbar().hide();
                                             }
-                                            ,
-                                                leafitemtap: function(nestedList, list, index, element, post) {
-                                                
-
-                                                }
+                                            
+                                                //leafitemtap: function(nestedList, list, index, element, post) {      }
                                             }
                                 });
             
@@ -1270,13 +1267,14 @@ Ext.require([
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                                         var f_cid = post.get('cid');
                                                                         tb2.setTitle(post.get('name'));
+                                                                        console.log(post.get('banner'));
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
                                                                         //useToolbar:true,
                                                                         layout: 'vbox',
                                                                         items: [           {    
                                                                         xtype: 'carousel',
-                                                                        height: '125px',
+                                                                        height: '225px',
                                                                         store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -1300,8 +1298,8 @@ Ext.require([
                                                     
                                                                            items: [
                                                                                 {
-                                                                                    html : 'Здесь будет 1 баннер',
-                                                                                    style: 'background-color: #5E99CC'
+                                                                                    //html : '<span class="locate"><i>Улица кино номер 34</i><b>111</b></span>',
+                                                                                    style: 'background:   url(../img/'+post.get('banner')+')'
                                                                                 },
                                                                                 {
                                                                                     html : 'А здесь второй',
@@ -1315,8 +1313,8 @@ Ext.require([
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '20px',
-                                                                        html: '<div class="slocation">'+post.get('adress')+'<div>'
+                                                                        height: '90px',
+                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                         },
                                                                    

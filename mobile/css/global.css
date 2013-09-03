@@ -145,10 +145,13 @@ html,body{
 	margin:0 0 73px;
 }
 .container.about p{
-	color:#373737;
-	font:24px Hlvl;
-	text-align:center;
-	padding:0 35px;
+    color: #373737;
+    font: 24px Hlvl;
+    text-align: center;
+    padding: 0 35px;
+    max-width: 604px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .ab-navigtaion{
 	max-width:500px;
@@ -381,7 +384,7 @@ html,body{
 }
 .comp-location .locate{
 	float:left;
-	display:block;
+
 	max-width:320px;
 	width:100%;
 	font:24px Hlvl;
@@ -589,8 +592,11 @@ pf{
 .x-list-normal .x-list-item.x-list-item-tpl, .x-list-normal .x-list-item .x-dock-horizontal {
 	border-top: none !important;
 }
-.x-inner, .x-body {
-	background: url(../img/bg.jpg) repeat-x;
+.x-body{
+    background: url(../img/bg.jpg) repeat-x;
+
+}
+.x-inner  {
 }
 .x-webkit .x-button-back, .x-webkit .x-toolbar .x-button-back {
 	min-width: 150px !important;
@@ -661,8 +667,10 @@ pf{
     margin:27px 0 0 0;
 }
 .f_con{
+    float: left;
     padding-left: 38px;
     border-bottom: 1px solid #820cff;
     box-shadow: 0 1px 0 rgba(255,255,255,0.24);
     padding-bottom: 15px;
+    width: 100%;
 }
