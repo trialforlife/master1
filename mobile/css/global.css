@@ -436,10 +436,10 @@ pf{
 
 }
 .inside-h{
-	background:rgba(160,12,255,0.5);
+    background: rgba(103, 29, 151, 1);
 	padding:7px 0 2px 5px;
 }
-.inside-h .h4{
+.h4{
 	font:34px Hlvb;
 	color:#fff;
 	text-shadow:0 2px rgba(0,0,0,0.42);
@@ -455,11 +455,13 @@ pf{
 .item-element.delivery .h2{
 	margin:0 0 20px;
 }
-.item-element.delivery p{
+.restaurant p{
 	color:rgba(255,255,255,0.5);
-	padding:0 0 0 153px;
+
+    font: 24px Hlvl;
+    padding: 0 0 0 153px !important;
 }
-.item-element.delivery .price{
+.restaurant .price{
 	color:#fff;
 	font:30px Hlvl;
 	padding:0 0 0 153px;
@@ -541,14 +543,14 @@ pf{
 	float: left;
 	position: relative;
 	background: url(../img/headbg.jpg) repeat-x rgba(10, 0, 83, 1) !important;
-},
+}
 .x-toolbar-light .x-title {
 	color: #69d2e7 !important;
 	text-shadow: 0 0 40px rgba(180,12,255,1), 0 4px 0 rgba(0,0,0,0.36) !important;
 }
 .x-toolbar-light {
 	background-image: none !important;
-	background-color: none !important;
+
 	background-image: none !important;
 	background-image: none !important;
 	background-image: none !important;
@@ -673,4 +675,13 @@ pf{
     box-shadow: 0 1px 0 rgba(255,255,255,0.24);
     padding-bottom: 15px;
     width: 100%;
+}
+.restaurant{
+    float: left;
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid #820cff;
+}
+.x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap, .x-list-normal .x-list-item.x-list-footer-wrap .x-dock-horizontal {
+    border: none !important;
 }

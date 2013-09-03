@@ -399,13 +399,15 @@ Ext.require([
                                 //display for default category
                                 if(catdyn!= 'poster' && catdyn!= 'favorite' && catdyn!= 'aboutus' ) {
                                 cin1 = Ext.create("Ext.NestedList", {
-                                    updateTitleText:false,
                                     fullscreen: true,
+                                    defaultBackButtonText : null,
+                                    updateTitleText:false,
+                                    backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:5px; height:40px;\" src=./img/main-ico.png></div>',
                                     displayField: 'list',
                                                 store: {
                                                 type: 'tree',
                                                 fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid','phone','site',
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid','phone','site','special',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
                                                 root: {
@@ -442,13 +444,12 @@ Ext.require([
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                 var f_cid = post.get('cid');
+                                                console.log(post.get('special'));
+
 
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
-                                                //useToolbar:false,
-                                                /*getItemTextTpl: function(node){
-                                                    return '{filmpage}';
-                                                }  */
+
                                                 layout: 'vbox',
                                                 items: [           {    
                                                                         xtype: 'carousel',
@@ -477,7 +478,7 @@ Ext.require([
                                                     
                                                                            items: [
                                                                                 {
-                                                                                    style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
+                                                                                style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
 
                                                                                 },
                                                                                 {
@@ -494,6 +495,13 @@ Ext.require([
                                                                         xtype : 'panel',
                                                                         height: '90px',
                                                                         html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
+
+                                                                    },
+                                                                    {
+                                                                        xtype : 'panel',
+                                                                        height: '50px',
+                                                                        style: 'background:none',
+                                                                        html: '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
 
                                                                     },
                                                                    
@@ -1274,7 +1282,8 @@ Ext.require([
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                                         var f_cid = post.get('cid');
                                                                         tb2.setTitle(post.get('name'));
-                                                                        console.log(post.get('banner'));
+                                                                        //console.log(post.get('banner'));
+
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
                                                                         //useToolbar:true,
