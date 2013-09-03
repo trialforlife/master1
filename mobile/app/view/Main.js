@@ -1,4 +1,3 @@
-var value;
 Ext.define('front.view.Main', {
     extend: 'Ext.data.Model',
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
@@ -98,6 +97,7 @@ Ext.require([
         },
         listeners: {
                     activate : function() {
+
                             tbr = this.getToolbar();
                             tb = this.getToolbar();
                             //tb.setTitle('Now-Yakutsk');
@@ -236,10 +236,8 @@ Ext.require([
                                 Ext.getCmp('ed').destroy();
                                 }
                                 //Ext.getCmp('ed').destroy();
-
                                 fh = this.getHeader();
                                 fh.hide();
-
                                 tb.insert(4,[ {xtype:'spacer'},{ id:'ed', align:'right',xtype:'button', ui: 'round', text: 'Правка',
                                     handler: function (button) {
                                             var favestore = Ext.create("Ext.data.Store", {
@@ -440,6 +438,7 @@ Ext.require([
                                              deactivate: function() {
                                                 tb.show();
                                                 tb.setTitle('Now-Yakutsk');
+                                                 delete window.ttt;
                                             }
                                             ,
                                                 leafitemtap: function(nestedList, list, index, element, post) {
@@ -453,8 +452,6 @@ Ext.require([
                                                     bh = '90px';
                                                     hinsert = '';
                                                 }
-
-
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
 
@@ -538,32 +535,46 @@ Ext.require([
 
 
                                                         listeners: {
-                                                        activate : function() {
+                                                        initialize : function() {
                                                                 //tb1.hide();
-                                                                if (typeof ttt != 'undefined'){
+                                                            if (typeof ttt != 'undefined'){
 
-                                                                            }
-                                                                            else{
-                                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
-                                                                            handler: function(button){
+                                                            }
+                                                            else{
+                                                                ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
+                                                                    handler: function(button){
 
-                                                                            var s_name = post.get('list');
-                                                                            var s_image = post.get('image');
-                                                                            cfid = post.get('cid');
-                                                                            //adding to favorite
-                                                                            db.transaction(function(tx) {
-                                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
-                                                                                  len = results.rows.length;
-                                                                                  console.log(len);
-                                                                                  if (len  > 0 ) {
-                                                                                    Ext.Msg.alert("Удалено");
-                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
+                                                                        var s_name = post.get('list');
+                                                                        var s_image = post.get('image');
+                                                                        cfid = post.get('cid');
+                                                                        //adding to favorite
+                                                                        db.transaction(function(tx) {
+                                                                            tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
+                                                                                    len = results.rows.length;
+                                                                                    console.log(len);
+                                                                                    if (len  > 0 ) {
+                                                                                        Ext.Msg.alert("Удалено");
+                                                                                        tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
-                                                                                    });
-                                                                                }
-                                                                                else{
-                                                                                    Ext.Msg.alert("Добавлено");
-                                                                                    favestore.add([{
+                                                                                        });
+                                                                                    }
+                                                                                    else{
+                                                                                        Ext.Msg.alert("Добавлено");
+                                                                                        favestore.add([{
+                                                                                            name: s_name,
+                                                                                            ftype: cat,
+                                                                                            image: s_image,
+                                                                                            link: '',
+                                                                                            res : '',
+                                                                                            fid : cfid
+                                                                                        }]);
+                                                                                        favestore.sync();
+                                                                                    }
+
+                                                                                },
+                                                                                function (tx, error)
+                                                                                {
+                                                                                    favestore .add([{
                                                                                         name: s_name,
                                                                                         ftype: cat,
                                                                                         image: s_image,
@@ -574,29 +585,13 @@ Ext.require([
                                                                                     }]);
                                                                                     favestore.sync();
                                                                                 }
+                                                                            )});
 
-                                                                                },
-                                                                                function (tx, error)
-                                                                                {
-                                                                                favestore .add([{
-                                                                                        name: s_name,
-                                                                                        ftype: cat,
-                                                                                        image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
-                                                                                        fid : cfid
+                                                                    }
 
-                                                                                    }]);
-                                                                                   favestore.sync();
-                                                                                }
-                                                                                )});
+                                                                }]));
 
-                                                                            }
-
-                                                                            }]));
-
-                                                                            }
-
+                                                            }
 
                                                                 tb2.show();
 
@@ -612,6 +607,7 @@ Ext.require([
                                                             tb.show();
 
                                                             tb2.hide();
+
                                                             //this.getToolbar().hide();
                                                             }
 
@@ -684,6 +680,13 @@ Ext.require([
                                                 },
 
                                                 leafitemtap: function(nestedList, list, index, element, post) {
+                                                if((post.get('special'))!= undefined ) {
+                                                    bh='132px';
+                                                    hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
+                                                }else{
+                                                    bh = '90px';
+                                                    hinsert = '';
+                                                }
                                                 var f_cid = post.get('cid');
                                                 var fil = Ext.create('Ext.Container', {
                                                 fullscreen: true,
@@ -731,7 +734,7 @@ Ext.require([
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '90px',
+                                                                        height: bh,
                                                                         html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                     },
@@ -1273,6 +1276,7 @@ Ext.require([
                                                 tb2.hide();delete window.ttt;
                                             },
                                                 leafitemtap: function(nestedList, list, index, element, post) {
+
                                                                         var f_cid = post.get('cid');
                                                                         tb2.setTitle(post.get('name'));
                                                                         //console.log(post.get('banner'));
