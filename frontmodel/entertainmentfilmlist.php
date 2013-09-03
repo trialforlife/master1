@@ -22,10 +22,12 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["en_name"]),
 			"image"=>addslashes((string)$row["en_image"]),
 			"time"=>addslashes((string)$row["en_time"]),
-			"filmpage"=>
-			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			"<img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["en_image"].">".$row["en_name"]."<br>".$row["en_content"]."</br><small>".$row["en_time"]."<br>".$row["en_content_add"]."</small></br>",
-			));
+//			"filmpage"=>"<img style=\"width:100px; float:left ; height:50px;\" src=http://now/".$row["en_image"].">".$row["en_name"]."<br>".$row["en_content"]."</br><small>".$row["en_time"]."<br>".$row["en_content_add"]."</small></br>",
+
+            "filmpage"=>'<span class="h2">'.$row["en_name"]."</span><span class='time'>".$row["en_time"]."</span><div class='f_con'><img style=\"width:200px; float:right ; height:140px;\" src=http://now-yakutsk.stairwaysoft.net/mobile/img/".$row["en_image"]."><pf>".$row["en_content"]."</pf></div>",
+
+
+        ));
 				
 	}
 
