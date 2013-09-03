@@ -405,7 +405,7 @@ Ext.require([
                                                 store: {
                                                 type: 'tree',
                                                 fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid','phone','site',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
                                                 root: {
