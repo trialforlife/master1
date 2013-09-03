@@ -22,8 +22,8 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["c_image"]),
 			"adress"=>addslashes((string)$row["c_adress"]),
 			"published"=>addslashes((string)$row["c_published"]),
-           // "phone"=>ddslashes((string)$row["c_phone"]),
-           // "site"=>ddslashes((string)$row["c_site"]),
+            "phone"=>addslashes((string)$row["c_phone"]),
+            "site"=>addslashes((string)$row["c_site"]),
 			"list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["c_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["c_adress"]).'</span></div>',
 
 
