@@ -1235,7 +1235,7 @@ Ext.require([
                                                 type: 'tree',
                          
                                                 fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid','phone','site',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
                                                 root: {
@@ -1258,25 +1258,17 @@ Ext.require([
                                             listeners: {
                                             activate : function() {
                                                 tb1.show();
-
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
                                                 tb.hide();
-
-
                                          } ,
                                              deactivate: function() {
                                                 tb.show(); 
-
                                                 tb1.hide();
                                                 tb2.hide();delete window.ttt;
-
                                             },
-                                            
-                                               
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                                         var f_cid = post.get('cid');
-
                                                                         tb2.setTitle(post.get('name'));
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
@@ -1285,9 +1277,6 @@ Ext.require([
                                                                         items: [           {    
                                                                         xtype: 'carousel',
                                                                         height: '125px',
-
-
-
                                                                         store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -1327,8 +1316,9 @@ Ext.require([
                                                                     {
                                                                         xtype : 'panel',
                                                                         height: '20px',
-                                                                        html:'...место для адресса... '
-                                                                    },
+                                                                        html: '<div class="slocation">'+post.get('adress')+'<div>'
+
+                                                                        },
                                                                    
                                                                     {
 

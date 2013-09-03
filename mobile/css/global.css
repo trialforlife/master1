@@ -417,7 +417,7 @@ html,body{
 	color:#fff;
 	font:40px Hlvl;
 	display:block;
-	padding:0 0 0 38px;
+	padding:15px 0 0 38px;
 }
 .time{
 	font:36px Hlvl;
@@ -430,7 +430,7 @@ html,body{
 pf{
 	color:#fff;
 	font:24px Hlvl;
-	padding:0 0 0 38px;
+
 }
 .inside-h{
 	background:rgba(160,12,255,0.5);
@@ -659,4 +659,10 @@ pf{
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
     margin:27px 0 0 0;
+}
+.f_con{
+    padding-left: 38px;
+    border-bottom: 1px solid #820cff;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.24);
+    padding-bottom: 15px;
 }
