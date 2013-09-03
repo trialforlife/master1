@@ -28,7 +28,7 @@ if (mysql_affected_rows() > 0) {
 
 
             "img_full"=> "<img src=http://now/".addslashes((string)$row["c_image"]).">",
-			"banner"=>"<img src=http://now/".addslashes((string)$row["cb_banner"]).">",
+			"banner"=>addslashes((string)$row["cb_banner"]),
 
 			));
 			
