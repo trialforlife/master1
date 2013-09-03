@@ -1300,7 +1300,7 @@ Ext.require([
                                                                            items: [
                                                                                 {
                                                                                     //html : '<span class="locate"><i>Улица кино номер 34</i><b>111</b></span>',
-                                                                                    style: 'background:   url(../img/'+ post.get('banner')+')'
+                                                                                    style: 'background:   url(/img/'+ post.get('banner')+')'
                                                                                 },
                                                                                 {
                                                                                     html : 'А здесь второй',
