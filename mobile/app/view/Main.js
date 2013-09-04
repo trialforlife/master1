@@ -380,16 +380,16 @@ Ext.require([
                                  columns  : [
                                 {
                                 dataIndex : 'name',
-                                style     : 'padding-left: 1em;',
-                                width     : '40%',
+                                style     : 'margin-left: -1px;',
+                                width     : '100%',
                                 filter    : { type : 'string' }
                                 }
                                 ],
                                 hideOnMaskTap: true,
                                 fullscreen: true,
                                 store: favestore,
-                                text: 'name',
-                                displayField: "name"
+                                //text: 'name',
+                                //displayField: "<div>name</div>"
                             });
                                 //display for default category
                                 if(catdyn!= 'poster' && catdyn!= 'favorite' && catdyn!= 'aboutus' ) {
