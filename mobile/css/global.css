@@ -710,4 +710,38 @@ pf{
 
      font: 34px/88px Hlvb !important;
      height: 86px !important;
- }
+}
+.x-toolbar-dark .x-button, .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after {
+    background: none !important;
+    border: none !important;
+}
+.x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before {
+    background: none !important;
+    border: none !important;
+}
+.x-dock.x-sized, .x-dock.x-sized > .x-dock-body > *, .x-dock.x-sized > .x-dock-body > .x-body > .x-inner {
+    background: #1e3244 !important;
+}
+.x-form-fieldset .x-form-fieldset-inner {
+    border-radius: 40px !important;
+    border: 2px solid #5a0cff !important;
+    width: 100% !important;
+    padding-left: 1.35em;
+    padding-right: 2.35em !important;
+}
+.x-field-search .x-field-input .x-form-field {
+
+}
+
+.nav-element-s{
+    height:142px;
+    border-bottom:1px solid #820cff;
+    box-shadow:0 1px 0 rgba(255,255,255,0.24);
+    position:relative;
+    background: #1e3244;
+}
+.nav-element-s .txt {
+    padding: 0 0 0 40px;
+    color: #fff;
+    font: 40px/139px Hlvl;
+}

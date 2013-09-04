@@ -69,7 +69,8 @@ Ext.require([
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
-        title: 'Now-Yakutsk',
+        title: '<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>',
+        //center -10px no-repeat',
         iconCls: 'star',
         displayField: 'title',
         layout: 'card',
@@ -95,10 +96,8 @@ Ext.require([
         },
         listeners: {
                     activate : function() {
-
                             tbr = this.getToolbar();
                             tb = this.getToolbar();
-                            //tb.setTitle('Now-Yakutsk');
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
                                 scope: this,
                                 handler:
@@ -112,12 +111,11 @@ Ext.require([
                                         xtype: 'toolbar',
                                         docked: 'top',
                                             items: [
-
                                                     {
                                                     ui: 'back',
                                                     xtype: 'button',
-                                                    text: 'back',
-                                                    handler: function () {
+                                                    text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:0px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
+                                                        handler: function () {
                                                         ser.hide();
                                                         button.show();
                                                     }
@@ -129,12 +127,11 @@ Ext.require([
                                             xtype: 'fieldset',
                                             items: [{
                                                 xtype: 'searchfield',
-                                                placeHolder: 'Search...',
+                                                placeHolder: 'Поиск...',
                                                 name: 'title',
                                                 id: 'inpt',
                                                 listeners: {
                                                     scope: this,
-                                                     //clearicontap: this.onSearchClearIconTap,
                                                     keyup: function(){
                                                     value = Ext.ComponentQuery.query('#inpt')[0].getValue();
                                                     Ext.Ajax.request({
@@ -161,11 +158,13 @@ Ext.require([
                                 flex:1,
                                // displayField: 'filmpage',
                                 itemTpl: "{filmpage}",
-                                store: search
+                                store: search,
+
 
                             }]
                         });
                         ser.show();
+
                         }
                         }]);
 
@@ -366,7 +365,7 @@ Ext.require([
                                },
                                deactivate: function(button){
                                 //tb.show();
-                                tb.setTitle('Now-Yakutsk');
+                                tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
 
@@ -435,7 +434,8 @@ Ext.require([
                                              } ,
                                              deactivate: function() {
                                                 tb.show();
-                                                tb.setTitle('Now-Yakutsk');
+                                                 tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+
                                                  delete window.ttt;
                                             }
                                             ,
@@ -634,15 +634,16 @@ Ext.require([
                                         xtype: 'panel',
                                         scrollable: true,
                                         styleHtmlContent: true
-                                            },
+                                    },
                                     listeners:{
                                             activate : function() {
                                                     tb.show();
                                                     tb.setTitle(record.get('name'));
                                                 },
                                             deactivate: function(){
-                                                tb.setTitle('Now-Yakutsk');
-                                                }
+                                                tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+
+                                            }
                                              } ,
                                     items: [
 
@@ -928,7 +929,6 @@ Ext.require([
                                             xtype: 'nestedlist',
                                             //iconCls: 'star',
                                             displayField: 'list',
-                                            updateTitleText: false,
                                             defaultBackButtonText : null,
                                             updateTitleText:false,
                                             backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:5px; height:40px;\" src=./img/main-ico.png></div>',
@@ -965,6 +965,7 @@ Ext.require([
                                                 var f_cid = post.get('cid');
                                                 //alert(cat);
                                                 var fil = Ext.create('Ext.Container', {
+
                                                 fullscreen: true,
                                                 useToolbar:false,
                                                 layout: 'vbox',
@@ -1238,7 +1239,7 @@ Ext.require([
                                             xtype: 'fieldset',
                                             items: [{
                                                 xtype: 'searchfield',
-                                                placeHolder: 'Search...',
+                                                placeHolder: 'Поиск...',
                                                 name: 'title',
                                                 id: 'inpt',
                                                 listeners: {
@@ -1286,8 +1287,9 @@ Ext.require([
 
                              } ,
                              deactivate: function() {
-                                tb.setTitle('Now-Yakutsk');
-                                //tb.show();
+                                 tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+
+                                 //tb.show();
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
