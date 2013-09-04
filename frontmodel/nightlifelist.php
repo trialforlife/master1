@@ -20,6 +20,8 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["n_name"]),
 			"image"=>addslashes((string)$row["n_image"]),
 			"adress"=>addslashes((string)$row["n_adress"]),
+            "banner"=>addslashes((string)$row["n_banner"]),
+            "site"=>addslashes((string)$row["n_site"]),
 			"published"=>addslashes((string)$row["n_published"]),
             "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["n_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["n_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["n_image"].'></span></div>',
             "img_full"=> "<img src=http://now/".addslashes((string)$row["n_image"]).">",
