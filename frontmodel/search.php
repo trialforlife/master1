@@ -23,10 +23,11 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
 			"time"=>addslashes((string)$row["f_time"]),
-			"filmpage"=>
-			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
-			));
+			"filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["f_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["f_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["f_image"].'></span></div>',
+            //"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>".
+			/*$row["f_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["f_image"]."><br>".$row["f_time"]."</br><small>".$row["f_content"]."</small></br>",
+            "list"=>*/
+        ));
 			
 	}
 
@@ -42,9 +43,9 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["p_name"]),
 			"image"=>addslashes((string)$row["p_image"]),
 			"time"=>addslashes((string)$row["p_time"]),
-			"filmpage"=>
+			"filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["p_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["p_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["p_image"].'></span></div>',
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["p_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["p_image"]."><br>".$row["p_time"]."</br><small>".$row["p_content"]."</small></br>",
+//			$row["p_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["p_image"]."><br>".$row["p_time"]."</br><small>".$row["p_content"]."</small></br>",
 			));
 			
 	}
@@ -61,9 +62,9 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["en_name"]),
 			"image"=>addslashes((string)$row["en_image"]),
 			"time"=>addslashes((string)$row["en_time"]),
-			"filmpage"=>
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["en_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["en_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["en_image"].'></span></div>',
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["en_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["en_image"]."><br>".$row["en_time"]."</br><small>".$row["en_content"]."</small></br>",
+			//$row["en_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["en_image"]."><br>".$row["en_time"]."</br><small>".$row["en_content"]."</small></br>",
 			));
 			
 	}
@@ -80,9 +81,9 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["ev_name"]),
 			"image"=>addslashes((string)$row["ev_image"]),
 			"time"=>addslashes((string)$row["ev_time"]),
-			"filmpage"=>
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["ev_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["ev_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["ev_image"].'></span></div>',
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["ev_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["ev_image"]."><br>".$row["ev_time"]."</br><small>".$row["ev_content"]."</small></br>",
+			//$row["ev_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["ev_image"]."><br>".$row["ev_time"]."</br><small>".$row["ev_content"]."</small></br>",
 			));
 			
 	}
@@ -99,9 +100,9 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["n_name"]),
 			"image"=>addslashes((string)$row["n_image"]),
 			"time"=>addslashes((string)$row["n_time"]),
-			"filmpage"=>
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["n_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["n_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["n_image"].'></span></div>',
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["n_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["n_image"]."><br>".$row["n_time"]."</br><small>".$row["n_content"]."</small></br>",
+			//$row["n_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["n_image"]."><br>".$row["n_time"]."</br><small>".$row["n_content"]."</small></br>",
 			));
 			
 	}
@@ -118,12 +119,50 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["s_name"]),
 			"image"=>addslashes((string)$row["s_image"]),
 			"time"=>addslashes((string)$row["s_time"]),
-			"filmpage"=>
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["s_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["s_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["s_image"].'></span></div>',
 			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
+			//$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
 			));
 			
 	}
+
+}
+$query6 = "SELECT * FROM restaurant where r_name LIKE '%" . $search . "%'  ";
+$dbresult6 = mysql_query($query6);
+
+if (mysql_affected_rows() > 0) {
+    while($row = mysql_fetch_array($dbresult6))
+    {
+        array_push($result["films"],array(
+            "id"=>$row["r_id"],
+            "name"=>addslashes((string)$row["r_name"]),
+            "image"=>addslashes((string)$row["r_image"]),
+            "time"=>addslashes((string)$row["r_time"]),
+            "filmpage"=>'<div class="nav-element-s1"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
+            //"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>".
+            //$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
+        ));
+
+    }
+
+}
+$query7 = "SELECT * FROM beautyandhealth where bh_name LIKE '%" . $search . "%'  ";
+$dbresult7 = mysql_query($query7);
+
+if (mysql_affected_rows() > 0) {
+    while($row = mysql_fetch_array($dbresult7))
+    {
+        array_push($result["films"],array(
+            "id"=>$row["bh_id"],
+            "name"=>addslashes((string)$row["bh_name"]),
+            "image"=>addslashes((string)$row["bh_image"]),
+            "time"=>addslashes((string)$row["bh_time"]),
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["bh_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["bh_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["bh_image"].'></span></div>',
+            //"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>".
+            //$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
+        ));
+
+    }
 
 }
 
