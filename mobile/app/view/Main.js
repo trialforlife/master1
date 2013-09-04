@@ -936,7 +936,7 @@ Ext.require([
                                                 store: {
                                                 type: 'tree',
                                                 fields: [
-                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid',
+                                                    'name', 'link', 'list', 'image', 'adress', 'banner','cid','site','phone',
                                                     {name: 'leaf', defaultValue: true}
                                                 ],
 
@@ -970,7 +970,7 @@ Ext.require([
                                                 layout: 'vbox',
                                                 items: [           {
                                                                         xtype: 'carousel',
-                                                                        height: '100px',
+                                                                        height: '225px',
 
                                                                         store: {
                                                                             type: 'tree',
@@ -993,24 +993,27 @@ Ext.require([
                                                                             }},
 
                                                                            items: [
-                                                                                {
-                                                                                    html : 'Здесь будет 1 баннер',
-                                                                                    style: 'background-color: #5E99CC'
-                                                                                },
-                                                                                {
-                                                                                    html : 'А здесь второй',
-                                                                                    style: 'background-color: #759E60'
-                                                                                },
-                                                                                {
-                                                                                    html : 'или третий'
-                                                                                }
-                                                                            ]
+                                                                               {
 
-                                                                    },
+                                                                                   style: 'background: url(/mobile/img/'+ post.get('banner')+')'
+
+                                                                               },
+                                                                               {
+
+                                                                                   html : 'А здесь второй',
+                                                                                   style: 'background-color: #759E60'
+                                                                               },
+                                                                               {
+
+                                                                                   html : 'или третий'
+                                                                               }
+                                                                           ]
+
+                                                                },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '20px',
-                                                                        html:'...место для адресса... '
+                                                                        height: 90,
+                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a></div>'  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                                                     },
 
                                                                     {
