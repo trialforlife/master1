@@ -19,7 +19,7 @@ if (mysql_affected_rows() > 0) {
             $cc = $row["cat_count"];
         }
         else{
-            $cc = '<img src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png/">';
+            $cc = '<img src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
         }
 		array_push($result["cat"],array(
 			"id"=>$row["cat_id"],
