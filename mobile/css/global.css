@@ -745,3 +745,20 @@ pf{
     color: #fff;
     font: 40px/139px Hlvl;
 }
+#ed,#save {
+    height: 20px !important;
+    width: 88px !important;
+    background: #273c4e !important;
+    border-radius: 6px !important;
+    font: 24px/40px Hlvb !important;
+}
+.touchgridpanel .grid-checkbox {
+
+    -webkit-mask-image: url(../img/delete.png) !important;
+    background-image: url(../img/delete.png) !important;
+    width: 45px!important;
+    height: 45px!important;
+    border-radius: 0px  !important;
+    -webkit-mask-size: 2.45em !important;
+
+}

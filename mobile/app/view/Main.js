@@ -158,7 +158,7 @@ Ext.require([
                                 flex:1,
                                // displayField: 'filmpage',
                                 itemTpl: "{filmpage}",
-                                store: search,
+                                store: search
 
 
                             }]
@@ -221,10 +221,11 @@ Ext.require([
                                indexBar    : false,
                                useToolbar:false,
                                useHeader: false,
-                                updateTitleText :false,
+                               updateTitleText :false,
 
                             listeners:{
                                activate: function(button){
+                                   //Checkbox.hide();
                                 tb.setTitle('Избранное');
                                 favestore.sync();
                                 Ext.getCmp('serch').hide();
@@ -293,7 +294,7 @@ Ext.require([
                                                             {
                                                             dataIndex : 'name',
                                                             style     : 'padding-left: 1em;',
-                                                            width     : '40%',
+                                                            width     : '90%',
                                                             filter    : { type : 'string' }
                                                             }
                                                             ],
@@ -341,6 +342,7 @@ Ext.require([
                                                                         items: [{xtype: 'spacer'},
 
                                                                                 {
+                                                                                id:'save',
                                                                                 ui: 'round',
                                                                                 xtype: 'button',
                                                                                 text: 'Готово',
@@ -373,7 +375,7 @@ Ext.require([
                                 },
                                 features : [
                                  {
-                                    ftype    : 'Ext.grid.feature.CheckboxSelection',
+                                    ftype    : 'Ext.grid.feature.Abstract',
                                     launchFn : 'constructor'
                                 }
                                 ],
@@ -387,7 +389,7 @@ Ext.require([
                                 ],
                                 hideOnMaskTap: true,
                                 fullscreen: true,
-                                store: favestore,
+                                store: favestore
                                 //text: 'name',
                                 //displayField: "<div>name</div>"
                             });
