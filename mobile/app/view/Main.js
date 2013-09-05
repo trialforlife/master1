@@ -60,6 +60,7 @@ Ext.require([
              });
 
     treestore = Ext.create("Ext.NestedList", {
+        scrollable: 'vertical',
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
