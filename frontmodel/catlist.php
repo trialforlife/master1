@@ -28,7 +28,7 @@ if (mysql_affected_rows() > 0) {
 			"id"=>$row["cat_id"],
             "c_count"=>addslashes((string)$row["cat_count"]),
             "name"=>addslashes((string)$row["cat_title"]),
-			"title"=>'<div disabled class="nav-element"><span class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">'.$cc.'</span></div>',
+			"title"=>'<div readonly class="nav-element"><span class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">'.$cc.'</span></div>',
 			"code"=>addslashes((string)$row["cat_code"]
 			)));
 			
