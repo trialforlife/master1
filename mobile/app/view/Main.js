@@ -60,17 +60,15 @@ Ext.require([
              });
 
     treestore = Ext.create("Ext.NestedList", {
-        scrollable: 'vertical',
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
-        backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png /><div style=\"margin-left:29px; margin-top:-65px !important;\">Главная</div>',
+        backText: '<div class="backtext">Главная</div>',//<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png /><div style=\"margin-left:29px; margin-top:-65px !important;\">Главная</div>',
         fullscreen: true,
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
         title: '<div class="titleimg"></div>',
-        //title: '<span><img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png></span>',
         displayField: 'title',
         layout: 'card',
         store: {
@@ -407,7 +405,7 @@ Ext.require([
                                 fullscreen: true,
                                 defaultBackButtonText : null,
                                 updateTitleText:false,
-                                backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\"></div>',
+                                backText: '<div class="backtext"></div>',
                                 displayField: 'list',
                                             store: {
                                             type: 'tree',
@@ -940,7 +938,7 @@ Ext.require([
                                             displayField: 'list',
                                             defaultBackButtonText : null,
                                             updateTitleText:false,
-                                                backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\"></div>',
+                                                backText: '<div class="backtext"></div>',
 
                                                 store: {
                                                 type: 'tree',
@@ -1187,10 +1185,7 @@ Ext.require([
                         updateTitleText :false,
                         useTitleAsBackText: false,
                         defaultBackButtonText : null,
-                        backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\">Афиша</div>',
-                        //useToolbar:false,
-                        //leaf: true ,
-                        iconCls: 'star',
+                        backText: '<div class="backtext">Афиша</div>',
                         displayField: 'title',
 
                         store: {
@@ -1217,9 +1212,10 @@ Ext.require([
 
                         listeners: {
                              activate : function() {
-                                tb1 = this.getToolbar();
-                                //Ext.getCmp('serch').destroy();
-                                /*tb1.insert(3,[ {xtype:'spacer'}, {id:'serch', align: 'right', xtype:'button', iconCls: 'none',
+
+                                 tb1 = this.getToolbar();
+
+                                tb1.insert(3,[ {xtype:'spacer'}, {id:'serch', align: 'right', xtype:'button', iconCls: 'none',
                                                 scope: this,
                                                 handler:
                                                     function(button) {
@@ -1287,7 +1283,7 @@ Ext.require([
                                                 });
                                                 ser.show();
                                                 }
-                                                }]);*/
+                                                }]);
                                     //console.log(tb1.getTitle());
 
 
@@ -1316,11 +1312,9 @@ Ext.require([
                                 var catdyn = cat;
                                 cin = Ext.create("Ext.NestedList", {
                                     fullscreen: true,
-                                    tabBarPosition: 'bottom',
                                     defaultBackButtonText : null,
                                     updateTitleText:false,
-                                    backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\"></div>',
-                                    scrollable:'vertical',
+                                    backText: '<div class="backtext"></div>',
                                     //useToolbar:false,
                                             //title: 'Blog',
                                             iconCls: 'star',

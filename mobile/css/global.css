@@ -566,6 +566,9 @@ pf{
 	width: 100%;
 	text-align: center;
 	display: block;
+    float: left;
+    min-height: 88px;
+    background: rgb(3, 3, 83) !important;
 }
 .x-button .x-button-icon{
 	width: 40px !important;
@@ -666,9 +669,11 @@ pf{
     float: right !important;
     top: -66px!important;
     right: 0;
+    height: 0;
     padding: 0!important;
     position: relative !important;
 }
+
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
     margin:-65px 0 0 0;
@@ -781,4 +786,16 @@ pf{
     height: 91px;
     margin-left: auto;
     margin-right: auto;
+}
+.backtext{
+    background-image: url(../img/main-ico.png);
+    background-repeat: no-repeat;
+    width: 20px;
+    width: 20px;
+    height: 60px;
+    float: left;
+    margin-top: -60px;
+    margin-left: 5px;
+    padding-left: 25px;
+    padding-top: 5px;
 }
