@@ -19,7 +19,7 @@ if (mysql_affected_rows() > 0) {
             $cc = $row["cat_count"];
         }
         else{
-            $cc = 'emp';
+            $cc = ' ';
         }
 		array_push($result["cat"],array(
 			"id"=>$row["cat_id"],
