@@ -14,7 +14,7 @@ $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
-	{   if($row["cat_id"]== 11){
+	{   if($row["cat_id"]> 9){
         $cc='';
         $d_style= '';
         }
