@@ -293,8 +293,8 @@ Ext.require([
                                                              columns  : [
                                                             {
                                                             dataIndex : 'name',
-                                                            style     : 'padding-left: 1em;',
-                                                            width     : '90%',
+                                                            style     : 'margin-left: 100px; margin-top:-16px; ',
+                                                            width     : '100%',
                                                             filter    : { type : 'string' }
                                                             }
                                                             ],
