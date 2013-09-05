@@ -26,7 +26,7 @@ if (mysql_affected_rows() > 0) {
 
         else{
 
-            $d_style = 'color: rgba(255,255,255,0.3) !important';
+            $d_style = 'color: rgba(255,255,255,0.3) !important; text-shadow: none !important;';
             $cc = '<img style="margin-right: -14px;" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
         }
 		array_push($result["cat"],array(
