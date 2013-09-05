@@ -21,7 +21,7 @@ if (mysql_affected_rows() > 0) {
         elseif(($row["cat_count"])!= 0 )
         {
             $cc = $row["cat_count"];
-            $d_style = 'color: rgba(255,255,255,0.3)';
+            $d_style = 'color: rgba(255,255,255,0.3) !important';
         }
 
         else{
@@ -32,7 +32,7 @@ if (mysql_affected_rows() > 0) {
 			"id"=>$row["cat_id"],
             "c_count"=>addslashes((string)$row["cat_count"]),
             "name"=>addslashes((string)$row["cat_title"]),
-			"title"=>'<div style="'.$d_style.'" class="nav-element"><span class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">'.$cc.'</span></div>',
+			"title"=>'<div class="nav-element"><span style="'.$d_style.'" class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">'.$cc.'</span></div>',
 			"code"=>addslashes((string)$row["cat_code"]
 			)));
 			
