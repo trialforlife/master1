@@ -68,9 +68,9 @@ For Ext.ux.touch.feature.CheckBoxSelection
 
 .touchgridpanel .x-item-selected .grid-checkbox,
 .touchgridpanel .x-grid-cell-hd .grid-checkbox {
-    background-image: none !important;
+    /*background-image: none !important;
     background-color: #fff;
-}
+*/}
 
 .touchgridpanel .grid-checkbox {
     margin: .5em auto 0;

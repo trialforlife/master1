@@ -662,11 +662,17 @@ pf{
 }
 #serch{
     background:url(../img/ico_search.png) no-repeat;
-    margin:27px 0 0 0;
+    width: 100px !important;
+    float: right !important;
+    top: -66px!important;
+    right: 0;
+    padding: 0!important;
+    position: absolute !important;
 }
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
-    margin:27px 0 0 0;
+    margin:-65px 0 0 0;
+    float: right;
 }
 .f_con{
     float: left;
@@ -763,4 +769,8 @@ pf{
 }
 .touchgridpanel .x-grid-cell {
     border: none !important;
+}
+.touchgridpanel .x-item-selected .grid-checkbox, .touchgridpanel .x-grid-cell-hd .grid-checkbox {
+    background-image: url(../img/delete.png) !important ;
+
 }
