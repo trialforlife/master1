@@ -667,7 +667,7 @@ pf{
     top: -66px!important;
     right: 0;
     padding: 0!important;
-    position: absolute !important;
+    position: relative !important;
 }
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
@@ -740,8 +740,8 @@ pf{
     border-bottom:1px solid #820cff;
     box-shadow:0 1px 0 rgba(255,255,255,0.24);
     position:relative;
-    background: #1e3244;
-}
+    /*background: #1e3244;
+*/}
 .nav-element-s .txt {
     padding: 0 0 0 40px;
     color: #fff;
@@ -773,4 +773,12 @@ pf{
 .touchgridpanel .x-item-selected .grid-checkbox, .touchgridpanel .x-grid-cell-hd .grid-checkbox {
     background-image: url(../img/delete.png) !important ;
 
+}
+.titleimg{
+    background-image: url(../img/logo.png)!important ;
+    background-repeat: no-repeat;
+    width: 210px;
+    height: 91px;
+    margin-left: auto;
+    margin-right: auto;
 }

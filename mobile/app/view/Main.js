@@ -63,12 +63,13 @@ Ext.require([
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
-            backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\">Главная</div>',
+        backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png /><div style=\"margin-left:29px; margin-top:-65px !important;\">Главная</div>',
         fullscreen: true,
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
-        title: '<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>',
+        title: '<div class="titleimg"></div>',
+        //title: '<span><img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png></span>',
         displayField: 'title',
         layout: 'card',
         store: {
@@ -371,7 +372,7 @@ Ext.require([
                                },
                                deactivate: function(button){
                                 //tb.show();
-                                tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+                                tb.setTitle('<div class="titleimg"></div>'),
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
                                    //flist.hide();
@@ -442,7 +443,7 @@ Ext.require([
                                          } ,
                                          deactivate: function() {
                                             tb.show();
-                                             tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+                                             tb.setTitle('<div class="titleimg"></div>');
 
                                              delete window.ttt;
                                         }
@@ -489,7 +490,7 @@ Ext.require([
 
                                                                        items: [
                                                                             {
-                                                                            style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
+                                                                            style: 'background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
 
                                                                             },
                                                                             {
@@ -649,7 +650,7 @@ Ext.require([
                                                     tb.setTitle(record.get('name'));
                                                 },
                                             deactivate: function(){
-                                                tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+                                                tb.setTitle('<div class="titleimg"></div>');
                                              }
                                              } ,
                                     items: [
@@ -730,7 +731,7 @@ Ext.require([
 
                                                                            items: [
                                                                                 {
-                                                                                    style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
+                                                                                    style: 'background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
 
                                                                                 },
                                                                                 {
@@ -1002,8 +1003,8 @@ Ext.require([
 
                                                                            items: [
                                                                                {
-
-                                                                                   style: 'background: url(/mobile/img/'+ post.get('banner')+')'
+                                                                                   height:'100px',
+                                                                                   style: 'background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
 
                                                                                },
                                                                                {
@@ -1185,7 +1186,7 @@ Ext.require([
                         updateTitleText :false,
                         useTitleAsBackText: false,
                         defaultBackButtonText : null,
-                            backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\">Афиша</div>',
+                        backText: '<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png><div style=\"margin-left:29px; margin-top:-65px;\">Афиша</div>',
                         //useToolbar:false,
                         //leaf: true ,
                         iconCls: 'star',
@@ -1295,7 +1296,7 @@ Ext.require([
 
                              } ,
                              deactivate: function() {
-                                 tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
+                                 tb.setTitle('<div class="titleimg"></div>');
 
                                  //tb.show();
                             }
@@ -1396,7 +1397,7 @@ Ext.require([
                                                                            items: [
                                                                                 {
                                                                                     //html : '<span class="locate"><i>Улица кино номер 34</i><b>111</b></span>',
-                                                                                    style: 'background:   url(/mobile/img/'+ post.get('banner')+')'
+                                                                                    style: 'background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
                                                                                 },
                                                                                 {
                                                                                     html : 'А здесь второй',
