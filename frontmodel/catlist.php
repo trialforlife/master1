@@ -18,6 +18,9 @@ if (mysql_affected_rows() > 0) {
         {
             $cc = $row["cat_count"];
         }
+        elseif($row["cat_id"]== 11){
+            $cc='';
+        }
         else{
             $cc = '<img style="margin-right: -14px;" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
         }
