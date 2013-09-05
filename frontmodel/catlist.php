@@ -18,6 +18,9 @@ if (mysql_affected_rows() > 0) {
         {
             $cc = $row["cat_count"];
         }
+        else{
+            $cc = 'emp';
+        }
 		array_push($result["cat"],array(
 			"id"=>$row["cat_id"],
             "c_count"=>addslashes((string)$row["cat_count"]),
