@@ -729,10 +729,6 @@ pf{
     padding-left: 1.35em;
     padding-right: 2.35em !important;
 }
-.x-field-search .x-field-input .x-form-field {
-
-}
-
 .nav-element-s{
     height:142px;
     border-bottom:1px solid #820cff;
@@ -745,7 +741,7 @@ pf{
     color: #fff;
     font: 40px/139px Hlvl;
 }
-#ed,#save {
+#ed,#save1 {
     height: 20px !important;
     width: 92px !important;
     background: #273c4e !important;
@@ -764,4 +760,7 @@ pf{
     margin-top: 45px!important;
     margin-left: 26px!important;
     position: absolute;
+}
+.touchgridpanel .x-grid-cell {
+    border: none !important;
 }

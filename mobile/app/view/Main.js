@@ -342,13 +342,14 @@ Ext.require([
                                                                         items: [{xtype: 'spacer'},
 
                                                                                 {
-                                                                                id:'save',
+                                                                                align:'right',
+                                                                                id:'save1',
                                                                                 ui: 'round',
                                                                                 xtype: 'button',
                                                                                 text: 'Готово',
-                                                                                handler: function (button) {
+                                                                                handler: function () {
                                                                                     //button.show();
-                                                                                    flist1.hide();
+                                                                                    flist1.destroy();
                                                                                     flist.show();
                                                                                 }
                                                                             }
@@ -359,10 +360,11 @@ Ext.require([
                                                         fd = (flist1.getHeader());
                                                         fd.destroy();
                                                         flist1.show();
+
                                     }
-                                                                            }
-                                                                            ]
-                                                                            );
+                                    }
+                                    ]
+                                    );
 
                                },
                                deactivate: function(button){
@@ -370,6 +372,8 @@ Ext.require([
                                 tb.setTitle('<img style=\"width:210px;   margin-left:7px; margin-top:0px; height:86px;\" src=./img/logo.png>');
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
+                                   //flist.hide();
+
 
                                }
                                 },
