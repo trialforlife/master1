@@ -21,11 +21,12 @@ if (mysql_affected_rows() > 0) {
         elseif(($row["cat_count"])!= 0 )
         {
             $cc = $row["cat_count"];
-            $d_style = 'color: rgba(255,255,255,0.3) !important';
+            $d_style= '';
         }
 
         else{
-            $d_style= '';
+
+            $d_style = 'color: rgba(255,255,255,0.3) !important';
             $cc = '<img style="margin-right: -14px;" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
         }
 		array_push($result["cat"],array(
