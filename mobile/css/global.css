@@ -717,10 +717,10 @@ pf{
 
 }
 .x-tabbar.x-docked-bottom .x-tab .x-button-label, .x-tabbar.x-docked-bottom .x-tab .x-badge {
-     margin-top: -30px !important;
-
-     font: 34px/88px Hlvb !important;
-     height: 86px !important;
+    margin-top: -30px !important;
+    font: 34px/88px Hlvb !important;
+    height: 86px !important;
+    float: left;
 }
 .x-toolbar-dark .x-button, .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after {
     background: none !important;
@@ -753,21 +753,25 @@ pf{
     font: 40px/139px Hlvl;
 }
 #ed,#save1 {
-    height: 20px !important;
-    width: 92px !important;
+    height: 30px !important;
+    width: 112px !important;
+    padding-left: 10px;
+    padding-bottom: 10px;
     background: #273c4e !important;
     border-radius: 6px !important;
     font: 24px/40px Hlvb !important;
+    color: white;
+    float: right;
+    margin-top: -49px;
 }
+
 .touchgridpanel .grid-checkbox {
 
-    -webkit-mask-image: url(../img/delete.png) !important;
     background-image: url(../img/delete.png) !important ;
     background-repeat:no-repeat ;
-    width: 45px!important;
+    width: 44px!important;
     height: 45px!important;
     border-radius: 0px  !important;
-    -webkit-mask-size: 2.45em !important;
     margin-top: 45px!important;
     margin-left: 26px!important;
     position: absolute;

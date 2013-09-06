@@ -227,7 +227,6 @@ Ext.require([
 
                             listeners:{
                                activate: function(button){
-                                   //Checkbox.hide();
                                 tb.setTitle('Избранное');
                                 favestore.sync();
                                 Ext.getCmp('serch').hide();
@@ -240,6 +239,21 @@ Ext.require([
                                 fh.hide();
                                 tb.insert(4,[ {xtype:'spacer'},{ id:'ed', align:'right',xtype:'button', ui: 'round', text: 'Правка',
                                     handler: function (button) {
+
+                                        tb.insert(4,[ {xtype:'spacer'},{ id:'save1', align:'right',xtype:'button', ui: 'round', text: 'Готово',
+                                            handler: function (button1) {
+
+                                                    button1.destroy();
+                                                    button.show();
+
+                                                    flist1.destroy();
+                                                    flist.show();
+
+
+                                            }}]);
+
+                                        flist.hide();
+                                            button.hide();
                                             var favestore = Ext.create("Ext.data.Store", {
                                             model: "Favorite",defaultRootProperty: 'items',
                                             storeId: 'Favorite',
@@ -279,90 +293,72 @@ Ext.require([
                                                 }},
                                                 autoLoad: true });
 
-                                                        var flist1 = Ext.create("Ext.grid.List", {
-                                                        grouped     : true,
-                                                        indexBar    : false,
-                                                        useToolbar:false,
-                                                        useHeader: false,
-                                                        updateTitleText :false,
+                                                var flist1 = Ext.create("Ext.grid.List", {
+                                                grouped     : true,
+                                                indexBar    : false,
+                                                useToolbar:false,
+                                                useHeader: false,
+                                                updateTitleText :false,
 
-                                                        features : [
-                                                        {
-                                                            ftype    : 'Ext.grid.feature.CheckboxSelection',
-                                                            launchFn : 'constructor'
-                                                        }
-                                                        ],
-                                                             columns  : [
-                                                            {
-                                                            dataIndex : 'name',
-                                                            style     : 'margin-left: 100px; margin-top:-16px; padding-right: 100px;',
-                                                            width     : '100%',
-                                                            filter    : { type : 'string' }
-                                                            }
-                                                            ],
+                                                features : [
+                                                {
+                                                    ftype    : 'Ext.grid.feature.CheckboxSelection',
+                                                    launchFn : 'constructor'
+                                                }
+                                                ],
+                                                     columns  : [
+                                                    {
+                                                    dataIndex : 'name',
+                                                    style     : 'margin-left: 100px; margin-top:-16px; padding-right: 100px;',
+                                                    width     : '100%',
+                                                    filter    : { type : 'string' }
+                                                    }
+                                                    ],
 
-                                                            hideOnMaskTap: true,
-                                                            fullscreen: true,
-                                                            store: favestore,
-                                                            text: 'name',
+                                                    hideOnMaskTap: true,
+                                                    fullscreen: true,
+                                                    store: favestore,
+                                                    text: 'name',
 
-                                                            listeners: {
-                                                            activate: function(){
-                                                            //fh2 = nestedList.getHeader();
-                                                            console.log(nestedList.getHeader());
-                                                            fh2.hide();
-                                                            flist.hide();
+                                                    listeners: {
+                                                    activate: function(){
+
+                                                                //fh2 = nestedList.getHeader();
+                                                    console.log(nestedList.getHeader());
+                                                    fh2.hide();
+                                                    flist.hide();
+                                                    flist1.show();
 
 
 
-                                                            favestore.sync();
-                                                            Ext.getCmp('ed').hide();
-                                                            //fh1.show();
+                                                    favestore.sync();
+                                                    Ext.getCmp('ed').hide();
+                                                    //fh1.show();
 
-                                                            },
+                                                    },
+                                                    deactivate:function(){
+                                                    },
+                                                    itemtap: function( h, index, target, record, e, eOpts ){
+                                                        console.log(record.raw.id);
+                                                        did = record.raw.id;
+                                                        db.transaction(function(tx) {
 
-                                                            itemtap: function( h, index, target, record, e, eOpts ){
-                                                                console.log(record.raw.id);
-                                                                did = record.raw.id;
-                                                                db.transaction(function(tx) {
+                                                                Ext.Msg.alert("Удалено");
+                                                                tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
 
-                                                                        Ext.Msg.alert("Удалено");
-                                                                        tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
+                                                                favestore.sync();
+                                                                }); favestore.sync();
+                                                            }); favestore.sync();
+                                                              record.destroy();
 
-                                                                        favestore.sync();
-                                                                        }); favestore.sync();
-                                                                    }); favestore.sync();
-                                                                record.destroy();
+                                                    }
 
-                                                            }
-
-                                                            },
-                                                            dockedItems: {
-                                                                    xtype: 'toolbar',
-                                                                    docked: 'top',
-                                                                    title: 'Избранное',
-                                                                        items: [{xtype: 'spacer'},
-
-                                                                                {
-                                                                                align:'right',
-                                                                                id:'save1',
-                                                                                ui: 'round',
-                                                                                xtype: 'button',
-                                                                                text: 'Готово',
-                                                                                handler: function () {
-                                                                                    //button.show();
-                                                                                    flist1.destroy();
-                                                                                    flist.show();
-                                                                                }
-                                                                            }
-                                                                            ]
-                                                                        }
-
-                                                    });
-                                                        fd = (flist1.getHeader());
-                                                        fd.destroy();
-                                                        flist1.show();
-
+                                                    },
+                                            });
+                                                fd = (flist1.getHeader());
+                                                fd.destroy();
+                                                flist1.show();
+                                        
                                     }
                                     }
                                     ]
@@ -374,6 +370,8 @@ Ext.require([
                                 tb.setTitle('<div class="titleimg"></div>'),
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
+                                   flist.destroy();
+
                                    //flist.hide();
 
 
@@ -633,7 +631,7 @@ Ext.require([
                         if(catdyn!= 'poster' && catdyn!= 'aboutus' && catdyn!= 'beautyandhealh' && catdyn!= 'shipment' && catdyn!= 'entertainment' && catdyn!= 'restaurant' && catdyn!= 'favorite' ) {
                             cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
-                                    fullscreen: true,
+                                    //fullscreen: true,
                                     updateTitleText :false,
                                     defaults: {
                                      styleHtmlContent: true
