@@ -452,10 +452,10 @@ Ext.require([
                                                 tb2.setTitle(post.get('name'));
                                                 console.log(post.get('special'));
                                             if((post.get('special'))!= undefined ) {
-                                                bh='132px';
+                                                bh='228px';
                                                 hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
                                             }else{
-                                                bh = '90px';
+                                                bh = '120px';
                                                 hinsert = '';
                                             }
                                             var fil = Ext.create('Ext.Container', {
@@ -489,16 +489,16 @@ Ext.require([
 
                                                                        items: [
                                                                             {
-                                                                            style: 'background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
+                                                                                html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
 
-                                                                            },
+                                                                            }/*,
                                                                             {
                                                                                 html : 'А здесь второй',
                                                                                 style: 'background-color: #759E60'
                                                                             },
                                                                             {
                                                                                 html : 'или третий'
-                                                                            }
+                                                                            }*/
                                                                         ]
 
                                                                 },
@@ -510,7 +510,7 @@ Ext.require([
 
 
                                                                 {
-                                                                scrollable:'vertical',
+                                                                //scrollable:'vertical',
                                                                 flex: 1,
                                                                 useToolbar:false,
                                                                 xtype: 'nestedlist',
@@ -640,7 +640,7 @@ Ext.require([
                                     },
                                     detailCard: {
                                         xtype: 'panel',
-                                        scrollable: true,
+                                        //scrollable: true,
                                         styleHtmlContent: true
                                     },
                                     listeners:{
@@ -656,7 +656,7 @@ Ext.require([
 
                                         {
                                             title: 'Сегодня',
-                                            scrollable:'vertical',
+                                            //scrollable:'vertical',
                                             xtype: 'nestedlist',
                                             displayField: 'list',
 
@@ -730,16 +730,16 @@ Ext.require([
 
                                                                            items: [
                                                                                 {
-                                                                                    style: 'background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
+                                                                                    html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
 
-                                                                                },
+                                                                                }/*,
                                                                                 {
                                                                                     html : 'А здесь второй',
                                                                                     style: 'background-color: #759E60'
                                                                                 },
                                                                                 {
                                                                                     html : 'или третий'
-                                                                                }
+                                                                                }*/
                                                                             ]
 
                                                                     },
@@ -751,7 +751,7 @@ Ext.require([
                                                                     },
 
                                                                     {
-                                                                    scrollable:'vertical',
+                                                                    //scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist',
@@ -842,7 +842,7 @@ Ext.require([
                                                         ],
                                                         detailCard: {
                                                             xtype: 'panel',
-                                                            scrollable: true,
+                                                           // scrollable: true,
                                                             styleHtmlContent: true
                                                         },
                                                         listeners: {
@@ -931,7 +931,7 @@ Ext.require([
                                         ,
                                             {
                                             title: 'Клубы',
-                                            scrollable:'vertical',
+                                            //scrollable:'vertical',
 
                                             xtype: 'nestedlist',
                                             //iconCls: 'star',
@@ -1025,7 +1025,7 @@ Ext.require([
                                                                     },
 
                                                                     {
-                                                                    scrollable:'vertical',
+                                                                    //scrollable:'vertical',
                                                                     flex: 1,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist',
@@ -1054,7 +1054,7 @@ Ext.require([
                                                                 ],
                                                         detailCard: {
                                                             xtype: 'panel',
-                                                            scrollable: true,
+                                                            //llable: true,
                                                             styleHtmlContent: true
                                                         },
                                                         listeners: {
@@ -1141,6 +1141,7 @@ Ext.require([
 
                                 }
                                 if(catdyn!= 'poster' && catdyn!= 'favorite' ) {
+
                         about = Ext.create("Ext.NestedList", {
                             fullscreen: true,
                             displayField: 'list',
@@ -1166,6 +1167,7 @@ Ext.require([
                                             listeners: {
                                             activate : function() {
                                                 //tb1.show();
+                                                Ext.getCmp('serch').hide();
                                                 Ext.getCmp('serch').hide();
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
@@ -1212,9 +1214,7 @@ Ext.require([
 
                         listeners: {
                              activate : function() {
-
-                                 tb1 = this.getToolbar();
-
+                                tb1 = this.getToolbar();
                                 tb1.insert(3,[ {xtype:'spacer'}, {id:'serch', align: 'right', xtype:'button', iconCls: 'none',
                                                 scope: this,
                                                 handler:
@@ -1391,16 +1391,17 @@ Ext.require([
 
                                                                            items: [
                                                                                 {
-                                                                                    //html : '<span class="locate"><i>Улица кино номер 34</i><b>111</b></span>',
-                                                                                    style: 'background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
-                                                                                },
+
+                                                                                      html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+                                                                               //     style: 'width: 100%; margin-top-top: 100px; height: 134px !important;float:left; background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+');'
+                                                                                }/*,
                                                                                 {
                                                                                     html : 'А здесь второй',
-                                                                                    style: 'background-color: #759E60'
+                                                                                    style: 'background-color: #759E60; float:left; '
                                                                                 },
                                                                                 {
                                                                                     html : 'или третий'
-                                                                                }
+                                                                                }*/
                                                                             ]
 
                                                                     },
