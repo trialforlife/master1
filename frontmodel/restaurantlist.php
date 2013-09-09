@@ -28,7 +28,7 @@ if (mysql_affected_rows() > 0) {
 //			"list"=>"<div>".addslashes((string)$row["r_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["r_image"]."><br><div>",
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["r_image"]).">",
 
-            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:7%; margin-top:2px; float:right ; height:90%;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
+            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:5em; margin-top:0.4em; float:right ; height:3.59em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
 
         ));
 			
