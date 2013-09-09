@@ -200,15 +200,15 @@ html,body{
 	background:url(../img/arrow-next.png) no-repeat;
 }
 .location {
-    padding: 0 0 0 2%;
+    padding: 0 0 0 20px;
     margin-top: -57em;
     color: rgba(255,255,255,0.5);
     font: 0.7em Hlvl;
     height: 2.3em;
     position: absolute;
-    bottom: 2px;
+    bottom: -2px;
     background: url(../img/locate-ico.png) left 3px no-repeat;
-    left: 7%;
+    left: 7.5%;
 }
 .event .img_box{
 	position:absolute;
@@ -388,7 +388,7 @@ html,body{
 }
 .comp-location .locate{
 	float:left;
-
+    height: 2.2em;
 	max-width:320px;
 	width:100%;
     font: 0.7em Hlvl;
@@ -449,7 +449,7 @@ pf{
 	padding:7px 0 2px 5px;
 }
 .h4{
-	font:34px Hlvb;
+	font:1.5em Hlvb;
 	color:#fff;
 	text-shadow:0 2px rgba(0,0,0,0.42);
 }
@@ -467,12 +467,12 @@ pf{
 .restaurant p{
 	color:rgba(255,255,255,0.5);
 
-    font: 24px Hlvl;
+    font: 1em Hlvl;
     padding: 0 0 0 153px !important;
 }
 .restaurant .price{
 	color:#fff;
-	font:30px Hlvl;
+	font:1.5em Hlvl;
 	padding:0 0 0 153px;
 	margin:10px 0 0;
 	position:relative;
@@ -595,7 +595,7 @@ pf{
 .x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after {
 	max-width: 66px!important;
 	height: 70px !important;
-    min-width: 43px!important;
+    min-width: 38px!important;
  }
  .x-button .x-button-icon.x-shown {
 	margin-left: -20px !important;
@@ -620,7 +620,7 @@ pf{
 	min-width: 150px !important;
 	/*font: 34px/40px Hlvb !important;
 	*/
-    font: 1.2em/1em Hlvb !important;
+    font: 0.85em Hlvb !important;
 	color: #fff;
 }
 .x-toolbar-light .x-button.x-button-back:before, .x-toolbar-light .x-button.x-button-forward:before, .x-toolbar .x-toolbar-light .x-button.x-button-back:before, .x-toolbar .x-toolbar-light .x-button.x-button-forward:before,
@@ -657,7 +657,7 @@ pf{
 */}
 .x-list-normal .x-list-header{
     color: #fff !important;
-    font: 34px/44px Hlvb !important;
+    font: 1em/44px Hlvb !important;
     text-shadow: 1px 0 0 rgba(0,0,0,0.42) !important;
     height: 44px !important;
     background: rgba(160,12,255,0.5) !important;
@@ -681,13 +681,14 @@ pf{
 }
 #serch{
     background:url(../img/ico_search.png) no-repeat;
-    width: 3em !important;
+    width: 2.7em !important;
     float: right !important;
     top: -66px!important;
     right: 0;
     height: 0;
     padding: 0!important;
     position: relative !important;
+
 }
 
 #fs_id{
@@ -714,17 +715,19 @@ pf{
     border: none !important;
 }
 .x-tabbar.x-docked-bottom .x-tab{
-    width: 50% !important;
     height: 100%;
-    margin: 0 !important;
-    padding: 0!important;
-
-}
+    width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    }
 .x-tabbar.x-docked-bottom {
-    margin: 0 !important;
-    padding: 0!important;
-    height: 88px !important;
+    height: 1.5em !important;
     background: #0a0456;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
 }
 
 .x-tabbar-dark.x-docked-bottom .x-tab-active{
@@ -734,8 +737,7 @@ pf{
 
 }
 .x-tabbar.x-docked-bottom .x-tab .x-button-label, .x-tabbar.x-docked-bottom .x-tab .x-badge {
-    margin-top: -30px !important;
-    font: 34px/88px Hlvb !important;
+    font: 1em Hlvb !important;
     height: 86px !important;
     float: left;
 }
@@ -771,25 +773,25 @@ pf{
 }
 #ed,#save1 {
     height: 0.6em!important;
-    width: 4em!important;
-    padding-left: 10px;
+    width: 3em!important;
+    padding-left: 3px;
+    padding-right: 7px;
     padding-bottom: 10px;
     background: #273c4e !important;
     border-radius: 6px !important;
-    font: 1em/1.3em Hlvb !important;
+    font: 0.65em/1.3em Hlvb !important;
     color: white;
     float: right;
     margin-top: -49px;
 }
 
 .touchgridpanel .grid-checkbox {
-
-    background-image: url(../img/delete.png) !important ;
-    background-repeat:no-repeat ;
+    background-image: url(../img/delete.png) !important;
+    background-repeat: no-repeat;
     width: 44px!important;
-    height: 45px!important;
-    border-radius: 0px  !important;
-    margin-top: 45px!important;
+    height: 44px!important;
+    border-radius: 0px !important;
+    margin-top: 16px!important;
     margin-left: 26px!important;
     position: absolute;
 }
@@ -812,7 +814,7 @@ pf{
     background-image: url(../img/main-ico.png);
     background-repeat: no-repeat;
     width: 1em;
-    height: 2.2em;
+    height: 2.8em;
     float: left;
     margin-top: -60px;
     margin-left: 5px;

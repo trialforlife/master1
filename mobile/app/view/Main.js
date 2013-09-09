@@ -6,13 +6,12 @@ Ext.define('front.view.Main', {
     },
     listeners:{
         intialize:function(){
-
         }
     }
 
 });
 
-    db = openDatabase("Sencha", "1.0", "Sencha", 200000);
+    db = openDatabase("Sencha", "1.0", "Sencha", 20000);
         if(!db)
             {alert("Failed to connect to database.");}
         else
@@ -62,7 +61,7 @@ Ext.define('front.view.Main', {
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
-        backText: '<div class="backtext">Главная</div>',//<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png /><div style=\"margin-left:29px; margin-top:-65px !important;\">Главная</div>',
+        backText: '<div class="backtext"></div>',//<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png /><div style=\"margin-left:29px; margin-top:-65px !important;\">Главная</div>',
         fullscreen: true,
         tabBarPosition: 'bottom',
         useToolbar:true,
@@ -103,16 +102,19 @@ Ext.define('front.view.Main', {
                                     button.hide();
                                     treestore.hide();
                                     tb.show();
-                                        tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
+                                        tb.insert(3,[
+                                            {xtype:'spacer'},
+                                            {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
                                             scope: this,
                                             handler:function(){
-                                            alert();}}]);
+                                                alert('d');
+                                            }}]);
 
                                     ser = Ext.create('Ext.Container', {
                                     fullscreen: true,
                                     useToolbar : true,
-                                    layout:'vbox',
-                                    dockedItems: {
+                                    layout: 'fit',
+                                    items: {
                                         xtype: 'toolbar',
                                         docked: 'top',
                                             items: [
@@ -158,11 +160,8 @@ Ext.define('front.view.Main', {
 
                             },
                             {
-                                useToolbar:false,
                                 xtype: 'list',
                                 iconCls: 'star',
-                                flex:1,
-                               // displayField: 'filmpage',
                                 itemTpl: "{filmpage}",
                                 store: search
 
@@ -333,6 +332,8 @@ Ext.define('front.view.Main', {
                                                     fh2.hide();
                                                     flist.hide();
                                                     flist1.show();
+                                                    var navigationBar = this.getNavigationBar();
+                                                    navigationBar.leftBox.query('button')[1].hide();
 
 
 
@@ -455,7 +456,7 @@ Ext.define('front.view.Main', {
                                                 tb2.setTitle(post.get('name'));
                                                 console.log(post.get('special'));
                                             if((post.get('special'))!= undefined ) {
-                                                bh='228px';
+                                                bh='187px';
                                                 hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
                                             }else{
                                                 bh = '120px';

@@ -31,7 +31,8 @@ Ext.application({
         'Ext.tab.Panel',
         'Ext.carousel.Carousel',
         'Ext.grid.List',
-        'Ext.grid.feature.Abstract'
+        'Ext.grid.feature.Abstract',
+        'Ext.grid.feature.CheckboxSelection'
       ],
 
     views: [
