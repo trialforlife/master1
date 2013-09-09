@@ -114,7 +114,7 @@ Ext.define('front.view.Main', {
                                     fullscreen: true,
                                     useToolbar : true,
                                     layout: 'fit',
-                                    items: {
+                                    /*items: {
                                         xtype: 'toolbar',
                                         docked: 'top',
                                             items: [
@@ -129,8 +129,26 @@ Ext.define('front.view.Main', {
                                                     }
                                                 }
                                                 ]
-                                            },
+                                            },*/
                                             items: [
+                                            {
+                                                xtype:'toolbar', docked: 'top',title: '<div class="titleimg"></div>',
+                                                items:[{
+
+                                                        ui: 'back',
+                                                        xtype: 'button',
+                                                        text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:-57px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
+                                                        handler: function () {
+                                                            ser.hide();
+                                                            button.show();
+                                                            treestore.show();
+                                                            Ext.getCmp('serch').hide();
+                                                        }
+
+                                                }]
+
+                                            },
+
                                             {
                                             xtype: 'fieldset',
                                             items: [{
@@ -231,6 +249,7 @@ Ext.define('front.view.Main', {
 
                             listeners:{
                                activate: function(button){
+
                                 tb.setTitle('Избранное');
                                 favestore.sync();
                                 Ext.getCmp('serch').hide();
@@ -351,7 +370,6 @@ Ext.define('front.view.Main', {
 
                                                                 Ext.Msg.alert("Удалено");
                                                                 tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
-
                                                                 favestore.sync();
                                                                 }); favestore.sync();
                                                             }); favestore.sync();
@@ -377,6 +395,7 @@ Ext.define('front.view.Main', {
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
                                    flist.destroy();
+                                   Ext.getCmp('serch').hide();
 
                                    //flist.hide();
 
