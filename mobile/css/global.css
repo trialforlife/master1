@@ -15,18 +15,21 @@ html,body{
 }
 
 .nav-element{
-	height:117px !important;	
+	height:4em !important;
 }
 .nav-element .txt{
 	color:#fff;
-	font:40px/117px Arial;
-	text-shadow:0 0 46px rgba(180,12,255,0.8),0 4px 0 rgba(0,0,0,0.36);
+	font: 1.4em/2em Arial;
+    font-familyArial;
+	/*font:40px/117px Arial;
+	*/text-shadow:0 0 46px rgba(180,12,255,0.8),0 4px 0 rgba(0,0,0,0.36);
 	padding:0 0 0 9%;
 }
 .nav-element .calc{
 	float:right;
-	font:24px/117px Arial;
-	color:#fff;
+    font: 1.4em/2em Arial;
+	/*font:24px/117px Arial;
+	*/color:#fff;
     padding: 0 5% 0 0;
 }
 .nav-element.tap{
@@ -196,15 +199,16 @@ html,body{
 	z-index:10;
 	background:url(../img/arrow-next.png) no-repeat;
 }
- .location{
-	padding:0 0 0 30px;
-	color:rgba(255,255,255,0.5);
-	position:absolute;
-	font:24px Hlvl;
-	position:absolute;
-	bottom:15px;
-	background:url(../img/locate-ico.png) left 5px no-repeat;
-	left:8px;
+.location {
+    padding: 0 0 0 2%;
+    margin-top: -57em;
+    color: rgba(255,255,255,0.5);
+    font: 0.7em Hlvl;
+    height: 2.3em;
+    position: absolute;
+    bottom: 2px;
+    background: url(../img/locate-ico.png) left 3px no-repeat;
+    left: 7%;
 }
 .event .img_box{
 	position:absolute;
@@ -387,7 +391,7 @@ html,body{
 
 	max-width:320px;
 	width:100%;
-	font:24px Hlvl;
+    font: 0.7em Hlvl;
 	padding:0 0 0 33px;
 	background:url(../img/locate-ico.png) left 5px no-repeat;
 	color:#fff;
@@ -398,7 +402,7 @@ html,body{
 }
 .comp-location a{
 	color:#fff;
-	font:24px Hlvl;
+    font: 0.7em Hlvl;
 	position:absolute;
 	right:9px;
 	bottom:16px;
@@ -418,12 +422,12 @@ html,body{
 }
 .h2{
 	color:#fff;
-	font:40px Hlvl;
+	font:2em Hlvl;
 	display:block;
 	padding:15px 0 0 38px;
 }
 .time{
-	font:36px Hlvl;
+	font:1.2em Hlvl;
 	color:rgba(255,255,255,0.5);
 	padding:0 0 0 30px;
 	margin:0 0 0 8px;
@@ -432,7 +436,12 @@ html,body{
 }
 pf{
 	color:#fff;
-	font:24px Hlvl;
+	font:1em Hlvl;
+
+}
+.pf{
+    color:#fff;
+    font:24px Hlvl;
 
 }
 .inside-h{
@@ -558,10 +567,13 @@ pf{
 	background-image: none !important;
 }
 .x-title .x-innerhtml{
-	min-width: 368px !important;
-	color: #69d2e7;
-	font: 52px/88px Hlvb;
-	text-shadow: 0 0 40px rgba(180,12,255,1),
+	/*min-width: 368px !important;
+	*/
+
+    color: #69d2e7;
+	font: 1.37em/88px Hlvb;
+    /*font: 52px/88px Hlvb;
+	*/text-shadow: 0 0 40px rgba(180,12,255,1),
 	 0 4px 0 rgba(0,0,0,0.36);
 	width: 100%;
 	text-align: center;
@@ -581,8 +593,9 @@ pf{
 */
 }
 .x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after {
-	width: 66px!important;
+	max-width: 66px!important;
 	height: 70px !important;
+    min-width: 43px!important;
  }
  .x-button .x-button-icon.x-shown {
 	margin-left: -20px !important;
@@ -605,8 +618,10 @@ pf{
 }
 .x-webkit .x-button-back, .x-webkit .x-toolbar .x-button-back {
 	min-width: 150px !important;
-	font: 34px/40px Hlvb !important;	
-	color: #fff;		
+	/*font: 34px/40px Hlvb !important;
+	*/
+    font: 1.2em/1em Hlvb !important;
+	color: #fff;
 }
 .x-toolbar-light .x-button.x-button-back:before, .x-toolbar-light .x-button.x-button-forward:before, .x-toolbar .x-toolbar-light .x-button.x-button-back:before, .x-toolbar .x-toolbar-light .x-button.x-button-forward:before,
 .x-toolbar-light .x-field-select .x-component-outer.x-button-back:before,
@@ -629,16 +644,17 @@ pf{
 	padding-left: 0 !important; 
 }
 .nav-element1{
-	height:142px;
+    height:4em;
 	border-bottom:1px solid #820cff;
 	box-shadow:0 1px 0 rgba(255,255,255,0.24);
 	position:relative;
 }
 .nav-element1 .txt {
-	padding: 0 0 0 40px;
-	color: #fff;
-	font: 40px/139px Hlvl;
-}
+    padding: 0 0 0 9%;
+    color: #fff;
+    font: 1.2em/3em Hlvl;
+	/*font: 40px/139px Hlvl;
+*/}
 .x-list-normal .x-list-header{
     color: #fff !important;
     font: 34px/44px Hlvb !important;
@@ -665,7 +681,7 @@ pf{
 }
 #serch{
     background:url(../img/ico_search.png) no-repeat;
-    width: 100px !important;
+    width: 3em !important;
     float: right !important;
     top: -66px!important;
     right: 0;
@@ -677,6 +693,7 @@ pf{
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
     margin:-65px 0 0 0;
+    right: 0;
     float: right;
 }
 .f_con{
@@ -685,7 +702,7 @@ pf{
     border-bottom: 1px solid #820cff;
     box-shadow: 0 1px 0 rgba(255,255,255,0.24);
     padding-bottom: 15px;
-    width: 100%;
+    width: 97%;
 }
 .restaurant{
     float: left;
@@ -753,13 +770,13 @@ pf{
     font: 40px/139px Hlvl;
 }
 #ed,#save1 {
-    height: 30px !important;
-    width: 112px !important;
+    height: 0.6em!important;
+    width: 4em!important;
     padding-left: 10px;
     padding-bottom: 10px;
     background: #273c4e !important;
     border-radius: 6px !important;
-    font: 24px/40px Hlvb !important;
+    font: 1em/1.3em Hlvb !important;
     color: white;
     float: right;
     margin-top: -49px;
@@ -794,12 +811,11 @@ pf{
 .backtext{
     background-image: url(../img/main-ico.png);
     background-repeat: no-repeat;
-    width: 20px;
-    width: 20px;
-    height: 60px;
+    width: 1em;
+    height: 2.2em;
     float: left;
     margin-top: -60px;
     margin-left: 5px;
-    padding-left: 25px;
-    padding-top: 5px;
+    padding-left: 13px;
+    padding-top: 0.6em;
 }

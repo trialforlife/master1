@@ -3,15 +3,14 @@ Ext.define('front.view.Main', {
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
     config: {
         fields: ['text']
+    },
+    listeners:{
+        intialize:function(){
+
+        }
     }
 
 });
-
-Ext.require([
-    'Ext.grid.List',
-    'Ext.grid.feature.Feature',
-    'Ext.grid.feature.CheckboxSelection'
-]);
 
     db = openDatabase("Sencha", "1.0", "Sencha", 200000);
         if(!db)
@@ -19,7 +18,7 @@ Ext.require([
         else
             {//alert('fuck yeah');
             }
-    Ext.require(['Ext.data.proxy.SQL']);
+    //Ext.require(['Ext.data.proxy.SQL']);
         Ext.define("Favorite", {
         extend: "Ext.data.Model",
         config: {
@@ -100,12 +99,18 @@ Ext.require([
                                 scope: this,
                                 handler:
                                     function(button) {
-                                    //treestore.hide();
+
                                     button.hide();
+                                    treestore.hide();
+                                    tb.show();
+                                        tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
+                                            scope: this,
+                                            handler:function(){
+                                            alert();}}]);
 
                                     ser = Ext.create('Ext.Container', {
                                     fullscreen: true,
-                                    toolbar : true,
+                                    useToolbar : true,
                                     layout:'vbox',
                                     dockedItems: {
                                         xtype: 'toolbar',
@@ -164,7 +169,7 @@ Ext.require([
 
                             }]
                         });
-                        ser.show();
+                                    ser.show();
 
                         }
                         }]);
@@ -309,7 +314,7 @@ Ext.require([
                                                      columns  : [
                                                     {
                                                     dataIndex : 'name',
-                                                    style     : 'margin-left: 100px; margin-top:-16px; padding-right: 100px;',
+                                                    style     : 'margin-left: 100px; margin-top:-16px; float:left;  right: 0 !important; ',
                                                     width     : '100%',
                                                     filter    : { type : 'string' }
                                                     }
@@ -358,7 +363,7 @@ Ext.require([
                                                 fd = (flist1.getHeader());
                                                 fd.destroy();
                                                 flist1.show();
-                                        
+
                                     }
                                     }
                                     ]

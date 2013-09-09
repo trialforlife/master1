@@ -29,8 +29,10 @@ Ext.application({
         'Ext.dataview.NestedList',
         'Ext.data.proxy.JsonP',
         'Ext.tab.Panel',
-        'Ext.carousel.Carousel'
-    ],
+        'Ext.carousel.Carousel',
+        'Ext.grid.List',
+        'Ext.grid.feature.Abstract'
+      ],
 
     views: [
         'Main'
@@ -59,7 +61,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        //Ext.Viewport.add(Ext.create('front.view.Main'));
+        Ext.Viewport.add(Ext.create('front.view.Main'));
     },
 
     onUpdated: function() {
