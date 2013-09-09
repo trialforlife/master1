@@ -22,7 +22,7 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
 			"time"=>addslashes((string)$row["f_time"]),
-            "filmpage"=>'<span class="h2">'.$row["f_name"]."</span><span class='time'>".$row["f_time"]."</span><div class='f_con'><img style=\"width:200px; float:right ; margin-right:39px; height:140px;\" src=http://now-yakutsk.stairwaysoft.net/mobile/img/".$row["f_image"]."><pf>".$row["f_content"]."</pf></div>",
+            "filmpage"=>'<span class="h2">'.$row["f_name"]."</span><span class='time'>".$row["f_time"]."</span><div class='f_con'><img style=\"width:200px; float:right ; height:140px;\" src=http://now-yakutsk.stairwaysoft.net/mobile/img/".$row["f_image"]."><pf>".$row["f_content"]."</pf></div>",
 
             //"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>".
  			));
