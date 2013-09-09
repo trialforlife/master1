@@ -25,7 +25,7 @@ if (mysql_affected_rows() > 0) {
             "banner"=>addslashes((string)$row["en_banner"]),
 			"published"=>addslashes((string)$row["en_published"]),
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["en_image"]).">",
-            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["en_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["en_adress"]).'</span><span class="img_box"><img style="width:200px; float:right ; height:138px;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["en_image"].'></span></div>',
+            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["en_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["en_adress"]).'</span><span class="img_box"><img style="width:5em; margin-top:0.4em; float:right ;  height:3.59em; right:0;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["en_image"].'></span></div>',
         ));
 			
 	}
