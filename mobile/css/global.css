@@ -761,6 +761,7 @@ pf{
     padding-right: 2.35em !important;
     width: 78%;
     background: url(../img/grs-ico.png) 16px center no-repeat #fff;
+    margin-left: 9%;
 
 
 }
@@ -772,7 +773,7 @@ pf{
     /*background: #1e3244;
 */}
 .nav-element-s .txt {
-    padding: 0 0 0 40px;
+    padding: 0 0 0 9%;
     color: #fff;
     font: 0.9em Hlvl;
 }
@@ -829,7 +830,7 @@ pf{
 input {
     outline: none;
     height: 54px;
-    width: 90%;
+    width: 99%;
     vertical-align: bottom;
     border: none;
     margin-left: 25px;
