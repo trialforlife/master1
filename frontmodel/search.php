@@ -149,7 +149,7 @@ if (mysql_affected_rows() > 0) {
     while($row = mysql_fetch_array($dbresult7))
     {
         array_push($result["films"],array(
-            "cat"=>'beautyandhealth',
+            "cat"=>'beautyandhealth', 
             "id"=>$row["bh_id"],
             "name"=>addslashes((string)$row["bh_name"]),
             "image"=>addslashes((string)$row["bh_image"]),
