@@ -19,7 +19,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
-            "scat"=>"films",
+            "scat"=>"",
 			"id"=>$row["f_id"],
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
@@ -37,7 +37,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult1))
 	{
 		array_push($result["films"],array(
-            "scat"=>"play",
+            "scat"=>"theatre",
             "id"=>$row["p_id"],
 			"name"=>addslashes((string)$row["p_name"]),
 			"image"=>addslashes((string)$row["p_image"]),
@@ -149,7 +149,7 @@ if (mysql_affected_rows() > 0) {
     while($row = mysql_fetch_array($dbresult7))
     {
         array_push($result["films"],array(
-            "scat"=>"beautyandhealth",
+            "scat"=>"beautyandhealh",
             "id"=>$row["bh_id"],
             "name"=>addslashes((string)$row["bh_name"]),
             "image"=>addslashes((string)$row["bh_image"]),
