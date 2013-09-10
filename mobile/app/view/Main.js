@@ -21,7 +21,7 @@ Ext.define('front.view.Main', {
         Ext.define("Favorite", {
         extend: "Ext.data.Model",
         config: {
-        fields: ["id","name","ftype","image","link","res", "fid"]
+        fields: ["id","name","ftype","image","site","banner","adress","phone", "fid"]
         }
     });
 
@@ -370,15 +370,15 @@ Ext.define('front.view.Main', {
                                     Ext.getCmp('ed').hide();
                                     console.log(record.raw.ftype);
                                     console.log(record.raw.fid);
-                                    catdyn = record.raw.ftype;
-                                    f_cid = record.raw.fid;
+                                    var catdyn = record.raw.ftype;
+                                    var f_cid = record.raw.fid;
 
                                     fil = Ext.create('Ext.Container', {
                                         fullscreen: true,
                                         layout: 'vbox',
                                         items: [           {
                                             xtype: 'carousel',
-                                            height: '0px',
+                                            height: '220px',
 
                                             store: {
                                                 type: 'tree',
@@ -403,16 +403,17 @@ Ext.define('front.view.Main', {
 
                                             items: [
                                                 {
-                                                   // html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+
+                                                    html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.raw.banner+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
 
                                                 }
                                             ]
 
                                         },
                                             {
-                                                xtype : 'panel'
-                                                //height: bh,
-                                                //html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a></div>'+hinsert  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
+                                                xtype : 'panel',
+                                                height: '120px',
+                                                html: '<div class="comp-location"><span class="locate"><i>'+record.raw.adress+'</i><b>'+record.phone+'</b></span><a href="">'+record.raw.site+'</a></div>'//+hinsert  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                             },
 
 
@@ -531,23 +532,21 @@ Ext.define('front.view.Main', {
                                     });
                                     flist.hide();
                                     fil.show();
-
-
-
-
-
-
-                                },
+                               },
                                deactivate: function(button){
                                 //tb.show();
                                 tb.setTitle('<div class="titleimg"></div>'),
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
-                                   fil.destroy();
+
                                    flist.destroy();
                                    Ext.getCmp('serch').hide();
+                                   if(typeof(fil)!= 'undefined'){
+                                       fil.destroy();
+                                   }
 
-                                }
+
+                               }
                                 },
                                 features : [
                                  {
@@ -709,6 +708,9 @@ Ext.define('front.view.Main', {
                                                         s_image = post.get('image');
                                                         cfid = post.get('cid');
                                                         cat1 = record.get('code');
+                                                        var banner = post.get('banner');
+                                                        var site = post.get('site');
+                                                        var adress = post.get('adress');
                                                         if (typeof ttt != 'undefined'){
 
                                                         }
@@ -734,8 +736,9 @@ Ext.define('front.view.Main', {
                                                                                         name: s_name,
                                                                                         ftype: cat1,
                                                                                         image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
+                                                                                        site: site,
+                                                                                        banner: banner,
+                                                                                        adress: adress,
                                                                                         fid : cfid
                                                                                     }]);
                                                                                     favestore.sync();
@@ -748,8 +751,9 @@ Ext.define('front.view.Main', {
                                                                                     name: s_name,
                                                                                     ftype: cat1,
                                                                                     image: s_image,
-                                                                                    link: '',
-                                                                                    res : '',
+                                                                                    site: site,
+                                                                                    banner: banner,
+                                                                                    adress: adress,
                                                                                     fid : cfid
 
                                                                                 }]);
@@ -954,6 +958,9 @@ Ext.define('front.view.Main', {
                                                                             var s_name = post.get('list');
                                                                             var s_image = post.get('image');
                                                                             cfid = post.get('cid');
+                                                                            var banner = post.get('banner');
+                                                                            var site = post.get('site');
+                                                                            var adress = post.get('adress');
 
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
@@ -972,8 +979,9 @@ Ext.define('front.view.Main', {
                                                                                         name: s_name,
                                                                                         ftype: cat1,
                                                                                         image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
+                                                                                        site: site,
+                                                                                        banner: banner,
+                                                                                        adress: adress,
                                                                                         fid : cfid
 
                                                                                     }]);
@@ -984,12 +992,13 @@ Ext.define('front.view.Main', {
                                                                                 function (tx, error)
                                                                                 {
                                                                                 favestore .add([{
-                                                                                        name: s_name,
-                                                                                        ftype: cat1,
-                                                                                        image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
-                                                                                        fid : cfid
+                                                                                    name: s_name,
+                                                                                    ftype: cat1,
+                                                                                    image: s_image,
+                                                                                    site: site,
+                                                                                    banner: banner,
+                                                                                    adress: adress,
+                                                                                    fid : cfid
 
                                                                                     }]);
                                                                                    favestore.sync();
@@ -1015,6 +1024,9 @@ Ext.define('front.view.Main', {
                                                             cfid = post.get('cid');
                                                             cat1 = record.get('code');
                                                             console.log(cat);
+                                                            var banner = post.get('banner');
+                                                            var site = post.get('site');
+                                                            var adress = post.get('adress');
                                                             if (typeof ttt != 'undefined'){
 
                                                             }
@@ -1041,8 +1053,9 @@ Ext.define('front.view.Main', {
                                                                                             name: s_name,
                                                                                             ftype: cat1,
                                                                                             image: s_image,
-                                                                                            link: '',
-                                                                                            res : '',
+                                                                                            site: site,
+                                                                                            banner: banner,
+                                                                                            adress: adress,
                                                                                             fid : cfid
 
                                                                                         }]);
@@ -1056,8 +1069,9 @@ Ext.define('front.view.Main', {
                                                                                         name: s_name,
                                                                                         ftype: cat1,
                                                                                         image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
+                                                                                        site: site,
+                                                                                        banner: banner,
+                                                                                        adress: adress,
                                                                                         fid : cfid
 
                                                                                     }]);
@@ -1228,6 +1242,10 @@ Ext.define('front.view.Main', {
                                                             s_image = post.get('image');
                                                             cfid = post.get('cid');
                                                             cat1 = record.get('code');
+                                                            var banner = post.get('banner');
+                                                            var site = post.get('site');
+                                                            var adress = post.get('adress');
+                                                            var phone = post.get('phone');
                                                             console.log(cat);
                                                             if (typeof ttt != 'undefined'){
 
@@ -1253,8 +1271,10 @@ Ext.define('front.view.Main', {
                                                                                             name: s_name,
                                                                                             ftype: cat1,
                                                                                             image: s_image,
-                                                                                            link: '',
-                                                                                            res : '',
+                                                                                            site: site,
+                                                                                            banner: banner,
+                                                                                            adress: adress,
+                                                                                            phone: phone,
                                                                                             fid : cfid
 
                                                                                         }]);
@@ -1268,8 +1288,10 @@ Ext.define('front.view.Main', {
                                                                                         name: s_name,
                                                                                         ftype: cat1,
                                                                                         image: s_image,
-                                                                                        link: '',
-                                                                                        res : '',
+                                                                                        site: site,
+                                                                                        banner: banner,
+                                                                                        adress: adress,
+                                                                                        phone:phone,
                                                                                         fid : cfid
 
                                                                                     }]);
@@ -1616,6 +1638,10 @@ Ext.define('front.view.Main', {
                                                                         s_image = post.get('image');
                                                                         cfid = post.get('cid');
                                                                         cat1 = record.get('code');
+                                                                        banner = post.get('banner');
+                                                                        site = post.get('site');
+                                                                        adress = post.get('adress');
+                                                                        phone = post.get('phone');
                                                                         console.log(cat);
                                                                             if (typeof ttt != 'undefined'){
 
@@ -1643,8 +1669,10 @@ Ext.define('front.view.Main', {
                                                                                                     name: s_name,
                                                                                                     ftype: cat1,
                                                                                                     image: s_image,
-                                                                                                    link: '',
-                                                                                                    res : '',
+                                                                                                    site: site,
+                                                                                                    banner: banner,
+                                                                                                    adress: adress,
+                                                                                                    phone: phone,
                                                                                                     fid : cfid
 
                                                                                                 }]);
@@ -1658,8 +1686,10 @@ Ext.define('front.view.Main', {
                                                                                                 name: s_name,
                                                                                                 ftype: cat1,
                                                                                                 image: s_image,
-                                                                                                link: '',
-                                                                                                res : '',
+                                                                                                site: site,
+                                                                                                banner: banner,
+                                                                                                adress: adress,
+                                                                                                phone: phone,
                                                                                                 fid : cfid
 
                                                                                             }]);
