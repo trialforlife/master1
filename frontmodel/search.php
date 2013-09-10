@@ -154,7 +154,7 @@ if (mysql_affected_rows() > 0) {
             "name"=>addslashes((string)$row["r_name"]),
             "image"=>addslashes((string)$row["r_image"]),
             "time"=>addslashes((string)$row["r_time"]),
-            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>', 
 
         ));
 
