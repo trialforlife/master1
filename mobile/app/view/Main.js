@@ -32,6 +32,12 @@ Ext.define('front.view.Main', {
                 {name: "name", type: "string"},
                 {name: "filmpage",  type: "string"},
                 {name: "id",       type: "int"},
+                {name: "scat",       type: "string"},
+                {name: "cid",       type: "int"},
+                {name: "site",       type: "string"},
+                {name: "adress",       type: "string"},
+                {name: "phone",       type: "string"},
+                {name: "banner",       type: "banner"},
                 {name: 'leaf', defaultValue: true}
             ]
         }
@@ -114,24 +120,24 @@ Ext.define('front.view.Main', {
                                     fullscreen: true,
                                     useToolbar : true,
                                     layout: 'fit',
-                                            items: [
-                                            {
-                                                xtype:'toolbar', docked: 'top',title: '<div class="titleimg"></div>',
-                                                items:[{
+                                        items: [
+                                        {
+                                            xtype:'toolbar', docked: 'top',title: '<div class="titleimg"></div>',
+                                            items:[{
 
-                                                        ui: 'back',
-                                                        xtype: 'button',
-                                                        text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:-57px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
-                                                        handler: function () {
-                                                            ser.hide();
-                                                            button.show();
-                                                            treestore.show();
-                                                            Ext.getCmp('serch').hide();
-                                                        }
+                                                ui: 'back',
+                                                xtype: 'button',
+                                                text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:-57px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
+                                                handler: function () {
+                                                    ser.hide();
+                                                    button.show();
+                                                    treestore.show();
+                                                    Ext.getCmp('serch').hide();
+                                                }
 
-                                                }]
+                                            }]
 
-                                            },
+                                        },
 
                                             {
                                             xtype: 'fieldset',
@@ -142,6 +148,7 @@ Ext.define('front.view.Main', {
                                                 id: 'inpt',
                                                 listeners: {
                                                     scope: this,
+
                                                     keyup: function(){
                                                     value = Ext.ComponentQuery.query('#inpt')[0].getValue();
                                                     Ext.Ajax.request({
@@ -150,13 +157,9 @@ Ext.define('front.view.Main', {
                                                             var text = Ext.decode(response.responseText.trim());
                                                             search.removeAll();
                                                             search.add(text.films);
-                                                            console.log(search);
-                                                                    }
-                                                                });
-
-                                                    }
-
-
+                                                            }
+                                                            });
+                                                            }
                                                             }
 
                                                         }]
@@ -166,12 +169,275 @@ Ext.define('front.view.Main', {
                                 xtype: 'list',
                                 iconCls: 'star',
                                 itemTpl: "{filmpage}",
-                                store: search
+                                store: search,
+                                listeners:{
+                                    itemtap:function(h, index, target, record, e, eOpts ){
+                                        f_cid = record.get('id');
+                                        catdyn = record.get('scat');
+                                       // ser.hide();
+                                        var fil = Ext.create('Ext.Container', {
+                                            fullscreen: true,
+                                            layout: 'vbox',
+                                            items:[{
+                                                xtype:'toolbar',
+                                                docked:'top',
+                                                title: record.get('name'),
+                                                    items: [{
+                                                        ui: 'back',
+                                                        xtype: 'button',
+                                                        //text:'<div class="backtext"></div>',
+                                                        id: 'sback',
+                                                        //height:'100px',
+                                                        //width:'30px',
+                                                        handler: function (button) {
+                                                            alert('ffu');
+                                                            fil.destroy();
+                                                            treestore.show();
+                                                        }
+
+                                                    },
+                                                        {xtype: 'carousel',
+                                                    height: '100px',
+
+                                                    store: {
+                                                        type: 'tree',
+                                                        fields: [
+                                                        'b_image',
+                                                        {name: 'leaf', defaultValue: true}
+                                                    ],
+                                                    root: {
+                                                        leaf: false
+                                                    },
+                                                    proxy: {
+                                                        type: 'jsonp',
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
+                                                        reader: {
+                                                            type: 'json',
+                                                            rootProperty: 'banner'
+                                                        }
+                                                    }},
+                                                items: [
+                                                    {
+                                                        html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+
+                                                    }/*,
+                                                     {
+                                                     html : 'А здесь второй',
+                                                     style: 'background-color: #759E60'
+                                                     },
+                                                     {
+                                                     html : 'или третий'
+                                                     }*/
+                                                ]
+
+                                            },
+                                                {
+                                                    xtype : 'panel',
+                                                    // height: '120px',
+                                                    html: '<div class="comp-location"><span class="locate"><i>'+record.get('adress')+'</i><b>'+record.get('phone')+'</b></span><a href="">'+record.get('site')+'</a><div>'
+
+                                                },
+
+                                                {
+                                                    //scrollable:'vertical',
+                                                    flex: 1,
+                                                    useToolbar:true,
+                                                    xtype: 'nestedlist',
+                                                    iconCls: 'star',
+                                                    displayField: 'filmpage',
+                                                    store:{
+
+                                                        type: 'tree',
+
+                                                        fields: [
+                                                            'name','image','id','filmpage',
+                                                            {name: 'leaf', defaultValue: true}
+                                                        ],
+                                                        root: {
+                                                            leaf: false
+                                                        },
+                                                        proxy: {
+                                                            type: 'jsonp',
+                                                            url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                            reader: {
+                                                                type: 'json',
+                                                                rootProperty: 'films'
+                                                            }
+                                                        }}}
+
+
+                                            ]
+                                            }],
+
+                                            dockedItems: [
+                                                {
+                                                    xtype: 'toolbar',
+                                                    docked: 'top',
+                                                    items: [
+                                                        {
+                                                            iconCls: 'star',
+                                                            handler: function(){
+                                                                var s_name = post.get('list');
+                                                                var s_image = post.get('image');
+                                                                cfid = post.get('cid');
+                                                                var banner = post.get('banner');
+                                                                var site = post.get('site');
+                                                                var adress = post.get('adress');
+                                                                var photo = post.get('photo');
+
+                                                                //adding to favorite
+                                                                db.transaction(function(tx) {
+                                                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
+                                                                            len = results.rows.length;
+                                                                            console.log(len);
+                                                                            if (len  > 0 ) {
+                                                                                Ext.Msg.alert("Удалено");
+                                                                                tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
+
+                                                                                });
+                                                                            }
+                                                                            else{
+                                                                                Ext.Msg.alert("Добавлено");
+                                                                                favestore.add([{
+                                                                                    name: s_name,
+                                                                                    ftype: cat1,
+                                                                                    image: s_image,
+                                                                                    site: site,
+                                                                                    banner: banner,
+                                                                                    adress: adress,
+                                                                                    photo:photo,
+                                                                                    fid : cfid
+
+                                                                                }]);
+                                                                                favestore.sync();
+                                                                            }
+
+                                                                        },
+                                                                        function (tx, error)
+                                                                        {
+                                                                            favestore .add([{
+                                                                                name: s_name,
+                                                                                ftype: cat1,
+                                                                                image: s_image,
+                                                                                site: site,
+                                                                                banner: banner,
+                                                                                adress: adress,
+                                                                                photo:photo,
+                                                                                fid : cfid
+
+                                                                            }]);
+                                                                            favestore.sync();
+                                                                        }
+                                                                    )});
+
+                                                            }
+                                                        }
+
+
+                                                    ]
+                                                }
+                                            ],
+                                            detailCard: {
+                                                xtype: 'panel',
+                                                // scrollable: true,
+                                                styleHtmlContent: true
+                                            },
+                                            listeners: {
+                                                activate : function() {
+                                                    s_name = post.get('list');
+                                                    s_image = post.get('image');
+                                                    cfid = post.get('cid');
+                                                    cat1 = record.get('code');
+                                                    console.log(cat);
+                                                    var banner = post.get('banner');
+                                                    var site = post.get('site');
+                                                    var adress = post.get('adress');
+                                                    if (typeof ttt != 'undefined'){
+
+                                                    }
+                                                    else{
+                                                        ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
+                                                            handler: function(){
+
+
+
+                                                                //adding to favorite
+                                                                db.transaction(function(tx) {
+                                                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
+                                                                            len = results.rows.length;
+                                                                            console.log(len);
+                                                                            if (len  > 0 ) {
+                                                                                Ext.Msg.alert("Удалено");
+                                                                                tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
+
+                                                                                });
+                                                                            }
+                                                                            else{
+                                                                                Ext.Msg.alert("Добавлено");
+                                                                                favestore.add([{
+                                                                                    name: s_name,
+                                                                                    ftype: cat1,
+                                                                                    image: s_image,
+                                                                                    site: site,
+                                                                                    banner: banner,
+                                                                                    adress: adress,
+                                                                                    fid : cfid
+
+                                                                                }]);
+                                                                                favestore.sync();
+                                                                            }
+
+                                                                        },
+                                                                        function (tx, error)
+                                                                        {
+                                                                            favestore .add([{
+                                                                                name: s_name,
+                                                                                ftype: cat1,
+                                                                                image: s_image,
+                                                                                site: site,
+                                                                                banner: banner,
+                                                                                adress: adress,
+                                                                                fid : cfid
+
+                                                                            }]);
+                                                                            favestore.sync();
+                                                                        }
+                                                                    )});
+
+
+
+                                                            }
+
+                                                        }]));
+
+                                                    }
+
+
+                                                    //tb.hide();
+                                                    tb2.show();
+                                                } ,
+                                                deactivate: function() {
+                                                    tb.show();
+                                                    //tb2.hide();
+
+                                                }
+
+                                            }
+
+                                        });
+
+                                        fil.show();
+                                        ser.hide();
+
+
+                                    }
+                                }
 
 
                             }]
                         });
-                                    ser.show();
+
+                                        ser.show();
 
                         }
                         }]);
@@ -368,8 +634,6 @@ Ext.define('front.view.Main', {
                                 itemtap:function(h, index, target, record, e, eOpts ){
                                     //nestedList.setDetailCard(fil);
                                     Ext.getCmp('ed').hide();
-                                    console.log(record.raw.ftype);
-                                    console.log(record.raw.fid);
                                     var catdyn = record.raw.ftype;
                                     var f_cid = record.raw.fid;
 
@@ -445,89 +709,7 @@ Ext.define('front.view.Main', {
                                                     }}}
 
 
-                                        ],
-
-
-                                        listeners: {
-
-                                            initialize : function() {
-                                                //s_name = post.get('list');
-                                                //s_image = post.get('image');
-                                               // cfid = post.get('cid');
-                                                //cat1 = record.get('code');
-  /*                                              if (typeof ttt != 'undefined'){
-
-                                                }
-                                                else{
-                                                    ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
-                                                        handler: function(button){
-
-
-                                                            //adding to favorite
-                                                            db.transaction(function(tx) {
-                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
-                                                                        len = results.rows.length;
-                                                                        console.log(len);
-                                                                        if (len  > 0 ) {
-                                                                            Ext.Msg.alert("Удалено");
-                                                                            tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
-
-                                                                            });
-                                                                        }
-                                                                        else{
-                                                                            Ext.Msg.alert("Добавлено");
-                                                                            favestore.add([{
-                                                                                name: s_name,
-                                                                                ftype: cat1,
-                                                                                image: s_image,
-                                                                                link: '',
-                                                                                res : '',
-                                                                                fid : cfid
-                                                                            }]);
-                                                                            favestore.sync();
-                                                                        }
-
-                                                                    },
-                                                                    function (tx, error)
-                                                                    {
-                                                                        favestore .add([{
-                                                                            name: s_name,
-                                                                            ftype: cat1,
-                                                                            image: s_image,
-                                                                            link: '',
-                                                                            res : '',
-                                                                            fid : cfid
-
-                                                                        }]);
-                                                                        favestore.sync();
-                                                                    }
-                                                                )});
-
-                                                        }
-
-                                                    }]));
-
-                                                }
-
-                                                tb2.show();
-*/
-
-
-                                                //tb3 = this.getToolbar();tb3.hide();
-                                                ///b.hide();
-
-
-                                                //this.getToolbar(treeStore2).hide();
-                                            } ,
-                                            deactivate: function() {
-                                                //tb.show();
-
-                                                //tb2.hide();
-
-                                                //this.getToolbar().hide();
-                                            }
-
-                                        }
+                                        ]
 
                                     });
                                     flist.hide();
@@ -704,13 +886,14 @@ Ext.define('front.view.Main', {
 
                                                     listeners: {
                                                     initialize : function() {
-                                                        s_name = post.get('list');
-                                                        s_image = post.get('image');
-                                                        cfid = post.get('cid');
-                                                        cat1 = record.get('code');
+                                                        var s_name = post.get('list');
+                                                        var s_image = post.get('image');
+                                                        var cfid = post.get('cid');
+                                                        var cat1 = record.get('code');
                                                         var banner = post.get('banner');
                                                         var site = post.get('site');
                                                         var adress = post.get('adress');
+                                                        var phone = post.get('phone');
                                                         if (typeof ttt != 'undefined'){
 
                                                         }
@@ -739,6 +922,7 @@ Ext.define('front.view.Main', {
                                                                                         site: site,
                                                                                         banner: banner,
                                                                                         adress: adress,
+                                                                                        phone:phone,
                                                                                         fid : cfid
                                                                                     }]);
                                                                                     favestore.sync();
@@ -754,6 +938,7 @@ Ext.define('front.view.Main', {
                                                                                     site: site,
                                                                                     banner: banner,
                                                                                     adress: adress,
+                                                                                    phone:phone,
                                                                                     fid : cfid
 
                                                                                 }]);
@@ -961,6 +1146,7 @@ Ext.define('front.view.Main', {
                                                                             var banner = post.get('banner');
                                                                             var site = post.get('site');
                                                                             var adress = post.get('adress');
+                                                                            var photo = post.get('photo');
 
                                                                             //adding to favorite
                                                                            db.transaction(function(tx) {
@@ -982,6 +1168,7 @@ Ext.define('front.view.Main', {
                                                                                         site: site,
                                                                                         banner: banner,
                                                                                         adress: adress,
+                                                                                        photo:photo,
                                                                                         fid : cfid
 
                                                                                     }]);
@@ -998,6 +1185,7 @@ Ext.define('front.view.Main', {
                                                                                     site: site,
                                                                                     banner: banner,
                                                                                     adress: adress,
+                                                                                    photo:photo,
                                                                                     fid : cfid
 
                                                                                     }]);
@@ -1213,7 +1401,7 @@ Ext.define('front.view.Main', {
                                                                     type: 'tree',
 
                                                                     fields: [
-                                                                        'name','image','id','filmpage',
+                                                                        'name','image','id','filmpage','scat',
                                                                         {name: 'leaf', defaultValue: true}
                                                                     ],
                                                                     root: {
@@ -1434,7 +1622,13 @@ Ext.define('front.view.Main', {
                                                 name: 'title',
                                                 id: 'inpt',
                                                 listeners: {
+                                                    itemtap:function(data,index){
+
+                                                        alert('tapped on ')
+                                                    },
+
                                                     scope: this,
+
                                                      //clearicontap: this.onSearchClearIconTap,
                                                     keyup: function(){
                                                     value = Ext.ComponentQuery.query('#inpt')[0].getValue();
@@ -1443,9 +1637,15 @@ Ext.define('front.view.Main', {
                                                         success: function(response){
                                                             var text = Ext.decode(response.responseText.trim());
                                                             search.removeAll();
-                                                            search.add(text.films);
+                                                            //search.setItems(text.films);
+
                                                             console.log(search);
-                                                                    }
+
+                                                                     },
+                                                        itemtap:function(){
+                                                            alert('fuuc');
+                                                        }
+
                                                                 });
 
                                                                 }
@@ -1460,8 +1660,7 @@ Ext.define('front.view.Main', {
                                                         xtype: 'list',
                                                         iconCls: 'star',
                                                         flex:1,
-                                                       // displayField: 'filmpage',
-                                                        itemTpl: "{filmpage}",
+                                                       // itemTpl: "{filmpage}",
                                                         store: search
 
                                                     }]
@@ -1609,7 +1808,7 @@ Ext.define('front.view.Main', {
                                                                     type: 'tree',
 
                                                                     fields: [
-                                                                        'name','image','id','filmpage',
+                                                                        'name','image','id','filmpage','scat',
                                                                         {name: 'leaf', defaultValue: true}
                                                                     ],
                                                                     root: {

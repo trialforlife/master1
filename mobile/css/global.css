@@ -827,6 +827,19 @@ pf{
     padding-left: 13px;
     padding-top: 0.6em;
 }
+#sback{
+    height: 3.1em!important;
+    width: 1em!important;
+    padding-left: 3px;
+    padding-right: 7px;
+    padding-bottom: 10px;
+    background-image: url(../img/main-ico.png)!important;
+    background-repeat: no-repeat !important;
+    float: left;
+    top: 20px;
+    left: 0;
+    position: absolute;
+}
 input {
     outline: none;
     height: 54px;
