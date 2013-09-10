@@ -19,6 +19,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
+            "cat"=>'films',
 			"id"=>$row["f_id"],
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
@@ -36,7 +37,8 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult1))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["p_id"],
+            "cat"=>'play',
+            "id"=>$row["p_id"],
 			"name"=>addslashes((string)$row["p_name"]),
 			"image"=>addslashes((string)$row["p_image"]),
 			"time"=>addslashes((string)$row["p_time"]),
@@ -53,7 +55,8 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult2))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["en_id"],
+            "cat"=>'entertainment',
+            "id"=>$row["en_id"],
 			"name"=>addslashes((string)$row["en_name"]),
 			"image"=>addslashes((string)$row["en_image"]),
 			"time"=>addslashes((string)$row["en_time"]),
@@ -72,15 +75,12 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult3))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["ev_id"],
+            "cat"=>'events',
+            "id"=>$row["ev_id"],
 			"name"=>addslashes((string)$row["ev_name"]),
 			"image"=>addslashes((string)$row["ev_image"]),
 			"time"=>addslashes((string)$row["ev_time"]),
-            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["ev_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["ev_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["ev_image"].'></span></div>',
-			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			//$row["ev_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["ev_image"]."><br>".$row["ev_time"]."</br><small>".$row["ev_content"]."</small></br>",
-			));
-			
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["ev_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["ev_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["ev_image"].'></span></div>'			));
 	}
 
 }
@@ -91,7 +91,8 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult4))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["n_id"],
+            "cat"=>'nightlife',
+            "id"=>$row["n_id"],
 			"name"=>addslashes((string)$row["n_name"]),
 			"image"=>addslashes((string)$row["n_image"]),
 			"time"=>addslashes((string)$row["n_time"]),
@@ -110,13 +111,12 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult5))
 	{
 		array_push($result["films"],array(
-			"id"=>$row["s_id"],
+            "cat"=>'shipment',
+            "id"=>$row["s_id"],
 			"name"=>addslashes((string)$row["s_name"]),
 			"image"=>addslashes((string)$row["s_image"]),
 			"time"=>addslashes((string)$row["s_time"]),
             "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["s_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["s_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["s_image"].'></span></div>',
-			//"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>". 
-			//$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
 			));
 			
 	}
@@ -129,6 +129,7 @@ if (mysql_affected_rows() > 0) {
     while($row = mysql_fetch_array($dbresult6))
     {
         array_push($result["films"],array(
+            "cat"=>'restaurants',
             "id"=>$row["r_id"],
             "name"=>addslashes((string)$row["r_name"]),
             "image"=>addslashes((string)$row["r_image"]),
@@ -148,6 +149,7 @@ if (mysql_affected_rows() > 0) {
     while($row = mysql_fetch_array($dbresult7))
     {
         array_push($result["films"],array(
+            "cat"=>'beautyandhealth',
             "id"=>$row["bh_id"],
             "name"=>addslashes((string)$row["bh_name"]),
             "image"=>addslashes((string)$row["bh_image"]),
