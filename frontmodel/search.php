@@ -20,7 +20,7 @@ if (mysql_affected_rows() > 0) {
 	{
 		array_push($result["films"],array(
             "scat"=>"cinema",
-            "site"=>mysql_fetch_array(mysql_query("SELECT c_site FROM cinema where c_id=".$row["c_id"])),
+            "site"=>mysql_fetch_assoc(mysql_query("SELECT c_site FROM cinema where c_id=".$row["c_id"])),
 			"id"=>$row["f_id"],
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
