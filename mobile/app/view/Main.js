@@ -61,7 +61,7 @@ Ext.define('front.view.Main', {
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
-        backText: '<div class="backtext"></div>',//<img style=\"width:20px; float:left; margin-left:7px; margin-top:-1px; height:40px;\" src=./img/main-ico.png /><div style=\"margin-left:29px; margin-top:-65px !important;\">Главная</div>',
+        backText: '<div class="backtext"></div>',
         fullscreen: true,
         tabBarPosition: 'bottom',
         useToolbar:true,
@@ -114,22 +114,6 @@ Ext.define('front.view.Main', {
                                     fullscreen: true,
                                     useToolbar : true,
                                     layout: 'fit',
-                                    /*items: {
-                                        xtype: 'toolbar',
-                                        docked: 'top',
-                                            items: [
-                                                    {
-                                                    ui: 'back',
-                                                    xtype: 'button',
-                                                    text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:0px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
-                                                        handler: function () {
-                                                        ser.hide();
-                                                        button.show();
-                                                        //treestore.show();
-                                                    }
-                                                }
-                                                ]
-                                            },*/
                                             items: [
                                             {
                                                 xtype:'toolbar', docked: 'top',title: '<div class="titleimg"></div>',
@@ -170,7 +154,8 @@ Ext.define('front.view.Main', {
                                                                     }
                                                                 });
 
-                                                                }
+                                                    }
+
 
                                                             }
 
@@ -243,13 +228,12 @@ Ext.define('front.view.Main', {
                         var flist = Ext.create("Ext.grid.List", {
                                grouped     : true,
                                indexBar    : false,
-                               useToolbar:false,
-                               useHeader: false,
-                               updateTitleText :false,
+                               useToolbar: false,
+                               useHeader:  false,
+                               updateTitleText: false,
 
                             listeners:{
-                               activate: function(button){
-
+                                activate: function(button){
                                 tb.setTitle('Избранное');
                                 favestore.sync();
                                 Ext.getCmp('serch').hide();
@@ -262,20 +246,14 @@ Ext.define('front.view.Main', {
                                 fh.hide();
                                 tb.insert(4,[ {xtype:'spacer'},{ id:'ed', align:'right',xtype:'button', ui: 'round', text: 'Правка',
                                     handler: function (button) {
-
-                                        tb.insert(4,[ {xtype:'spacer'},{ id:'save1', align:'right',xtype:'button', ui: 'round', text: 'Готово',
+                                    tb.insert(4,[ {xtype:'spacer'},{ id:'save1', align:'right',xtype:'button', ui: 'round', text: 'Готово',
                                             handler: function (button1) {
-
                                                     button1.destroy();
                                                     button.show();
-
                                                     flist1.destroy();
                                                     flist.show();
-
-
                                             }}]);
-
-                                        flist.hide();
+                                            flist.hide();
                                             button.hide();
                                             var favestore = Ext.create("Ext.data.Store", {
                                             model: "Favorite",defaultRootProperty: 'items',
@@ -353,15 +331,13 @@ Ext.define('front.view.Main', {
                                                     flist1.show();
                                                     var navigationBar = this.getNavigationBar();
                                                     navigationBar.leftBox.query('button')[1].hide();
-
-
-
                                                     favestore.sync();
                                                     Ext.getCmp('ed').hide();
                                                     //fh1.show();
 
                                                     },
                                                     deactivate:function(){
+
                                                     },
                                                     itemtap: function( h, index, target, record, e, eOpts ){
                                                         console.log(record.raw.id);
@@ -377,7 +353,7 @@ Ext.define('front.view.Main', {
 
                                                     }
 
-                                                    },
+                                                    }
                                             });
                                                 fd = (flist1.getHeader());
                                                 fd.destroy();
@@ -389,18 +365,189 @@ Ext.define('front.view.Main', {
                                     );
 
                                },
+                                itemtap:function(h, index, target, record, e, eOpts ){
+                                    //nestedList.setDetailCard(fil);
+                                    Ext.getCmp('ed').hide();
+                                    console.log(record.raw.ftype);
+                                    console.log(record.raw.fid);
+                                    catdyn = record.raw.ftype;
+                                    f_cid = record.raw.fid;
+
+                                    fil = Ext.create('Ext.Container', {
+                                        fullscreen: true,
+                                        layout: 'vbox',
+                                        items: [           {
+                                            xtype: 'carousel',
+                                            height: '0px',
+
+                                            store: {
+                                                type: 'tree',
+                                                fields: [
+                                                    'b_image',
+                                                    {name: 'leaf', defaultValue: true}
+                                                ],
+
+                                                root: {
+                                                    leaf: false
+                                                },
+
+                                                proxy: {
+                                                    type: 'jsonp',
+                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
+                                                    reader: {
+                                                        type: 'json',
+                                                        rootProperty: 'banner'
+                                                    }
+                                                }},
+
+
+                                            items: [
+                                                {
+                                                   // html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+
+                                                }
+                                            ]
+
+                                        },
+                                            {
+                                                xtype : 'panel'
+                                                //height: bh,
+                                                //html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a></div>'+hinsert  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
+                                            },
+
+
+                                            {
+                                                //scrollable:'vertical',
+                                                flex: 1,
+                                                useToolbar:false,
+                                                xtype: 'nestedlist',
+                                                iconCls: 'star',
+                                                displayField: 'filmpage',
+                                                store:{
+
+                                                    type: 'tree',
+
+                                                    fields: [
+                                                        'name','image','id','filmpage',
+                                                        {name: 'leaf', defaultValue: true}
+                                                    ],
+                                                    root: {
+                                                        leaf: false
+                                                    },
+                                                    proxy: {
+                                                        type: 'jsonp',
+                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                        reader: {
+                                                            type: 'json',
+                                                            rootProperty: 'films'
+                                                        }
+                                                    }}}
+
+
+                                        ],
+
+
+                                        listeners: {
+
+                                            initialize : function() {
+                                                //s_name = post.get('list');
+                                                //s_image = post.get('image');
+                                               // cfid = post.get('cid');
+                                                //cat1 = record.get('code');
+  /*                                              if (typeof ttt != 'undefined'){
+
+                                                }
+                                                else{
+                                                    ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
+                                                        handler: function(button){
+
+
+                                                            //adding to favorite
+                                                            db.transaction(function(tx) {
+                                                                tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
+                                                                        len = results.rows.length;
+                                                                        console.log(len);
+                                                                        if (len  > 0 ) {
+                                                                            Ext.Msg.alert("Удалено");
+                                                                            tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
+
+                                                                            });
+                                                                        }
+                                                                        else{
+                                                                            Ext.Msg.alert("Добавлено");
+                                                                            favestore.add([{
+                                                                                name: s_name,
+                                                                                ftype: cat1,
+                                                                                image: s_image,
+                                                                                link: '',
+                                                                                res : '',
+                                                                                fid : cfid
+                                                                            }]);
+                                                                            favestore.sync();
+                                                                        }
+
+                                                                    },
+                                                                    function (tx, error)
+                                                                    {
+                                                                        favestore .add([{
+                                                                            name: s_name,
+                                                                            ftype: cat1,
+                                                                            image: s_image,
+                                                                            link: '',
+                                                                            res : '',
+                                                                            fid : cfid
+
+                                                                        }]);
+                                                                        favestore.sync();
+                                                                    }
+                                                                )});
+
+                                                        }
+
+                                                    }]));
+
+                                                }
+
+                                                tb2.show();
+*/
+
+
+                                                //tb3 = this.getToolbar();tb3.hide();
+                                                ///b.hide();
+
+
+                                                //this.getToolbar(treeStore2).hide();
+                                            } ,
+                                            deactivate: function() {
+                                                //tb.show();
+
+                                                //tb2.hide();
+
+                                                //this.getToolbar().hide();
+                                            }
+
+                                        }
+
+                                    });
+                                    flist.hide();
+                                    fil.show();
+
+
+
+
+
+
+                                },
                                deactivate: function(button){
                                 //tb.show();
                                 tb.setTitle('<div class="titleimg"></div>'),
                                 Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
+                                   fil.destroy();
                                    flist.destroy();
                                    Ext.getCmp('serch').hide();
 
-                                   //flist.hide();
-
-
-                               }
+                                }
                                 },
                                 features : [
                                  {
@@ -419,8 +566,6 @@ Ext.define('front.view.Main', {
                                 hideOnMaskTap: true,
                                 fullscreen: true,
                                 store: favestore
-                                //text: 'name',
-                                //displayField: "<div>name</div>"
                             });
                                 //display for default category
                         if(catdyn!= 'poster' && catdyn!= 'favorite' && catdyn!= 'aboutus' ) {
@@ -455,18 +600,13 @@ Ext.define('front.view.Main', {
                                         },
                                         listeners: {
                                         activate : function() {
-
                                             tb2 = this.getToolbar();
                                             tb2.hide();
-
                                             tb.setTitle(record.get('name'));
-
-                                        //this.getToolbar(treeStore2).hide();
                                          } ,
                                          deactivate: function() {
                                             tb.show();
                                              tb.setTitle('<div class="titleimg"></div>');
-
                                              delete window.ttt;
                                         }
                                         ,
