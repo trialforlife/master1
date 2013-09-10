@@ -61,6 +61,8 @@ if (mysql_affected_rows() > 0) {
             "scat"=>"entertainment",
             "id"=>$row["en_id"],
             "site"=>$row["en_site"],
+            "phone"=>$row["en_phone"],
+            "adress"=>$row["en_adress"],
             "name"=>addslashes((string)$row["en_name"]),
 			"image"=>addslashes((string)$row["en_image"]),
 			"time"=>addslashes((string)$row["en_time"]),
@@ -99,6 +101,8 @@ if (mysql_affected_rows() > 0) {
             "scat"=>"nightlife",
             "id"=>$row["n_id"],
             "site"=>$row["n_site"],
+            "phone"=>$row["n_phone"],
+            "adress"=>$row["n_adress"],
             "name"=>addslashes((string)$row["n_name"]),
 			"image"=>addslashes((string)$row["n_image"]),
 			"time"=>addslashes((string)$row["n_time"]),
@@ -120,6 +124,8 @@ if (mysql_affected_rows() > 0) {
             "scat"=>"shipment",
             "id"=>$row["s_id"],
             "site"=>$row["s_site"],
+            "phone"=>$row["s_phone"],
+            "adress"=>$row["s_adress"],
             "name"=>addslashes((string)$row["s_name"]),
 			"image"=>addslashes((string)$row["s_image"]),
 			"time"=>addslashes((string)$row["s_time"]),
@@ -139,12 +145,13 @@ if (mysql_affected_rows() > 0) {
             "scat"=>"restaurants",
             "id"=>$row["r_id"],
             "site"=>$row["r_site"],
+            "phone"=>$row["r_phone"],
+            "adress"=>$row["r_adress"],
             "name"=>addslashes((string)$row["r_name"]),
             "image"=>addslashes((string)$row["r_image"]),
             "time"=>addslashes((string)$row["r_time"]),
-            "filmpage"=>'<div class="nav-element-s1"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
-            //"<img style=\"width:500px; float:left ; height:50px;\" src=http://now/".$row["cb_banner"]."> <br><br>".
-            //$row["s_name"]."<img style=\"width:100px; float:right ; height:50px;\" src=http://now/".$row["s_image"]."><br>".$row["S_time"]."</br><small>".$row["s_content"]."</small></br>",
+            "filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
+
         ));
 
     }
@@ -160,6 +167,8 @@ if (mysql_affected_rows() > 0) {
             "scat"=>"beautyandhealh",
             "id"=>$row["bh_id"],
             "site"=>$row["bh_site"],
+            "phone"=>$row["bh_phone"],
+            "adress"=>$row["bh_adress"],
             "name"=>addslashes((string)$row["bh_name"]),
             "image"=>addslashes((string)$row["bh_image"]),
             "time"=>addslashes((string)$row["bh_time"]),
