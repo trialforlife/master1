@@ -20,6 +20,9 @@ if (mysql_affected_rows() > 0) {
 	{
 		array_push($result["films"],array(
             "site"=>addslashes((string)$row["c_site"]),
+            "adress"=>addslashes((string)$row["c_adress"]),
+            "phone"=>addslashes((string)$row["c_phone"]),
+            "banner"=>addslashes((string)$row["c_banner"]),
             "scat"=>"cinema",
             "cid"=>$row["c_id"],
 			"id"=>$row["f_id"],
