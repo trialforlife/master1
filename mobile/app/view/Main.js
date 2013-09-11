@@ -11,15 +11,19 @@ Ext.define('front.view.Main', {
 
 });
 
-    db = openDatabase("Sencha", "1.0", "Sencha", 20000);
+    /*db = openDatabase("Sencha", "1.0", "Sencha", 20000);
         if(!db)
             {alert("Failed to connect to database.");}
         else
             {//alert('fuck yeah');
-            }
+            }*/
     //Ext.require(['Ext.data.proxy.SQL']);
         Ext.define("Favorite", {
         extend: "Ext.data.Model",
+            proxy: {
+                type: 'localstorage',
+                id  : 'Favorite'
+            },
         config: {
         fields: ["id","name","ftype","image","site","banner","adress","phone", "fid"]
         }
@@ -53,7 +57,8 @@ Ext.define('front.view.Main', {
         model: "Favorite",defaultRootProperty: 'items',
         storeId: 'Favorite',
         proxy: {
-            type: "sql"
+            //type: "sql"
+            type: 'localstorage'
         },
         grouper: {
             groupFn: function(record) {
@@ -342,25 +347,44 @@ Ext.define('front.view.Main', {
                                             },
                                             listeners: {
                                                 activate : function() {
-                                                    s_name = post.get('list');
                                                     s_image = post.get('image');
                                                     cfid = post.get('cid');
                                                     cat1 = record.get('code');
-                                                    console.log(cat);
-                                                    var banner = post.get('banner');
-                                                    var site = post.get('site');
-                                                    var adress = post.get('adress');
+                                                    banner = post.get('banner');
+                                                    site = post.get('site');
+                                                    adress = post.get('adress');
+                                                    phone = post.get('phone');
+                                                    ds_name = post.get('list');
+                                                    ditem = favestore.findRecord('name',ds_name);
                                                     if (typeof ttt != 'undefined'){
 
                                                     }
                                                     else{
                                                         ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                             handler: function(){
-
+                                                                if(ditem!= null)
+                                                                {
+                                                                    favestore.remove(ditem);
+                                                                }
+                                                                else
+                                                                {
+                                                                    favestore.add([{
+                                                                        name: ds_name,
+                                                                        ftype: cat1,
+                                                                        image: s_image,
+                                                                        site: site,
+                                                                        banner: banner,
+                                                                        adress: adress,
+                                                                        phone: phone,
+                                                                        fid : cfid
+                                                                    }]);
+                                                                }
+                                                                favestore.sync();
+                                                                delete window.ditem;
 
 
                                                                 //adding to favorite
-                                                                db.transaction(function(tx) {
+                                                                /*db.transaction(function(tx) {
                                                                     tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                             len = results.rows.length;
                                                                             console.log(len);
@@ -400,7 +424,7 @@ Ext.define('front.view.Main', {
                                                                             }]);
                                                                             favestore.sync();
                                                                         }
-                                                                    )});
+                                                                    )});*/
 
 
 
@@ -453,7 +477,8 @@ Ext.define('front.view.Main', {
                         model: "Favorite",defaultRootProperty: 'items',
                         storeId: 'Favorite',
                         proxy: {
-                            type: "sql"
+                        //    type: "sql"
+                            type: 'localstorage'
                         },
                         grouper: {
                             groupFn: function(record) {
@@ -523,7 +548,8 @@ Ext.define('front.view.Main', {
                                             model: "Favorite",defaultRootProperty: 'items',
                                             storeId: 'Favorite',
                                             proxy: {
-                                                type: "sql"
+                                                type: 'localstorage'
+                                                //type: "sql"
                                             },
                                             grouper: {
                                                 groupFn: function(record) {
@@ -601,18 +627,24 @@ Ext.define('front.view.Main', {
 
                                                     },
                                                     deactivate:function(){
-
-                                                    },
+                                                   },
                                                     itemtap: function( h, index, target, record, e, eOpts ){
-                                                        console.log(record.raw.id);
-                                                        did = record.raw.id;
+                                                        did = record.raw.name;
+                                                        console.log(record.raw);
+
+                                                        // Get the first item in the store
+                                                        var ditem = favestore.findRecord('name',did);
+                                                        console.log(ditem);
+                                                        favestore.remove(ditem);
+                                                        favestore.sync();
+                                                        /*
                                                         db.transaction(function(tx) {
 
                                                                 Ext.Msg.alert("Удалено");
                                                                 tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
                                                                 favestore.sync();
                                                                 }); favestore.sync();
-                                                            }); favestore.sync();
+                                                            }); */
                                                               record.destroy();
 
                                                     }
@@ -884,24 +916,44 @@ Ext.define('front.view.Main', {
 
                                                     listeners: {
                                                     initialize : function() {
-                                                        var s_name = post.get('list');
-                                                        var s_image = post.get('image');
-                                                        var cfid = post.get('cid');
-                                                        var cat1 = record.get('code');
-                                                        var banner = post.get('banner');
-                                                        var site = post.get('site');
-                                                        var adress = post.get('adress');
-                                                        var phone = post.get('phone');
+                                                        s_image = post.get('image');
+                                                        cfid = post.get('cid');
+                                                        cat1 = record.get('code');
+                                                        banner = post.get('banner');
+                                                        site = post.get('site');
+                                                        adress = post.get('adress');
+                                                        phone = post.get('phone');
+                                                        ds_name = post.get('list');
+                                                        ditem = favestore.findRecord('name',ds_name);
                                                         if (typeof ttt != 'undefined'){
 
                                                         }
                                                         else{
                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                 handler: function(button){
+                                                                    if(ditem!= null)
+                                                                    {
+                                                                        favestore.remove(ditem);
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        favestore.add([{
+                                                                            name: ds_name,
+                                                                            ftype: cat1,
+                                                                            image: s_image,
+                                                                            site: site,
+                                                                            banner: banner,
+                                                                            adress: adress,
+                                                                            phone: phone,
+                                                                            fid : cfid
+                                                                        }]);
+                                                                    }
+                                                                    favestore.sync();
+                                                                    delete window.ditem;
 
 
                                                                     //adding to favorite
-                                                                    db.transaction(function(tx) {
+                                                                    /*db.transaction(function(tx) {
                                                                         tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                                 len = results.rows.length;
                                                                                 console.log(len);
@@ -942,7 +994,7 @@ Ext.define('front.view.Main', {
                                                                                 }]);
                                                                                 favestore.sync();
                                                                             }
-                                                                        )});
+                                                                        )});*/
 
                                                                 }
 
@@ -1205,25 +1257,44 @@ Ext.define('front.view.Main', {
                                                         },
                                                         listeners: {
                                                         activate : function() {
-                                                            s_name = post.get('list');
                                                             s_image = post.get('image');
                                                             cfid = post.get('cid');
                                                             cat1 = record.get('code');
-                                                            console.log(cat);
-                                                            var banner = post.get('banner');
-                                                            var site = post.get('site');
-                                                            var adress = post.get('adress');
+                                                            banner = post.get('banner');
+                                                            site = post.get('site');
+                                                            adress = post.get('adress');
+                                                            phone = post.get('phone');
+                                                            ds_name = post.get('list');
+                                                            ditem = favestore.findRecord('name',ds_name);
                                                             if (typeof ttt != 'undefined'){
 
                                                             }
                                                             else{
                                                                 ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                     handler: function(){
-
+                                                                        if(ditem!= null)
+                                                                        {
+                                                                            favestore.remove(ditem);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            favestore.add([{
+                                                                                name: ds_name,
+                                                                                ftype: cat1,
+                                                                                image: s_image,
+                                                                                site: site,
+                                                                                banner: banner,
+                                                                                adress: adress,
+                                                                                phone: phone,
+                                                                                fid : cfid
+                                                                            }]);
+                                                                        }
+                                                                        favestore.sync();
+                                                                        delete window.ditem;
 
 
                                                                         //adding to favorite
-                                                                        db.transaction(function(tx) {
+                                                                        /*db.transaction(function(tx) {
                                                                             tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                                     len = results.rows.length;
                                                                                     console.log(len);
@@ -1263,7 +1334,7 @@ Ext.define('front.view.Main', {
                                                                                     }]);
                                                                                     favestore.sync();
                                                                                 }
-                                                                            )});
+                                                                            )});*/
 
 
 
@@ -1424,24 +1495,42 @@ Ext.define('front.view.Main', {
                                                         activate : function() {
                                                             tb.hide();
                                                             tb2.show();
-                                                            s_name = post.get('list');
                                                             s_image = post.get('image');
                                                             cfid = post.get('cid');
                                                             cat1 = record.get('code');
-                                                            var banner = post.get('banner');
-                                                            var site = post.get('site');
-                                                            var adress = post.get('adress');
-                                                            var phone = post.get('phone');
-                                                            console.log(cat);
+                                                            banner = post.get('banner');
+                                                            site = post.get('site');
+                                                            adress = post.get('adress');
+                                                            phone = post.get('phone');
+                                                            ds_name = post.get('list');
+                                                            ditem = favestore.findRecord('name',ds_name);
                                                             if (typeof ttt != 'undefined'){
 
                                                             }
                                                             else{
                                                                 ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                     handler: function(){
-
+                                                                        if(ditem!= null)
+                                                                        {
+                                                                            favestore.remove(ditem);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            favestore.add([{
+                                                                                name: ds_name,
+                                                                                ftype: cat1,
+                                                                                image: s_image,
+                                                                                site: site,
+                                                                                banner: banner,
+                                                                                adress: adress,
+                                                                                phone: phone,
+                                                                                fid : cfid
+                                                                            }]);
+                                                                        }
+                                                                        favestore.sync();
+                                                                        delete window.ditem;
                                                                         //adding to favorite
-                                                                        db.transaction(function(tx) {
+/*                                                                        db.transaction(function(tx) {
                                                                             tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                                     len = results.rows.length;
                                                                                     console.log(len);
@@ -1484,7 +1573,7 @@ Ext.define('front.view.Main', {
                                                                                     favestore.sync();
                                                                                 }
                                                                             )});
-
+*/
 
 
                                                                     }
@@ -1818,25 +1907,44 @@ Ext.define('front.view.Main', {
                                                                                 },
                                                                                 listeners: {
                                                                                     activate : function() {
-                                                                                        s_name = post.get('list');
                                                                                         s_image = post.get('image');
                                                                                         cfid = post.get('cid');
                                                                                         cat1 = record.get('code');
-                                                                                        console.log(cat);
-                                                                                        var banner = post.get('banner');
-                                                                                        var site = post.get('site');
-                                                                                        var adress = post.get('adress');
+                                                                                        banner = post.get('banner');
+                                                                                        site = post.get('site');
+                                                                                        adress = post.get('adress');
+                                                                                        phone = post.get('phone');
+                                                                                        ds_name = post.get('list');
+                                                                                        ditem = favestore.findRecord('name',ds_name);
                                                                                         if (typeof ttt != 'undefined'){
 
                                                                                         }
                                                                                         else{
                                                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                                                 handler: function(){
-
+                                                                                                    if(ditem!= null)
+                                                                                                    {
+                                                                                                        favestore.remove(ditem);
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        favestore.add([{
+                                                                                                            name: ds_name,
+                                                                                                            ftype: cat1,
+                                                                                                            image: s_image,
+                                                                                                            site: site,
+                                                                                                            banner: banner,
+                                                                                                            adress: adress,
+                                                                                                            phone: phone,
+                                                                                                            fid : cfid
+                                                                                                        }]);
+                                                                                                    }
+                                                                                                    favestore.sync();
+                                                                                                    delete window.ditem;
 
 
                                                                                                     //adding to favorite
-                                                                                                    db.transaction(function(tx) {
+                                                                                                    /*db.transaction(function(tx) {
                                                                                                         tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                                                                 len = results.rows.length;
                                                                                                                 console.log(len);
@@ -1876,7 +1984,7 @@ Ext.define('front.view.Main', {
                                                                                                                 }]);
                                                                                                                 favestore.sync();
                                                                                                             }
-                                                                                                        )});
+                                                                                                        )});*/
 
 
 
@@ -2080,26 +2188,44 @@ Ext.define('front.view.Main', {
                                                                     listeners: {
 
                                                                     activate : function() {
-                                                                        s_name = post.get('list');
-                                                                        s_image = post.get('image');
-                                                                        cfid = post.get('cid');
-                                                                        cat1 = record.get('code');
-                                                                        banner = post.get('banner');
-                                                                        site = post.get('site');
-                                                                        adress = post.get('adress');
-                                                                        phone = post.get('phone');
-                                                                        console.log(cat);
+                                                                            s_image = post.get('image');
+                                                                            cfid = post.get('cid');
+                                                                            cat1 = record.get('code');
+                                                                            banner = post.get('banner');
+                                                                            site = post.get('site');
+                                                                            adress = post.get('adress');
+                                                                            phone = post.get('phone');
+                                                                            ds_name = post.get('list');
+                                                                            ditem = favestore.findRecord('name',ds_name);
+
                                                                             if (typeof ttt != 'undefined'){
 
                                                                             }
                                                                             else{
                                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                             handler: function(){
-
-
-
+                                                                                //console.log(ditem);
+                                                                                if(ditem!= null)
+                                                                                {
+                                                                                    favestore.remove(ditem);
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    favestore.add([{
+                                                                                        name: ds_name,
+                                                                                        ftype: cat1,
+                                                                                        image: s_image,
+                                                                                        site: site,
+                                                                                        banner: banner,
+                                                                                        adress: adress,
+                                                                                        phone: phone,
+                                                                                        fid : cfid
+                                                                                    }]);
+                                                                                }
+                                                                                 favestore.sync();
+                                                                                 delete window.ditem;
                                                                                 //adding to favorite
-                                                                                db.transaction(function(tx) {
+                                                                                /*db.transaction(function(tx) {
                                                                                     tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
                                                                                             len = results.rows.length;
                                                                                             console.log(len);
@@ -2141,7 +2267,7 @@ Ext.define('front.view.Main', {
                                                                                             }]);
                                                                                             favestore.sync();
                                                                                         }
-                                                                                    )});
+                                                                                    )});*/
 
 
 

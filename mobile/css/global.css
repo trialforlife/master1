@@ -558,7 +558,6 @@ pf{
 }
 .x-toolbar-light {
 	background-image: none !important;
-
 	background-image: none !important;
 	background-image: none !important;
 	background-image: none !important;
@@ -566,9 +565,6 @@ pf{
 	background-image: none !important;
 }
 .x-title .x-innerhtml{
-	/*min-width: 368px !important;
-	*/
-
     color: #69d2e7;
 	font: 1.37em/88px Hlvb;
     /*font: 52px/88px Hlvb;
@@ -865,4 +861,18 @@ input {
     margin-top:14em !important;
     color: #FFFFFF;
     font-family: hlvb;
+}
+.x-msgbox-buttons{
+    float: left;
+    margin-top:-70px !important;
+    font: 1em hlvb;
+    border-left: 8px solid rgba(0,0,0,0.24);
+    border-radius: 30px;
+    color: #b4b3b4;
+    font: 24px/60px Hlvb;
+    text-align: center;
+    height: 60px;
+    background: #7000ed;
+    display: block;
+    width: 218px;
 }
