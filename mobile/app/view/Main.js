@@ -172,7 +172,8 @@ Ext.define('front.view.Main', {
                                 store: search,
                                 listeners:{
                                     itemtap:function(h, index, target, record, e, eOpts ){
-                                        f_cid = record.get('id');
+                                        f_cid = record.get('cid');
+                                        console.log(f_cid);
                                         catdyn = record.get('scat');
                                        // ser.hide();
                                         var fil = Ext.create('Ext.Container', {
@@ -185,14 +186,9 @@ Ext.define('front.view.Main', {
                                                     items: [{
                                                         ui: 'back',
                                                         xtype: 'button',
-                                                        //text:'<div class="backtext"></div>',
                                                         id: 'sback',
-                                                        //height:'100px',
-                                                        //width:'30px',
                                                         handler: function (button) {
-                                                            //alert('ffu');
                                                             fil.destroy();
-                                                           /// Ext.getCmp('serch').hide();
                                                             ser.show();
                                                         }
 
