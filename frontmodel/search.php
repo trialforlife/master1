@@ -19,7 +19,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
-            "site"=>addslashes((string)$row["c_name"]),
+            "site"=>addslashes((string)$row["c_site"]),
             "scat"=>"cinema",
             "cid"=>$row["c_id"],
 			"id"=>$row["f_id"],
