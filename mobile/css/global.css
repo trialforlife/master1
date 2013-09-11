@@ -752,7 +752,7 @@ pf{
     background: #1e3244 !important;
 }
 .x-form-fieldset .x-form-fieldset-inner {
-    margin-top: 7px;
+    margin-top: 10px;
     height: 56px;
     float: left;
     border-radius: 40px !important;
@@ -843,7 +843,7 @@ pf{
 input {
     outline: none;
     height: 54px;
-    width: 99%;
+    width: 98%;
     vertical-align: bottom;
     border: none;
     margin-left: 25px;
