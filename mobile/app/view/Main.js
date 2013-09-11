@@ -190,9 +190,10 @@ Ext.define('front.view.Main', {
                                                         //height:'100px',
                                                         //width:'30px',
                                                         handler: function (button) {
-                                                            alert('ffu');
+                                                            //alert('ffu');
                                                             fil.destroy();
-                                                            treestore.show();
+                                                           /// Ext.getCmp('serch').hide();
+                                                            ser.show();
                                                         }
 
                                                     },
