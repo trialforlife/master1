@@ -35,13 +35,17 @@ if (mysql_affected_rows() > 0) {
 	}
 
 }
-$query1 = "SELECT * FROM play where p_name LIKE '%" . $search . "%'  ";
+$query1 = "SELECT * FROM theatre, play WHERE theatre.t_id = play.t_id AND play.p_name LIKE '%" . $search . "%' ";
 $dbresult1 = mysql_query($query1);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult1))
 	{
 		array_push($result["films"],array(
+            "site"=>addslashes((string)$row["t_site"]),
+            "adress"=>addslashes((string)$row["t_adress"]),
+            "phone"=>addslashes((string)$row["t_phone"]),
+            "banner"=>addslashes((string)$row["t_banner"]),
             "scat"=>"theatre",
             "id"=>$row["p_id"],
             "cid"=>$row["t_id"],
