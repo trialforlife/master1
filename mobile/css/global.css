@@ -848,3 +848,19 @@ input {
     border: none;
     margin-left: 25px;
 }
+.x-msgbox-title{
+    position: absolute !important;
+    z-index: 9999 !important;
+    width: 10em !important;
+    height: 4em !important;
+    left: 39% !important;
+    top:40% !important;
+}
+.x-button-action{
+    position: absolute !important;
+    z-index: 9999 !important;
+    left: 44% !important;
+    top:59% !important;
+    color: #FFFFFF;
+    font-family: hlvb;
+}
