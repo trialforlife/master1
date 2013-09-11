@@ -12,13 +12,14 @@ $search = $_GET["value"];
 
 $result = array("films"=>array());
 
-$query = "SELECT * FROM films where f_name LIKE '%" . $search . "%' ";
+$query = "SELECT * FROM cinema, films WHERE cinema.c_id = films.c_id AND films.f_name LIKE '%" . $search . "%' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{
 		array_push($result["films"],array(
+            "site"=>addslashes((string)$row["c_name"]),
             "scat"=>"cinema",
             "cid"=>$row["c_id"],
 			"id"=>$row["f_id"],
