@@ -40,7 +40,6 @@ if (mysql_affected_rows() > 0) {
 		array_push($result["films"],array(
             "scat"=>"theatre",
             "id"=>$row["p_id"],
-            "cid"=>$row["p_id"],
             "cid"=>$row["t_id"],
             "name"=>addslashes((string)$row["p_name"]),
 			"image"=>addslashes((string)$row["p_image"]),
@@ -60,6 +59,7 @@ if (mysql_affected_rows() > 0) {
 		array_push($result["films"],array(
             "scat"=>"entertainment",
             "id"=>$row["en_id"],
+            "cid"=>$row["en_id"],
             "site"=>$row["en_site"],
             "phone"=>$row["en_phone"],
             "adress"=>$row["en_adress"],
@@ -101,6 +101,7 @@ if (mysql_affected_rows() > 0) {
 		array_push($result["films"],array(
             "scat"=>"nightlife",
             "id"=>$row["n_id"],
+            "cid"=>$row["n_id"],
             "site"=>$row["n_site"],
             "phone"=>$row["n_phone"],
             "adress"=>$row["n_adress"],
@@ -125,6 +126,7 @@ if (mysql_affected_rows() > 0) {
 		array_push($result["films"],array(
             "scat"=>"shipment",
             "id"=>$row["s_id"],
+            "cid"=>$row["s_id"],
             "site"=>$row["s_site"],
             "phone"=>$row["s_phone"],
             "adress"=>$row["s_adress"],
@@ -147,6 +149,7 @@ if (mysql_affected_rows() > 0) {
         array_push($result["films"],array(
             "scat"=>"restaurants",
             "id"=>$row["r_id"],
+            "cid"=>$row["r_id"],
             "site"=>$row["r_site"],
             "phone"=>$row["r_phone"],
             "adress"=>$row["r_adress"],
@@ -170,6 +173,7 @@ if (mysql_affected_rows() > 0) {
         array_push($result["films"],array(
             "scat"=>"beautyandhealh",
             "id"=>$row["bh_id"],
+            "cid"=>$row["bh_id"],
             "site"=>$row["bh_site"],
             "phone"=>$row["bh_phone"],
             "adress"=>$row["bh_adress"],
