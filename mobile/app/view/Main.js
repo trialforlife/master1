@@ -288,8 +288,26 @@ Ext.define('front.view.Main', {
                                                                 var adress = post.get('adress');
                                                                 var photo = post.get('photo');
 
+
+                                                                myConfirm('сообщение ', alert);
+
+                                                                function myConfirm(msg, func){
+                                                                    var div=document.createElement('div');
+                                                                    div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                    div.onclick=function(e){
+                                                                        var t=e?e.target:window.event.srcElement;
+                                                                        if(t.tagName=='INPUT'){
+                                                                            t.value=='Обновить'&&func('да');
+                                                                            this.parentNode.removeChild(this)
+                                                                        }
+                                                                    }
+                                                                    div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                    return document.body.appendChild(div);
+                                                                }
+
                                                                 //adding to favorite
-                                                                db.transaction(function(tx) {
+                                                                /*db.transaction(function(tx) {
                                                                     tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
                                                                             len = results.rows.length;
                                                                             console.log(len);
@@ -331,7 +349,7 @@ Ext.define('front.view.Main', {
                                                                             }]);
                                                                             favestore.sync();
                                                                         }
-                                                                    )});
+                                                                    )});*/
 
                                                             }
                                                         }
@@ -384,64 +402,13 @@ Ext.define('front.view.Main', {
                                                                 delete window.ditem;
 
 
-                                                                //adding to favorite
-                                                                /*db.transaction(function(tx) {
-                                                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
-                                                                            len = results.rows.length;
-                                                                            console.log(len);
-                                                                            if (len  > 0 ) {
-                                                                                Ext.Msg.alert("Удалено");
-                                                                                tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
-
-                                                                                });
-                                                                            }
-                                                                            else{
-                                                                                Ext.Msg.alert("Добавлено");
-                                                                                favestore.add([{
-                                                                                    name: s_name,
-                                                                                    ftype: cat1,
-                                                                                    image: s_image,
-                                                                                    site: site,
-                                                                                    banner: banner,
-                                                                                    adress: adress,
-                                                                                    fid : cfid
-
-                                                                                }]);
-                                                                                favestore.sync();
-                                                                            }
-
-                                                                        },
-                                                                        function (tx, error)
-                                                                        {
-                                                                            favestore .add([{
-                                                                                name: s_name,
-                                                                                ftype: cat1,
-                                                                                image: s_image,
-                                                                                site: site,
-                                                                                banner: banner,
-                                                                                adress: adress,
-                                                                                fid : cfid
-
-                                                                            }]);
-                                                                            favestore.sync();
-                                                                        }
-                                                                    )});*/
-
-
-
                                                             }
 
                                                         }]));
 
                                                     }
-
-
-                                                    //tb.hide();
-                                                    //tb2.show();
                                                 } ,
                                                 deactivate: function() {
-                                                    //tb.show();
-                                                    //tb2.hide();
 
                                                 }
 
@@ -633,19 +600,28 @@ Ext.define('front.view.Main', {
                                                         did = record.raw.name;
                                                         console.log(record.raw);
 
-                                                        // Get the first item in the store
                                                         var ditem = favestore.findRecord('name',did);
                                                         console.log(ditem);
                                                         favestore.remove(ditem);
-                                                        favestore.sync();
-                                                        /*
-                                                        db.transaction(function(tx) {
+                                                        myConfirm('сообщение ', alert);
 
-                                                                Ext.Msg.alert("Удалено");
-                                                                tx.executeSql("DELETE FROM Favorite WHERE id=? ", [did],  function(result1){
-                                                                favestore.sync();
-                                                                }); favestore.sync();
-                                                            }); */
+                                                        function myConfirm(msg, func){
+                                                            var div=document.createElement('div');
+                                                            div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                            div.onclick=function(e){
+                                                                var t=e?e.target:window.event.srcElement;
+                                                                if(t.tagName=='INPUT'){
+                                                                    t.value=='Обновить'&&func('да');
+                                                                    this.parentNode.removeChild(this)
+                                                                }
+                                                            }
+                                                            div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Удалено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                            return document.body.appendChild(div);
+                                                        }
+
+                                                        favestore.sync();
+
                                                               record.destroy();
 
                                                     }
@@ -948,7 +924,22 @@ Ext.define('front.view.Main', {
                                                                             phone: phone,
                                                                             fid : cfid
                                                                         }]);
-                                                                        Ext.Msg.alert("Добавлено");
+                                                                        myConfirm('сообщение ', alert);
+
+                                                                        function myConfirm(msg, func){
+                                                                            var div=document.createElement('div');
+                                                                            div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                            div.onclick=function(e){
+                                                                                var t=e?e.target:window.event.srcElement;
+                                                                                if(t.tagName=='INPUT'){
+                                                                                    t.value=='Обновить'&&func('да');
+                                                                                    this.parentNode.removeChild(this)
+                                                                                }
+                                                                            }
+                                                                            div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                            return document.body.appendChild(div);
+                                                                        }
                                                                     }
                                                                     favestore.sync();
                                                                     delete window.ditem;
@@ -1212,7 +1203,22 @@ Ext.define('front.view.Main', {
                                                                                     });
                                                                                 }
                                                                                 else{
-                                                                                    Ext.Msg.alert("Добавлено");
+                                                                                      myConfirm('сообщение ', alert);
+
+                                                                                      function myConfirm(msg, func){
+                                                                                          var div=document.createElement('div');
+                                                                                          div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                          div.onclick=function(e){
+                                                                                              var t=e?e.target:window.event.srcElement;
+                                                                                              if(t.tagName=='INPUT'){
+                                                                                                  t.value=='Обновить'&&func('да');
+                                                                                                  this.parentNode.removeChild(this)
+                                                                                              }
+                                                                                          }
+                                                                                          div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                                          return document.body.appendChild(div);
+                                                                                      }
                                                                                     favestore.add([{
                                                                                         name: s_name,
                                                                                         ftype: cat1,
@@ -1290,7 +1296,22 @@ Ext.define('front.view.Main', {
                                                                                 phone: phone,
                                                                                 fid : cfid
                                                                             }]);
-                                                                            Ext.Msg.alert("Добавлено");
+                                                                            myConfirm('сообщение ', alert);
+
+                                                                            function myConfirm(msg, func){
+                                                                                var div=document.createElement('div');
+                                                                                div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                div.onclick=function(e){
+                                                                                    var t=e?e.target:window.event.srcElement;
+                                                                                    if(t.tagName=='INPUT'){
+                                                                                        t.value=='Обновить'&&func('да');
+                                                                                        this.parentNode.removeChild(this)
+                                                                                    }
+                                                                                }
+                                                                                div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                                return document.body.appendChild(div);
+                                                                            }
                                                                         }
                                                                         favestore.sync();
                                                                         delete window.ditem;
@@ -1529,7 +1550,22 @@ Ext.define('front.view.Main', {
                                                                                 phone: phone,
                                                                                 fid : cfid
                                                                             }]);
-                                                                            Ext.Msg.alert("Добавлено");
+                                                                            myConfirm('сообщение ', alert);
+
+                                                                            function myConfirm(msg, func){
+                                                                                var div=document.createElement('div');
+                                                                                div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                div.onclick=function(e){
+                                                                                    var t=e?e.target:window.event.srcElement;
+                                                                                    if(t.tagName=='INPUT'){
+                                                                                        t.value=='Обновить'&&func('да');
+                                                                                        this.parentNode.removeChild(this)
+                                                                                    }
+                                                                                }
+                                                                                div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                                return document.body.appendChild(div);
+                                                                            }
                                                                         }
                                                                         favestore.sync();
                                                                         delete window.ditem;
@@ -1864,7 +1900,22 @@ Ext.define('front.view.Main', {
                                                                                                                     });
                                                                                                                 }
                                                                                                                 else{
-                                                                                                                    Ext.Msg.alert("Добавлено");
+                                                                                                                    myConfirm('сообщение ', alert);
+
+                                                                                                                    function myConfirm(msg, func){
+                                                                                                                        var div=document.createElement('div');
+                                                                                                                        div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                                                        div.onclick=function(e){
+                                                                                                                            var t=e?e.target:window.event.srcElement;
+                                                                                                                            if(t.tagName=='INPUT'){
+                                                                                                                                t.value=='Обновить'&&func('да');
+                                                                                                                                this.parentNode.removeChild(this)
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                        div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                                                                        return document.body.appendChild(div);
+                                                                                                                    }
                                                                                                                     favestore.add([{
                                                                                                                         name: s_name,
                                                                                                                         ftype: cat1,
@@ -1942,7 +1993,22 @@ Ext.define('front.view.Main', {
                                                                                                             phone: phone,
                                                                                                             fid : cfid
                                                                                                         }]);
-                                                                                                        Ext.Msg.alert("Добавлено");
+                                                                                                        myConfirm('сообщение ', alert);
+
+                                                                                                        function myConfirm(msg, func){
+                                                                                                            var div=document.createElement('div');
+                                                                                                            div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                                            div.onclick=function(e){
+                                                                                                                var t=e?e.target:window.event.srcElement;
+                                                                                                                if(t.tagName=='INPUT'){
+                                                                                                                    t.value=='Обновить'&&func('да');
+                                                                                                                    this.parentNode.removeChild(this)
+                                                                                                                }
+                                                                                                            }
+                                                                                                            div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                                                            return document.body.appendChild(div);
+                                                                                                        }
                                                                                                     }
                                                                                                     favestore.sync();
                                                                                                     delete window.ditem;
@@ -2226,8 +2292,22 @@ Ext.define('front.view.Main', {
                                                                                         phone: phone,
                                                                                         fid : cfid
                                                                                     }]);
-                                                                                    Ext.Msg.alert("<div style='background: blueviolet; position:absolute; z-index: 999999; !important; width: 300px; height: 250px; float: :left;'>Добавлено</div>");
+                                                                                    myConfirm('сообщение ', alert);
 
+                                                                                    function myConfirm(msg, func){
+                                                                                        var div=document.createElement('div');
+                                                                                        div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                        div.onclick=function(e){
+                                                                                            var t=e?e.target:window.event.srcElement;
+                                                                                            if(t.tagName=='INPUT'){
+                                                                                                t.value=='Обновить'&&func('да');
+                                                                                                this.parentNode.removeChild(this)
+                                                                                            }
+                                                                                        }
+                                                                                        div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+
+                                                                                        return document.body.appendChild(div);
+                                                                                    }
                                                                                 }
                                                                                  favestore.sync();
                                                                                  delete window.ditem;
