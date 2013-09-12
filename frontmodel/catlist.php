@@ -23,7 +23,7 @@ if (mysql_affected_rows() > 0) {
                 $d_style = 'color: rgba(255,255,255,0.3) !important; text-shadow: none !important;';
             }
             else{
-                $cc = $row["f_count"];
+                $cc = $f_count;
                 $d_style= '';
                 }
             }
