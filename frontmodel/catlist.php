@@ -9,15 +9,24 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cat"=>array());
 
+$f_count = $__GET('f_count');
+
+
 $query = 'select * from category where cat_id > 3  order by cat_id';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{   if($row["cat_id"]> 9){
-        $cc='';
-        $d_style= '';
-        }
+            if($f_count == 0){
+                $cc = '<img style="margin-right: -14px;" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
+                $d_style = 'color: rgba(255,255,255,0.3) !important; text-shadow: none !important;';
+            }
+            else{
+                $cc='';
+                $d_style= '';
+                }
+            }
         elseif(($row["cat_count"])!= 0 )
         {
             $cc = $row["cat_count"];
