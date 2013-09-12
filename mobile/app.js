@@ -79,7 +79,7 @@ Ext.application({
                 div.onclick=function(e){
                     var t=e?e.target:window.event.srcElement;
                     if(t.tagName=='INPUT'){
-                        t.value=='Да'&&func('да');
+                        t.value=='Обновить'&&func('да');
                         this.parentNode.removeChild(this)
                     }
                 }

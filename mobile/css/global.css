@@ -852,6 +852,7 @@ input {
     height: 50px !important;
     float: left;
 }
+/*
 .x-button-action{
     position: absolute !important;
     z-index: 10000 !important;
@@ -868,10 +869,10 @@ input {
     display: block;
     width: 138px;
     padding-top: 10px;
-}
+}*/
 .x-msgbox-buttons{
     float: left;
-    font: 1.2em hlvb;
+    font: 0.9em hlvb;
     border-left: 8px solid rgba(0,0,0,0.24);
     border-radius: 30px;
     color: #b4b3b4;
@@ -879,6 +880,8 @@ input {
     height: 40px;
     background: #7000ed;
     display: block;
-    width: 135px;
+    width: 160px;
     padding-top: 1px;
+    margin-left:0;
+    margin-top: 30px;
 }
