@@ -39,7 +39,7 @@
 					'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Здоровье', 'url'=>array('/backend/beautyandhealth'),
 					'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Клубы', 'url'=>array('/backend/restaurants'),
+				array('label'=>'Клубы', 'url'=>array('/backend/nightlife'),
 					'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Доставка', 'url'=>array('/backend/shipment'),
 					'visible'=>!Yii::app()->user->isGuest),

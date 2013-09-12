@@ -40,7 +40,7 @@ class Films extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('c_id, f_name, f_time, f_price, f_content, f_image', 'required'),
+			array('c_id, f_name, f_time, f_price, f_content, f_image, f_published', 'required'),
 			array('c_id', 'numerical', 'integerOnly'=>true),
 			array('f_name, f_price', 'length', 'max'=>1000),
 			array('f_time', 'length', 'max'=>10000),
@@ -67,13 +67,14 @@ class Films extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'f_id' => 'F',
-			'c_id' => 'C',
-			'f_name' => 'F Name',
-			'f_time' => 'F Time',
-			'f_price' => 'F Price',
-			'f_content' => 'F Content',
-			'f_image' => 'F Image',
+			'f_id' => 'Номер',
+			'c_id' => 'Кинотеатр',
+			'f_name' => 'Название',
+			'f_time' => 'Время',
+			'f_price' => 'Цена',
+			'f_content' => 'Описание',
+			'f_image' => 'Изображение',
+            'f_published' => 'Видимость',
 		);
 	}
 
@@ -95,6 +96,7 @@ class Films extends CActiveRecord
 		$criteria->compare('f_price',$this->f_price,true);
 		$criteria->compare('f_content',$this->f_content,true);
 		$criteria->compare('f_image',$this->f_image,true);
+        $criteria->compare('f_published',$this->f_published,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

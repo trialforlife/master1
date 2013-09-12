@@ -8,15 +8,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Films', 'url'=>array('index')),
-	array('label'=>'Create Films', 'url'=>array('create')),
-	array('label'=>'Update Films', 'url'=>array('update', 'id'=>$model->f_id)),
-	array('label'=>'Delete Films', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->f_id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Films', 'url'=>array('admin')),
+	array('label'=>'Список фильмов', 'url'=>array('index')),
+	array('label'=>'Добавить фильм', 'url'=>array('create')),
+	array('label'=>'Редактировать фильм', 'url'=>array('update', 'id'=>$model->f_id)),
+	array('label'=>'Удалить фильм', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->f_id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Управление фильмами', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Films #<?php echo $model->f_id; ?></h1>
+<h1>Просмотр фильма #<?php echo $model->f_id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

@@ -1,21 +1,21 @@
 <?php
-/* @var $this PlayController */
-/* @var $model Play */
+/* @var $this NightlifeController */
+/* @var $model Nightlife */
 
 $this->breadcrumbs=array(
-	'Plays'=>array('index'),
-	$model->p_id=>array('view','id'=>$model->p_id),
+	'Nightlives'=>array('index'),
+	$model->n_id=>array('view','id'=>$model->n_id),
 	'Update',
 );
 
 $this->menu=array(
 	array('label'=>'Список', 'url'=>array('index')),
 	array('label'=>'Добавить', 'url'=>array('create')),
-	array('label'=>'Просмотр', 'url'=>array('view', 'id'=>$model->p_id)),
+	array('label'=>'Просмотор', 'url'=>array('view', 'id'=>$model->n_id)),
 	array('label'=>'Управление', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Редактирование спектакля <?php echo $model->p_id; ?></h1>
+<h1>Редактирование клуба <?php echo $model->n_id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

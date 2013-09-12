@@ -16,6 +16,10 @@ $this->menu=array(
     array('label'=>'------------------------'),
     array('label'=>'Добавить баннер', 'url'=>array('./cinemabanner/index','id_c'=>$model->c_id)),
     array('label'=>'Управление баннерами', 'url'=>array('./cinemabanner/admin','id_c'=>$model->c_id)),
+    array('label'=>'------------------------'),
+    array('label'=>'Добавить фильм', 'url'=>array('./films/create','id_c'=>$model->c_id)),
+    array('label'=>'Список фильмов', 'url'=>array('./films/index','id_c'=>$model->c_id)),
+    array('label'=>'Управление фильмами', 'url'=>array('./films/admin','id_c'=>$model->c_id)),
 );
 ?>
 

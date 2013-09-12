@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Play', 'url'=>array('index')),
-	array('label'=>'Create Play', 'url'=>array('create')),
+	array('label'=>'Список', 'url'=>array('index')),
+	array('label'=>'Добавить', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Plays</h1>
+<h1>Управление спектаклями</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -45,15 +45,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'f_id',
-		'c_id',
-		'f_name',
-		'f_time',
-		'f_price',
-		'f_content',
+		'p_id',
+		't_id',
+		'p_name',
+		'p_time',
+		'p_content',
+		'p_price',
 		/*
-		'f_image',
-		'f_published',
+		'p_image',
+		'p_published',
 		*/
 		array(
 			'class'=>'CButtonColumn',

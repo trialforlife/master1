@@ -17,10 +17,14 @@ $this->menu=array(
     array('label'=>'Добавить баннер', 'url'=>array('./theatrebanner/create','id_t'=>$model->t_id)),
     array('label'=>'Список баннеров', 'url'=>array('./theatrebanner/index','id_t'=>$model->t_id)),
     array('label'=>'Управление баннерами', 'url'=>array('./theatrebanner/admin','id_t'=>$model->t_id)),
+    array('label'=>'------------------------'),
+    array('label'=>'Добавить спектакль', 'url'=>array('./play/create','id_t'=>$model->t_id)),
+    array('label'=>'Список спектаклей', 'url'=>array('./play/index','id_t'=>$model->t_id)),
+    array('label'=>'Управление спектаклями', 'url'=>array('./play/admin','id_t'=>$model->t_id)),
 );
 ?>
 
-<h1>Просмотр кинотеатра #<?php echo $model->t_id; ?></h1>
+<h1>Просмотр театра #<?php echo $model->t_id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

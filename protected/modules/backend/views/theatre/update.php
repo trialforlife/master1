@@ -16,6 +16,10 @@ $this->menu=array(
     array('label'=>'------------------------'),
     array('label'=>'Добавить баннер', 'url'=>array('./theatrebanner/index','id_t'=>$model->t_id)),
     array('label'=>'Управление баннерами', 'url'=>array('./theatrebanner/admin','id_t'=>$model->t_id)),
+    array('label'=>'------------------------'),
+    array('label'=>'Добавить спектакль', 'url'=>array('./play/create','id_t'=>$model->t_id)),
+    array('label'=>'Список спектаклей', 'url'=>array('./play/index','id_t'=>$model->t_id)),
+    array('label'=>'Управление спектаклями', 'url'=>array('./play/admin','id_t'=>$model->t_id)),
 );
 ?>
 

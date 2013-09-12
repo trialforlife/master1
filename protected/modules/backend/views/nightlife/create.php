@@ -1,9 +1,9 @@
 <?php
-/* @var $this PlayController */
-/* @var $model Play */
+/* @var $this NightlifeController */
+/* @var $model Nightlife */
 
 $this->breadcrumbs=array(
-	'Plays'=>array('index'),
+	'Nightlives'=>array('index'),
 	'Create',
 );
 
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Добавить спектакль</h1>
+<h1>Добавить клуб</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

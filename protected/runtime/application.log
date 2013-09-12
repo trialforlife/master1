@@ -1371,3 +1371,65 @@ Stack trace:
 REQUEST_URI=/index.php/backend/shipment/update/id/img.jpg
 HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/shipment/update/id/1
 ---
+2013/09/12 14:57:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "backend/hightlife".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('backend/hightli...')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/backend/hightlife
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinema
+---
+2013/09/12 18:04:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "backend/filmsbanner/create/id_c/1".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('backend/filmsba...')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/backend/filmsbanner/create/id_c/1
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinema/view/id/1
+---
+2013/09/12 18:14:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in D:\Winginx\home\yakutsk-back.dv\public_html\protected\modules\backend\controllers\FilmsController.php:157
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\public_html\protected\modules\backend\controllers\FilmsController.php(89): FilmsController->loadModel('kino3.png')
+#1 [internal function]: FilmsController->actionUpdate('kino3.png')
+#2 D:\Winginx\home\yakutsk-back.dv\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(FilmsController), Array)
+#3 D:\Winginx\home\yakutsk-back.dv\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(FilmsController), Object(ReflectionMethod), Array)
+#4 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(282): CController->run('update')
+#13 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('backend/films/u...')
+#14 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php/backend/films/update/id/kino3.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/films/update/id/3
+---
+2013/09/12 18:15:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in D:\Winginx\home\yakutsk-back.dv\public_html\protected\modules\backend\controllers\FilmsController.php:157
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\public_html\protected\modules\backend\controllers\FilmsController.php(89): FilmsController->loadModel('kino3.png')
+#1 [internal function]: FilmsController->actionUpdate('kino3.png')
+#2 D:\Winginx\home\yakutsk-back.dv\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(FilmsController), Array)
+#3 D:\Winginx\home\yakutsk-back.dv\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(FilmsController), Object(ReflectionMethod), Array)
+#4 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 D:\Winginx\home\yakutsk-back.dv\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(291): CFilterChain->run()
+#11 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(282): CController->run('update')
+#13 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('backend/films/u...')
+#14 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php/backend/films/update/id/kino3.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/films/update/id/3
+---

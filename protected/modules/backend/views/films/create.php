@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Films', 'url'=>array('index')),
-	array('label'=>'Manage Films', 'url'=>array('admin')),
+	array('label'=>'Список', 'url'=>array('index')),
+	array('label'=>'Управление фйильмами', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Films</h1>
+<h1>Добавить фильм</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

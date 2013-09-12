@@ -1,26 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "play".
+ * This is the model class for table "nightlife".
  *
- * The followings are the available columns in table 'play':
- * @property integer $p_id
- * @property integer $t_id
- * @property string $p_name
- * @property string $p_time
- * @property string $p_content
- * @property string $p_price
- * @property string $p_image
- * @property integer $p_published
+ * The followings are the available columns in table 'nightlife':
+ * @property integer $n_id
+ * @property string $n_name
+ * @property string $n_image
+ * @property string $n_adress
+ * @property string $n_time
+ * @property string $n_date
+ * @property string $n_banner
+ * @property string $n_site
+ * @property string $n_phone
+ * @property string $n_content
+ * @property integer $n_published
  */
-class Play extends CActiveRecord
+class Nightlife extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'play';
+		return 'nightlife';
 	}
 
 	/**
@@ -31,13 +34,12 @@ class Play extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('t_id, p_name, p_time, p_content, p_price, p_image, p_published', 'required'),
-			array('t_id, p_published', 'numerical', 'integerOnly'=>true),
-			array('p_name, p_price', 'length', 'max'=>1000),
-			array('p_image', 'length', 'max'=>10000),
+			array('n_name, n_image, n_adress, n_time, n_date, n_banner, n_site, n_phone, n_content, n_published', 'required'),
+			array('n_published', 'numerical', 'integerOnly'=>true),
+			array('n_name, n_phone', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('p_id, t_id, p_name, p_time, p_content, p_price, p_image, p_published', 'safe', 'on'=>'search'),
+			array('n_id, n_name, n_image, n_adress, n_time, n_date, n_banner, n_site, n_phone, n_content, n_published', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,14 +60,17 @@ class Play extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'p_id' => 'Номер',
-			't_id' => 'Театр',
-			'p_name' => 'Название',
-			'p_time' => 'Время',
-			'p_content' => 'Описание',
-			'p_price' => 'Цена',
-			'p_image' => 'Изображение',
-			'p_published' => 'Видимость',
+			'n_id' => 'Номер',
+			'n_name' => 'Название',
+			'n_image' => 'Изображение в меню',
+			'n_adress' => 'Адресс',
+			'n_time' => 'Время',
+			'n_date' => 'Дата',
+			'n_banner' => 'Баннер',
+			'n_site' => 'Сайт',
+			'n_phone' => 'Телефон',
+			'n_content' => 'Контент',
+			'n_published' => 'Видимость',
 		);
 	}
 
@@ -87,14 +92,17 @@ class Play extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('p_id',$this->p_id);
-		$criteria->compare('t_id',$this->t_id);
-		$criteria->compare('p_name',$this->p_name,true);
-		$criteria->compare('p_time',$this->p_time,true);
-		$criteria->compare('p_content',$this->p_content,true);
-		$criteria->compare('p_price',$this->p_price,true);
-		$criteria->compare('p_image',$this->p_image,true);
-		$criteria->compare('p_published',$this->p_published);
+		$criteria->compare('n_id',$this->n_id);
+		$criteria->compare('n_name',$this->n_name,true);
+		$criteria->compare('n_image',$this->n_image,true);
+		$criteria->compare('n_adress',$this->n_adress,true);
+		$criteria->compare('n_time',$this->n_time,true);
+		$criteria->compare('n_date',$this->n_date,true);
+		$criteria->compare('n_banner',$this->n_banner,true);
+		$criteria->compare('n_site',$this->n_site,true);
+		$criteria->compare('n_phone',$this->n_phone,true);
+		$criteria->compare('n_content',$this->n_content,true);
+		$criteria->compare('n_published',$this->n_published);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -105,7 +113,7 @@ class Play extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Play the static model class
+	 * @return Nightlife the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

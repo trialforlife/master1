@@ -1,6 +1,6 @@
 <?php
 
-class PlayController extends Controller
+class NightlifeController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -60,18 +60,18 @@ class PlayController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id_t=0)
+	public function actionCreate()
 	{
-		$model=new Play;
+		$model=new Nightlife;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-        $model->t_id=$id_t;
-		if(isset($_POST['Play']))
+
+		if(isset($_POST['Nightlife']))
 		{
-			$model->attributes=$_POST['Play'];
+			$model->attributes=$_POST['Nightlife'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->p_id));
+				$this->redirect(array('view','id'=>$model->n_id));
 		}
 
 		$this->render('create',array(
@@ -91,11 +91,11 @@ class PlayController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Play']))
+		if(isset($_POST['Nightlife']))
 		{
-			$model->attributes=$_POST['Play'];
+			$model->attributes=$_POST['Nightlife'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->p_id));
+				$this->redirect(array('view','id'=>$model->n_id));
 		}
 
 		$this->render('update',array(
@@ -122,7 +122,7 @@ class PlayController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Play');
+		$dataProvider=new CActiveDataProvider('Nightlife');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -133,10 +133,10 @@ class PlayController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Play('search');
+		$model=new Nightlife('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Play']))
-			$model->attributes=$_GET['Play'];
+		if(isset($_GET['Nightlife']))
+			$model->attributes=$_GET['Nightlife'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -147,12 +147,12 @@ class PlayController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Play the loaded model
+	 * @return Nightlife the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Play::model()->findByPk($id);
+		$model=Nightlife::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,11 +160,11 @@ class PlayController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Play $model the model to be validated
+	 * @param Nightlife $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='play-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='nightlife-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

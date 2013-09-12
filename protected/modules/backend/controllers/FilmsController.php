@@ -60,13 +60,13 @@ class FilmsController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreate($id_c=0)
 	{
 		$model=new Films;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+        $model->c_id=$id_c;
 		if(isset($_POST['Films']))
 		{
 			$model->attributes=$_POST['Films'];
