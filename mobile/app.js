@@ -65,6 +65,7 @@ Ext.application({
         console.log(navigator.onLine);
         if(navigator.onLine ==  false)
         {
+            Ext.fly('appLoadingIndicator').destroy();
             myConfirm('сообщение ', alert);
 
             function myConfirm(msg, func){
@@ -83,8 +84,11 @@ Ext.application({
             }
         }
         else{
-           Ext.Viewport.add(Ext.create('front.view.Main'));
+            Ext.Viewport.add(Ext.create('front.view.Main'));
         }
+        // Initialize the main view
+
+
     },
 
     onUpdated: function() {
