@@ -65,7 +65,7 @@ Ext.application({
         console.log(navigator.onLine);
         if(navigator.onLine ==  false)
         {
-            Ext.fly('appLoadingIndicator').destroy();
+
             myConfirm('сообщение ', alert);
 
             function myConfirm(msg, func){
@@ -82,6 +82,7 @@ Ext.application({
 
                 return document.body.appendChild(div);
             }
+            Ext.fly('appLoadingIndicator').destroy();
         }
         else{
             Ext.Viewport.add(Ext.create('front.view.Main'));
