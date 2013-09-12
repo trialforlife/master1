@@ -604,6 +604,7 @@ pf{
 }
 .x-list-normal .x-list-item.x-list-item-tpl, .x-list-normal .x-list-item .x-dock-horizontal {
 	border-top: none !important;
+    height: 76px !important;
 }
 .x-body{
     background: url(../img/bg.jpg) repeat-x;
@@ -708,6 +709,7 @@ pf{
 }
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap, .x-list-normal .x-list-item.x-list-footer-wrap .x-dock-horizontal {
     border: none !important;
+    height: 71px !important;
 }
 .x-tabbar.x-docked-bottom .x-tab{
     height: 100%;
@@ -793,7 +795,7 @@ pf{
     width: 44px!important;
     height: 44px!important;
     border-radius: 0px !important;
-    margin-top: 16px!important;
+    margin-top: 4px!important;
     margin-left: 26px!important;
     position: absolute;
 }
