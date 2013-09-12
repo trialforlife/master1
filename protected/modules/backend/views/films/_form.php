@@ -60,7 +60,7 @@
         <?php echo $form->hiddenField($model,'f_image'); ?>
         <?php echo $form->error($model,'f_image'); ?>
         <script type="text/javascript">
-            var uploadedFileRand = "/images/<?php echo $prependName;?>";
+            var uploadedFileRand = "/images/";
             var uploadedFileShow = function(localName)
             {
 
