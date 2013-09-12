@@ -66,12 +66,12 @@ class Events extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ev_id' => 'Ev',
-			'ev_name' => 'Ev Name',
-			'ev_time' => 'Ev Time',
-			'ev_image' => 'Ev Image',
-			'ev_content' => 'Ev Content',
-			'ev_published' => 'Ev Published',
+			'ev_id' => 'Номер',
+			'ev_name' => 'Название',
+			'ev_time' => 'Время',
+			'ev_image' => 'Изображение',
+			'ev_content' => 'Описание',
+			'ev_published' => 'Видимость',
 		);
 	}
 

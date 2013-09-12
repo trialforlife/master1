@@ -26,7 +26,7 @@ class Restaurants extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'restaurants';
+		return 'restaurant';
 	}
 
 	/**
@@ -37,9 +37,10 @@ class Restaurants extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('r_name, r_image, r_published', 'required'),
+			array('r_name, r_image, r_published, r_phone, r_site, r_adress', 'required'),
 			array('r_published', 'numerical', 'integerOnly'=>true),
 			array('r_name', 'length', 'max'=>1000),
+            array('r_image', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('r_id, r_name, r_image, r_published', 'safe', 'on'=>'search'),
@@ -54,6 +55,7 @@ class Restaurants extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'banners' => array(self::HAS_MANY, 'RestaurantsBanner', 'r_id'),
 		);
 	}
 
@@ -63,10 +65,13 @@ class Restaurants extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'r_id' => 'R',
-			'r_name' => 'R Name',
-			'r_image' => 'R Image',
-			'r_published' => 'R Published',
+            'r_id' => 'Номер',
+            'r_name' => 'Название',
+            'r_image' => 'Изображение',
+            'r_adress' => 'Адрес',
+            'r_phone' => 'Телефон',
+            'r_site' => 'Сайт',
+            'r_published' => 'Видимость',
 		);
 	}
 
@@ -84,6 +89,8 @@ class Restaurants extends CActiveRecord
 		$criteria->compare('r_id',$this->r_id);
 		$criteria->compare('r_name',$this->r_name,true);
 		$criteria->compare('r_image',$this->r_image,true);
+        $criteria->compare('r_phone',$this->r_phone,true);
+        $criteria->compare('r_site',$this->r_site,true);
 		$criteria->compare('r_published',$this->r_published);
 
 		return new CActiveDataProvider($this, array(

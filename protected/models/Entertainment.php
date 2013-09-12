@@ -69,15 +69,15 @@ class Entertainment extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'en_id' => 'En',
-			'en_name' => 'En Name',
-			'en_content' => 'En Content',
-			'en_image' => 'En Image',
-			'en_type' => 'En Type',
-			'en_time' => 'En Time',
-			'en_price' => 'En Price',
-			'en_content_add' => 'En Content Add',
-			'en_published' => 'En Published',
+			'en_id' => 'Номер',
+			'en_name' => 'Название',
+			'en_content' => 'Описание',
+			'en_image' => 'Изображение',
+			'en_type' => 'Тип',
+			'en_time' => 'Время',
+			'en_price' => 'Цена',
+			'en_content_add' => 'Доп. информация',
+			'en_published' => 'Видимость',
 		);
 	}
 

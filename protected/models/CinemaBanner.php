@@ -36,12 +36,13 @@ class CinemaBanner extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('c_id, banner', 'required'),
+			array('c_id, cb_banner, cb_published', 'required'),
 			array('c_id', 'numerical', 'integerOnly'=>true),
-			array('banner', 'length', 'max'=>10000),
+            array('cb_published', 'in', 'range'=>array(0,1)),
+            array('cb_banner', 'length', 'max'=>10000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('cb_id, c_id, banner', 'safe', 'on'=>'search'),
+			array('cb_id, c_id, cb_banner', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +54,7 @@ class CinemaBanner extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'cinemas' => array(self::BELONGS_TO, 'Cinema', 'c_id'),
 		);
 	}
 
@@ -63,8 +65,9 @@ class CinemaBanner extends CActiveRecord
 	{
 		return array(
 			'cb_id' => 'Cb',
-			'c_id' => 'C',
-			'banner' => 'Banner',
+			'c_id' => 'Кинотеатр',
+			'cb_banner' => 'Изображение',
+            'cb_published' => 'Видимость',
 		);
 	}
 
@@ -81,7 +84,8 @@ class CinemaBanner extends CActiveRecord
 
 		$criteria->compare('cb_id',$this->cb_id);
 		$criteria->compare('c_id',$this->c_id);
-		$criteria->compare('banner',$this->banner,true);
+		$criteria->compare('cb_banner',$this->cb_banner,true);
+        $criteria->compare('cb_published',$this->cb_published);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

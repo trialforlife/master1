@@ -26,7 +26,7 @@ class RestaurantsBanner extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'restaurants_banner';
+		return 'restaurant_banner';
 	}
 
 	/**
@@ -37,7 +37,7 @@ class RestaurantsBanner extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rb_id, r_id, rb_banner, rb_published', 'required'),
+			array('r_id, rb_banner, rb_published', 'required'),
 			array('rb_id, r_id, rb_published', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -53,6 +53,7 @@ class RestaurantsBanner extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'restaurants' => array(self::BELONGS_TO, 'Restaurants', 'r_id'),
 		);
 	}
 
@@ -62,10 +63,10 @@ class RestaurantsBanner extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rb_id' => 'Rb',
-			'r_id' => 'R',
-			'rb_banner' => 'Rb Banner',
-			'rb_published' => 'Rb Published',
+            'rb_id' => 'Cb',
+            'r_id' => 'Ресторан',
+            'rb_banner' => 'Изображение',
+            'rb_published' => 'Видимость',
 		);
 	}
 

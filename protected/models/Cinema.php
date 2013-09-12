@@ -36,7 +36,7 @@ class Cinema extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('c_name, c_adress', 'required'),
+			array('c_name, c_adress, c_phone, c_site', 'required'),
 			array('c_name', 'length', 'max'=>1000),
 			array('c_published', 'in', 'range'=>array(0,1)),
 
@@ -54,6 +54,7 @@ class Cinema extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'banners' => array(self::HAS_MANY, 'CinemaBanner', 'c_id'),
 			/*'c_id' => array(self::BELONGS_TO, 'cinema_banner', 'c_id'),
         	'cinema' => array(self::HAS_MANY, 'cinema_banner', 'c_id',
             'condition'=>'cinema_banner.cb_published = 1',//для админки нужно убрать
@@ -70,9 +71,12 @@ class Cinema extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'c_id' => 'C',
-			'c_name' => 'C Name',
-			'c_adress' => 'C Adress',
+			'c_id' => 'Номер',
+			'c_name' => 'Название кинотеатра',
+			'c_adress' => 'Адрес',
+            'c_phone' => 'Телефон',
+            'c_site' => 'Сайт',
+            'c_published' => 'Видимость',
 		);
 	}
 
@@ -90,6 +94,9 @@ class Cinema extends CActiveRecord
 		$criteria->compare('c_id',$this->c_id);
 		$criteria->compare('c_name',$this->c_name,true);
 		$criteria->compare('c_adress',$this->c_adress,true);
+        $criteria->compare('c_phone',$this->c_phone,true);
+        $criteria->compare('c_site',$this->c_site,true);
+        $criteria->compare('c_published',$this->c_published);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -39,6 +39,7 @@ class TheatreBanner extends CActiveRecord
 			array('t_id, tb_banner', 'required'),
 			array('t_id', 'numerical', 'integerOnly'=>true),
 			array('tb_banner', 'length', 'max'=>10000),
+            array('tb_published', 'in', 'range'=>array(0,1)),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('tb_id, t_id, tb_banner', 'safe', 'on'=>'search'),
@@ -53,6 +54,7 @@ class TheatreBanner extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'theatres' => array(self::BELONGS_TO, 'Theatre', 't_id'),
 		);
 	}
 
@@ -62,9 +64,10 @@ class TheatreBanner extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'tb_id' => 'Tb',
-			't_id' => 'T',
-			'tb_banner' => 'Tb Banner',
+            'tb_id' => 'Cb',
+            't_id' => 'Театр',
+            'tb_banner' => 'Изображение',
+            'tb_published' => 'Видимость',
 		);
 	}
 
@@ -82,6 +85,7 @@ class TheatreBanner extends CActiveRecord
 		$criteria->compare('tb_id',$this->tb_id);
 		$criteria->compare('t_id',$this->t_id);
 		$criteria->compare('tb_banner',$this->tb_banner,true);
+        $criteria->compare('tb_published',$this->tb_published);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

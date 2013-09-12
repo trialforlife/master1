@@ -36,9 +36,9 @@ class Theatre extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('t_name, t_image', 'required'),
+			array('t_name', 'required'),
 			array('t_name', 'length', 'max'=>1000),
-			array('t_image', 'length', 'max'=>10000),
+			//array('t_image', 'length', 'max'=>10000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('t_id, t_name, t_image', 'safe', 'on'=>'search'),
@@ -53,6 +53,7 @@ class Theatre extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'banners' => array(self::HAS_MANY, 'TheatreBanner', 't_id'),
 		);
 	}
 
@@ -62,9 +63,13 @@ class Theatre extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			't_id' => 'T',
-			't_name' => 'T Name',
-			't_image' => 'T Image',
+			't_id' => 'Номер',
+			't_name' => 'Название',
+            't_image' => 'Изображение',
+            't_adress' => 'Адрес',
+            't_phone' => 'Телефон',
+            't_site' => 'Сайт',
+            't_published' => 'Видимость',
 		);
 	}
 
@@ -82,6 +87,10 @@ class Theatre extends CActiveRecord
 		$criteria->compare('t_id',$this->t_id);
 		$criteria->compare('t_name',$this->t_name,true);
 		$criteria->compare('t_image',$this->t_image,true);
+        $criteria->compare('t_adress',$this->t_adress,true);
+        $criteria->compare('t_phone',$this->t_phone,true);
+        $criteria->compare('t_site',$this->t_site,true);
+        $criteria->compare('t_published',$this->t_published);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
