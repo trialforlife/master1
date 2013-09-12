@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cat"=>array());
 
-$f_count = $__GET('f_count');
+$f_count = $_GET["f_count"];
 
 
 $query = 'select * from category where cat_id > 3  order by cat_id';
