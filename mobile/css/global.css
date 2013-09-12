@@ -776,14 +776,14 @@ pf{
     font: 0.9em Hlvl;
 }
 #ed,#save1 {
-    height: 0.6em!important;
-    width: 3em!important;
-    padding-left: 3px;
+    height: 2.6em!important;
+    width: 5em!important;
+    padding-left: 6px;
     padding-right: 7px;
-    padding-bottom: 10px;
+    padding-bottom: 1px;
     background: #273c4e !important;
-    border-radius: 6px !important;
-    font: 0.65em/1.3em Hlvb !important;
+    border-radius: 10px !important;
+    font: 1em/2.3em Hlvb !important;
     color: white;
     float: right;
     margin-top: -49px;
@@ -804,7 +804,6 @@ pf{
 }
 .touchgridpanel .x-item-selected .grid-checkbox, .touchgridpanel .x-grid-cell-hd .grid-checkbox {
     background-image: url(../img/delete.png) !important ;
-
 }
 .titleimg{
     background-image: url(../img/logo.png)!important ;
@@ -851,8 +850,6 @@ input {
     z-index: 9999 !important;
     width: 140px !important;
     height: 50px !important;
-    margin-left: 39% !important;
-    margin-top:10em !important;
     float: left;
 }
 .x-button-action{
@@ -873,18 +870,15 @@ input {
     padding-top: 10px;
 }
 .x-msgbox-buttons{
-    position: absolute !important;
-    z-index: 10000 !important;
     float: left;
-    margin-top:210px;
     font: 1.2em hlvb;
     border-left: 8px solid rgba(0,0,0,0.24);
     border-radius: 30px;
     color: #b4b3b4;
     text-align: center;
-    height: 30px;
+    height: 40px;
     background: #7000ed;
     display: block;
-    width: 138px;
-    padding-top: 10px;
+    width: 135px;
+    padding-top: 1px;
 }

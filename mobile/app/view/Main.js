@@ -378,6 +378,7 @@ Ext.define('front.view.Main', {
                                                                         phone: phone,
                                                                         fid : cfid
                                                                     }]);
+                                                                    Ext.Msg.alert("<div style='background: blueviolet !important; width: 100px; height: 100px;'>Добавлено</div>");
                                                                 }
                                                                 favestore.sync();
                                                                 delete window.ditem;
@@ -947,6 +948,7 @@ Ext.define('front.view.Main', {
                                                                             phone: phone,
                                                                             fid : cfid
                                                                         }]);
+                                                                        Ext.Msg.alert("Добавлено");
                                                                     }
                                                                     favestore.sync();
                                                                     delete window.ditem;
@@ -1288,6 +1290,7 @@ Ext.define('front.view.Main', {
                                                                                 phone: phone,
                                                                                 fid : cfid
                                                                             }]);
+                                                                            Ext.Msg.alert("Добавлено");
                                                                         }
                                                                         favestore.sync();
                                                                         delete window.ditem;
@@ -1526,6 +1529,7 @@ Ext.define('front.view.Main', {
                                                                                 phone: phone,
                                                                                 fid : cfid
                                                                             }]);
+                                                                            Ext.Msg.alert("Добавлено");
                                                                         }
                                                                         favestore.sync();
                                                                         delete window.ditem;
@@ -1938,6 +1942,7 @@ Ext.define('front.view.Main', {
                                                                                                             phone: phone,
                                                                                                             fid : cfid
                                                                                                         }]);
+                                                                                                        Ext.Msg.alert("Добавлено");
                                                                                                     }
                                                                                                     favestore.sync();
                                                                                                     delete window.ditem;
@@ -2221,6 +2226,8 @@ Ext.define('front.view.Main', {
                                                                                         phone: phone,
                                                                                         fid : cfid
                                                                                     }]);
+                                                                                    Ext.Msg.alert("<div style='background: blueviolet; position:absolute; z-index: 999999; !important; width: 300px; height: 250px; float: :left;'>Добавлено</div>");
+
                                                                                 }
                                                                                  favestore.sync();
                                                                                  delete window.ditem;
