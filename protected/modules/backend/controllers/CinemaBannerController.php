@@ -1,6 +1,6 @@
 <?php
 
-class cinemabannerController extends Controller
+class CinemaBannerController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
