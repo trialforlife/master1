@@ -62,12 +62,15 @@ Ext.application({
 
         Ext.fly('appLoadingIndicator').destroy();
 
-        console.log(navigator.onLine);
+        //console.log(navigator.onLine);
         if(navigator.onLine ==  false)
         {
+            Ext.fly('appLoadingIndicator').destroy();
             Ext.Viewport.add(Ext.create('front.view.Main'));
-            /*myConfirm('сообщение ', alert);
-
+        }
+        else{
+            /*Ext.Msg.confirm("<div style='width: 0px; background: none;'></div>", "<div style='width: 320px; height: 262px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) center no-repeat;'><p style='color: #fff; font: 30px Hlvl; text-align: center; padding: 85px 0 33px;'>Ошибка подключения к сети интернет</p><div>", function(){
+            });*/
             function myConfirm(msg, func){
                 var div=document.createElement('div');
                 div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
@@ -79,12 +82,11 @@ Ext.application({
                     }
                 }
                 div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 262px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) center no-repeat;'><p style='color: #fff; font: 30px Hlvl; text-align: center; padding: 85px 0 33px;'>Ошибка подключения к сети интернет</p><input class='x-msgbox-buttons' type='button' value='Настройки'><input class='x-msgbox-buttons' type='button' value='Обновить'></div>";
-
                 return document.body.appendChild(div);
-            }*/
-            Ext.fly('appLoadingIndicator').destroy();
-        }
-        else{
+            }
+            myConfirm('сообщение ', alert);
+
+
             Ext.Viewport.add(Ext.create('front.view.Main'));
         }
         // Initialize the main view
