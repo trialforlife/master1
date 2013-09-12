@@ -739,12 +739,12 @@ pf{
     float: left;
 }
 .x-toolbar-dark .x-button, .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after {
-    background: none !important;
-    border: none !important;
+    background: none ;
+    border: none ;
 }
 .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before {
-    background: none !important;
-    border: none !important;
+    background: none ;
+    border: none ;
 }
 .x-dock.x-sized, .x-dock.x-sized > .x-dock-body > *, .x-dock.x-sized > .x-dock-body > .x-body > .x-inner {
     background: #1e3244 !important;
@@ -856,25 +856,35 @@ input {
     float: left;
 }
 .x-button-action{
-    float: left;
     position: absolute !important;
-    z-index: 9999 !important;
-    margin-left: 45% !important;
-    margin-top:14em !important;
-    color: #FFFFFF;
-    font-family: hlvb;
+    z-index: 10000 !important;
+    margin-top: -35px;
+    margin-left: 165px;
+    float: left;
+    font: 1.2em hlvb;
+    border-left: 8px solid rgba(0,0,0,0.24) !important;
+    border-radius: 30px;
+    color: #b4b3b4;
+    text-align: center;
+    height: 30px;
+    background: #7000ed !important;
+    display: block;
+    width: 138px;
+    padding-top: 10px;
 }
 .x-msgbox-buttons{
+    position: absolute !important;
+    z-index: 10000 !important;
     float: left;
-    margin-top:-70px !important;
-    font: 1em hlvb;
+    margin-top:210px;
+    font: 1.2em hlvb;
     border-left: 8px solid rgba(0,0,0,0.24);
     border-radius: 30px;
     color: #b4b3b4;
-    font: 24px/60px Hlvb;
     text-align: center;
-    height: 60px;
+    height: 30px;
     background: #7000ed;
     display: block;
-    width: 218px;
+    width: 138px;
+    padding-top: 10px;
 }
