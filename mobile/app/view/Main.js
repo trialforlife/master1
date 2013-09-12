@@ -1028,7 +1028,7 @@ Ext.define('front.view.Main', {
                         if(catdyn!= 'poster' && catdyn!= 'aboutus' && catdyn!= 'beautyandhealh' && catdyn!= 'shipment' && catdyn!= 'entertainment' && catdyn!= 'restaurant' && catdyn!= 'favorite' ) {
                             cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
-                                    updateTitleText :false,
+                                    defaultBackButtonText : null,
                                     defaults: {
                                      styleHtmlContent: true
                                     },
@@ -1241,6 +1241,10 @@ Ext.define('front.view.Main', {
                                             }
                                         ,
                                             {
+                                            updateTitleText :false,
+                                            useTitleAsBackText: false,
+                                            defaultBackButtonText : null,
+                                            backText: '<div class="backtext"></div>',
                                             title: 'Клубы',
                                             //scrollable:'vertical',
 
@@ -1249,7 +1253,7 @@ Ext.define('front.view.Main', {
                                             displayField: 'list',
                                             defaultBackButtonText : null,
                                             updateTitleText:false,
-                                                backText: '<div class="backtext"></div>',
+                                            backText: '<div class="backtext"></div>',
 
                                                 store: {
                                                 type: 'tree',
@@ -1315,9 +1319,7 @@ Ext.define('front.view.Main', {
 
                                                                            items: [
                                                                                {
-                                                                                   height:'100px',
-                                                                                   style: 'background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+')'
-
+                                                                                   html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
                                                                                } /*,
                                                                                {
 
@@ -1677,8 +1679,6 @@ Ext.define('front.view.Main', {
                                                                                                         rootProperty: 'films'
                                                                                                     }
                                                                                                 }}}
-
-
                                                                                     ]
                                                                                 }],
 
@@ -1824,52 +1824,6 @@ Ext.define('front.view.Main', {
                                                                                                     favestore.sync();
                                                                                                     delete window.ditem;
 
-
-                                                                                                    //adding to favorite
-                                                                                                    /*db.transaction(function(tx) {
-                                                                                                        tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
-                                                                                                                len = results.rows.length;
-                                                                                                                console.log(len);
-                                                                                                                if (len  > 0 ) {
-                                                                                                                    Ext.Msg.alert("Удалено");
-                                                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
-
-                                                                                                                    });
-                                                                                                                }
-                                                                                                                else{
-                                                                                                                    Ext.Msg.alert("Добавлено");
-                                                                                                                    favestore.add([{
-                                                                                                                        name: s_name,
-                                                                                                                        ftype: cat1,
-                                                                                                                        image: s_image,
-                                                                                                                        site: site,
-                                                                                                                        banner: banner,
-                                                                                                                        adress: adress,
-                                                                                                                        fid : cfid
-
-                                                                                                                    }]);
-                                                                                                                    favestore.sync();
-                                                                                                                }
-
-                                                                                                            },
-                                                                                                            function (tx, error)
-                                                                                                            {
-                                                                                                                favestore .add([{
-                                                                                                                    name: s_name,
-                                                                                                                    ftype: cat1,
-                                                                                                                    image: s_image,
-                                                                                                                    site: site,
-                                                                                                                    banner: banner,
-                                                                                                                    adress: adress,
-                                                                                                                    fid : cfid
-
-                                                                                                                }]);
-                                                                                                                favestore.sync();
-                                                                                                            }
-                                                                                                        )});*/
-
-
-
                                                                                                 }
 
                                                                                             }]));
@@ -1881,21 +1835,12 @@ Ext.define('front.view.Main', {
                                                                                         //tb2.show();
                                                                                     } ,
                                                                                     deactivate: function() {
-                                                                                        //tb.show();
-                                                                                        //tb2.hide();
-
                                                                                     }
-
                                                                                 }
-
                                                                             });
-
                                                                             fil.show();
                                                                             ser.hide();
                                                                             tb1.hide();
-
-
-
                                                                         }
                                                                     }
 
