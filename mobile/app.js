@@ -69,7 +69,7 @@ Ext.application({
             Ext.Viewport.add(Ext.create('front.view.Main'));
         }
         else{
-            Ext.Msg.confirm("<div style='width: 0px; background: none;'> </div>", "<div style='width: 320px; height: 262px; position:absolute; z-index: 10000; background: url(./mobile/img/error_wind.png) center no-repeat;'><p style='color: #fff; font: 30px Hlvl; text-align: center; padding: 85px 0 33px;'>Ошибка подключения к сети интернет</p><div>", function(){
+            Ext.Msg.confirm("<div style='width: 0px; background: none;'> </div>", "<div style='width: 320px; height: 262px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) center no-repeat;'><p style='color: #fff; font: 30px Hlvl; text-align: center; padding: 85px 0 33px;'>Ошибка подключения к сети интернет</p><div>", function(){
             });
             Ext.Viewport.add(Ext.create('front.view.Main'));
         }
