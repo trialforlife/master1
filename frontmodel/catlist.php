@@ -17,7 +17,7 @@ $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
-	{   if($row["cat_id"]== 9){
+	{   if($row["cat_id"]== 10){
             if($f_count == 0){
                 $cc = '<img style="margin-right: -14px;" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
                 $d_style = 'color: rgba(255,255,255,0.3) !important; text-shadow: none !important;';
@@ -27,7 +27,9 @@ if (mysql_affected_rows() > 0) {
                 $d_style= '';
                 }
             }
-        if($row["cat_id"]> 9){
+
+        elseif(($row["cat_id"])== 11 )
+        {
             $cc = '';
             $d_style= '';
         }
