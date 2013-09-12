@@ -41,7 +41,7 @@
         <?php echo $form->hiddenField($model,'en_image'); ?>
         <?php echo $form->error($model,'en_image'); ?>
         <script type="text/javascript">
-            var uploadedFileRand = "/images/<?php echo $prependName;?>";
+            var uploadedFileRand = "/images/";
             var uploadedFileShow = function(localName)
             {
 
@@ -57,7 +57,7 @@
         </script>
         <?php $this->widget('MUploadify',array(
             'name'=>'new_image',
-            'script'=>array('/backend/files/uploadify','prependName'=>$prependName),
+            'script'=>array('/backend/files/uploadify'),
             'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;',
             'uploadButton'=>null,
             'buttonText'=>'Image',

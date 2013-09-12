@@ -39,7 +39,7 @@
         <?php echo $form->hiddenField($model,'n_image'); ?>
         <?php echo $form->error($model,'n_image'); ?>
         <script type="text/javascript">
-            var uploadedFileRand = "/images/<?php echo $prependName;?>";
+            var uploadedFileRand = "/images/";
             var uploadedFileShow = function(localName)
             {
 
@@ -55,7 +55,7 @@
         </script>
         <?php $this->widget('MUploadify',array(
             'name'=>'new_image',
-            'script'=>array('/backend/files/uploadify','prependName'=>$prependName),
+            'script'=>array('/backend/files/uploadify'),
             'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;',
             'uploadButton'=>null,
             'buttonText'=>'Upload',
@@ -96,7 +96,7 @@
         <?php echo $form->hiddenField($model,'n_banner'); ?>
         <?php echo $form->error($model,'n_banner'); ?>
         <script type="text/javascript">
-            var uploadedFileRand1 = "/images/<?php echo $prependName;?>";
+            var uploadedFileRand1 = "/images/";
             var uploadedFileShow1 = function(localName)
             {
 
@@ -112,7 +112,7 @@
         </script>
         <?php $this->widget('MUploadify',array(
             'name'=>'new_image_2',
-            'script'=>array('/backend/files/uploadify','prependName'=>$prependName),
+            'script'=>array('/backend/files/uploadify'),
             'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;',
             'uploadButton'=>null,
             'buttonText'=>'Upload',
