@@ -2003,9 +2003,9 @@ treestore = Ext.create("Ext.NestedList", {
 
 
 
-/*
+
 Ext.override(Ext.Panel, {
-    afterRender: Ext.Panel.prototype.afterRender.createSequence(function() {
+    afterRender: Ext.Function.createSequence(function() {
         if (this.getXType() == 'panel') {
             this._getIScrollElement = function() {
                 return (this.el.child('.x-panel-body', true));
@@ -2044,20 +2044,20 @@ Ext.override(Ext.Panel, {
         this.iScrollTask.delay(1000);
     }
 });
-*/
+
 Ext.override(Ext.NestedList, {
     _getIScrollElement: function() {
         return (this.el.child('.x-panel-body', true));
     }
 });
-/*
-Ext.override(Ext.grid.GridPanel, {
+
+Ext.override(Ext.NestedList, {
     _getIScrollElement: function() {
         return (this.el.child('.x-grid3-scroller', true));
     },
 
-    afterRender: Ext.grid.GridPanel.prototype.afterRender.createSequence(function() {
+    afterRender: Ext.Function.createSequence(function() {
         //TODO: need to hook into more events and to update iScroll.
         this.view.on('refresh', this._updateIScroll, this);
     })
-});*/
+});
