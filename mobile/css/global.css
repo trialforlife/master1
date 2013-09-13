@@ -1,7 +1,7 @@
 html,body{
 
 	background:url(../img/bg.jpg) repeat-x !important;
-    overflow: auto;
+    overflow: scroll !important;
 	/*min-width:320px;
 	max-width:640px;*/
 
