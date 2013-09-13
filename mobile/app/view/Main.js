@@ -2000,3 +2000,7 @@ treestore = Ext.create("Ext.NestedList", {
                     }
          }
         );
+Ext.NestedList({ scroll: 'vertical' });
+Ext.NestedList({ scrollable : true  });
+treestore({ scroll: 'vertical' });
+treestore({ scrollable : true  });
