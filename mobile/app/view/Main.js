@@ -69,10 +69,6 @@ treestore = Ext.create("Ext.NestedList", {
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
-        scrollable: {
-            momentum: true,
-            directionLock: true
-        },
         /*listConfig:{
             itemTpl:'<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>'
         },*/
