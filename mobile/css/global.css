@@ -1,6 +1,7 @@
 html,body{
 
 	background:url(../img/bg.jpg) repeat-x !important;
+    overflow: auto;
 	/*min-width:320px;
 	max-width:640px;*/
 
