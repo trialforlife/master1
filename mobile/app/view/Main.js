@@ -24,7 +24,6 @@ Ext.define('front.view.Main', {
         model: "Favorite",defaultRootProperty: 'items',
         storeId: 'Favorite',
         proxy: {
-            //type: "sql"
             type: 'localstorage'
         },
         grouper: {
@@ -35,7 +34,6 @@ Ext.define('front.view.Main', {
         autoLoad: true
     });
     var f_count = favestore._totalCount;
-
     Ext.define("search", {
         extend: "Ext.data.Model",
         config: {
@@ -72,7 +70,6 @@ treestore = Ext.create("Ext.NestedList", {
         /*listConfig:{
             itemTpl:'<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>'
         },*/
-
         title: '<div class="titleimg"></div>',
         displayField: 'title',
         layout: 'card',
@@ -100,15 +97,15 @@ treestore = Ext.create("Ext.NestedList", {
         listeners: {
                     activate : function() {
 
+                        if(typeof flist1 != 'undefined') {
+                            console.log(flist1);
+                        }
                          tbr = this.getToolbar();
-
-
                             tb = this.getToolbar();
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
                                 scope: this,
                                 handler:
                                     function(button) {
-
                                     button.hide();
                                     treestore.hide();
                                     ser = Ext.create('Ext.Container', {
@@ -119,7 +116,6 @@ treestore = Ext.create("Ext.NestedList", {
                                         {
                                             xtype:'toolbar', docked: 'top',title: '<div class="titleimg"></div>',
                                             items:[{
-
                                                 ui: 'back',
                                                 xtype: 'button',
                                                 text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:-57px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
@@ -129,11 +125,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                     treestore.show();
                                                     Ext.getCmp('serch').hide();
                                                 }
-
                                             }]
-
                                         },
-
                                             {
                                             xtype: 'fieldset',
                                             items: [{
@@ -143,7 +136,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                 id: 'inpt',
                                                 listeners: {
                                                     scope: this,
-
                                                     keyup: function(){
                                                     value = Ext.ComponentQuery.query('#inpt')[0].getValue();
                                                     Ext.Ajax.request({
@@ -156,9 +148,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                             });
                                                             }
                                                             }
-
                                                         }]
-
                             },
                             {
                                 xtype: 'list',
@@ -458,6 +448,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                     button.show();
                                                     flist1.destroy();
                                                     flist.show();
+                                                    treestore.getBackButton().show();
                                             }}]);
                                             flist.hide();
                                             button.hide();
@@ -530,7 +521,6 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                     listeners: {
                                                     activate: function(){
-
                                                                 //fh2 = nestedList.getHeader();
                                                     console.log(nestedList.getHeader());
                                                     fh2.hide();
@@ -579,7 +569,9 @@ treestore = Ext.create("Ext.NestedList", {
                                             });
                                                 fd = (flist1.getHeader());
                                                 fd.destroy();
+
                                                 flist1.show();
+                                                treestore.getBackButton().hide();
 
                                     }
                                     }
@@ -1428,7 +1420,6 @@ treestore = Ext.create("Ext.NestedList", {
                                             listeners: {
                                             activate : function() {
                                                 //tb1.show();
-                                                Ext.getCmp('serch').hide();
                                                 Ext.getCmp('serch').hide();
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
