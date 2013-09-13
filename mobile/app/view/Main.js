@@ -10,24 +10,31 @@ Ext.define('front.view.Main', {
     }
 
 });
-
-    /*db = openDatabase("Sencha", "1.0", "Sencha", 20000);
-        if(!db)
-            {alert("Failed to connect to database.");}
-        else
-            {//alert('fuck yeah');
-            }*/
-    //Ext.require(['Ext.data.proxy.SQL']);
-        Ext.define("Favorite", {
+    Ext.define("Favorite", {
         extend: "Ext.data.Model",
-            proxy: {
-                type: 'localstorage',
-                id  : 'Favorite'
-            },
+        proxy: {
+            type: 'localstorage',
+            id  : 'Favorite'
+        },
         config: {
-        fields: ["id","name","ftype","image","site","banner","adress","phone", "fid"]
+            fields: ["id","name","ftype","image","site","banner","adress","phone", "fid"]
         }
     });
+    var favestore = Ext.create("Ext.data.Store", {
+        model: "Favorite",defaultRootProperty: 'items',
+        storeId: 'Favorite',
+        proxy: {
+            //type: "sql"
+            type: 'localstorage'
+        },
+        grouper: {
+            groupFn: function(record) {
+                return record.get('name');
+            }
+        },
+        autoLoad: true
+    });
+    var f_count = favestore._totalCount;
 
     Ext.define("search", {
         extend: "Ext.data.Model",
@@ -53,22 +60,7 @@ Ext.define('front.view.Main', {
     model: "search"
 });
 
-    var favestore = Ext.create("Ext.data.Store", {
-        model: "Favorite",defaultRootProperty: 'items',
-        storeId: 'Favorite',
-        proxy: {
-            //type: "sql"
-            type: 'localstorage'
-        },
-        grouper: {
-            groupFn: function(record) {
-                return record.get('name');
-            }
-        },
-        autoLoad: true
-             });
-
-    treestore = Ext.create("Ext.NestedList", {
+treestore = Ext.create("Ext.NestedList", {
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
@@ -77,10 +69,19 @@ Ext.define('front.view.Main', {
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        },
+        /*listConfig:{
+            itemTpl:'<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>'
+        },*/
+
         title: '<div class="titleimg"></div>',
         displayField: 'title',
         layout: 'card',
         store: {
+            storeId:'ms',
             type: 'tree',
             id: 'ListCard',
             fields: [
@@ -93,7 +94,7 @@ Ext.define('front.view.Main', {
             },
             proxy: {
                 type: 'jsonp',
-                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist.php',
+                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist.php?f_count='+f_count,
                 reader: {
                     type: 'json',
                     rootProperty: 'cat'
@@ -102,9 +103,11 @@ Ext.define('front.view.Main', {
         },
         listeners: {
                     activate : function() {
-                            tbr = this.getToolbar();
-                            tb = this.getToolbar();
 
+                         tbr = this.getToolbar();
+
+
+                            tb = this.getToolbar();
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
                                 scope: this,
                                 handler:
@@ -112,15 +115,6 @@ Ext.define('front.view.Main', {
 
                                     button.hide();
                                     treestore.hide();
-
-                                        /*tb.insert(3,[
-                                            {xtype:'spacer'},
-                                            {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
-                                            scope: this,
-                                            handler:function(){
-
-                                            }}]);*/
-
                                     ser = Ext.create('Ext.Container', {
                                     fullscreen: true,
                                     useToolbar : true,
@@ -306,50 +300,7 @@ Ext.define('front.view.Main', {
                                                                     return document.body.appendChild(div);
                                                                 }
 
-                                                                //adding to favorite
-                                                                /*db.transaction(function(tx) {
-                                                                    tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
-                                                                            len = results.rows.length;
-                                                                            console.log(len);
-                                                                            if (len  > 0 ) {
-                                                                                Ext.Msg.alert("Удалено");
-                                                                                tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
 
-                                                                                });
-                                                                            }
-                                                                            else{
-                                                                                Ext.Msg.alert("Добавлено");
-                                                                                favestore.add([{
-                                                                                    name: s_name,
-                                                                                    ftype: cat1,
-                                                                                    image: s_image,
-                                                                                    site: site,
-                                                                                    banner: banner,
-                                                                                    adress: adress,
-                                                                                    photo:photo,
-                                                                                    fid : cfid
-
-                                                                                }]);
-                                                                                favestore.sync();
-                                                                            }
-
-                                                                        },
-                                                                        function (tx, error)
-                                                                        {
-                                                                            favestore .add([{
-                                                                                name: s_name,
-                                                                                ftype: cat1,
-                                                                                image: s_image,
-                                                                                site: site,
-                                                                                banner: banner,
-                                                                                adress: adress,
-                                                                                photo:photo,
-                                                                                fid : cfid
-
-                                                                            }]);
-                                                                            favestore.sync();
-                                                                        }
-                                                                    )});*/
 
                                                             }
                                                         }
@@ -427,7 +378,7 @@ Ext.define('front.view.Main', {
                             }]
                         });
 
-                                        ser.show();
+                                ser.show();
 
                         }
                         }]);
@@ -435,9 +386,11 @@ Ext.define('front.view.Main', {
                             } ,
                     deactivate: function() {
 
-                            }
+                    }
                             ,
                     leafitemtap: function(nestedList, list, index, target, record) {
+
+
                         //Ext.getCmp('serch').destroy();
                         cat = record.get('code');
                         var catdyn = cat;
@@ -1681,91 +1634,6 @@ Ext.define('front.view.Main', {
                                                                                                 }}}
                                                                                     ]
                                                                                 }],
-
-                                                                                /*dockedItems: [
-                                                                                    {
-                                                                                        xtype: 'toolbar',
-                                                                                        docked: 'top',
-                                                                                        items: [
-                                                                                            {
-                                                                                                iconCls: 'star',
-                                                                                                handler: function(){
-
-                                                                                                    var s_name = post.get('list');
-                                                                                                    var s_image = post.get('image');
-                                                                                                    cfid = post.get('cid');
-                                                                                                    var banner = post.get('banner');
-                                                                                                    var site = post.get('site');
-                                                                                                    var adress = post.get('adress');
-                                                                                                    var photo = post.get('photo');
-
-                                                                                                    //adding to favorite
-                                                                                                    db.transaction(function(tx) {
-                                                                                                        tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat], function (tx, results) {
-                                                                                                                len = results.rows.length;
-                                                                                                                console.log(len);
-                                                                                                                if (len  > 0 ) {
-                                                                                                                    Ext.Msg.alert("Удалено");
-                                                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat],  function(result1){
-
-                                                                                                                    });
-                                                                                                                }
-                                                                                                                else{
-                                                                                                                    myConfirm('сообщение ', alert);
-
-                                                                                                                    function myConfirm(msg, func){
-                                                                                                                        var div=document.createElement('div');
-                                                                                                                        div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
-                                                                                                                        div.onclick=function(e){
-                                                                                                                            var t=e?e.target:window.event.srcElement;
-                                                                                                                            if(t.tagName=='INPUT'){
-                                                                                                                                t.value=='Обновить'&&func('да');
-                                                                                                                                this.parentNode.removeChild(this)
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                        div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
-
-                                                                                                                        return document.body.appendChild(div);
-                                                                                                                    }
-                                                                                                                    favestore.add([{
-                                                                                                                        name: s_name,
-                                                                                                                        ftype: cat1,
-                                                                                                                        image: s_image,
-                                                                                                                        site: site,
-                                                                                                                        banner: banner,
-                                                                                                                        adress: adress,
-                                                                                                                        photo:photo,
-                                                                                                                        fid : cfid
-
-                                                                                                                    }]);
-                                                                                                                    favestore.sync();
-                                                                                                                }
-
-                                                                                                            },
-                                                                                                            function (tx, error)
-                                                                                                            {
-                                                                                                                favestore .add([{
-                                                                                                                    name: s_name,
-                                                                                                                    ftype: cat1,
-                                                                                                                    image: s_image,
-                                                                                                                    site: site,
-                                                                                                                    banner: banner,
-                                                                                                                    adress: adress,
-                                                                                                                    photo:photo,
-                                                                                                                    fid : cfid
-
-                                                                                                                }]);
-                                                                                                                favestore.sync();
-                                                                                                            }
-                                                                                                        )});
-
-                                                                                                }
-                                                                                            }
-
-
-                                                                                        ]
-                                                                                    }
-                                                                                ],*/
                                                                                 detailCard: {
                                                                                     xtype: 'panel',
                                                                                     // scrollable: true,
@@ -1932,7 +1800,7 @@ Ext.define('front.view.Main', {
                                                                         //useToolbar:true,
                                                                         layout: 'vbox',
                                                                         items: [           {
-                                                                        xtype: 'carousel',
+                                                                        //xtype: 'carousel',
                                                                         height: '225px',
                                                                         store: {
                                                                             type: 'tree',
@@ -1953,18 +1821,17 @@ Ext.define('front.view.Main', {
                                                                                     rootProperty: 'banner'
                                                                                 }
                                                                             }},
-
-
+                                                                            defaultType: 'carousel',
                                                                            items: [
                                                                                 {
 
                                                                                       html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
-                                                                               //     style: 'width: 100%; margin-top-top: 100px; height: 134px !important;float:left; background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+');'
-                                                                                }/*,
+                                                                                    //style: 'width: 100%; margin-top-top: 100px; height: 134px !important;float:left; background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+');'
+                                                                                },
                                                                                 {
                                                                                     html : 'А здесь второй',
                                                                                     style: 'background-color: #759E60; float:left; '
-                                                                                },
+                                                                                }/*,
                                                                                 {
                                                                                     html : 'или третий'
                                                                                 }*/
@@ -2137,11 +2004,6 @@ Ext.define('front.view.Main', {
                                 }
 
                                 }
-                        }
+                    }
          }
         );
-
-
-
-
-
