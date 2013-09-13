@@ -70,7 +70,7 @@ treestore = Ext.create("Ext.NestedList", {
         useToolbar:true,
         id: 'mainPanel',
         scrollable: {
-            direction: 'vertical',
+            momentum: true,
             directionLock: true
         },
         /*listConfig:{
