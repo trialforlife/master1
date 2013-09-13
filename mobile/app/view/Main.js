@@ -100,6 +100,8 @@ treestore = Ext.create("Ext.NestedList", {
                         if(typeof flist1 != 'undefined') {
                             console.log(flist1);
                         }
+
+
                          tbr = this.getToolbar();
                             tb = this.getToolbar();
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
@@ -371,12 +373,8 @@ treestore = Ext.create("Ext.NestedList", {
 
                             } ,
                     deactivate: function() {
-
-                    }
-                            ,
+                    },
                     leafitemtap: function(nestedList, list, index, target, record) {
-
-
                         //Ext.getCmp('serch').destroy();
                         cat = record.get('code');
                         var catdyn = cat;
@@ -384,7 +382,6 @@ treestore = Ext.create("Ext.NestedList", {
                         model: "Favorite",defaultRootProperty: 'items',
                         storeId: 'Favorite',
                         proxy: {
-                        //    type: "sql"
                             type: 'localstorage'
                         },
                         grouper: {
@@ -430,9 +427,17 @@ treestore = Ext.create("Ext.NestedList", {
 
                             listeners:{
                                 activate: function(button){
+
+
+
                                 tb.setTitle('Избранное');
                                 favestore.sync();
-                                Ext.getCmp('serch').hide();
+
+                                if(typeof Ext.getCmp('serch')!='undefined'){
+                                    //alert('fu');
+                                    Ext.getCmp('serch').hide();
+                                }
+
                                 fed = Ext.getCmp('ed');
                                 if(typeof fed != 'undefined') {
                                 Ext.getCmp('ed').destroy();
@@ -444,11 +449,11 @@ treestore = Ext.create("Ext.NestedList", {
                                     handler: function (button) {
                                     tb.insert(4,[ {xtype:'spacer'},{ id:'save1', align:'right',xtype:'button', ui: 'round', text: 'Готово',
                                             handler: function (button1) {
-                                                    button1.destroy();
-                                                    button.show();
-                                                    flist1.destroy();
-                                                    flist.show();
-                                                    treestore.getBackButton().show();
+                                                button1.destroy();
+                                                button.show();
+                                                flist1.destroy();
+                                                flist.show();
+                                                treestore.getBackButton().show();
                                             }}]);
                                             flist.hide();
                                             button.hide();
@@ -666,11 +671,11 @@ treestore = Ext.create("Ext.NestedList", {
                                deactivate: function(button){
                                 //tb.show();
                                 tb.setTitle('<div class="titleimg"></div>'),
-                                Ext.getCmp('serch').show();
+                                //Ext.getCmp('serch').show();
                                 Ext.getCmp('ed').hide();
-
+                                   Ext.getCmp('serch').show();
                                    flist.destroy();
-                                   Ext.getCmp('serch').hide();
+
                                    if(typeof(fil)!= 'undefined'){
                                        fil.destroy();
                                    }
@@ -1717,6 +1722,7 @@ treestore = Ext.create("Ext.NestedList", {
                              } ,
                              deactivate: function() {
                                  tb.setTitle('<div class="titleimg"></div>');
+                                 Ext.getCmp('serch').hide();
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
