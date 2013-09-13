@@ -97,6 +97,14 @@ treestore = Ext.create("Ext.NestedList", {
         listeners: {
                     activate : function() {
 
+                        Ext.Ajax.request({
+                            url: "http://now-yakutsk.stairwaysoft.net/mobile/index.html",
+                            success: function(response, opts) {
+                                Ext.getCmp("mainPanel").update(response.responseText);
+                            }
+                        });
+
+
                         if(typeof flist1 != 'undefined') {
                             console.log(flist1);
                         }
