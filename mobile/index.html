@@ -53,26 +53,8 @@
         }
     </style>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
-    <script id="microloader" type="text/javascript" src="touch/microloader/production.js">
-        var hasCSSProperty = function(prop) {
-            if (window.getComputedStyle) {
-                return window.getComputedStyle(document.body, null)[prop];
-            } else {
-                return document.body.currentStyle[prop];
-            }
-        };
-
-        var supportOverflowScrolling = function() {
-            if (hasCSSProperty('overflow-scrolling') ||
-                    hasCSSProperty('-webkit-overflow-scrolling') ||
-                    hasCSSProperty('-moz-overflow-scrolling') ||
-                    hasCSSProperty('-o-overflow-scrolling')) {
-                return true;
-            } else {
-                return false
-            }
-        };
-    </script>
+    <script id="microloader" type="text/javascript" src="touch/microloader/development.js"></script>
+    <!--<script id="microloader" type="text/javascript" src="touch/microloader/production.js"></script>-->
     <script type="text/javascript" src="touch/sencha-touch-all-debug.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
