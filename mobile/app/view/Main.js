@@ -59,10 +59,6 @@ Ext.define('front.view.Main', {
 });
 
 treestore = Ext.create("Ext.NestedList", {
-
-        scrollable: null,
-        style: 'overflow:auto; -webkit-overflow-scrolling: touch;',
-
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
