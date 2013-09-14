@@ -62,7 +62,7 @@ treestore = Ext.create("Ext.NestedList", {
         scrollable: {
             direction: 'vertical',
             translatable: {
-                translationMethod: 'csstransform'
+                translationMethod: 'scrollposition'
             }
         },
         updateTitleText :false,
