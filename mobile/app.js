@@ -80,8 +80,10 @@ Ext.application({
            //Ext.Viewport.add(Ext.create('front.view.Main'));
         }
         else{
+
             Ext.Viewport.add(Ext.create('front.view.Main'));
         }
+
         // Initialize the main view
     },
     onUpdated: function() {

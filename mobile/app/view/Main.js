@@ -1,15 +1,17 @@
-
 Ext.define('front.view.Main', {
     extend: 'Ext.data.Model',
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
     config: {
-        fields: ['text']
+        fields: ['text'],
+        scrollable: {
+            direction: 'vertical'
+        }
+
     },
     listeners:{
         intialize:function(){
         }
     }
-
 });
     Ext.define("Favorite", {
         extend: "Ext.data.Model",
@@ -60,18 +62,15 @@ Ext.define('front.view.Main', {
 });
 
 treestore = Ext.create("Ext.NestedList", {
-
         fullscreen: true,
-        config:{
-            scrollable:'vertcal',
-            layout: 'card'
+        scroll : {
+            direction : 'vertical',
+            useIndicators : 'vertical'
         },
-
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
         backText: '<div class="backtext"></div>',
-
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
@@ -80,7 +79,7 @@ treestore = Ext.create("Ext.NestedList", {
         },*/
         title: '<div class="titleimg"></div>',
         displayField: 'title',
-//        layout: 'card',
+        layout:'card',
         store: {
             storeId:'ms',
             type: 'tree',
@@ -108,8 +107,6 @@ treestore = Ext.create("Ext.NestedList", {
                         if(typeof flist1 != 'undefined') {
                             console.log(flist1);
                         }
-
-
                          tbr = this.getToolbar();
                             tb = this.getToolbar();
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
