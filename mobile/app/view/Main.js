@@ -62,7 +62,7 @@ treestore = Ext.create("Ext.NestedList", {
 
         fullscreen: true,
         config:{
-            scrollable:true,
+            scrollable:'vertcal',
             layout: 'card'
         },
 
@@ -2010,11 +2010,10 @@ treestore = Ext.create("Ext.NestedList", {
 
 Ext.override(Ext.Panel, {
     afterRender: Ext.Function.createSequence(function() {
-        if (this.getXType() == 'panel') {
+
             this._getIScrollElement = function() {
-                return (this.el.child('.x-panel-body', true));
+                return (this.el.child('.x-body', true));
             }
-        }
 
         //Uncomment below to use iScroll only on mobile devices but use regular scrolling on PCs.
         if (this.autoScroll /*&& Ext.isMobileDevice*/) {
@@ -2051,13 +2050,13 @@ Ext.override(Ext.Panel, {
 
 Ext.override(Ext.NestedList, {
     _getIScrollElement: function() {
-        return (this.el.child('.x-panel-body', true));
+        return (this.el.child('.x-body', true));
     }
 });
 
 Ext.override(Ext.TabPanel, {
     _getIScrollElement: function() {
-        return (this.el.child('.x-grid3-scroller', true));
+        return (this.el.child('.x-body', true));
     },
 
     afterRender: Ext.Function.createSequence(function() {
