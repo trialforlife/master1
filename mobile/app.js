@@ -59,6 +59,9 @@ Ext.application({
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
+
+
+
         Ext.fly('appLoadingIndicator').destroy();
         if(navigator.onLine ==  false)
         {
@@ -86,6 +89,8 @@ Ext.application({
 
         // Initialize the main view
     },
+
+
     onUpdated: function() {
         Ext.Msg.confirm(
             "Application Update",

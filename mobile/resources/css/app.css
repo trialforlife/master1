@@ -409,21 +409,21 @@
  */
 /**
  * Background noise recipe
- * 
+ *
  * This recipe use a sass function to generate a .png file
- * 
+ *
  * Inspired by a jQuery plugin "Noisy" by Daniel Rapp @DanielRapp
  * @link https://github.com/DanielRapp/Noisy
- * 
+ *
  * Converted using Sass by Aaron Russell @aaronrussell & Philipp Bosch @philippbosch
  * @link https://gist.github.com/1021332
- * 
+ *
  * Ported to a sass gem by Antti Salonen @antsa
  * @link https://github.com/antsa/sassy_noise
- * 
+ *
  * Mixin:        background-noise
  * Function:     background_noise
- * 
+ *
  * @author Daniel Rapp @DanielRapp
  * @author Aaron Russell @aaronrussell
  * @author Philipp Bosch @philippbosch
@@ -462,7 +462,7 @@
  */
 /**
  * Blueprint grid background pattern
- * 
+ *
  * @link http://lea.verou.me/css3patterns/#blueprint-grid
  *
  * @author Lea Verou http://lea.verou.me/ for the original pattern
@@ -470,12 +470,12 @@
  */
 /**
  * Background overlay inspired by Google Chrome modal overlay
- * 
+ *
  * @author Maxime Thirouin @MoOx maxime.thirouin@gmail.com
  */
 /**
  * Striped background pattern
- * 
+ *
  * @link http://lea.verou.me/css3patterns/
  *
  * @author Lea Verou http://lea.verou.me/ for the original pattern
@@ -4553,7 +4553,7 @@ body.x-desktop {
 .x-button.x-button-action-small.x-button-pressed:after, .x-toolbar
 .x-button.x-button-action-small.x-button-active, .x-toolbar
 .x-button.x-button-action-small.x-button-active:after {
- 
+
 /* background-image: none;
   background-color: #0062a7;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #004474), color-stop(10%, #00538d), color-stop(65%, #0062a7), color-stop(100%, #0064a9));
