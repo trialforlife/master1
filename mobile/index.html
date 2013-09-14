@@ -53,6 +53,7 @@
         }
     </style>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
+
     <script id="microloader" type="text/javascript" src="touch/microloader/production.js"></script>
     <script type="text/javascript" src="touch/sencha-touch-all-debug.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -60,21 +61,26 @@
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-            setTimeout(function () {
-                myScroll = new iScroll('wrapper');
-            }, 100);
+            myScroll = new iScroll('wrapper');
         }
-        window.addEventListener('load', loaded, false);
+        document.addEventListener('DOMContentLoaded', loaded, false);
     </script>
 </head>
 <body>
 <div id="wrapper">
-<div id="scroller">
+    <div id="scroller">
+
+    <ul>
+        <li></li>
+
     <div id="appLoadingIndicator">
         <div></div>
         <div></div>
         <div></div>
     </div>
-</div></div>
+    </ul>
+</div>
+</div>
+
 </body>
 </html>
