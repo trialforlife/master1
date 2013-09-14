@@ -3,11 +3,7 @@ Ext.define('front.view.Main', {
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
     config: {
         fields: ['text'],
-        scrollable: {
-            direction: 'vertical'
-        }
-
-    },
+     },
     listeners:{
         intialize:function(){
         }
@@ -64,15 +60,7 @@ Ext.define('front.view.Main', {
 treestore = Ext.create("Ext.NestedList", {
         fullscreen: true,
         floating: true,
-        modal: true,
-        centered: false,
-
-
-
-        width: '100%',
-        height: '1000px',
-        styleHtmlContent: true,
-        scroll: 'vertical',
+        modal: false,
 
         updateTitleText :false,
         useTitleAsBackText: false,
