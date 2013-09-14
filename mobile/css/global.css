@@ -905,7 +905,7 @@ input {
     overflow: hidden;
 }
 
-
+/*
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -918,4 +918,8 @@ input {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}*/
+.x-tabpanel .x-scroll-indicator {
+    opacity: 0.5 !important;
+    z-index: 0;
 }
