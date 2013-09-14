@@ -2008,9 +2008,6 @@ treestore = Ext.create("Ext.NestedList", {
          }
         );
 
-
-
-
 Ext.override(Ext.Panel, {
     afterRender: Ext.Function.createSequence(function() {
         if (this.getXType() == 'panel') {
@@ -2020,7 +2017,7 @@ Ext.override(Ext.Panel, {
         }
 
         //Uncomment below to use iScroll only on mobile devices but use regular scrolling on PCs.
-        if (this.autoScroll && Ext.isMobileDevice) {
+        if (this.autoScroll /*&& Ext.isMobileDevice*/) {
             if (this._getIScrollElement) {
                 this._updateIScroll();
                 this.on('afterlayout', this._updateIScroll);
@@ -2058,7 +2055,7 @@ Ext.override(Ext.NestedList, {
     }
 });
 
-Ext.override(Ext.NestedList, {
+Ext.override(Ext.TabPanel, {
     _getIScrollElement: function() {
         return (this.el.child('.x-grid3-scroller', true));
     },
