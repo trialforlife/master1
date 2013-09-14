@@ -894,37 +894,13 @@ input {
     margin-left:80px;
 }
 
-
-
-
-.scrollgeneric {
-    line-height: 1px;
-    font-size: 1px;
-    position: absolute;
-    top: 0; left: 0;
+/* For browsers that support overflow scrolling */
+#div {
+    height: 400px !important;
+    overflow: auto!important;
 }
 
-.vscrollerbase {
-    width: 10px !important;
-    background-color: white;
-}
-.vscrollerbar {
-    width: 10px !important;
-    background-color: black;
-}
-.hscrollerbase {
-    height: 10px;
-    background-color: white;
-}
-.hscrollerbar {
-    height: 10px;
-    background-color: black;
-}
-
-.scrollerjogbox {
-    width: 10px;
-    height: 10px;
-    top: auto; left: auto;
-    bottom: 0px; right: 0px;
-    background-color: gray;
+/* And for browsers that don't */
+html.no-overflowscrolling #div {
+    height: auto!important;
 }
