@@ -1,4 +1,21 @@
+var hasCSSProperty = function(prop) {
+    if (window.getComputedStyle) {
+        return window.getComputedStyle(document.body, null)[prop];
+    } else {
+        return document.body.currentStyle[prop];
+    }
+};
 
+var supportOverflowScrolling = function() {
+    if (hasCSSProperty('overflow-scrolling') ||
+        hasCSSProperty('-webkit-overflow-scrolling') ||
+        hasCSSProperty('-moz-overflow-scrolling') ||
+        hasCSSProperty('-o-overflow-scrolling')) {
+        return true;
+    } else {
+        return false
+    }
+};
 Ext.define('front.view.Main', {
     extend: 'Ext.data.Model',
     require: ["Ext.data.proxy.SQL", "Ext.field.Search", "Ext.NestedList", "Ext.data.Store"],
