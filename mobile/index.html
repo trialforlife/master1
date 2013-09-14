@@ -60,18 +60,21 @@
     <script type="text/javascript">
         var myScroll;
         function loaded() {
-            myScroll = new iScroll('wrapper');
+            setTimeout(function () {
+                myScroll = new iScroll('wrapper');
+            }, 100);
         }
-        document.addEventListener('DOMContentLoaded', loaded, false);
+        window.addEventListener('load', loaded, false);
     </script>
 </head>
 <body>
+<div id="wrapper">
 <div id="scroller">
     <div id="appLoadingIndicator">
         <div></div>
         <div></div>
         <div></div>
     </div>
-</div>
+</div></div>
 </body>
 </html>
