@@ -2,7 +2,7 @@ html,body{
 
 	background:url(../img/bg.jpg) repeat-x !important;
     overflow: auto !important;
-    height: 100%!important;
+    min-height: 1000px!important;
 	/*min-width:320px;
 	max-width:640px;*/
 
@@ -895,13 +895,3 @@ input {
     margin-left:80px;
 }
 
-/* For browsers that support overflow scrolling */
-#div {
-    height: 400px !important;
-    overflow: auto!important;
-}
-
-/* And for browsers that don't */
-html.no-overflowscrolling #div {
-    height: auto!important;
-}
