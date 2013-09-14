@@ -66,16 +66,14 @@ treestore = Ext.create("Ext.NestedList", {
         floating: true,
         modal: true,
         centered: false,
-        scroll: 'vertical',
-        contentEl: 'lipsum',
-        cls: 'htmlcontent',
-        dock: 'top',
+
+
+
         width: '100%',
-        height: '100%',
+        height: '1000px',
         styleHtmlContent: true,
         scroll: 'vertical',
-        contentEl: 'lipsum',
-        cls: 'htmlcontent',
+
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
