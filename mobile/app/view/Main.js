@@ -61,8 +61,8 @@ Ext.define('front.view.Main', {
 treestore = Ext.create("Ext.NestedList", {
 
         fullscreen: true,
-        scrollable: 'vertical',
-        directionLock:true,
+        scroll:'vertical',
+        draggable:false,
 
         updateTitleText :false,
         useTitleAsBackText: false,
