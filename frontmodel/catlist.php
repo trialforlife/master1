@@ -48,8 +48,7 @@ if (mysql_affected_rows() > 0) {
 			"id"=>$row["cat_id"],
             "c_count"=>addslashes((string)$row["cat_count"]),
             "name"=>addslashes((string)$row["cat_title"]),
-			"title"=>'<iframe scrolling="yes">
-<div class="nav-element"><span style="'.$d_style.'" class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">'.$cc.'</span></div></iframe>',
+			"title"=>'<iframe width="200" height="200" scrolling="yes"><div class="nav-element"><span style="'.$d_style.'" class="txt">'.addslashes((string)$row["cat_title"]).'</span><span class="calc">'.$cc.'</span></div></iframe>',
 			"code"=>addslashes((string)$row["cat_code"]
 			)));
 			
