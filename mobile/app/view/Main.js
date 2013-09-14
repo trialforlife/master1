@@ -59,13 +59,14 @@ Ext.define('front.view.Main', {
 });
 
 treestore = Ext.create("Ext.NestedList", {
-        scrollable: null,
-        draggable: 'vertical',
+
+        fullscreen: true,
+
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
         backText: '<div class="backtext"></div>',
-        fullscreen: true,
+
         tabBarPosition: 'bottom',
         useToolbar:true,
         id: 'mainPanel',
@@ -76,6 +77,7 @@ treestore = Ext.create("Ext.NestedList", {
         displayField: 'title',
         layout: 'card',
         store: {
+            scrollable : true,
             storeId:'ms',
             type: 'tree',
             id: 'ListCard',
