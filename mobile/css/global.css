@@ -678,7 +678,7 @@ pf{
     margin-top: -100px;
     background: url(../img/loader_page.png) no-repeat;
 }
-#serch{
+#serch, #serch1{
     background:url(../img/ico_search.png) no-repeat;
     width: 2.7em !important;
     float: right !important;

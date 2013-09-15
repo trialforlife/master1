@@ -59,9 +59,6 @@ Ext.define('front.view.Main', {
 
 treestore = Ext.create("Ext.NestedList", {
         fullscreen: true,
-        floating: true,
-        modal: false,
-
         updateTitleText :false,
         useTitleAsBackText: false,
         defaultBackButtonText : null,
@@ -98,11 +95,10 @@ treestore = Ext.create("Ext.NestedList", {
         },
         listeners: {
                     activate : function() {
-
-                        if(typeof flist1 != 'undefined') {
-                            console.log(flist1);
+                        if(typeof (Ext.getCmp('serch')) != 'undefined' ){
+                            Ext.getCmp('serch').show();
                         }
-                         tbr = this.getToolbar();
+                            tbr = this.getToolbar();
                             tb = this.getToolbar();
                             tb.insert(3,[ {xtype:'spacer'}, {id: 'serch',align: 'right', xtype:'button', iconCls: 'none',
                                 scope: this,
@@ -125,7 +121,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                     ser.hide();
                                                     button.show();
                                                     treestore.show();
-                                                    Ext.getCmp('serch').hide();
+                                                    //Ext.getCmp('serch').hide();
                                                 }
                                             }]
                                         },
@@ -253,7 +249,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                             ]
                                             }],
-
+/*
                                             dockedItems: [
                                                 {
                                                     xtype: 'toolbar',
@@ -296,14 +292,14 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                     ]
                                                 }
-                                            ],
+                                            ],*/
                                             detailCard: {
                                                 xtype: 'panel',
                                                 // scrollable: true,
                                                 styleHtmlContent: true
                                             },
                                             listeners: {
-                                                activate : function() {
+                                                /*activate : function() {
                                                     s_image = post.get('image');
                                                     cfid = post.get('cid');
                                                     cat1 = record.get('code');
@@ -346,7 +342,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                         }]));
 
                                                     }
-                                                } ,
+                                                } ,*/
                                                 deactivate: function() {
 
                                                 }
@@ -375,7 +371,7 @@ treestore = Ext.create("Ext.NestedList", {
                     deactivate: function() {
                     },
                     leafitemtap: function(nestedList, list, index, target, record) {
-                        //Ext.getCmp('serch').destroy();
+
                         cat = record.get('code');
                         var catdyn = cat;
                         var favestore = Ext.create("Ext.data.Store", {
@@ -427,20 +423,15 @@ treestore = Ext.create("Ext.NestedList", {
 
                             listeners:{
                                 activate: function(button){
-
-
-
                                 tb.setTitle('Избранное');
                                 favestore.sync();
-
                                 if(typeof Ext.getCmp('serch')!='undefined'){
                                     //alert('fu');
                                     Ext.getCmp('serch').hide();
                                 }
-
                                 fed = Ext.getCmp('ed');
-                                if(typeof fed != 'undefined') {
-                                Ext.getCmp('ed').destroy();
+                                    if(typeof fed != 'undefined') {
+                                    Ext.getCmp('ed').destroy();
                                 }
                                 //Ext.getCmp('ed').destroy();
                                 fh = this.getHeader();
@@ -1424,10 +1415,10 @@ treestore = Ext.create("Ext.NestedList", {
                                             },
                                             listeners: {
                                             activate : function() {
-                                                //tb1.show();
-                                                Ext.getCmp('serch').hide();
                                                 tb2 = this.getToolbar();
                                                 tb2.hide();
+                                                Ext.getCmp('serch').hide();
+
                                             } ,
                                              deactivate: function() {
                                                 tb.show();
@@ -1446,7 +1437,6 @@ treestore = Ext.create("Ext.NestedList", {
                         defaultBackButtonText : null,
                         backText: '<div class="backtext">Афиша</div>',
                         displayField: 'title',
-
                         store: {
                             type: 'tree',
                             fields: [
@@ -1457,7 +1447,6 @@ treestore = Ext.create("Ext.NestedList", {
                             root: {
                                 leaf: false
                             },
-
                             proxy: {
                                 type: 'jsonp',
                                 url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist2.php',
@@ -1467,17 +1456,14 @@ treestore = Ext.create("Ext.NestedList", {
                                 }
                             }
                         },
-
-
                         listeners: {
                              activate : function() {
-                                tb1 = this.getToolbar();
 
-                                tb1.insert(3,[ {xtype:'spacer'}, {id:'serch', align: 'right', xtype:'button', iconCls: 'none',
+                                tb1 = this.getToolbar();
+                                tb1.insert(3,[ {xtype:'spacer'}, {id:'serch1', align: 'right', xtype:'button', iconCls: 'none',
                                                 scope: this,
                                                 handler:
                                                     function(button) {
-
                                                     button.hide();
                                                         ser = Ext.create('Ext.Container', {
                                                             fullscreen: true,
@@ -1495,7 +1481,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                             ser.hide();
                                                                             button.show();
                                                                             treestore.show();
-                                                                            Ext.getCmp('serch').hide();
+                                                                            //Ext.getCmp('serch').hide();
                                                                         }
 
                                                                     }]
@@ -1713,19 +1699,19 @@ treestore = Ext.create("Ext.NestedList", {
                                                 }
                                                 }]);
                                     //console.log(tb1.getTitle());
-
-
-                                tb1.hide();
+                                 tb1.hide();
                                 tb.setTitle('Афиша');
 
 
                              } ,
                              deactivate: function() {
+
                                  tb.setTitle('<div class="titleimg"></div>');
-                                 Ext.getCmp('serch').hide();
+
                             }
                             ,
                             leafitemtap: function(nestedList, list, index, target, record) {
+
                                 cat = record.get('code');
                                 if(cat== 'cinema' ){
                                     tb1.setTitle('Кинотеатры');
@@ -1778,6 +1764,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                 tb.hide();
                                          } ,
                                              deactivate: function() {
+
+                                                 //Ext.getCmp('serch1').destroy();
                                                 tb.show();
                                                 tb1.hide();
                                                 tb2.hide();delete window.ttt;
@@ -1793,7 +1781,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         //useToolbar:true,
                                                                         layout: 'vbox',
                                                                         items: [           {
-                                                                        //xtype: 'carousel',
+                                                                        xtype: 'carousel',
                                                                         height: '225px',
                                                                         store: {
                                                                             type: 'tree',
