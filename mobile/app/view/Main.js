@@ -1458,7 +1458,6 @@ treestore = Ext.create("Ext.NestedList", {
                         },
                         listeners: {
                              activate : function() {
-
                                 tb1 = this.getToolbar();
                                 tb1.insert(3,[ {xtype:'spacer'}, {id:'serch1', align: 'right', xtype:'button', iconCls: 'none',
                                                 scope: this,
@@ -1497,7 +1496,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         id: 'inpt',
                                                                         listeners: {
                                                                             scope: this,
-
                                                                             keyup: function(){
                                                                                 value = Ext.ComponentQuery.query('#inpt')[0].getValue();
                                                                                 Ext.Ajax.request({
@@ -1542,7 +1540,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                             }
 
                                                                                     },
-                                                                                        {xtype: 'carousel',
+                                                                                        {
+                                                                                            xtype: 'carousel',
                                                                                             height: '100px',
 
                                                                                             store: {
@@ -1783,7 +1782,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         items: [           {
                                                                         xtype: 'carousel',
                                                                         height: '225px',
-                                                                        store: {
+                                                                        /*store: {
                                                                             type: 'tree',
                                                                             fields: [
                                                                                 'b_image',
@@ -1801,22 +1800,26 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                     type: 'json',
                                                                                     rootProperty: 'banner'
                                                                                 }
-                                                                            }},
-                                                                            defaultType: 'carousel',
+                                                                            }},*/
+                                                                            defaults: {
+                                                                                styleHtmlContent: true
+                                                                            },
+
                                                                            items: [
                                                                                 {
 
-                                                                                      html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+                                                                                      html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; width: 100%;"></div>'
                                                                                     //style: 'width: 100%; margin-top-top: 100px; height: 134px !important;float:left; background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+');'
                                                                                 },
                                                                                 {
-                                                                                    html : 'А здесь второй',
-                                                                                    style: 'background-color: #759E60; float:left; '
-                                                                                }/*,
+                                                                                    html : '<div style="background:red; height: 100%;">А здесь второй</div>',
+                                                                                    style:  'width:100%; '
+                                                                                },
                                                                                 {
-                                                                                    html : 'или третий'
-                                                                                }*/
+                                                                                   // html : 'или третий'
+                                                                                }
                                                                             ]
+
 
                                                                     },
                                                                     {
