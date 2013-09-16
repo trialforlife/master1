@@ -1059,13 +1059,13 @@ body {
 /* line 16, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Float.scss */
 .x-center > .x-floating,
 .x-centered > .x-floating {
-  position: relative !important;
-}
+  /*position: relative !important;
+*/}
 
 /* line 21, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Float.scss */
 .x-floating {
-  position: absolute !important;
-}
+  /*position: absolute !important;
+*/}
 
 /* line 25, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Float.scss */
 .x-layout-float {
@@ -5629,7 +5629,7 @@ body.x-desktop {
   /*border-top: 1px solid white;*/
 }
 /* line 12, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/form/_FieldSet.scss */
-.x-form-fieldset .x-form-fieldset-inner {
+/*.x-form-fieldset .x-form-fieldset-inner {
   border: 1px solid #dddddd;
   background: #fff;
   padding: 0;
@@ -5638,7 +5638,7 @@ body.x-desktop {
   -ms-border-radius: 0.4em;
   -o-border-radius: 0.4em;
   border-radius: 0.4em;
-}
+}*/
 /* line 22, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/form/_FieldSet.scss */
 .x-form-fieldset .x-field {
   border-bottom: 1px solid #dddddd;
@@ -5897,7 +5897,7 @@ body.x-desktop {
   position: relative;
 }
 /* line 281, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/mixins/_Class.scss */
-.x-field-search .x-field-input:before {
+/*.x-field-search .x-field-input:before {
   position: absolute;
   top: 0;
   right: 0;
@@ -5906,7 +5906,7 @@ body.x-desktop {
   text-align: center;
   font-family: "Pictos";
   content: "s";
-}
+}*/
 /* line 11, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/field/_Search.scss */
 .x-field-search .x-field-input:before {
   color: #ccc;

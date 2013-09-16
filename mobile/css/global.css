@@ -754,26 +754,28 @@ pf{
     background: #1e3244 !important;
 }
 .x-form-fieldset .x-form-fieldset-inner {
-    margin-top: 10px;
+    position: relative;
+    z-index: 4;
+    margin-top: 40px !important;
+    margin-bottom: 40 !important;
     height: 56px;
     float: left;
     border-radius: 40px !important;
     border: 2px solid #5a0cff !important;
     padding-left: 1.35em;
     padding-right: 2.35em !important;
-    width: 78%;
+    width: 100%;
     background: url(../img/grs-ico.png) 16px center no-repeat #fff;
-    margin-left: 0.92%;
 
 
 }
 .nav-element-s{
-    height:3.2em;
     border-bottom:1px solid #820cff;
     box-shadow:0 1px 0 rgba(255,255,255,0.24);
     position:relative;
-    /*background: #1e3244;
-*/}
+    background: #1e3244 !important;
+    height: 4.1em;
+}
 .nav-element-s .txt {
     padding: 0 0 0 9%;
     color: #fff;
@@ -829,6 +831,22 @@ pf{
     padding-top: 0.6em;
     position: absolute;
     z-index: 11111;
+}
+#searchback{
+    height: 3.1em!important;
+    width: 1em!important;
+    margin-right: 20px;
+    padding-left: 3px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    background-image: url(../img/ico_menu.png)!important;
+    background-repeat: no-repeat !important;
+    float: left;
+    top: 25px;
+    left: 10px;
+    position: absolute;
+    z-index: 1111!important;
+    border-radius: 0px !important;
 }
 #sback{
     height: 3.1em!important;

@@ -106,26 +106,28 @@ treestore = Ext.create("Ext.NestedList", {
                                     function(button) {
                                     button.hide();
                                     treestore.hide();
+
                                     ser = Ext.create('Ext.Container', {
                                     fullscreen: true,
                                     useToolbar : true,
-                                    layout: 'fit',
+                                    layout: 'vbox',
                                         items: [
                                         {
                                             xtype:'toolbar', docked: 'top',title: '<div class="titleimg"></div>',
                                             items:[{
+                                                id: 'searchback',
                                                 ui: 'back',
-                                                xtype: 'button',
-                                                text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:-57px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
                                                 handler: function () {
                                                     ser.hide();
                                                     button.show();
                                                     treestore.show();
-                                                    //Ext.getCmp('serch').hide();
                                                 }
                                             }]
                                         },
                                             {
+                                                height:'100px',
+                                            //flex:1,
+
                                             xtype: 'fieldset',
                                             items: [{
                                                 xtype: 'searchfield',
@@ -147,8 +149,10 @@ treestore = Ext.create("Ext.NestedList", {
                                                             }
                                                             }
                                                         }]
-                            },
-                            {
+
+                                            },
+                                            {
+                                                height:'100%',
                                 xtype: 'list',
                                 iconCls: 'star',
                                 itemTpl: "{filmpage}",
@@ -1474,8 +1478,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                                     items:[{
 
                                                                         ui: 'back',
-                                                                        xtype: 'button',
-                                                                        text: '<img style=\"width:40px; float:left; margin-left:40px; margin-top:-57px; height:30px;\" src=./img/ico_menu.png><div style=\"margin-left:29px; margin-top:6px;\"></div>',
+                                                                        //xtype: 'button',
+                                                                        id: 'searchback',
                                                                         handler: function () {
                                                                             ser.hide();
                                                                             button.show();
@@ -1563,7 +1567,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                                 }},
                                                                                             items: [
                                                                                                 {
-                                                                                                    html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+                                                                                                    html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.get('banner')+') !important; float: left; width: 100%; margin-top: 100px; height: 224px !important;"></div>'
 
                                                                                                 }/*,
                                                                                                  {
