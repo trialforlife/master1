@@ -567,7 +567,7 @@ pf{
 }
 .x-title .x-innerhtml{
     color: #69d2e7;
-	font: 1.37em/88px Hlvb;
+	font: 1.5em/1.4em Hlvb;
     /*font: 52px/88px Hlvb;
 	*/text-shadow: 0 0 40px rgba(180,12,255,1),
 	 0 4px 0 rgba(0,0,0,0.36);
@@ -654,9 +654,9 @@ pf{
 */}
 .x-list-normal .x-list-header{
     color: #fff !important;
-    font: 1em/44px Hlvb !important;
+    font: 1em/22px Hlvb !important;
     text-shadow: 1px 0 0 rgba(0,0,0,0.42) !important;
-    height: 44px !important;
+    height: 22px !important;
     background: rgba(160,12,255,0.5) !important;
     width: 100%;
     text-indent: 10px !important;
@@ -780,21 +780,21 @@ pf{
     color: #fff;
     font: 0.9em Hlvl;
 }
-#ed,#save1 {
+#ed, #save1 {
     height: 2em!important;
-    width: 6em!important;
+    width: 5em!important;
     padding-left: 6px;
     padding-right: 7px;
-    padding-bottom: 1px;
+    padding-bottom: 7px;
     background: #273c4e !important;
-    border-radius: 10px !important;
-    font: 0.9em/2.3em Hlvb !important;
+    border-radius: 6px !important;
+    font: 0.8em/2em Hlvb !important;
     color: white;
     float: right;
-    margin-top: -49px;
+    margin-top: -129px;
 }
 #save1 {
-    margin-top: -41px;
+    margin-top: -80px;
     position: absolute!important;
     z-index: 11111!important;
     right: 0!important;
