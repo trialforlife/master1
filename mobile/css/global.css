@@ -567,7 +567,7 @@ pf{
 }
 .x-title .x-innerhtml{
     color: #69d2e7;
-	font: 1.5em/1.4em Hlvb;
+    font: 1.1em/1.9em Hlvb;
     /*font: 52px/88px Hlvb;
 	*/text-shadow: 0 0 40px rgba(180,12,255,1),
 	 0 4px 0 rgba(0,0,0,0.36);
@@ -783,9 +783,9 @@ pf{
 #ed, #save1 {
     height: 2em!important;
     width: 5em!important;
-    padding-left: 6px;
-    padding-right: 7px;
-    padding-bottom: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 4px;
     background: #273c4e !important;
     border-radius: 6px !important;
     font: 0.8em/2em Hlvb !important;
