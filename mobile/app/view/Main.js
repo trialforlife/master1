@@ -1450,7 +1450,7 @@ treestore = Ext.create("Ext.NestedList", {
                         updateTitleText :false,
                         useTitleAsBackText: false,
                         defaultBackButtonText : null,
-                        backText: '<div class="backtext">Афиша</div>',
+                        backText: '<div class="backtext"></div>',
                         displayField: 'title',
                         store: {
                             type: 'tree',
