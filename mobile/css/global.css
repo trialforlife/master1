@@ -1,5 +1,4 @@
 html,body{
-
 	background:url(../img/bg.jpg) repeat-x !important;
     overflow: auto ;
     height: 100%!important;
@@ -21,20 +20,20 @@ html,body{
 	height:4em !important;
 }
 .nav-element .txt{
-	color:#fff;
-	font: 1.4em/2em Arial;
-    /*font:40px/117px Arial;
-	*/text-shadow:0 0 46px rgba(180,12,255,0.8),0 4px 0 rgba(0,0,0,0.36);
-	padding:0 0 0 9%;
+    color: #fff;
+    font: 1em/3.2em Arial;
+    text-shadow: 0 0 46px rgba(180,12,255,0.8),0 4px 0 rgba(0,0,0,0.36);
+    padding: 0 0 0 2em;
 }
 .nav-element .calc{
 	float:right;
-    font: 1.4em/2em Arial;
+    font: 1em/3.2em Arial;
 	/*font:24px/117px Arial;
 	*/color:#fff;
     padding: 0 5% 0 0;
 }
 .nav-element.tap{
+    height: 54px !important;
 	background:rgba(255,255,255,0.1);
 }
 .nav-element.in-time .txt{
@@ -606,7 +605,7 @@ pf{
 }
 .x-list-normal .x-list-item.x-list-item-tpl, .x-list-normal .x-list-item .x-dock-horizontal {
 	border-top: none !important;
-    height: 76px !important;
+    height: 58px !important;
 }
 .x-body{
     background: url(../img/bg.jpg) repeat-x;
@@ -930,6 +929,14 @@ input {
 }
 .x-form-fieldset {
     margin: 0 !important;
+}
+.x-carousel-inner {
+    position: relative;
+    overflow: hidden;
+    margin-top: -29px;
+}
+.x-html {
+    padding: 0!important;
 }
 
 /*

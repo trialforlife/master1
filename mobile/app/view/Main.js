@@ -584,7 +584,6 @@ treestore = Ext.create("Ext.NestedList", {
                                     }
                                     ]
                                     );
-
                                },
                                 itemtap:function(h, index, target, record, e, eOpts ){
                                     //nestedList.setDetailCard(fil);
@@ -1789,7 +1788,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                                         var f_cid = post.get('cid');
                                                                         tb2.setTitle(post.get('name'));
-                                                                        //console.log(post.get('banner'));
+                                                                        console.log(post.get('banner'));
 
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
@@ -1824,15 +1823,17 @@ treestore = Ext.create("Ext.NestedList", {
                                                                            items: [
                                                                                 {
 
-                                                                                      html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; width: 100%;"></div>'
-                                                                                    //style: 'width: 100%; margin-top-top: 100px; height: 134px !important;float:left; background:   url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+');'
+                                                                                    html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
+
+                                                                                    //style: 'background:  url("http://now-yakutsk.stairwaysoft.net/mobile/img/sl_pic.jpg")!important;'
                                                                                 },
                                                                                 {
-                                                                                    html : '<div style="background:red; height: 100%;">А здесь второй</div>',
-                                                                                    style:  'width:100%; '
+                                                                                    html : '<div style="background:red; height: 100%;">А здесь второй</div>'
+                                                                                    //style:  'width:100%; '
                                                                                 },
                                                                                 {
-                                                                                   // html : 'или третий'
+                                                                                    html : 'или третий',
+                                                                                    style:  'background:blue'
                                                                                 }
                                                                             ]
 
