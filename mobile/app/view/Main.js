@@ -1793,7 +1793,9 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
                                                                         //useToolbar:true,
+                                                                        scrollable:'vertical',
                                                                         layout: 'vbox',
+                                                                            flex:1,
                                                                         items: [           {
                                                                         xtype: 'carousel',
                                                                         height: '225px',
@@ -1832,7 +1834,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                     //style:  'width:100%; '
                                                                                 },
                                                                                 {
-                                                                                    html : 'или третий',
+                                                                                    html : 'или третийwww',
                                                                                     style:  'background:blue'
                                                                                 }
                                                                             ]
@@ -1841,14 +1843,14 @@ treestore = Ext.create("Ext.NestedList", {
                                                                     },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: '90px',
+                                                                        height: '60px',
                                                                         html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                         },
 
                                                                     {
 
-                                                                    flex: 1,
+                                                                    flex: 2,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist',
                                                                     iconCls: 'star',
