@@ -30,7 +30,7 @@ html,body{
     font: 1em/3.2em Arial;
 	/*font:24px/117px Arial;
 	*/color:#fff;
-    padding: 0 3em 0 0;
+    padding: 0 1.5em 0 0;
 }
 .nav-element.tap{
     height: 54px !important;
@@ -160,7 +160,7 @@ html,body{
 .ab-navigtaion{
 	max-width:500px;
 	width:100%;
-	margin:140px auto 44px;
+	margin:6em auto 44px;
 }
 .ab-navigtaion span.button{
 	display:block;
@@ -681,7 +681,7 @@ pf{
     width: 2.7em !important;
     float: right !important;
     top: -77px!important;
-    right: 1.5em;
+    right: 0;
     height: 0;
     padding: 0!important;
     position: relative !important;
