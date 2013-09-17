@@ -992,6 +992,7 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 0px;
+  background: #0a0456;
 }
 
 /* line 18, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Fit.scss */
@@ -6819,10 +6820,11 @@ body.x-desktop {
 }
 /* line 98, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/tab/_Panel.scss */
 .x-tabbar.x-docked-bottom .x-tab .x-button-label, .x-tabbar.x-docked-bottom .x-tab .x-badge {
-  margin: 0;
-  padding: 0.1em 0 0.2em 0;
-  font-size: 9px;
-  line-height: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: -34px;
+  /*font-size: 9px;
+  */line-height: 50px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -6929,18 +6931,19 @@ body.x-desktop {
   text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
 }
 /* line 165, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/tab/_Panel.scss */
-.x-tabbar-dark.x-docked-bottom .x-tab-active {
+.x-tabbar-dark.x-docked-bottom .x-tab-active {/*
   background-image: none;
   background-color: #0b3c5e;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #061f31), color-stop(10%, #092e47), color-stop(65%, #0b3c5e), color-stop(100%, #0c3e60));
   background-image: -webkit-linear-gradient(top, #061f31, #092e47 10%, #0b3c5e 65%, #0c3e60);
   background-image: -moz-linear-gradient(top, #061f31, #092e47 10%, #0b3c5e 65%, #0c3e60);
   background-image: -o-linear-gradient(top, #061f31, #092e47 10%, #0b3c5e 65%, #0c3e60);
-  background-image: linear-gradient(top, #061f31, #092e47 10%, #0b3c5e 65%, #0c3e60);
+  background-image: linear-gradient(top, #061f31, #092e47 10%, #0b3c5e 65%, #0c3e60);*/
   text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
   -webkit-box-shadow: #092e47 0 0 0.25em inset;
   -moz-box-shadow: #092e47 0 0 0.25em inset;
   box-shadow: #092e47 0 0 0.25em inset;
+
 }
 /* line 173, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon:before {

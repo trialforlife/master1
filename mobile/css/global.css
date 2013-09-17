@@ -590,7 +590,7 @@ pf{
 */
 }
 .x-toolbar-light .x-button, .x-toolbar-light .x-button.x-button-back:after, .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar .x-toolbar-light .x-button, .x-toolbar .x-toolbar-light .x-button.x-button-back:after, .x-toolbar .x-toolbar-light .x-button.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-light .x-field-select .x-component-outer:before.x-button-forward:after {
-	max-width: 66px!important;
+	max-width: 84px!important;
 	height: 70px !important;
     min-width: 50px!important;
  }
@@ -714,7 +714,7 @@ pf{
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap, .x-list-normal .x-list-item.x-list-footer-wrap .x-dock-horizontal {
     border: none !important;
     height: 71px !important;
-}
+}/*
 .x-tabbar.x-docked-bottom .x-tab{
     height: 100%;
     width: 140px;
@@ -729,8 +729,8 @@ pf{
     width: 100%;
     padding-left: 0;
     text-align: center;
-}
-
+}*/
+/*
 .x-tabbar-dark.x-docked-bottom .x-tab-active{
     background: none !important;
     color: #69d2e7 !important;
@@ -741,7 +741,7 @@ pf{
     font: 1em Hlvb !important;
     height: 86px !important;
     float: left;
-}
+}*/
 .x-toolbar-dark .x-button, .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-button, .x-toolbar .x-toolbar-dark .x-button.x-button-back:after, .x-toolbar .x-toolbar-dark .x-button.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer.x-button-forward:after, .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-back:after, .x-toolbar .x-toolbar-dark .x-field-select .x-component-outer:before.x-button-forward:after {
     background: none ;
     border: none ;
@@ -751,8 +751,8 @@ pf{
     border: none ;
 }
 .x-dock.x-sized, .x-dock.x-sized > .x-dock-body > *, .x-dock.x-sized > .x-dock-body > .x-body > .x-inner {
-    background: #1e3244 !important;
-}
+    /*background: #1e3244 !important;
+*/}
 .x-form-fieldset .x-form-fieldset-inner {
     position: relative;
     z-index: 4;
@@ -782,19 +782,24 @@ pf{
     font: 0.9em Hlvl;
 }
 #ed,#save1 {
-    height: 2.6em!important;
-    width: 5em!important;
+    height: 2em!important;
+    width: 6em!important;
     padding-left: 6px;
     padding-right: 7px;
     padding-bottom: 1px;
     background: #273c4e !important;
     border-radius: 10px !important;
-    font: 1em/2.3em Hlvb !important;
+    font: 0.9em/2.3em Hlvb !important;
     color: white;
     float: right;
     margin-top: -49px;
 }
-
+#save1 {
+    margin-top: -41px;
+    position: absolute!important;
+    z-index: 11111!important;
+    right: 0!important;
+}
 .touchgridpanel .grid-checkbox {
     background-image: url(../img/delete.png) !important;
     background-repeat: no-repeat;
@@ -922,6 +927,9 @@ input {
     height: 100%;
     visibility: hidden;
     overflow: hidden;
+}
+.x-form-fieldset {
+    margin: 0 !important;
 }
 
 /*
