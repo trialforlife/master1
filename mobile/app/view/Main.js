@@ -1795,10 +1795,9 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         //useToolbar:true,
                                                                         scrollable:'vertical',
                                                                         layout: 'vbox',
-                                                                            flex:1,
-                                                                        items: [           {
-                                                                        xtype: 'carousel',
-                                                                        height: '225px',
+                                                                        flex:1,
+                                                                            items: [           {
+
                                                                         /*store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -1821,65 +1820,71 @@ treestore = Ext.create("Ext.NestedList", {
                                                                             defaults: {
                                                                                 styleHtmlContent: true
                                                                             },
+                                                                                items:[{
+                                                                                    xtype: 'carousel',
+                                                                                    height: '225px',
+                                                                                    items: [
+                                                                                        {
 
-                                                                           items: [
-                                                                                {
+                                                                                            html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
 
-                                                                                    html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
+                                                                                            //style: 'background:  url("http://now-yakutsk.stairwaysoft.net/mobile/img/sl_pic.jpg")!important;'
+                                                                                        },
+                                                                                        {
+                                                                                            html : '<div style="background:red; height: 100%;">А здесь второй</div>'
+                                                                                            //style:  'width:100%; '
+                                                                                        },
+                                                                                        {
+                                                                                            html : 'или третийwww',
+                                                                                            style:  'background:blue'
+                                                                                        }
+                                                                                    ]
+                                                                                },{
+                                                                                    xtype : 'panel',
+                                                                                    height: '60px',
+                                                                                    html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
-                                                                                    //style: 'background:  url("http://now-yakutsk.stairwaysoft.net/mobile/img/sl_pic.jpg")!important;'
                                                                                 },
-                                                                                {
-                                                                                    html : '<div style="background:red; height: 100%;">А здесь второй</div>'
-                                                                                    //style:  'width:100%; '
-                                                                                },
-                                                                                {
-                                                                                    html : 'или третийwww',
-                                                                                    style:  'background:blue'
-                                                                                }
-                                                                            ]
+                                                                                    {   height: '1000px',
+                                                                                        useToolbar:false,
+                                                                                        scrollable:false,
+                                                                                        xtype: 'nestedlist',
+                                                                                        iconCls: 'star',
+                                                                                        displayField: 'filmpage',
+                                                                                        store:{
+
+                                                                                            type: 'tree',
+
+                                                                                            fields: [
+                                                                                                'name','image','id','filmpage','scat',
+                                                                                                {name: 'leaf', defaultValue: true}
+                                                                                            ],
+                                                                                            root: {
+                                                                                                leaf: false
+                                                                                            },
+                                                                                            proxy: {
+                                                                                                type: 'jsonp',
+                                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                                                                reader: {
+                                                                                                    type: 'json',
+                                                                                                    rootProperty: 'films'
+                                                                                                }
+                                                                                            }}}
+                                                                                ]
+
+
 
 
                                                                     },
-                                                                    {
-                                                                        xtype : 'panel',
-                                                                        height: '60px',
-                                                                        html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
-                                                                        },
 
-                                                                    {
 
-                                                                    flex: 2,
-                                                                    useToolbar:false,
-                                                                    xtype: 'nestedlist',
-                                                                    iconCls: 'star',
-                                                                    displayField: 'filmpage',
-                                                                    store:{
-
-                                                                    type: 'tree',
-
-                                                                    fields: [
-                                                                        'name','image','id','filmpage','scat',
-                                                                        {name: 'leaf', defaultValue: true}
-                                                                    ],
-                                                                    root: {
-                                                                        leaf: false
-                                                                    },
-                                                                    proxy: {
-                                                                        type: 'jsonp',
-                                                                        url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
-                                                                        reader: {
-                                                                            type: 'json',
-                                                                            rootProperty: 'films'
-                                                                        }
-                                                                    }}}
                                                                ],
 
 
                                                                     detailCard: {
                                                                         xtype: 'panel',
-                                                                        scrollable: true,
+
                                                                         styleHtmlContent: true
                                                                     },
                                                                     listeners: {
