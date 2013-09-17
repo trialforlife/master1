@@ -641,15 +641,15 @@ pf{
 	padding-left: 0 !important;
 }
 .nav-element1{
-    height:4em;
+    height:3em;
 	border-bottom:1px solid #820cff;
 	box-shadow:0 1px 0 rgba(255,255,255,0.24);
 	position:relative;
 }
 .nav-element1 .txt {
-    padding: 0 0 0 9%;
+    padding: 0 0 0 1em;
     color: #fff;
-    font: 1.2em/3em Hlvl;
+    font: 1.1em/2.7em Hlvl;
 	/*font: 40px/139px Hlvl;
 */}
 .x-list-normal .x-list-header{
