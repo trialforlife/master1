@@ -821,6 +821,8 @@ pf{
     width: 90px;
     height: 43px;
     margin-left: 50%;
+    position: absolute;
+    z-index: 111;
 }
 .backtext{
     background-image: url(../img/main-ico.png);
