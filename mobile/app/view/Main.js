@@ -595,7 +595,20 @@ treestore = Ext.create("Ext.NestedList", {
                                     fil = Ext.create('Ext.Container', {
                                         fullscreen: true,
                                         layout: 'vbox',
-                                        items: [           {
+                                        items: [
+                                            {xtype:'toolbar',
+                                            title:'Избранное',
+                                                items:[{
+                                                    xtype:'button',
+                                                    ui:'back',
+                                                    id:'sback',
+                                                    handler:function(button){
+                                                        fil.destroy();
+                                                        flist.show();
+                                                    }
+                                                }]
+                                            }
+                                            ,{
                                             xtype: 'carousel',
                                             height: '220px',
 
@@ -631,7 +644,7 @@ treestore = Ext.create("Ext.NestedList", {
                                         },
                                             {
                                                 xtype : 'panel',
-                                                height: '120px',
+                                                height: '100px',
                                                 html: '<div class="comp-location"><span class="locate"><i>'+record.raw.adress+'</i><b>'+record.phone+'</b></span><a href="">'+record.raw.site+'</a></div>'//+hinsert  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                             },
 
@@ -1430,7 +1443,6 @@ treestore = Ext.create("Ext.NestedList", {
                                             }
                                             }
                                 });
-
                                 }
 
                         var treeStore2 = Ext.create("Ext.NestedList", {
