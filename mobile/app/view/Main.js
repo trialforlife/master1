@@ -763,212 +763,203 @@ treestore = Ext.create("Ext.NestedList", {
                                                 tb2.setTitle(post.get('name'));
                                                 console.log(post.get('special'));
                                             if((post.get('special'))!= undefined ) {
-                                                bh='187px';
+                                                bh='87px';
                                                 hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
                                             }else{
-                                                bh = '120px';
+                                                bh = '60px';
                                                 hinsert = '';
                                             }
-                                            var fil = Ext.create('Ext.Container', {
-                                            fullscreen: true,
+                                                var fil = Ext.create('Ext.Container', {
+                                                    fullscreen: true,
+                                                    //useToolbar:true,
+                                                    scrollable:'vertical',
+                                                    layout: 'vbox',
+                                                    flex:1,
+                                                    items: [
+                                                        {
+                                                            defaults: {
+                                                                styleHtmlContent: true
+                                                            },
+                                                            items:[{
+                                                                xtype: 'carousel',
+                                                                height: '220px',
+                                                                /*store: {
+                                                                 type: 'tree',
+                                                                 fields: [
+                                                                 'b_image',
+                                                                 {name: 'leaf', defaultValue: true}
+                                                                 ],
 
-                                            layout: 'vbox',
-                                            items: [           {
-                                                                    xtype: 'carousel',
-                                                                    height: '220px',
+                                                                 root: {
+                                                                 leaf: false
+                                                                 },
 
-                                                                    store: {
-                                                                        type: 'tree',
-                                                                        fields: [
-                                                                            'b_image',
-                                                                             {name: 'leaf', defaultValue: true}
-                                                                        ],
-
-                                                                        root: {
-                                                                            leaf: false
-                                                                        },
-
-                                                                        proxy: {
-                                                                            type: 'jsonp',
-                                                                            url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
-                                                                            reader: {
-                                                                                type: 'json',
-                                                                                rootProperty: 'banner'
-                                                                            }
-                                                                        }},
-
-
-                                                                       items: [
-                                                                            {
-                                                                                html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
-
-                                                                            }/*,
-                                                                            {
-                                                                                html : 'А здесь второй',
-                                                                                style: 'background-color: #759E60'
-                                                                            },
-                                                                            {
-                                                                                html : 'или третий'
-                                                                            }*/
-                                                                        ]
-
-                                                                },
+                                                                 proxy: {
+                                                                 type: 'jsonp',
+                                                                 url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
+                                                                 reader: {
+                                                                 type: 'json',
+                                                                 rootProperty: 'banner'
+                                                                 }
+                                                                 }},*/
+                                                                items: [
+                                                                    {
+                                                                        html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+                                                                    },
+                                                                    {
+                                                                        html : 'А здесь второй',
+                                                                        style: 'background-color: #759E60'
+                                                                    },
+                                                                    {
+                                                                        html : 'или третий'
+                                                                    }
+                                                                ]
+                                                            },
                                                                 {
                                                                     xtype : 'panel',
                                                                     height: bh,
                                                                     html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a></div>'+hinsert  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                                                 },
-
-
                                                                 {
-                                                                //scrollable:'vertical',
-                                                                flex: 1,
-                                                                useToolbar:false,
-                                                                xtype: 'nestedlist',
-                                                                iconCls: 'star',
-                                                                displayField: 'filmpage',
-                                                                store:{
-
-                                                                type: 'tree',
-
-                                                                fields: [
-                                                                    'name','image','id','filmpage',
-                                                                    {name: 'leaf', defaultValue: true}
-                                                                ],
-                                                                root: {
-                                                                    leaf: false
-                                                                },
-                                                                proxy: {
-                                                                    type: 'jsonp',
-                                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
-                                                                    reader: {
-                                                                        type: 'json',
-                                                                        rootProperty: 'films'
-                                                                    }
-                                                                }}}
-
-
-                                                            ],
-
-
+                                                                    //scrollable:'vertical',
+                                                                    height:'1000px',
+                                                                    useToolbar:false,
+                                                                    xtype: 'nestedlist',
+                                                                    iconCls: 'star',
+                                                                    displayField: 'filmpage',
+                                                                    store:{
+                                                                        type: 'tree',
+                                                                        fields: [
+                                                                            'name','image','id','filmpage',
+                                                                            {name: 'leaf', defaultValue: true}
+                                                                        ],
+                                                                        root: {
+                                                                            leaf: false
+                                                                        },
+                                                                        proxy: {
+                                                                            type: 'jsonp',
+                                                                            url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'filmlist.php?f_cid='+f_cid,
+                                                                            reader: {
+                                                                                type: 'json',
+                                                                                rootProperty: 'films'
+                                                                            }
+                                                                        }}}]}],
                                                     listeners: {
-                                                    initialize : function() {
-                                                        s_image = post.get('image');
-                                                        cfid = post.get('cid');
-                                                        cat1 = record.get('code');
-                                                        banner = post.get('banner');
-                                                        site = post.get('site');
-                                                        adress = post.get('adress');
-                                                        phone = post.get('phone');
-                                                        ds_name = post.get('list');
-                                                        ditem = favestore.findRecord('name',ds_name);
-                                                        if (typeof ttt != 'undefined'){
 
-                                                        }
-                                                        else{
-                                                            ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
-                                                                handler: function(button){
-                                                                    if(ditem!= null)
-                                                                    {
-                                                                        favestore.remove(ditem);
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        favestore.add([{
-                                                                            name: ds_name,
-                                                                            ftype: cat1,
-                                                                            image: s_image,
-                                                                            site: site,
-                                                                            banner: banner,
-                                                                            adress: adress,
-                                                                            phone: phone,
-                                                                            fid : cfid
-                                                                        }]);
-                                                                        myConfirm('сообщение ', alert);
+                                                        initialize : function() {
+                                                            s_image = post.get('image');
+                                                            cfid = post.get('cid');
+                                                            cat1 = record.get('code');
+                                                            banner = post.get('banner');
+                                                            site = post.get('site');
+                                                            adress = post.get('adress');
+                                                            phone = post.get('phone');
+                                                            ds_name = post.get('list');
+                                                            ditem = favestore.findRecord('name',ds_name);
+                                                            if (typeof ttt != 'undefined'){
 
-                                                                        function myConfirm(msg, func){
-                                                                            var div=document.createElement('div');
-                                                                            div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
-                                                                            div.onclick=function(e){
-                                                                                var t=e?e.target:window.event.srcElement;
-                                                                                if(t.tagName=='INPUT'){
-                                                                                    t.value=='Обновить'&&func('да');
-                                                                                    this.parentNode.removeChild(this)
-                                                                                }
-                                                                            }
-                                                                            div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
-
-                                                                            return document.body.appendChild(div);
+                                                            }
+                                                            else{
+                                                                ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
+                                                                    handler: function(button){
+                                                                        if(ditem!= null)
+                                                                        {
+                                                                            favestore.remove(ditem);
                                                                         }
-                                                                    }
-                                                                    favestore.sync();
-                                                                    delete window.ditem;
-                                                                    //adding to favorite
-                                                                    /*db.transaction(function(tx) {
-                                                                        tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
-                                                                                len = results.rows.length;
-                                                                                console.log(len);
-                                                                                if (len  > 0 ) {
-                                                                                    Ext.Msg.alert("Удалено");
-                                                                                    tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
+                                                                        else
+                                                                        {
+                                                                            favestore.add([{
+                                                                                name: ds_name,
+                                                                                ftype: cat1,
+                                                                                image: s_image,
+                                                                                site: site,
+                                                                                banner: banner,
+                                                                                adress: adress,
+                                                                                phone: phone,
+                                                                                fid : cfid
+                                                                            }]);
+                                                                            myConfirm('сообщение ', alert);
 
-                                                                                    });
+                                                                            function myConfirm(msg, func){
+                                                                                var div=document.createElement('div');
+                                                                                div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                                                div.onclick=function(e){
+                                                                                    var t=e?e.target:window.event.srcElement;
+                                                                                    if(t.tagName=='INPUT'){
+                                                                                        t.value=='Обновить'&&func('да');
+                                                                                        this.parentNode.removeChild(this)
+                                                                                    }
                                                                                 }
-                                                                                else{
-                                                                                    Ext.Msg.alert("Добавлено");
-                                                                                    favestore.add([{
-                                                                                        name: s_name,
-                                                                                        ftype: cat1,
-                                                                                        image: s_image,
-                                                                                        site: site,
-                                                                                        banner: banner,
-                                                                                        adress: adress,
-                                                                                        phone:phone,
-                                                                                        fid : cfid
-                                                                                    }]);
-                                                                                    favestore.sync();
-                                                                                }
+                                                                                div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
 
-                                                                            },
-                                                                            function (tx, error)
-                                                                            {
-                                                                                favestore .add([{
-                                                                                    name: s_name,
-                                                                                    ftype: cat1,
-                                                                                    image: s_image,
-                                                                                    site: site,
-                                                                                    banner: banner,
-                                                                                    adress: adress,
-                                                                                    phone:phone,
-                                                                                    fid : cfid
-
-                                                                                }]);
-                                                                                favestore.sync();
+                                                                                return document.body.appendChild(div);
                                                                             }
-                                                                        )});*/
+                                                                        }
+                                                                        favestore.sync();
+                                                                        delete window.ditem;
+                                                                        //adding to favorite
+                                                                        /*db.transaction(function(tx) {
+                                                                         tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
+                                                                         len = results.rows.length;
+                                                                         console.log(len);
+                                                                         if (len  > 0 ) {
+                                                                         Ext.Msg.alert("Удалено");
+                                                                         tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
 
-                                                                }
+                                                                         });
+                                                                         }
+                                                                         else{
+                                                                         Ext.Msg.alert("Добавлено");
+                                                                         favestore.add([{
+                                                                         name: s_name,
+                                                                         ftype: cat1,
+                                                                         image: s_image,
+                                                                         site: site,
+                                                                         banner: banner,
+                                                                         adress: adress,
+                                                                         phone:phone,
+                                                                         fid : cfid
+                                                                         }]);
+                                                                         favestore.sync();
+                                                                         }
 
-                                                            }]));
+                                                                         },
+                                                                         function (tx, error)
+                                                                         {
+                                                                         favestore .add([{
+                                                                         name: s_name,
+                                                                         ftype: cat1,
+                                                                         image: s_image,
+                                                                         site: site,
+                                                                         banner: banner,
+                                                                         adress: adress,
+                                                                         phone:phone,
+                                                                         fid : cfid
 
-                                                        }
+                                                                         }]);
+                                                                         favestore.sync();
+                                                                         }
+                                                                         )});*/
+
+                                                                    }
+
+                                                                }]));
+
+                                                            }
                                                             tb2.show();
                                                             //tb3 = this.getToolbar();tb3.hide();
                                                             tb.hide();
 
-                                                    //this.getToolbar(treeStore2).hide();
-                                                     } ,
-                                                     deactivate: function() {
-                                                        tb.show();
+                                                            //this.getToolbar(treeStore2).hide();
+                                                        } ,
 
-                                                        tb2.hide();
 
-                                                        //this.getToolbar().hide();
+
+                                                        deactivate: function() {
+                                                            tb.show();
+                                                            tb2.hide();
                                                         }
-
-                                                    }
-
-                                        });
+                                                    }});
                                                 nestedList.getDetailCard();
                                                 nestedList.setDetailCard(fil);
                                             }
@@ -985,11 +976,6 @@ treestore = Ext.create("Ext.NestedList", {
                                     defaults: {
                                      styleHtmlContent: true
                                     },
-                                    detailCard: {
-                                        xtype: 'panel',
-                                        //scrollable: true,
-                                        styleHtmlContent: true
-                                    },
                                     listeners:{
                                             activate : function() {
                                                     tb.show();
@@ -1004,7 +990,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                         {
                                             title: 'Сегодня',
-                                            //scrollable:'vertical',
+                                            scrollable:'vertical',
                                             xtype: 'nestedlist',
                                             displayField: 'list',
                                     store: {
@@ -1037,10 +1023,10 @@ treestore = Ext.create("Ext.NestedList", {
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                     tb2.setTitle(post.get('name'));
                                                     if((post.get('special'))!= undefined ) {
-                                                    bh='132px';
+                                                    bh='65px';
                                                     hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
                                                 }else{
-                                                    bh = '90px';
+                                                    bh = '50px';
                                                     hinsert = '';
                                                 }
                                                 var f_cid = post.get('cid');
@@ -1194,13 +1180,8 @@ treestore = Ext.create("Ext.NestedList", {
                                             }
                                         ,
                                             {
-                                            updateTitleText :false,
-                                            useTitleAsBackText: false,
-                                            defaultBackButtonText : null,
-                                            backText: '<div class="backtext"></div>',
                                             title: 'Клубы',
-                                            //scrollable:'vertical',
-
+                                            useTitleAsBackText: false,
                                             xtype: 'nestedlist',
                                             //iconCls: 'star',
                                             displayField: 'list',
@@ -1246,7 +1227,16 @@ treestore = Ext.create("Ext.NestedList", {
                                                 backText: '<div class="backtext"></div>',
                                                 useToolbar:false,
                                                 layout: 'vbox',
-                                                items: [           {
+                                                    fullscreen: true,
+                                                    //useToolbar:true,
+                                                    scrollable:'vertical',
+                                                    flex:1,
+                                                    items: [
+                                                        {
+                                                            defaults: {
+                                                                styleHtmlContent: true
+                                                            },
+                                                            items:[           {
                                                                         xtype: 'carousel',
                                                                         height: '225px',
 
@@ -1288,13 +1278,13 @@ treestore = Ext.create("Ext.NestedList", {
                                                                 },
                                                                     {
                                                                         xtype : 'panel',
-                                                                        height: 90,
+                                                                        height: 60,
                                                                         html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a></div>'  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                                                     },
 
                                                                     {
                                                                     //scrollable:'vertical',
-                                                                    flex: 1,
+                                                                    height: 1000,
                                                                     useToolbar:false,
                                                                     xtype: 'nestedlist',
                                                                     iconCls: 'star',
@@ -1319,7 +1309,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         }
                                                                     }}}
 
-                                                                ],
+                                                                ]}],
                                                         detailCard: {
                                                             xtype: 'panel',
                                                             //llable: true,
