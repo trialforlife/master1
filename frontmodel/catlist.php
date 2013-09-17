@@ -19,7 +19,7 @@ if (mysql_affected_rows() > 0) {
 	while($row = mysql_fetch_array($dbresult))
 	{   if($row["cat_id"]== 10){
             if($f_count == 0){
-                $cc = '<img style="margin-right: -7px; width: 20px; height: 20px" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
+                $cc = '<img style="margin-right: -9px; width: 20px; height: 20px" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
                 $d_style = 'color: rgba(255,255,255,0.3) !important; text-shadow: none !important;';
             }
             else{
@@ -42,7 +42,7 @@ if (mysql_affected_rows() > 0) {
         else{
 
             $d_style = 'color: rgba(255,255,255,0.3) !important; text-shadow: none !important;';
-            $cc = '<img style="margin-right: -7px; width: 20px; height: 20px" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
+            $cc = '<img style="margin-right: -9px; width: 20px; height: 20px" src="http://now-yakutsk.stairwaysoft.net/mobile/img/clock-ico.png">';
         }
 		array_push($result["cat"],array(
 			"id"=>$row["cat_id"],
