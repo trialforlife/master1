@@ -634,9 +634,10 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                     html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.raw.banner+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
 
-                                                }
-                                                {
-                                                    
+                                                },
+                                                {   html:'2 banner',
+                                                    style:'background: blueviolet;'
+
                                                 }
                                             ]
 
