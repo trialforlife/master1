@@ -575,7 +575,7 @@ pf{
 	text-align: center;
 	display: block;
     float: left;
-    min-height: 88px;
+    min-height: 47px;
     /*background: rgb(3, 3, 83) !important;
 */}
 .x-button .x-button-icon{
@@ -680,7 +680,7 @@ pf{
     background:url(../img/ico_search.png) no-repeat;
     width: 2.7em !important;
     float: right !important;
-    top: -77px!important;
+    top: -31px!important;
     right: 0;
     height: 0;
     padding: 0!important;
@@ -690,7 +690,7 @@ pf{
 
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
-    margin: -76px 0 0 0;
+    margin: -36px 0 0 0;
     right: 0;
     float: right;
     position: absolute;
@@ -794,7 +794,7 @@ pf{
     margin-top: -129px;
 }
 #save1 {
-    margin-top: -80px;
+    margin-top: -40px;
     position: absolute!important;
     z-index: 11111!important;
     right: 0!important;
@@ -830,7 +830,7 @@ pf{
     width: 1.3em;
     height: 2em;
     float: left;
-    margin-top: -111px;
+    margin-top: -68px;
     margin-left: 5px;
     padding-left: 13px;
     padding-top: 0.6em;

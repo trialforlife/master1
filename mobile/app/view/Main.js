@@ -599,6 +599,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             title:'Избранное',
                                                 items:[{
                                                     xtype:'button',
+
                                                     ui:'back',
                                                     id:'sback',
                                                     handler:function(button){
