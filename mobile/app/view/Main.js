@@ -582,10 +582,18 @@ treestore = Ext.create("Ext.NestedList", {
 
                                     fil = Ext.create('Ext.Container', {
                                         fullscreen: true,
+                                        scrollable:'vertical',
                                         layout: 'vbox',
+                                        flex:1,
                                         items: [
-                                            {xtype:'toolbar',
-                                            title:'Избранное',
+                                            {
+                                            defaults: {
+                                                styleHtmlContent: true
+                                            },
+                                            items: [
+                                                {
+                                                xtype:'toolbar',
+                                                title:'Избранное',
                                                 items:[{
                                                     xtype:'button',
                                                     ui:'back',
@@ -627,6 +635,9 @@ treestore = Ext.create("Ext.NestedList", {
                                                     html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.raw.banner+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
 
                                                 }
+                                                {
+                                                    
+                                                }
                                             ]
 
                                         },
@@ -639,7 +650,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                             {
                                                 //scrollable:'vertical',
-                                                flex: 1,
+                                                height:1000,
                                                 useToolbar:false,
                                                 xtype: 'nestedlist',
                                                 iconCls: 'star',
@@ -667,7 +678,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                         ]
 
-                                    });
+                                    }]});
                                     flist.hide();
                                     fil.show();
                                },
