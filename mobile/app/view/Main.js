@@ -167,8 +167,9 @@ treestore = Ext.create("Ext.NestedList", {
 
                                         var fil = Ext.create('Ext.Container', {
                                             fullscreen: true,
-                                            scroll:'vertical',
-                                            //layout: 'vbox',
+                                            scrollable:'vertical',
+                                            layout: 'vbox',
+                                            flex:1,
                                             /*store: {
                                                 type: 'tree',
                                                 fields: [
@@ -187,58 +188,55 @@ treestore = Ext.create("Ext.NestedList", {
                                                     }
                                                 }},*/
                                             items:[{
-
-                                                scroll:'vertical',
-                                                layout: 'vbox',
+                                             //   layout: 'vbox',
+                                                defaults: {
+                                                    styleHtmlContent: true
+                                                },
+                                                items:[{
                                                 xtype:'toolbar',
                                                 docked:'top',
                                                 title: record.get('name'),
-                                                    items: [{
+                                                    items: [
+                                                     {
                                                         ui: 'back',
                                                         xtype: 'button',
                                                         id: 'sback',
                                                         handler: function (button) {
                                                             fil.destroy();
                                                             ser.show();
-
                                                         }
+                                                    }]},
 
-                                                    },
-                                                    {scroll:'vertical',
+                                                    {
                                                     xtype: 'carousel',
                                                     height: '225px',
-
                                                         items: [
                                                             {
                                                                 html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
-
-                                                            }/*,
+                                                            },
                                                              {
                                                              html : 'А здесь второй',
                                                              style: 'background-color: #759E60'
                                                              },
                                                              {
-                                                             html : 'или третий'
-                                                             }*/
+                                                             html : 'или третий',
+                                                             style: 'background-color: #blueviolet'
+                                                             }
                                                         ]
-
                                                     },
                                                         {   xtype : 'panel',
-                                                            height: '120px',
+                                                            height: '60px',
                                                             html: '<div class="comp-location"><span class="locate"><i>'+record.get('adress')+'</i><b>'+record.get('phone')+'</b></span><a href="">'+record.get('site')+'</a><div>'
-
                                                         },
-
                                                 {
-                                                    minHeight: '200px',
+                                                    scrollable:'vertical',
+                                                    height: '1000px',
                                                     useToolbar:false,
                                                     xtype: 'nestedlist',
                                                     iconCls: 'star',
                                                     displayField: 'filmpage',
                                                     store:{
-
                                                         type: 'tree',
-
                                                         fields: [
                                                             'name','image','id','filmpage',
                                                             {name: 'leaf', defaultValue: true}
@@ -253,12 +251,10 @@ treestore = Ext.create("Ext.NestedList", {
                                                                 type: 'json',
                                                                 rootProperty: 'films'
                                                             }
-                                                        }}}
+                                                        }}
 
-
-                                            ]
-                                            }],
-/*
+                                            }]}],
+                                            /*
                                             dockedItems: [
                                                 {
                                                     xtype: 'toolbar',
@@ -302,7 +298,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                     ]
                                                 }
                                             ],*/
-
                                             listeners: {
                                                 /*activate : function() {
                                                     s_image = post.get('image');
@@ -349,17 +344,11 @@ treestore = Ext.create("Ext.NestedList", {
                                                     }
                                                 } ,*/
                                                 deactivate: function() {
-
                                                 }
-
                                             }
-
                                         });
-
                                         fil.show();
                                         ser.hide();
-
-
                                     }
                                 }
 
@@ -1860,24 +1849,13 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                                 }
                                                                                             }}}
                                                                                 ]
-
-
-
-
-                                                                    },
-
-
-
+                                                                    }
                                                                ],
-
-
                                                                     detailCard: {
                                                                         xtype: 'panel',
-
                                                                         styleHtmlContent: true
                                                                     },
                                                                     listeners: {
-
                                                                     activate : function() {
                                                                             s_image = post.get('image');
                                                                             cfid = post.get('cid');
@@ -1888,10 +1866,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                             phone = post.get('phone');
                                                                             ds_name = post.get('list');
                                                                             ditem = favestore.findRecord('name',ds_name);
-
-                                                                            if (typeof ttt != 'undefined'){
-
-                                                                            }
+                                                                            if (typeof ttt != 'undefined'){}
                                                                             else{
                                                                             ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',
                                                                             handler: function(){
@@ -1913,7 +1888,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                         fid : cfid
                                                                                     }]);
                                                                                     myConfirm('сообщение ', alert);
-
                                                                                     function myConfirm(msg, func){
                                                                                         var div=document.createElement('div');
                                                                                         div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
@@ -1925,7 +1899,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                             }
                                                                                         }
                                                                                         div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
-
                                                                                         return document.body.appendChild(div);
                                                                                     }
                                                                                 }
@@ -1933,26 +1906,18 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                  delete window.ditem;
                                                                                 //adding to favorite
                                                                                  }
-
                                                                             }]));
-
                                                                             }
-
-
                                                                         tb2.show();
-
                                                                             tb1.hide();
-
                                                                      } ,
                                                                      deactivate: function() {
                                                                         tb1.show();
                                                                         tb2.hide();
                                                                         tb.hide();
                                                                         }
-
                                                                     }
-
-                                            });
+                                                    });
                                                     nestedList.getDetailCard();
                                                     nestedList.setDetailCard(fil);
                                                 }
@@ -1999,7 +1964,6 @@ treestore = Ext.create("Ext.NestedList", {
                                 else{
                                     nestedList.setDetailCard(block);
                                 }
-
                                 }
                     }
          }
