@@ -543,11 +543,14 @@ treestore = Ext.create("Ext.NestedList", {
                                                         var ditem = favestore.findRecord('name',did);
                                                         console.log(ditem);
                                                         favestore.remove(ditem);
+
                                                         myConfirm('сообщение ', alert);
+
+
 
                                                         function myConfirm(msg, func){
                                                             var div=document.createElement('div');
-                                                            div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;border:1px dotted #000"
+                                                            div.style.cssText="text-align:center;padding:10px;position:fixed;width:200px;height:40px;bottom:50%;right:50%;margin-right:-100px;margin-bottom:-20px;"
                                                             div.onclick=function(e){
                                                                 var t=e?e.target:window.event.srcElement;
                                                                 if(t.tagName=='INPUT'){
@@ -555,11 +558,14 @@ treestore = Ext.create("Ext.NestedList", {
                                                                     this.parentNode.removeChild(this)
                                                                 }
                                                             }
-                                                            div.innerHTML="<div style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Удалено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
+                                                            div.innerHTML="<div id='del' style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Удалено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
                                                             return document.body.appendChild(div);
                                                         }
                                                             favestore.sync();
                                                             record.destroy();
+                                                            var element = document.getElementById("del");
+
+                                                            setTimeout(function(){element.parentNode.removeChild(element)},1000);
                                                         }
                                                     }
                                             });
