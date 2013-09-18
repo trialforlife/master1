@@ -125,7 +125,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             }]
                                         },
                                             {
-                                                //height:'50px',
+                                            //height:'50px',
                                             //flex:1,
 
                                             scroll:'vertical',
@@ -599,7 +599,6 @@ treestore = Ext.create("Ext.NestedList", {
                                             title:'Избранное',
                                                 items:[{
                                                     xtype:'button',
-
                                                     ui:'back',
                                                     id:'sback',
                                                     handler:function(button){
@@ -858,7 +857,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                             ds_name = post.get('list');
                                                             ditem = favestore.findRecord('name',ds_name);
                                                             if (typeof ttt != 'undefined'){
-
                                                             }
                                                             else{
                                                                 ttt = (tb2.insert(3,[ {xtype:'spacer'},{align:'right', xtype:'button', id: 'fs_id',

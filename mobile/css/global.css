@@ -755,12 +755,12 @@ pf{
 .x-form-fieldset .x-form-fieldset-inner {
     position: relative;
     z-index: 4;
-    margin-top: 40px !important;
-    margin-bottom: 40 !important;
-    height: 56px;
+    margin-top: 0.5em !important;
+    margin-bottom: 1.1em !important;
+    height: 28px;
     float: left;
-    border-radius: 40px !important;
-    border: 2px solid #5a0cff !important;
+    border-radius: 20px !important;
+    border: 1px solid #5a0cff !important;
     padding-left: 1.35em;
     padding-right: 2.35em !important;
     width: 100%;
@@ -773,12 +773,12 @@ pf{
     box-shadow:0 1px 0 rgba(255,255,255,0.24);
     position:relative;
     background: #1e3244 !important;
-    height: 4.1em;
+    height: 3.1em;
 }
 .nav-element-s .txt {
-    padding: 0 0 0 9%;
+    padding: 0 0 0 1em;
     color: #fff;
-    font: 0.9em Hlvl;
+    font: 1.1em/2.7em Hlvl;
 }
 #ed, #save1 {
     height: 2em!important;
@@ -847,7 +847,7 @@ pf{
     background-image: url(../img/ico_menu.png)!important;
     background-repeat: no-repeat !important;
     float: left;
-    top: 25px;
+    top: 17px;
     left: 10px;
     position: absolute;
     z-index: 1111!important;
@@ -868,11 +868,15 @@ pf{
 }
 input {
     outline: none;
-    height: 54px;
+    height: 30px;
     width: 98%;
     vertical-align: bottom;
     border: none;
     margin-left: 25px;
+
+}
+.x-input-el{
+    min-height: 1.5em !important;
 }
 .x-msgbox-title{
     position: absolute !important;
