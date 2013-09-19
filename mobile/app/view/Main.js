@@ -564,7 +564,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                             favestore.sync();
                                                             record.destroy();
                                                             var element = document.getElementById("del");
-
                                                             setTimeout(function(){element.parentNode.removeChild(element)},1000);
                                                         }
                                                     }
