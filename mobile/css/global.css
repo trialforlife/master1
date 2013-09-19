@@ -691,7 +691,7 @@ pf{
 #fs_id{
     background:url(../img/star-tap.png) no-repeat;
     margin: -36px 0 0 0;
-    right: 0;
+    right: -0.8em;
     float: right;
     position: absolute;
     z-index: 111111;

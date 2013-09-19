@@ -127,7 +127,6 @@ treestore = Ext.create("Ext.NestedList", {
                                             {
                                             //height:'50px',
                                             //flex:1,
-
                                             scroll:'vertical',
                                             style:"background:#1e3244 ;",
                                             xtype: 'fieldset',
