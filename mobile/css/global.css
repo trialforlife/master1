@@ -1,7 +1,8 @@
 html,body{
-	background:url(../img/bg.jpg) repeat-x !important;
+
     overflow: auto ;
     height: 100%!important;
+
 	/*min-width:320px;
 	max-width:640px;*/
 
@@ -536,8 +537,8 @@ pf{
 	padding:0 0 50px;
 }
 .x-scroll-scroller{
-	background: url(../img/bg.jpg) repeat-x;
-	float: left;
+	/*background: url(../img/bg.jpg) repeat-x;
+	*/float: left;
 	width: 100%;
 }
 .x-center, .x-centered {
@@ -608,8 +609,8 @@ pf{
     height: 58px !important;
 }
 .x-body{
-    background: url(../img/bg.jpg) repeat-x;
-
+    /*background: url(../img/bg.jpg) repeat-x;
+*/
 }
 .x-inner  {
 }
@@ -948,4 +949,12 @@ input {
 }
 .x-toolbar.x-docked-top {
     height: 46px !important;
+}
+.x-layout-card-item{
+    /*background:url(../img/bg.jpg) repeat-x !important;
+    background-attachment: fixed !important;*/
+}
+.x-scroll-container{
+    background:url(../img/bg.jpg) repeat-x !important;
+    background-attachment: scroll !important;
 }
