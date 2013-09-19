@@ -1448,7 +1448,7 @@ body.x-desktop {
 }
 
 /* line 80, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/_Class.scss */
-*, *:after, *:before {
+*, *:after, *:before {/*
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1458,7 +1458,7 @@ body.x-desktop {
   -webkit-user-select: none;
   -ms-user-select: none;
   -ms-touch-action: none;
-  -moz-user-select: -moz-none;
+  -moz-user-select: -moz-none;*/
 }
 
 /* line 91, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/_Class.scss */

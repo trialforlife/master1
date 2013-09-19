@@ -417,7 +417,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                             listeners:{
                                 activate: function(button){
-                                tb.setTitle('Избранное');
+                                tb.setTitle('<div style="position: fixed; margin-left: 45%;">Избранное</div>');
                                 favestore.sync();
                                 if(typeof Ext.getCmp('serch')!='undefined'){
                                     //alert('fu');
