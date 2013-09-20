@@ -829,10 +829,11 @@ pf{
 .backtext{
     background-image: url(../img/main-ico.png);
     background-repeat: no-repeat;
-    width: 13px;
-    height: 16px;
+    background-position-y: 13px;
+    width: 67px;
+    height: 41px;
     float: left;
-    margin-top: -73px;
+    margin-top: -87px;
     margin-left: 5px;
     padding-left: 13px;
     padding-top: 0.6em;
