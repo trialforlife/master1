@@ -2240,8 +2240,8 @@ audio {
 }
 /* line 10, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/_Toolbar.scss */
 .x-toolbar.x-docked-top {
-  border-bottom: 1px solid;
-}
+ /* border-bottom: 1px solid;
+*/}
 /* line 14, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/_Toolbar.scss */
 .x-toolbar.x-docked-bottom {
   border-top: 1px solid;

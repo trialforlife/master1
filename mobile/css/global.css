@@ -546,7 +546,6 @@ pf{
 	margin: 0px;
 }
 .x-toolbar.x-docked-top {
-	border-bottom: 1px solid;
 	height: 88px;
 	width: 100%;
 	padding: 0 0 2px;
@@ -957,4 +956,7 @@ input {
 .x-scroll-container{
     background:url(../img/bg.jpg) repeat-x !important;
     background-attachment: scroll !important;
+}
+.x-list .x-list-item.x-item-selected .x-dock-horizontal, .x-list .x-list-item.x-item-selected.x-list-item-tpl {
+    background: none !important;
 }

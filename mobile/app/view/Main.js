@@ -1789,9 +1789,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         //useToolbar:true,
                                                                         scrollable:'vertical',
                                                                         layout: 'vbox',
-                                                                        flex:1,
+                                                                       flex:1,
                                                                             items: [           {
-
                                                                         /*store: {
                                                                             type: 'tree',
                                                                             fields: [
@@ -1815,11 +1814,12 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                 styleHtmlContent: true
                                                                             },
                                                                                 items:[{
+                                                                                    pressedCls:'',
+                                                                                    selectedItemCls:'',
                                                                                     xtype: 'carousel',
-                                                                                    height: '225px',
+                                                                                    height: '224px',
                                                                                     items: [
                                                                                         {
-
                                                                                             html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
 
                                                                                             //style: 'background:  url("http://now-yakutsk.stairwaysoft.net/mobile/img/sl_pic.jpg")!important;'
@@ -1829,22 +1829,34 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                             //style:  'width:100%; '
                                                                                         },
                                                                                         {
-                                                                                            html : 'или третийwww',
+                                                                                            html : 'или третийww',
                                                                                             style:  'background:blue'
                                                                                         }
                                                                                     ]
                                                                                 },{
+
                                                                                     xtype : 'panel',
                                                                                     height: '60px',
                                                                                     html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                                 },
-                                                                                    {   height: '1000px',
+                                                                                    {   hideOnMaskTap:false,
+                                                                                        height: '1000px',
                                                                                         useToolbar:false,
                                                                                         scrollable:false,
                                                                                         xtype: 'nestedlist',
                                                                                         iconCls: 'star',
                                                                                         displayField: 'filmpage',
+                                                                                        listeners:{
+                                                                                            itemtap:function( h, list, index, target, record, e, eOpts ){
+                                                                                                //alert(0);
+                                                                                                return false
+                                                                                            },
+                                                                                            leafitemtap: function(h, list, index, target, record, e, eOpts ){
+                                                                                                //alert(1);
+                                                                                                return false
+                                                                                            }
+                                                                                        },
                                                                                         store:{
 
                                                                                             type: 'tree',
@@ -1863,14 +1875,15 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                                     type: 'json',
                                                                                                     rootProperty: 'films'
                                                                                                 }
-                                                                                            }}}
+                                                                                            }}},
+
                                                                                 ]
                                                                     }
                                                                ],
-                                                                    detailCard: {
+                                                                    /*detailCard: {
                                                                         xtype: 'panel',
                                                                         styleHtmlContent: true
-                                                                    },
+                                                                    },*/
                                                                     listeners: {
                                                                     activate : function() {
                                                                             s_image = post.get('image');
@@ -1927,11 +1940,13 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         tb2.show();
                                                                             tb1.hide();
                                                                      } ,
-                                                                     deactivate: function() {
+                                                                    deactivate: function() {
                                                                         tb1.show();
                                                                         tb2.hide();
                                                                         tb.hide();
-                                                                        }
+                                                                        },
+
+
                                                                     }
                                                     });
                                                     nestedList.getDetailCard();
