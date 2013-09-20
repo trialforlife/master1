@@ -970,7 +970,7 @@ body {
 /**
  * @class Ext.layout.Fit
  */
-/* line 5, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Fit.scss */
+/* line 5, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Fit.scss
 .x-stretched.x-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -978,7 +978,7 @@ body {
   -webkit-box-orient: vertical;
   -ms-flex-direction: column;
   flex-direction: column;
-}
+}*/
 /* line 10, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Fit.scss */
 .x-stretched.x-container > .x-inner, .x-stretched.x-container > .x-body,
 .x-stretched.x-container > .x-body > .x-inner {
@@ -4978,9 +4978,9 @@ body.x-desktop {
 /* line 19, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/default/src/_Toolbar.scss */
 .x-title {
   line-height: 2.1em;
-  font-size: 1.2em;
+  font-size: 1.2em;/*
   margin: 0 0.3em;
-  padding: 0 0.3em;
+  padding: 0 0.3em;*/
 }
 
 /**
