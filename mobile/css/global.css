@@ -548,7 +548,7 @@ pf{
 .x-toolbar.x-docked-top {
 	height: 88px;
 	width: 100%;
-	padding: 0 0 2px;
+	padding: 0;
 	float: left;
 	position: relative;
 	background: url(../img/headbg.jpg) repeat-x rgba(10, 0, 83, 1) !important;
