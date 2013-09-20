@@ -57,7 +57,7 @@
         </script>
         <?php $this->widget('MUploadify',array(
             'name'=>'new_image',
-            'script'=>array('/backend/files/uploadify'),
+            'script'=>array('/backend/files/uploadify/width/200/height/140'),
             'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;',
             'uploadButton'=>null,
             'buttonText'=>'Upload',

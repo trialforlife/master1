@@ -39,7 +39,7 @@ $prependName = 'photos/logos/' . uniqid();
 		<?php echo $form->hiddenField($model,'banner_back'); ?>
 		<?php echo $form->error($model,'banner_back'); ?>
 		<?php $this->widget('MUploadify',array(
-		  'name'=>'new_image', 'script'=>array('/backend/files/uploadify','prependName'=>$prependName), 'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;', 'uploadButton'=>null, 'buttonText'=>'Back image', 'auto'=>true,
+		  'name'=>'new_image', 'script'=>array('/backend/files/uploadify/width/200/height/140','prependName'=>$prependName), 'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;', 'uploadButton'=>null, 'buttonText'=>'Back image', 'auto'=>true,
 		  'onComplete'=> "js:function(file, data, response) {uploadedFileShow(response.name, '#imageHolder_banner_back', '#Banner_banner_back');}",
 		)); ?>
 	</div>

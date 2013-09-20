@@ -18,6 +18,7 @@ class FilesController extends BController
     public function actionUploadify()
     {
         // Some more uploadify shit
+
         $img_field = '';
         if (isset($_POST['new_image'])) $img_field = 'new_image';
         if (isset($_POST['new_image_2'])) $img_field = 'new_image_2';
@@ -37,9 +38,15 @@ class FilesController extends BController
             }
             $localName=$_SERVER['DOCUMENT_ROOT'].'/images/'.$localName;
             // So, let's do it
-            $newImage = CUploadedFile::getInstanceByName($img_field);
+            $newImage = EUploadedImage::getInstanceByName($img_field);
+
+            $newImage->maxWidth=(int)$_GET['width'];
+            $newImage->maxHeight=(int)$_GET['height'];
+
+            var_dump($newImage);
             if(!$newImage->saveAs($localName))
             {
+                //var_dump($newImage);die();
                 throw new CHttpException(500);
             }
             echo 1;

@@ -1433,3 +1433,89 @@ Stack trace:
 REQUEST_URI=/index.php/backend/films/update/id/kino3.png
 HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/films/update/id/3
 ---
+2013/09/12 18:47:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "banner.png".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('banner.png')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/banner.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinemabanner/index/id_c/1
+---
+2013/09/12 18:47:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "2.png".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('2.png')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/2.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinemabanner/index/id_c/1
+---
+2013/09/17 13:33:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php:483
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(270): CController->missingAction('login')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(282): CController->run('login')
+#2 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/login
+---
+2013/09/20 12:46:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php:483
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(270): CController->missingAction('login')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(282): CController->run('login')
+#2 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#3 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/login
+---
+2013/09/20 12:46:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "banner.png".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('banner.png')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/banner.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinemab/index/id_c/1
+---
+2013/09/20 12:46:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/2.png".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('images/2.png')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/2.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinemab/index/id_c/1
+---
+2013/09/20 12:46:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "2.png".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('2.png')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/2.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/cinemab/index/id_c/1
+---
+2013/09/20 12:48:56 [error] [php] imagepng(): Unable to open 'D:\D:\Winginx/home/yakutsk-back.dv/public_html/images/thumbs\thumb_Winginx/home/yakutsk-back.dv/public_html/images/2.png' for writing: Invalid argument (D:\Winginx\home\yakutsk-back.dv\public_html\protected\models\EUploadedImage.php:302)
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\public_html\protected\modules\backend\controllers\FilesController.php(49): EUploadedImage->saveAs()
+#1 D:\Winginx\home\yakutsk-back.dv\framework\web\actions\CInlineAction.php(49): FilesController->actionUploadify()
+#2 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(286): FilesController->runAction()
+#4 D:\Winginx\home\yakutsk-back.dv\framework\web\CController.php(265): FilesController->runActionWithFilters()
+#5 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(282): FilesController->run()
+#6 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CWebApplication->run()
+REQUEST_URI=/index.php/backend/files/uploadify
+2013/09/20 13:04:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/2013-08-08_1720.png".' in D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php:286
+Stack trace:
+#0 D:\Winginx\home\yakutsk-back.dv\framework\web\CWebApplication.php(141): CWebApplication->runController('images/2013-08-...')
+#1 D:\Winginx\home\yakutsk-back.dv\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 D:\Winginx\home\yakutsk-back.dv\public_html\index.php(10): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/2013-08-08_1720.png
+HTTP_REFERER=http://yakutsk-back.dv/index.php/backend/beautyandhealth/update/id/1
+---

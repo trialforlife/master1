@@ -48,8 +48,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=now-yakutsk',
 			'emulatePrepare' => true,
-			'username' => 'now-yakutsk',
-			'password' => 'E327D28999',
+			'username' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 			'tablePrefix' => '',
 		),

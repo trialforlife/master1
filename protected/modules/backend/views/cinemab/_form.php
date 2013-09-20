@@ -42,7 +42,6 @@
                 $('#imageHolder').empty().append(
                     $("<img/>", {
                             src:uploadedFileRand+localName,
-                            width:217
                             //height:150
                         }
                     ));
@@ -51,7 +50,7 @@
         </script>
         <?php $this->widget('MUploadify',array(
             'name'=>'new_image',
-            'script'=>array('/backend/files/uploadify'),
+            'script'=>array('/backend/files/uploadify/width/300/height/100'),
             'fileExt'=>'*.jpg;*.jpeg;*.gif;*.png;',
             'uploadButton'=>null,
             'buttonText'=>'Upload',
