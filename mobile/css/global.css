@@ -425,7 +425,7 @@ html,body{
 	color:#fff;
 	font:2em Hlvl;
 	display:block;
-	padding:15px 0 0 38px;
+	padding:7px 0 0 38px;
 }
 .time{
 	font:1.2em Hlvl;
@@ -696,8 +696,8 @@ pf{
     z-index: 111111;
 }
 .f_con{
-    float: left;
-    padding-left: 38px;
+    float: left;/*
+    padding-left: 38px;*/
     border-bottom: 1px solid #820cff;
     box-shadow: 0 1px 0 rgba(255,255,255,0.24);
     padding-bottom: 15px;
@@ -705,8 +705,8 @@ pf{
 }
 .restaurant{
     float: left;
-    width: 100%;
-    padding: 15px 0;
+    width: 98%;
+    padding: 0px 1% 0 0;
     border-bottom: 1px solid #820cff;
 }
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap, .x-list-normal .x-list-item.x-list-footer-wrap .x-dock-horizontal {
@@ -829,8 +829,8 @@ pf{
 .backtext{
     background-image: url(../img/main-ico.png);
     background-repeat: no-repeat;
-    width: 1.3em;
-    height: 2em;
+    width: 13px;
+    height: 16px;
     float: left;
     margin-top: -73px;
     margin-left: 5px;
