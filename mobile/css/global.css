@@ -393,18 +393,17 @@ html,body{
     height: 2.2em;
 	max-width:320px;
 	width:100%;
-    font: 0.7em Hlvl;
-	padding:0 0 0 33px;
-	background:url(../img/locate-ico.png) left 5px no-repeat;
+    font: 0.85em Hlvl;
+    padding: 0 0 0 1.5em;
+    background: url(../img/locate-ico.png) top 0px left 5px no-repeat;
 	color:#fff;
-	margin:0 0 0 8px;
 }
 .comp-location .locate b{
 	display:block;
 }
 .comp-location a{
-	color:#fff;
-    font: 0.7em Hlvl;
+	color:#fff !important;
+    font: 0.85em Hlvl;
 	position:absolute;
 	right:9px;
 	bottom:16px;
