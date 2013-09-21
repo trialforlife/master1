@@ -205,7 +205,7 @@ html,body{
     padding: 0 0 0 1.3em;
     margin-top: -57em;
     color: rgba(255,255,255,0.5);
-    font: 0.7em Hlvl !important;
+    font: 0.7em Hlvl;
     height: 2.3em;
     position: absolute;
     bottom: -13px;
@@ -964,9 +964,12 @@ input {
     height: 3.6em;
     border-bottom: 1px solid #820cff;
     color: white;
-    font: 1.1em/2.7em Hlvl !important;
+
 }
 .nav-element-n .txt{
-
     padding: 0 0 0 1em;
+    font: 1.4em/2.7em Hlvl !important;
+}
+.nav-element-n .location{
+    font: 0.9em/0.8em Hlvl !important;
 }
