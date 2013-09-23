@@ -57,7 +57,7 @@ Ext.define('front.view.Main', {
     model: "search"
 });
 
-treestore = Ext.create("Ext.NestedList", {
+    treestore = Ext.create("Ext.NestedList", {
         fullscreen: true,
         updateTitleText :false,
         useTitleAsBackText: false,
@@ -67,8 +67,19 @@ treestore = Ext.create("Ext.NestedList", {
         useToolbar:true,
         id: 'mainPanel',
         /*listConfig:{
-            itemTpl:'<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>'
-        },*/
+            itemTpl:[
+                '<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">{[this.doAction(name)]}</span></div>',
+
+                {
+                    doAction: function(name){
+                        favestore.sync();
+                        return (favestore._totalCount);
+                    }
+                }
+                ]
+
+        },
+        */
         title: '<div class="titleimg"></div>',
         displayField: 'title',
         layout:'card',
@@ -95,6 +106,7 @@ treestore = Ext.create("Ext.NestedList", {
         },
         listeners: {
                     activate : function() {
+
                         if(typeof (Ext.getCmp('serch')) != 'undefined' ){
                             Ext.getCmp('serch').show();
                         }
@@ -1779,14 +1791,13 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                                         var f_cid = post.get('cid');
                                                                         tb2.setTitle(post.get('name'));
-                                                                        console.log(post.get('banner'));
 
                                                                         var fil = Ext.create('Ext.Container', {
                                                                         fullscreen: true,
                                                                         //useToolbar:true,
                                                                         scrollable:'vertical',
                                                                         layout: 'vbox',
-                                                                       flex:1,
+                                                                        flex:1,
                                                                             items: [           {
                                                                         /*store: {
                                                                             type: 'tree',
@@ -1811,11 +1822,55 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                 styleHtmlContent: true
                                                                             },
                                                                                 items:[{
-                                                                                    pressedCls:'',
-                                                                                    selectedItemCls:'',
+                                                                                    store: {
+                                                                                        type: 'tree',
+                                                                                        fields: [
+                                                                                            'c_banner',
+                                                                                            {name: 'leaf', defaultValue: true}
+                                                                                        ],
+                                                                                        root: {
+                                                                                            leaf: false
+                                                                                        },
+
+                                                                                        proxy: {
+                                                                                            type: 'jsonp',
+                                                                                            url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
+                                                                                            reader: {
+                                                                                                type: 'json',
+                                                                                                rootProperty: 'films'
+                                                                                            }
+                                                                                        }},
+                                                                                    listeners:{
+                                                                                        activeitemchange: function (container,post, value, oldValue, eOpts) {
+                                                                                    var activeItemIndex = container.getActiveIndex();
+                                                                                    var galleryTotal = container.getInnerItems() ? container.getInnerItems().length : 0;
+                                                                                    // this would be retrieved normally prior to initially populating the carousel
+
+                                                                                    var photos = [
+                                                                                        {html: record.get('c_banner')},
+                                                                                        {html: 'imagefefw.jpg'},
+                                                                                        {html: 'imagewfefef.jpg'},
+                                                                                        {html: 'imagewe1212.jpg'},
+                                                                                    ];
+
+                                                                                    if ((activeItemIndex + 1 == galleryTotal) && photos.length > galleryTotal) {
+                                                                                        var nextPhoto = photos[galleryTotal]; //loading one in this example, but can be tweaked to load more.
+                                                                                        this.add(nextPhoto);
+                                                                                        }}},
+                                                                                    /*items: [
+                                                                                        {
+                                                                                            html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
+                                                                                        },
+                                                                                        {
+                                                                                            html: 'image2.jpg'
+                                                                                        }
+
+                                                                                    ],*/
+                                                                                    itemTpl:'html: {c_banner}',
                                                                                     xtype: 'carousel',
-                                                                                    height: '224px',
-                                                                                    items: [
+                                                                                    id :'carouselid',
+                                                                                    height: '224px'
+                                                                                    /*items: [
                                                                                         {
                                                                                             html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
 
@@ -1829,8 +1884,9 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                             html : 'или третийww',
                                                                                             style:  'background:blue'
                                                                                         }
-                                                                                    ]
-                                                                                },{
+                                                                                    ]*/
+                                                                                },
+                                                                                    {
 
                                                                                     xtype : 'panel',
                                                                                     height: '50px',
@@ -1877,12 +1933,9 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                 ]
                                                                     }
                                                                ],
-                                                                    /*detailCard: {
-                                                                        xtype: 'panel',
-                                                                        styleHtmlContent: true
-                                                                    },*/
                                                                     listeners: {
                                                                     activate : function() {
+
                                                                             s_image = post.get('image');
                                                                             cfid = post.get('cid');
                                                                             cat1 = record.get('code');
@@ -1931,15 +1984,18 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                     setTimeout(function(){element.parentNode.removeChild(element)},1000);
                                                                                 }
                                                                                  favestore.sync();
-                                                                                 delete window.ditem;
+
+                                                                                delete window.ditem;
                                                                                 //adding to favorite
                                                                                  }
                                                                             }]));
                                                                             }
                                                                         tb2.show();
-                                                                            tb1.hide();
+                                                                        tb1.hide();
+
                                                                      } ,
                                                                     deactivate: function() {
+                                                                        f_count = favestore._totalCount;
                                                                         tb1.show();
                                                                         tb2.hide();
                                                                         tb.hide();
