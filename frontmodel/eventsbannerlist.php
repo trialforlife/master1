@@ -11,7 +11,7 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select evb_id,evb_banner from event_banner where events_banner.t_id = '$f_cid' and evb_published = '1'";
+$query = "select evb_id,evb_banner from event_banner where events_banner.ev_id = '$f_cid' and evb_published = '1'";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
