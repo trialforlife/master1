@@ -21,6 +21,7 @@ if (mysql_affected_rows() > 0) {
 			"image"=>addslashes((string)$row["en_image"]),
 			"adress"=>addslashes((string)$row["en_adress"]),
             "photo"=>addslashes((string)$row["en_photo"]),
+            "phone"=>addslashes((string)$row["en_phone"]),
             "site"=>addslashes((string)$row["en_site"]),
             "banner"=>addslashes((string)$row["en_banner"]),
 			"published"=>addslashes((string)$row["en_published"]),
