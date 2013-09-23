@@ -1872,7 +1872,7 @@ Ext.define('front.view.Main', {
                                                                                                 callback: function(records, operation, success) {
                                                                                                     b_len = records.length;
                                                                                                     for (i=0; i<b_len; i++) {
-                                                                                                        this.add({ html : ' <div style="background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + '); !important; float: left; width: 100%; height: 224px !important;"></div>' });
+                                                                                                        this.add({ html : ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
 
                                                                                                     }
                                                                                                     //console.log(records[0].raw.c_banner);
