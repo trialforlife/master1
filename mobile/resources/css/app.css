@@ -1493,8 +1493,8 @@ input, textarea {
   -ms-user-select: auto;
   line-height: 1.5;
   color: #333;
-  font-size: .8em;
-  padding: 1.2em;
+  /*font-size: .8em;
+  */padding: 1.2em;
 }
 /* line 33, /Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 .x-html body {

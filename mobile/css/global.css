@@ -961,15 +961,15 @@ input {
     background: none !important;
 }
 .nav-element-n{
-    height: 3.6em;
+    height: 3.1em;
     border-bottom: 1px solid #820cff;
     color: white;
 
 }
 .nav-element-n .txt{
     padding: 0 0 0 1em;
-    font: 1.4em/2.7em Hlvl !important;
+    font: 1.1em/2.7em Hlvl;
 }
 .nav-element-n .location{
-    font: 0.9em/0.8em Hlvl !important;
+    font: 0.7em Hlvl;
 }

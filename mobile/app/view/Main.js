@@ -777,10 +777,10 @@ Ext.define('front.view.Main', {
                                                 tb2.setTitle(post.get('name'));
                                                 console.log(post.get('special'));
                                             if((post.get('special'))!= undefined ) {
-                                                bh='87px';
+                                                bh='105px';
                                                 hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
                                             }else{
-                                                bh = '60px';
+                                                bh = '75px';
                                                 hinsert = '';
                                             }
                                                 var fil = Ext.create('Ext.Container', {
@@ -797,37 +797,41 @@ Ext.define('front.view.Main', {
                                                             items:[{
                                                                 xtype: 'carousel',
                                                                 height: '220px',
-                                                                /*store: {
-                                                                 type: 'tree',
-                                                                 fields: [
-                                                                 'b_image',
-                                                                 {name: 'leaf', defaultValue: true}
-                                                                 ],
+                                                                listeners:{
+                                                                    initialize:function(){
 
-                                                                 root: {
-                                                                 leaf: false
-                                                                 },
-
-                                                                 proxy: {
-                                                                 type: 'jsonp',
-                                                                 url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
-                                                                 reader: {
-                                                                 type: 'json',
-                                                                 rootProperty: 'banner'
-                                                                 }
-                                                                 }},*/
-                                                                items: [
-                                                                    {
-                                                                        html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
-                                                                    },
-                                                                    {
-                                                                        html : 'А здесь второй',
-                                                                        style: 'background-color: #759E60'
-                                                                    },
-                                                                    {
-                                                                        html : 'или третий'
-                                                                    }
-                                                                ]
+                                                                        //banner stores
+                                                                        Ext.define('banner', {
+                                                                            extend: 'Ext.data.Model',
+                                                                            config: {
+                                                                                fields: [
+                                                                                    {name: 'c_banner', type: 'string'},
+                                                                                    {name: 'id', type: 'int'}
+                                                                                ]
+                                                                            }
+                                                                        });
+                                                                        bannerstore =Ext.create('Ext.data.Store', {
+                                                                            model: 'banner',
+                                                                            storeId: 'banner',
+                                                                            proxy: {
+                                                                                type: 'jsonp',
+                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php?f_cid='+f_cid,
+                                                                                reader: {
+                                                                                    type: 'json',
+                                                                                    rootProperty: 'films'
+                                                                                }
+                                                                            }
+                                                                        });
+                                                                        bannerstore.load({
+                                                                            callback: function(records, operation, success) {
+                                                                                b_len = records.length;
+                                                                                for (i=0; i<b_len; i++) {
+                                                                                    this.add({ html : ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
+                                                                                }
+                                                                            },
+                                                                            scope: this
+                                                                        })
+                                                                    }}
                                                             },
                                                                 {
                                                                     xtype : 'panel',
@@ -981,7 +985,7 @@ Ext.define('front.view.Main', {
                                 }
                                 //display for about us +
 
-                                //disply for nightlife category
+                        //display for nightlife category
                         if(catdyn!= 'poster' && catdyn!= 'aboutus' && catdyn!= 'beautyandhealh' && catdyn!= 'shipment' && catdyn!= 'entertainment' && catdyn!= 'restaurant' && catdyn!= 'favorite' ) {
                             cin2 = Ext.create('Ext.TabPanel', {
                                     tabBarPosition: 'bottom',
@@ -991,13 +995,12 @@ Ext.define('front.view.Main', {
                                     },
                                     listeners:{
                                             activate : function() {
-                                                    tb.show();
-                                                    tb.setTitle(record.get('name'));
-
+                                                tb.show();
+                                                tb.setTitle(record.get('name'));
                                             },
                                             deactivate: function(){
                                                 tb.setTitle('<div class="titleimg"></div>');
-                                             }
+                                                }
                                              } ,
                                     items: [
 
@@ -1036,10 +1039,10 @@ Ext.define('front.view.Main', {
                                                 leafitemtap: function(nestedList, list, index, element, post) {
                                                     tb2.setTitle(post.get('name'));
                                                     if((post.get('special'))!= undefined ) {
-                                                    bh='65px';
+                                                    bh='85px';
                                                     hinsert = '<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>';
                                                 }else{
-                                                    bh = '50px';
+                                                    bh = '70px';
                                                     hinsert = '';
                                                 }
                                                 var f_cid = post.get('cid');
@@ -1051,41 +1054,44 @@ Ext.define('front.view.Main', {
                                                     {
                                                         xtype: 'carousel',
                                                         height: '100px',
+                                                        initialize:function(){
 
-                                                        store: {
-                                                            type: 'tree',
-                                                            fields: [
-                                                                'b_image',
-                                                                 {name: 'leaf', defaultValue: true}
-                                                            ],
-
-                                                            root: {
-                                                                leaf: false
-                                                            },
-
-                                                            proxy: {
-                                                                type: 'jsonp',
-                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
-                                                                reader: {
-                                                                    type: 'json',
-                                                                    rootProperty: 'banner'
+                                                            //banner stores
+                                                            Ext.define('banner', {
+                                                                extend: 'Ext.data.Model',
+                                                                config: {
+                                                                    fields: [
+                                                                        {name: 'c_banner', type: 'string'},
+                                                                        {name: 'id', type: 'int'}
+                                                                    ]
                                                                 }
-                                                            }},
+                                                            });
+                                                            bannerstore =Ext.create('Ext.data.Store', {
+                                                                model: 'banner',
+                                                                storeId: 'banner',
+                                                                proxy: {
+                                                                    type: 'jsonp',
+                                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php?f_cid='+f_cid,
+                                                                    reader: {
+                                                                        type: 'json',
+                                                                        rootProperty: 'films'
+                                                                    }
+                                                                }
+                                                            });
 
 
-                                                                           items: [
-                                                                                {
-                                                                                    html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
+                                                            bannerstore.load({
+                                                                callback: function(records, operation, success) {
+                                                                    b_len = records.length;
+                                                                    for (i=0; i<b_len; i++) {
+                                                                        this.add({ html : ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
+                                                                    }
+                                                                },
+                                                                scope: this
+                                                            })
+                                                        }
 
-                                                                                }/*,
-                                                                                {
-                                                                                    html : 'А здесь второй',
-                                                                                    style: 'background-color: #759E60'
-                                                                                },
-                                                                                {
-                                                                                    html : 'или третий'
-                                                                                }*/
-                                                                            ]
+
 
                                                                     },
                                                                     {
@@ -1252,41 +1258,43 @@ Ext.define('front.view.Main', {
                                                             items:[           {
                                                                         xtype: 'carousel',
                                                                         height: '225px',
+                                                                listeners:{
+                                                                    initialize:function(){
 
-                                                                        store: {
-                                                                            type: 'tree',
+                                                                    //banner stores
+                                                                    Ext.define('banner', {
+                                                                        extend: 'Ext.data.Model',
+                                                                        config: {
                                                                             fields: [
-                                                                                'b_image',
-                                                                                 {name: 'leaf', defaultValue: true}
-                                                                            ],
+                                                                                {name: 'c_banner', type: 'string'},
+                                                                                {name: 'id', type: 'int'}
+                                                                            ]
+                                                                        }
+                                                                    });
+                                                                    bannerstore =Ext.create('Ext.data.Store', {
+                                                                        model: 'banner',
+                                                                        storeId: 'banner',
+                                                                        proxy: {
+                                                                            type: 'jsonp',
+                                                                            url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php?f_cid='+f_cid,
+                                                                            reader: {
+                                                                                type: 'json',
+                                                                                rootProperty: 'films'
+                                                                            }
+                                                                        }
+                                                                    });
 
-                                                                            root: {
-                                                                                leaf: false
-                                                                            },
 
-                                                                            proxy: {
-                                                                                type: 'jsonp',
-                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
-                                                                                reader: {
-                                                                                    type: 'json',
-                                                                                    rootProperty: 'banner'
-                                                                                }
-                                                                            }},
-
-                                                                           items: [
-                                                                               {
-                                                                                   html : '<div style="background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; margin-top-top: 100px; height: 224px !important;"></div>'
-                                                                               } /*,
-                                                                               {
-
-                                                                                   html : 'А здесь второй',
-                                                                                   style: 'background-color: #759E60'
-                                                                               },
-                                                                               {
-
-                                                                                   html : 'или третий'
-                                                                               }*/
-                                                                           ]
+                                                                    bannerstore.load({
+                                                                        callback: function(records, operation, success) {
+                                                                            b_len = records.length;
+                                                                            for (i=0; i<b_len; i++) {
+                                                                                this.add({ html : ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
+                                                                            }
+                                                                        },
+                                                                        scope: this
+                                                                    })
+                                                                }}
 
                                                                 },
                                                                     {
@@ -1800,137 +1808,54 @@ Ext.define('front.view.Main', {
                                                                         layout: 'vbox',
                                                                         flex:1,
                                                                             items: [           {
-                                                                                store:{
-                                                                                type: 'tree',
-                                                                                fields: [
-                                                                                    'c_banner','id',
-                                                                                    {name: 'leaf', defaultValue: true}
-                                                                                ],
-                                                                                root: {
-                                                                                    leaf: false
-                                                                                },
-                                                                                proxy: {
-                                                                                    type: 'jsonp',
-                                                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php?f_cid='+f_cid,
-                                                                                    reader: {
-                                                                                        type: 'json',
-                                                                                        rootProperty: 'films'
-                                                                                    }
-                                                                                }},
-                                                                        /*store: {
-                                                                            type: 'tree',
-                                                                            fields: [
-                                                                                'b_image',
-                                                                                 {name: 'leaf', defaultValue: true}
-                                                                            ],
-
-                                                                            root: {
-                                                                                leaf: false
-                                                                            },
-
-                                                                            proxy: {
-                                                                                type: 'jsonp',
-                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
-                                                                                reader: {
-                                                                                    type: 'json',
-                                                                                    rootProperty: 'banner'
-                                                                                }
-                                                                            }},*/
-                                                                            defaults: {
+                                                                                defaults: {
                                                                                 styleHtmlContent: true
                                                                             },
                                                                                 items:[{
-
                                                                                     listeners:{
-                                                                                        initialize:function(){
+                                                                                    initialize:function(){
 
-                                                                                            //banner stores
-                                                                                            Ext.define('banner', {
-                                                                                                extend: 'Ext.data.Model',
-                                                                                                config: {
-                                                                                                    fields: [
-                                                                                                        {name: 'c_banner', type: 'string'},
-                                                                                                        {name: 'id', type: 'int'}
-                                                                                                    ]
+                                                                                        //banner stores
+                                                                                        Ext.define('banner', {
+                                                                                            extend: 'Ext.data.Model',
+                                                                                            config: {
+                                                                                                fields: [
+                                                                                                    {name: 'c_banner', type: 'string'},
+                                                                                                    {name: 'id', type: 'int'}
+                                                                                                ]
+                                                                                            }
+                                                                                        });
+                                                                                        bannerstore =Ext.create('Ext.data.Store', {
+                                                                                            model: 'banner',
+                                                                                            storeId: 'banner',
+                                                                                            proxy: {
+                                                                                                type: 'jsonp',
+                                                                                                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php?f_cid='+f_cid,
+                                                                                                reader: {
+                                                                                                    type: 'json',
+                                                                                                    rootProperty: 'films'
                                                                                                 }
-                                                                                            });
-                                                                                            bannerstore =Ext.create('Ext.data.Store', {
-                                                                                                model: 'banner',
-                                                                                                storeId: 'banner',
-                                                                                                proxy: {
-                                                                                                    type: 'jsonp',
-                                                                                                    url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php?f_cid='+f_cid,
-                                                                                                    reader: {
-                                                                                                        type: 'json',
-                                                                                                        rootProperty: 'films'
-                                                                                                    }
+                                                                                            }
+                                                                                        });
+
+
+                                                                                        bannerstore.load({
+                                                                                            callback: function(records, operation, success) {
+                                                                                                b_len = records.length;
+                                                                                                for (i=0; i<b_len; i++) {
+                                                                                                    this.add({ html : ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
                                                                                                 }
-                                                                                            });
-
-
-                                                                                            bannerstore.load({
-                                                                                                callback: function(records, operation, success) {
-                                                                                                    b_len = records.length;
-                                                                                                    for (i=0; i<b_len; i++) {
-                                                                                                        this.add({ html : ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net'+ records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
-
-                                                                                                    }
-                                                                                                    //console.log(records[0].raw.c_banner);
-                                                                                                    },
-                                                                                                scope: this
-                                                                                            })
-
-                                                                                        }},
-                                                                                        /*activeitemchange: function (container,post, value, oldValue, eOpts) {
-
-                                                                                                                                                                         var activeItemIndex = container.getActiveIndex();
-                                                                                    var galleryTotal = container.getInnerItems() ? container.getInnerItems().length : 0;
-                                                                                    // this would be retrieved normally prior to initially populating the carousel
-
-                                                                                    var photos = [
-                                                                                        {html: 'c_banner'},
-                                                                                        {html: 'imagefefw.jpg'},
-                                                                                        {html: 'imagewfefef.jpg'},
-                                                                                        {html: 'imagewe1212.jpg'},
-                                                                                    ];
-
-                                                                                    if ((activeItemIndex + 1 == galleryTotal) && photos.length > galleryTotal) {
-                                                                                        var nextPhoto = photos[galleryTotal]; //loading one in this example, but can be tweaked to load more.
-                                                                                        this.add(nextPhoto);
-
-
-                                                                                        }}},*/
-                                                                                    /*items: [
-                                                                                        {
-                                                                                            html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ record.get('c_banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
-                                                                                        },
-                                                                                        {
-                                                                                            html: 'image2.jpg'
-                                                                                        }
-
-                                                                                    ],*/
+                                                                                                },
+                                                                                            scope: this
+                                                                                        })
+                                                                                    }},
                                                                                     xtype: 'carousel',
                                                                                     height: '224px'
-                                                                                    /*items: [
-                                                                                        {
-                                                                                            html : '<div style="margin:0!important; padding:0 !important;background: url(http://now-yakutsk.stairwaysoft.net/mobile/img/'+ post.get('banner')+') !important; float: left; width: 100%; height: 224px !important;"></div>'
-
-                                                                                            //style: 'background:  url("http://now-yakutsk.stairwaysoft.net/mobile/img/sl_pic.jpg")!important;'
-                                                                                        },
-                                                                                        {
-                                                                                            html : '<div style="background:red; height: 100%;">А здесь второй</div>'
-                                                                                            //style:  'width:100%; '
-                                                                                        },
-                                                                                        {
-                                                                                            html : 'или третийww',
-                                                                                            style:  'background:blue'
-                                                                                        }
-                                                                                    ]*/
                                                                                 },
                                                                                     {
 
                                                                                     xtype : 'panel',
-                                                                                    height: '50px',
+                                                                                    height: '70px',
                                                                                     html: '<div class="comp-location"><span class="locate"><i>'+post.get('adress')+'</i><b>'+post.get('phone')+'</b></span><a href="">'+post.get('site')+'</a><div>'
 
                                                                                 },
