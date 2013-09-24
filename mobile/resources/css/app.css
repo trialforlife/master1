@@ -679,8 +679,8 @@ body {
 }
 
 /* line 27, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Abstract.scss */
-.x-innerhtml {
-  width: 100%;
+.x-innerhtml {/*
+  width: 100%;*/
 }
 
 /**

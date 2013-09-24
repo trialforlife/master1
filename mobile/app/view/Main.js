@@ -106,7 +106,6 @@ treestore = Ext.create("Ext.NestedList", {
         },
         listeners: {
             activate: function () {
-
                 if (typeof (Ext.getCmp('serch')) != 'undefined') {
                     Ext.getCmp('serch').show();
                 }
@@ -385,10 +384,13 @@ treestore = Ext.create("Ext.NestedList", {
                 ]);
 
             },
+
             deactivate: function () {
             },
             leafitemtap: function (nestedList, list, index, target, record) {
-
+                list.setStyle('background-color:red');
+                var tapped_row = nestedList.getAt(index);                console.log(tapped_row);
+                this.fireEvent("SwitchScreen", this, nestedList, index, record);
                 cat = record.get('code');
                 var catdyn = cat;
                 var favestore = Ext.create("Ext.data.Store", {
@@ -526,7 +528,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             ], items: [
                                                 {
                                                     xtype: 'toolbar',
-                                                    title: 'Избранное',
+                                                    title: '<div class="t_align">Избранное</div>',
                                                     docked: 'top',
                                                     items: [
                                                         {
@@ -812,6 +814,7 @@ treestore = Ext.create("Ext.NestedList", {
                                 }
                                 var fil = Ext.create('Ext.Container', {
                                     fullscreen: true,
+                                    updateTitleText:false,
                                     //useToolbar:true,
                                     scrollable: 'vertical',
                                     layout: 'vbox',
@@ -1010,6 +1013,9 @@ treestore = Ext.create("Ext.NestedList", {
                                         deactivate: function () {
                                             tb.show();
                                             tb2.hide();
+                                        },
+                                        activate:function(){
+                                            tb2.setTitle('<div class="t_align">'+ post.get('name')+'</div>');
                                         }
                                     }});
                                 nestedList.getDetailCard();
@@ -1380,6 +1386,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                 activate: function () {
                                                     tb.hide();
                                                     tb2.show();
+                                                    tb2.setTitle('<div class="t_align">'+ post.get('name')+'</div>');
                                                     s_image = post.get('image');
                                                     cfid = post.get('cid');
                                                     cat1 = record.get('code');
@@ -1864,6 +1871,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                         var fil = Ext.create('Ext.Container', {
                                             fullscreen: true,
+                                            updateTitleText: false,
                                             //useToolbar:true,
                                             scrollable: {
                                                 direction: 'vertical',
@@ -2023,6 +2031,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                         ]));
                                                     }
                                                     tb2.show();
+                                                    tb2.setTitle('<div class="t_align">'+ post.get('name')+'</div>');
                                                     tb1.hide();
 
                                                 },
