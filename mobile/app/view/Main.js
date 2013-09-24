@@ -1865,7 +1865,10 @@ treestore = Ext.create("Ext.NestedList", {
                                         var fil = Ext.create('Ext.Container', {
                                             fullscreen: true,
                                             //useToolbar:true,
-                                            scrollable: 'vertical',
+                                            scrollable: {
+                                                direction: 'vertical',
+                                                directionLock: true
+                                            },
 
                                             layout: 'vbox',
                                             flex: 1,
@@ -1914,32 +1917,23 @@ treestore = Ext.create("Ext.NestedList", {
                                                                     })
                                                                 }},
                                                             xtype: 'carousel',
-                                                            height: '224px'
+                                                            height: '224px',
+                                                            scrollable: null
                                                         },
                                                         {
-
+                                                            scrollable: null,
                                                             xtype: 'panel',
                                                             height: '70px',
                                                             html: '<div class="comp-location"><span class="locate"><i>' + post.get('adress') + '</i><b>' + post.get('phone') + '</b></span><a href="">' + post.get('site') + '</a><div>'
 
                                                         },
-                                                        {   hideOnMaskTap: false,
+                                                        {   scroll : {
+                                                            bounces : false
+                                                        },
                                                             height: '1000px',
                                                             useToolbar: false,
-                                                            scrollable: false,
                                                             xtype: 'nestedlist',
-                                                            iconCls: 'star',
                                                             displayField: 'filmpage',
-                                                            listeners: {
-                                                                itemtap: function (h, list, index, target, record, e, eOpts) {
-                                                                    //alert(0);
-                                                                    return false
-                                                                },
-                                                                leafitemtap: function (h, list, index, target, record, e, eOpts) {
-                                                                    //alert(1);
-                                                                    return false
-                                                                }
-                                                            },
                                                             store: {
 
                                                                 type: 'tree',
@@ -1966,7 +1960,6 @@ treestore = Ext.create("Ext.NestedList", {
                                             listeners: {
 
                                                 activate: function () {
-
                                                     //for favorite adding
                                                     s_image = post.get('image');
                                                     cfid = post.get('cid');
