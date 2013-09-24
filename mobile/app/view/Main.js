@@ -547,7 +547,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             columns: [
                                                 {
                                                     dataIndex: 'name',
-                                                    style: 'margin-left: 100px; margin-top:-16px; float:left;  right: 0 !important; ',
+                                                    style: 'margin-left: 50px; margin-top:-16px; float:left;  right: 0 !important; ',
                                                     width: '100%',
                                                     filter: { type: 'string' }
                                                 }
