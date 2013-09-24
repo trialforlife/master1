@@ -973,3 +973,7 @@ input {
 .nav-element-n .location{
     font: 0.7em Hlvl;
 }
+.x-carousel-indicator-horizontal {
+    width: 100%;
+    position: absolute;
+}
