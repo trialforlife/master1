@@ -11,7 +11,7 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select bhs_id,bhs_name,bhs_image,bhs_time,bhs_content from beautyandhealth_special where beautyandhealth_special.bh_id = '$f_cid' ";
+$query = "select * from beautyandhealth_special where beautyandhealth_special.bh_id = '$f_cid' ";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
