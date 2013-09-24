@@ -209,7 +209,7 @@ html,body{
     height: 2.3em;
     position: absolute;
     bottom: -13px;
-    background: url(../img/locate-ico.png) left 3px no-repeat;
+    background: url(../img/locate-ico.png) left 3px top 0px no-repeat;
     left: 4px;
 }
 .event .img_box{
