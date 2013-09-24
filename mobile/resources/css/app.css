@@ -713,8 +713,8 @@ body {
   min-height: 0 !important;
 }
 /* line 24, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/layout/_Box.scss */
-.x-layout-box > .x-layout-box-item {
-  display: -webkit-box !important;
+.x-layout-box > .x-layout-box-item {/*
+  display: -webkit-box !important;*/
   display: -ms-flexbox !important;
   display: flex !important;
 }
