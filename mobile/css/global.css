@@ -1131,7 +1131,7 @@ input {
     display: none;
 
     height: 100%; width: 100%;
-    position: fixed; top: -50%; left: -30%;}
+    position: fixed; top: -110px; left: -130px;}
 
 .lightbox:target {display: table;}
 
