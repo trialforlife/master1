@@ -22,7 +22,7 @@ if (mysql_affected_rows() > 0) {
 			"logo"=>addslashes((string)$row["com_logo"]),
 			"site"=>addslashes((string)$row["com_site"]),
 			"description"=>addslashes((string)$row["com_decription"]),
-			"list"=>'<div class="container about"><span class="h2">'.addslashes((string)$row["com_quote"]).'</span><p>'.addslashes((string)$row["com_description"]).'</p><div class="ab-navigtaion"><span class="button">'.$row["com_phone"].'</span><span class="button">'.$row["com_site"].'</span><span class="button no_shadow">Отправить сообщение</span></div></div>',
+			"list"=>'<div class="container about"><span class="h2">'.addslashes((string)$row["com_quote"]).'</span><p>'.addslashes((string)$row["com_description"]).'</p><div class="ab-navigtaion"><a href="tel:123456" class="button">'.$row["com_phone"].'</a><span class="button">'.$row["com_site"].'</span><span class="button no_shadow">Отправить сообщение</span></div></div>',
 
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["com_logo"]).">",
 
