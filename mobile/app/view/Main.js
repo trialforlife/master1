@@ -370,12 +370,6 @@ treestore = Ext.create("Ext.NestedList", {
             deactivate: function () {
             },
             leafitemtap: function (nestedList, list, index, target, record) {
-                list.setStyle('background-color:red');
-                var tapped_row = nestedList.getAt(index);
-                tapped_row.setStyle('background:red !important; width: 100%; height: 11px;');
-
-                console.log(tapped_row);
-                this.fireEvent("SwitchScreen", this, nestedList, index, record);
                 cat = record.get('code');
                 var catdyn = cat;
                 var favestore = Ext.create("Ext.data.Store", {
@@ -619,7 +613,7 @@ treestore = Ext.create("Ext.NestedList", {
                                         items: [
                                             {
                                                 xtype: 'toolbar',
-                                                title: 'Избранное',
+                                                title: '<div class="t_align">Избранное</div>',
                                                 items: [
                                                     {
                                                         xtype: 'button',
@@ -1903,7 +1897,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         callback: function (records, operation, success) {
                                                                             b_len = records.length;
                                                                             for (i = 0; i < b_len; i++) {
-                                                                                this.add({ html: ' <div style="background-repeat:no-repeat !important; background-size:100% 100% !important; background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   float: left; width: 100%; height: 224px !important;"></div>' });
+                                                                                this.add({ html: '<a href="#'+i+'"><img style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/></a> <div  class="lightbox" id="'+i+'"><div><div><img style=" background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + '); width: 800px; height: 200px; !important; position:absolute !important; background-repeat:no-repeat !important; background-size:100% 100% !important; float: left;"/></div></div></div><a href="#close">✖</a>' });
                                                                             }
                                                                         },
                                                                         scope: this

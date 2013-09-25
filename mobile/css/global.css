@@ -917,7 +917,7 @@ pf {
     width: 44px !important;
     height: 44px !important;
     border-radius: 0px !important;
-    margin-top: 11px !important;
+    margin-top: -1px !important;
     margin-left: 17px !important;
     position: absolute;
 }
@@ -1124,3 +1124,64 @@ input {
     margin-left: -10%;
     padding-left: 7%;
 }
+/*lightbox */
+.vkl { cursor: zoom-in; cursor: -moz-zoom-in; cursor: -webkit-zoom-in;}
+
+.lightbox {
+    display: none;
+
+    height: 100%; width: 100%;
+    position: fixed; top: -50%; left: -30%;}
+
+.lightbox:target {display: table;}
+
+.lightbox > div {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
+
+.lightbox > div > div {
+    display: inline-block;
+    position: relative;
+}
+
+.video {
+    width: 50%;
+    position: fixed; top: 12%; left: 25%;
+    display: none;}
+
+.lightbox > div > div, .video {
+    padding: 8px;
+    background: #fff;
+    text-align: left;
+    box-shadow: 0 0 5px #fff;
+    z-index: 101;
+}
+
+.lightbox img {
+    width: 100%; padding: 0px; display: block;
+}
+
+.video > div {
+    padding-bottom:75%;
+    height: 0;
+    position: relative;}
+
+.video iframe, .video object, .video embed {position: absolute; left: 0; top: 0;}
+
+a[href="#close"] {
+    position: fixed; top: 0; bottom: 0; right: 0; left: 0;
+    z-index: 100;
+    cursor: zoom-out; cursor: -moz-zoom-out; cursor: -webkit-zoom-out;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: right;
+    font-size: 200%;
+    padding-right: 7px;
+    text-decoration: none;
+    color: #cccccc;
+    display: none;}
+
+a[href="#close"]:hover {color: #fff;}
+
+.video:target, .video:target ~ a[href="#close"], .lightbox:target ~ a[href="#close"] {display: block;}
