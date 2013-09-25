@@ -185,26 +185,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                     scrollable: 'vertical',
                                                     layout: 'vbox',
                                                     flex: 1,
-                                                    /*store: {
-                                                     type: 'tree',
-                                                     fields: [
-                                                     'b_image',
-                                                     {name: 'leaf', defaultValue: true}
-                                                     ],
-                                                     root: {
-                                                     leaf: false
-                                                     },
-                                                     proxy: {
-                                                     type: 'jsonp',
-                                                     url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/'+catdyn+'bannerlist.php',
-                                                     reader: {
-                                                     type: 'json',
-                                                     rootProperty: 'banner'
-                                                     }
-                                                     }},*/
                                                     items: [
                                                         {
-                                                            //   layout: 'vbox',
                                                             defaults: {
                                                                 styleHtmlContent: true
                                                             },
@@ -212,7 +194,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                 {
                                                                     xtype: 'toolbar',
                                                                     docked: 'top',
-                                                                    title: record.get('name'),
+                                                                    title: '<div class="t_align">'+ record.get('name')+'</div>',
                                                                     items: [
                                                                         {
                                                                             ui: 'back',
@@ -389,7 +371,10 @@ treestore = Ext.create("Ext.NestedList", {
             },
             leafitemtap: function (nestedList, list, index, target, record) {
                 list.setStyle('background-color:red');
-                var tapped_row = nestedList.getAt(index);                console.log(tapped_row);
+                var tapped_row = nestedList.getAt(index);
+                tapped_row.setStyle('background:red !important; width: 100%; height: 11px;');
+
+                console.log(tapped_row);
                 this.fireEvent("SwitchScreen", this, nestedList, index, record);
                 cat = record.get('code');
                 var catdyn = cat;
@@ -547,7 +532,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             columns: [
                                                 {
                                                     dataIndex: 'name',
-                                                    style: 'margin-left: 50px; margin-top:-16px; float:left;  right: 0 !important; ',
+                                                    style: 'margin-left: 100px; margin-top:-16px; float:left;  right: 0 !important; ',
                                                     width: '100%',
                                                     filter: { type: 'string' }
                                                 }

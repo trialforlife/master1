@@ -868,9 +868,11 @@ pf {
     float: left;
     border-radius: 20px !important;
     border: 1px solid #5a0cff !important;
-    padding-left: 1.35em;
+    padding-left: -1.35em;
     padding-right: 2.35em !important;
-    width: 100%;
+    width: 80%;
+    margin-left: 8%;
+    margin-right: 8%;
     background: url(../img/grs-ico.png) 16px center no-repeat #fff;
 
 }
@@ -909,7 +911,6 @@ pf {
     z-index: 11111 !important;
     right: 0 !important;
 }
-
 .touchgridpanel .grid-checkbox {
     background-image: url(../img/delete.png) !important;
     background-repeat: no-repeat;
@@ -991,7 +992,7 @@ pf {
 input {
     outline: none;
     height: 30px;
-    width: 98%;
+    width: 10%;
     vertical-align: bottom;
     border: none;
     margin-left: 25px;
@@ -1118,12 +1119,8 @@ input {
     margin-right: 10%;
     margin-left: 10%;
 }
-.my-x-item-tapped{
-    background: red !important;
-    width: 100%;
-    height: 11px;
+.x-field .x-field-input, .x-field .x-input-el {
+    width: 103.5% !important;
+    margin-left: -10%;
+    padding-left: 7%;
 }
-.x-item-selected {
-    background: red !important;
-    width: 100%;
-    height: 11px;}
