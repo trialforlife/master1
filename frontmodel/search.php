@@ -29,7 +29,7 @@ if (mysql_affected_rows() > 0) {
 			"name"=>addslashes((string)$row["f_name"]),
 			"image"=>addslashes((string)$row["f_image"]),
 			"time"=>addslashes((string)$row["f_time"]),
-			"filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["f_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["f_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["f_image"].'></span></div>',
+			"filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["f_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["c_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["f_image"].'></span></div>',
           ));
 			
 	}
@@ -52,7 +52,7 @@ if (mysql_affected_rows() > 0) {
             "name"=>addslashes((string)$row["p_name"]),
 			"image"=>addslashes((string)$row["p_image"]),
 			"time"=>addslashes((string)$row["p_time"]),
-			"filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["p_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["p_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["p_image"].'></span></div>',
+			"filmpage"=>'<div class="nav-element-s"><span class="txt">'.addslashes((string)$row["p_name"]).'</span><span class="s_arrow"></span><span class="location">'.addslashes((string)$row["t_adress"]).'</span><span class="img_box"><img style="width:4em; float:right ; padding-top:0.2em; height:2.8em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["p_image"].'></span></div>',
 			));
 			
 	}
