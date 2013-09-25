@@ -13,7 +13,7 @@
                  needed for your application, but these edits will have to be merged by
                  Sencha Cmd when it performs code generation tasks such as generating new
                  models, controllers or views and when running "sencha app upgrade".
-                 
+
                  Ideally changes to this file would be limited and most work would be done
                  in other places (such as Controllers). If Sencha Cmd cannot merge your
                  changes and its generated code, it will produce a "merge conflict" that you
@@ -98,24 +98,22 @@
                     },
                     onUpdated: function() {
                         Ext.Msg.confirm(
-                                "Application Update",
-                                "This application has just successfully been updated to the latest version. Reload now?",
-                                function(buttonId) {
-                                    if (buttonId === 'yes') {
-                                        window.location.reload();
-                                    }
+                            "Application Update",
+                            "This application has just successfully been updated to the latest version. Reload now?",
+                            function(buttonId) {
+                                if (buttonId === 'yes') {
+                                    window.location.reload();
                                 }
+                            }
                         );
                     }
                 });
-            } else {
-                alert('Error connect to server');
-            }
+            } else
+                window.location = 'error.html';
         }
 
-        if (AJAX.readyState == 4 && AJAX.status == 0) {
-            alert('Error connect to server');
-        }
+        if (AJAX.readyState == 4 && AJAX.status == 0)
+            window.location = 'error.html';
     };
 
     AJAX.send();

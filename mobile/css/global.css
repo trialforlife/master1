@@ -284,26 +284,30 @@ html, body {
 }
 
 .error_up {
-    width: 480px;
-    height: 262px;
+    width: 320px;
+    height: 240px;
     background: url(../img/error_wind.png) no-repeat;
+    background-position-x: center;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .error_up p {
     color: #fff;
-    font: 30px Hlvl;
+    font: 1.6em Hlvl;
     text-align: center;
     padding: 85px 0 33px;
 }
 
 .error_up .button {
-    width: 218px;
-    height: 60px;
+    width: 149px;
+
     border-radius: 30px;
     color: #b4b3b4;
-    font: 24px/60px Hlvb;
+    font: 1.4em/60px Hlvb;
     text-align: center;
-    height: 60px;
+    height: 59px;
     background: #7000ed;
     display: block;
 }
@@ -311,7 +315,7 @@ html, body {
 .error_up .button.setting {
     border-left: 8px solid rgba(0, 0, 0, 0.24);
     float: left;
-    margin: 0 0 0 14px;
+    margin: 0px;
 }
 
 .error_up .button.reset {
@@ -1131,7 +1135,7 @@ input {
     display: none;
 
     height: 100%; width: 100%;
-    position: fixed; top: -110px; left: -130px;}
+    position: fixed; top: -10px; left: 0%;}
 
 .lightbox:target {display: table;}
 
