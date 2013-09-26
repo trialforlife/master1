@@ -23,7 +23,7 @@ if (mysql_affected_rows() > 0) {
             "site"=>addslashes((string)$row["bh_site"]),
             "banner"=>addslashes((string)$row["bh_banner"]),
             "phone"=>addslashes((string)$row["bh_phone"]),
-            "list" => '<div class="nav-element1"><span class="txt">' . addslashes((string)$row["bh_name"]) . '</span><span class="s_arrow"></span><span class="location">' . addslashes((string)$row["bh_adress"]) . '</span><span class="img_box"><img class="list_image" src=http://now-yakutsk.stairwaysoft.net/mobile/img/' . $row["bh_image"] . '></span></div>',
+            "list" => '<div class="nav-element1"><span class="txt">' . addslashes((string)$row["bh_name"]) . '</span><span class="s_arrow"></span><span class="location">' . addslashes((string)$row["bh_adress"]) . '</span><span class="img_box"><img class="list_image" src=http://now-yakutsk.stairwaysoft.net/images' . $row["bh_image"] . '></span></div>',
             "img_full"=> "<img src=http://now/".addslashes((string)$row["s_image"]).">",
 			));
 			
