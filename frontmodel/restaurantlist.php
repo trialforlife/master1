@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from restaurant where r_published="1"';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
+$query = 'select * from restaurant ';//where r_published="1"';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
@@ -26,7 +26,6 @@ if (mysql_affected_rows() > 0) {
             "special"=>addslashes((string)$row["r_special"]),
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["r_image"]).">",
             "list" => '<div class="nav-element1"><span class="txt">' . addslashes((string)$row["r_name"]) . '</span><span class="s_arrow"></span><span class="location">' . addslashes((string)$row["r_adress"]) . '</span><span class="img_box"><img class="list_image" src=http://now-yakutsk.stairwaysoft.net/mobile/img/' . $row["r_image"] . '></span></div>',
-
         ));
 			
 	}
