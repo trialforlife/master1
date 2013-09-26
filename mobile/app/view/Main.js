@@ -194,7 +194,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                                 {
                                                                     xtype: 'toolbar',
                                                                     docked: 'top',
-                                                                    title: '<div class="t_align">'+ record.get('name')+'</div>',
+                                                                    title: '<div class="t_align">' + record.get('name') + '</div>',
                                                                     items: [
                                                                         {
                                                                             ui: 'back',
@@ -773,7 +773,7 @@ treestore = Ext.create("Ext.NestedList", {
                             activate: function () {
                                 tb2 = this.getToolbar();
                                 tb2.hide();
-                                tb.setTitle('<div class="t_align">'+record.get('name')+'</div>');
+                                tb.setTitle('<div class="t_align">' + record.get('name') + '</div>');
                             },
                             deactivate: function () {
                                 tb.show();
@@ -788,12 +788,12 @@ treestore = Ext.create("Ext.NestedList", {
                                     bh = '105px';
                                     hinsert = '<div class="inside-h"><span class="h4">' + post.get('special') + '</span></div>';
                                 } else {
-                                    bh = '75px';
+                                    bh = '70px';
                                     hinsert = '';
                                 }
                                 var fil = Ext.create('Ext.Container', {
                                     fullscreen: true,
-                                    updateTitleText:false,
+                                    updateTitleText: false,
                                     //useToolbar:true,
                                     scrollable: 'vertical',
                                     layout: 'vbox',
@@ -993,8 +993,8 @@ treestore = Ext.create("Ext.NestedList", {
                                             tb.show();
                                             tb2.hide();
                                         },
-                                        activate:function(){
-                                            tb2.setTitle('<div class="t_align">'+ post.get('name')+'</div>');
+                                        activate: function () {
+                                            tb2.setTitle('<div class="t_align">' + post.get('name') + '</div>');
                                         }
                                     }});
                                 nestedList.getDetailCard();
@@ -1016,7 +1016,7 @@ treestore = Ext.create("Ext.NestedList", {
                         listeners: {
                             activate: function () {
                                 tb.show();
-                                tb.setTitle('<div class="t_align">'+record.get('name')+'</div>');
+                                tb.setTitle('<div class="t_align">' + record.get('name') + '</div>');
                             },
                             deactivate: function () {
                                 tb.setTitle('<div class="titleimg"></div>');
@@ -1057,7 +1057,7 @@ treestore = Ext.create("Ext.NestedList", {
                                     deactivate: function () {
                                     },
                                     leafitemtap: function (nestedList, list, index, element, post) {
-                                        tb2.setTitle('<div class="t_align">'+post.get('name')+'</div>');
+                                        tb2.setTitle('<div class="t_align">' + post.get('name') + '</div>');
                                         if ((post.get('special')) != undefined) {
                                             bh = '85px';
                                             hinsert = '<div class="inside-h"><span class="h4">' + post.get('special') + '</span></div>';
@@ -1323,7 +1323,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                         },
                                                         {
                                                             xtype: 'panel',
-                                                            height: 60,
+                                                            height: '70px',
                                                             html: '<div class="comp-location"><span class="locate"><i>' + post.get('adress') + '</i><b>' + post.get('phone') + '</b></span><a href="">' + post.get('site') + '</a></div>'  // +'<div class="inside-h"><span class="h4">'+post.get('special')+'</span></div>'
                                                         },
 
@@ -1365,7 +1365,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                 activate: function () {
                                                     tb.hide();
                                                     tb2.show();
-                                                    tb2.setTitle('<div class="t_align">'+ post.get('name')+'</div>');
+                                                    tb2.setTitle('<div class="t_align">' + post.get('name') + '</div>');
                                                     s_image = post.get('image');
                                                     cfid = post.get('cid');
                                                     cat1 = record.get('code');
@@ -1918,8 +1918,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                             html: '<div class="comp-location"><span class="locate"><i>' + post.get('adress') + '</i><b>' + post.get('phone') + '</b></span><a href="">' + post.get('site') + '</a><div>'
 
                                                         },
-                                                        {   scroll : {
-                                                            bounces : false
+                                                        {   scroll: {
+                                                            bounces: false
                                                         },
                                                             height: '1000px',
                                                             useToolbar: false,
@@ -1949,9 +1949,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                 }
                                             ],
                                             listeners: {
-
-
-
                                                 activate: function () {
                                                     //for favorite adding
                                                     s_image = post.get('image');
@@ -2016,7 +2013,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                         ]));
                                                     }
                                                     tb2.show();
-                                                    tb2.setTitle('<div class="t_align">'+ post.get('name')+'</div>');
+                                                    tb2.setTitle('<div class="t_align">' + post.get('name') + '</div>');
                                                     tb1.hide();
 
                                                 },

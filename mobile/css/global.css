@@ -446,9 +446,9 @@ html, body {
 .comp-location {
     float: left;
     width: 100%;
-    padding: 20px 0 10px;
+    padding: 20px 0 14px;
     background: #5a0cff;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.16);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.16);
     position: relative;
 }
 
@@ -1174,12 +1174,12 @@ input {
 .list_image {
     width: 5em;
     position: absolute;
-    margin-top: 0em;
     top: 0em;
     float: right;
     height: 3.3em;
     z-index: 111;
     right: 0;
+    margin-top:2px;
 }
 
 /*lightbox */
