@@ -11,7 +11,7 @@ $f_cid = $_GET["f_cid"];
 $cc = 1;
 $result = array("films"=>array());
 
-$query = "select * from play where play.t_id = '$f_cid' ";
+$query = "select * from play where play.t_id = '$f_cid' and p_published='1'";
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
