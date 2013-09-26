@@ -9,7 +9,7 @@ mysql_select_db("now-yakutsk", $link);
 
 $result = array("cinema"=>array());
 
-$query = 'select * from restaurant ';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
+$query = 'select * from restaurant where r_published="1"';//left join `cinema_banner` on (cinema.c_id=cinema_banner.c_id)';
 $dbresult = mysql_query($query);
 
 if (mysql_affected_rows() > 0) {
@@ -24,11 +24,8 @@ if (mysql_affected_rows() > 0) {
             "banner"=>addslashes((string)$row["r_banner"]),
             "phone"=>addslashes((string)$row["r_phone"]),
             "special"=>addslashes((string)$row["r_special"]),
-
-//			"list"=>"<div>".addslashes((string)$row["r_name"])."<img style=\"width:50px; float:right ; height:20px;\" src=http://now/".$row["r_image"]."><br><div>",
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["r_image"]).">",
-
-            "list"=>'<div class="nav-element1"><span class="txt">'.addslashes((string)$row["r_name"]).'</span><span class="r_arrow"></span><span class="location">'.addslashes((string)$row["r_adress"]).'</span><span class="img_box"><img style="width:5em; margin-top:0em; float:right ; height:3.0em;" src=http://now-yakutsk.stairwaysoft.net/mobile/img/'.$row["r_image"].'></span></div>',
+            "list" => '<div class="nav-element1"><span class="txt">' . addslashes((string)$row["r_name"]) . '</span><span class="s_arrow"></span><span class="location">' . addslashes((string)$row["r_adress"]) . '</span><span class="img_box"><img class="list_image" src=http://now-yakutsk.stairwaysoft.net/mobile/img/' . $row["r_image"] . '></span></div>',
 
         ));
 			
