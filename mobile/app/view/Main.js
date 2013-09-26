@@ -1949,54 +1949,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                 }
                                             ],
                                             listeners: {
-                                                    element  : 'element',
-                                                    delegate : 'img.ban',
-                                                    tap      : function(h, item, index, record, e, eOpts, my) {
-                                                        tapitem = item;
-                                                        if(this.overlay)
-                                                            this.overlay.destroy();
-                                                        this.overlay = Ext.Viewport.add({
-                                                            xtype: 'panel',
-                                                            modal: true,
-                                                            style:'margin-left:15%; float:left; height: 70%; width:70%; position:fixed;',
-                                                            hideOnMaskTap: true,
-                                                            autoDestroy:true,
-                                                            id:'ApprovalsStatusForm',
-                                                            showAnimation: {
-                                                                type: 'popIn',
-                                                                duration: 250,
-                                                                easing: 'ease-out'
-                                                            },
-                                                            hideAnimation: {
-                                                                type: 'popOut',
-                                                                duration: 250,
-                                                                easing: 'ease-out'
-                                                            },
-                                                            centered: true,
-                                                            styleHtmlContent: true,
 
-                                                            items: [
-                                                                {
-                                                                    style:'width:800px; height:100px; float:left;',
-                                                                    html:tapitem
-                                                                }
-                                                            ],
-                                                            scrollable: false
-                                                        });
-
-                                                        this.overlay.show();
-
-                                                        //console.log(this.getActiveItem().items.items[0].innerItems.length);
-
-                                                        /*var target    = e.getTarget(null, 1, true),
-
-                                                            //direction = target.getAttribute('direction'),
-                                                            active    = this.getActiveItem(),
-                                                            items     = this.getInnerItems(),
-                                                            idx       = items.indexOf(active);
-*/
-                                                        //this.setActiveItem(idx + (direction === 'next' ? 1 : -1));
-                                                    },
 
 
                                                 activate: function () {
@@ -2073,6 +2026,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                     tb2.hide();
                                                     tb.hide();
                                                 }
+
                                             }
                                         });
                                         nestedList.getDetailCard();
