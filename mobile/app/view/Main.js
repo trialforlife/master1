@@ -419,13 +419,11 @@ treestore = Ext.create("Ext.NestedList", {
                     useToolbar: true,
                     useHeader: false,
                     updateTitleText: false,
-
                     listeners: {
                         activate: function (button) {
                             tb.setTitle('<div class="t_align">Избранное</div>');
                             favestore.sync();
                             if (typeof Ext.getCmp('serch') != 'undefined') {
-                                //alert('fu');
                                 Ext.getCmp('serch').hide();
                             }
                             fed = Ext.getCmp('ed');
@@ -526,7 +524,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             columns: [
                                                 {
                                                     dataIndex: 'name',
-                                                    style: 'margin-left: 100px; margin-top:-16px; float:left;  right: 0 !important; ',
+                                                    style: 'margin-left: 50px; margin-top:-18px; float:left;  right: 0 !important; ',
                                                     width: '100%',
                                                     filter: { type: 'string' }
                                                 }
@@ -595,7 +593,6 @@ treestore = Ext.create("Ext.NestedList", {
                             );
                         },
                         itemtap: function (h, index, target, record, e, eOpts) {
-                            //nestedList.setDetailCard(fil);
                             Ext.getCmp('ed').hide();
                             var catdyn = record.raw.ftype;
                             var f_cid = record.raw.fid;
@@ -731,6 +728,7 @@ treestore = Ext.create("Ext.NestedList", {
                             dataIndex: 'name',
                             style: 'margin-left: -1px;',
                             width: '100%',
+                            height:"67px",
                             filter: { type: 'string' }
                         }
                     ],

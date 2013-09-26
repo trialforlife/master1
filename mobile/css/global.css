@@ -241,14 +241,15 @@ html, body {
 }
 .location-n{
     padding: 0 0 0 1.3em;
-    margin-top: -57em;
+    margin-top: 0px;
     color: rgba(255, 255, 255, 0.5);
     font: 0.7em Hlvl;
     height: 2.3em;
-    bottom: 6px;
+    bottom: 0px;
     background: url(../img/locate-ico.png) left 3px top 0px no-repeat;
     left: 4px;
     position: relative;
+    float: left;
 }
 .event .img_box {
     position: absolute;
@@ -769,13 +770,15 @@ pf {
 
 .nav-element1 .location {
     padding: 0 0 0 1.3em;
-    margin-top: -57em;
+
     color: rgba(255, 255, 255, 0.5);
     font: 0.7em Hlvl;
     height: 2.3em;
     position: relative;
     background: url(../img/locate-ico.png) left 3px top 0px no-repeat;
-    bottom: 2.4px;
+    top: 0;
+    margin-top: 0px;
+    float: left;
 }
 .nav-element-e {
     height: 3.3em;
@@ -800,6 +803,7 @@ pf {
     margin: 0 !important;
     padding: 0 !important;
     border: none !important;
+
 }
 
 #appLoadingIndicator div:first-child {
@@ -857,7 +861,7 @@ pf {
 
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap, .x-list-normal .x-list-item.x-list-footer-wrap .x-dock-horizontal {
     border: none !important;
-    min-height: 45px !important;
+    height: 63px !important;
 }
 
 /*
@@ -960,10 +964,10 @@ pf {
     background-image: url(../img/delete.png) !important;
     background-repeat: no-repeat;
     width: 44px !important;
-    height: 44px !important;
+    height: 40px !important;
     border-radius: 0px !important;
-    margin-top: -1px !important;
-    margin-left: 17px !important;
+    margin-top: 9px !important;
+    margin-left: 15px !important;
     position: absolute;
 }
 
@@ -1156,6 +1160,9 @@ input {
 .x-carousel-indicator-horizontal {
     width: 100%;
     position: absolute;
+}
+x-list-header-wrap x-list-footer-wrap x-list-item-first x-list-item x-stretched x-list-item-tpl x-touchgrid-item x-list-item-relative{
+
 }
 
 .t_align {
