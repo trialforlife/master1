@@ -235,11 +235,21 @@ html, body {
     font: 0.7em Hlvl;
     height: 2.3em;
     position: absolute;
-    bottom: -12px;
+    bottom: -9px;
     background: url(../img/locate-ico.png) left 3px top 0px no-repeat;
     left: 4px;
 }
-
+.location-n{
+    padding: 0 0 0 1.3em;
+    margin-top: -57em;
+    color: rgba(255, 255, 255, 0.5);
+    font: 0.7em Hlvl;
+    height: 2.3em;
+    bottom: 6px;
+    background: url(../img/locate-ico.png) left 3px top 0px no-repeat;
+    left: 4px;
+    position: relative;
+}
 .event .img_box {
     position: absolute;
     width: 200px;
@@ -734,40 +744,57 @@ pf {
     padding-left: 0 !important;
 }
 
-.nav-element1 {
-    height: 3em;
+.nav-element1, .nav-element-sub {
+    height: 3.3em;
     border-bottom: 1px solid #820cff;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.24);
     position: relative;
 }
 
-.nav-element1 .txt {
+.nav-element-sub .txt {
     padding: 0 0 0 1em;
     color: #fff;
     font: 1.1em/2.7em Hlvl;
-    /*font: 40px/139px Hlvl;
-*/
-}.nav-element-e {
-    height: 3em;
+}
+
+.nav-element1 .txt {
+    padding: 1px 0 0 1em;
+    color: #fff;
+    font: 1.1em/2.7em Hlvl;
+    float: left;
+    margin-right: 30%;
+    line-height: 1em;
+    width: 65%;
+}
+
+.nav-element1 .location {
+    padding: 0 0 0 1.3em;
+    margin-top: -57em;
+    color: rgba(255, 255, 255, 0.5);
+    font: 0.7em Hlvl;
+    height: 2.3em;
+    position: relative;
+    background: url(../img/locate-ico.png) left 3px top 0px no-repeat;
+    bottom: 2.4px;
+}
+.nav-element-e {
+    height: 3.3em;
     border-bottom: 1px solid #820cff;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.24);
     position: relative;
 }
 
 .nav-element-e .txt {
-    padding: 0 0 0 1em;
+    padding: 1px 0 0 1em;
     color: #fff;
-    font: 1.1em/2.7em Hlvl; 
-    /*font: 40px/139px Hlvl;
-*/
+    font: 1.1em/2.7em Hlvl;
 }
-
 .x-list-normal .x-list-header {
     color: #fff !important;
     font: 1em/22px Hlvb !important;
     text-shadow: 1px 0 0 rgba(0, 0, 0, 0.42) !important;
     height: 22px !important;
-    background:  rgba(109, 32, 158, 1) !important;
+    background: rgba(109, 32, 158, 1) !important;
     width: 100%;
     text-indent: 10px !important;
     margin: 0 !important;
@@ -928,6 +955,7 @@ pf {
     z-index: 11111 !important;
     right: 0 !important;
 }
+
 .touchgridpanel .grid-checkbox {
     background-image: url(../img/delete.png) !important;
     background-repeat: no-repeat;
@@ -1136,21 +1164,44 @@ input {
     margin-right: 10%;
     margin-left: 10%;
 }
+
 .x-field .x-field-input, .x-field .x-input-el {
     width: 103.5% !important;
     margin-left: -10%;
     padding-left: 7%;
 }
+
+.list_image {
+    width: 5em;
+    position: absolute;
+    margin-top: 0em;
+    top: 0em;
+    float: right;
+    height: 3.3em;
+    z-index: 111;
+    right: 0;
+}
+
 /*lightbox */
-.vkl { cursor: zoom-in; cursor: -moz-zoom-in; cursor: -webkit-zoom-in;}
+.vkl {
+    cursor: zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+}
 
 .lightbox {
     display: none;
 
-    height: 100%; width: 100%;
-    position: fixed; top: -10px; left: 0%;}
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: -10px;
+    left: 0%;
+}
 
-.lightbox:target {display: table;}
+.lightbox:target {
+    display: table;
+}
 
 .lightbox > div {
     vertical-align: middle;
@@ -1165,8 +1216,11 @@ input {
 
 .video {
     width: 50%;
-    position: fixed; top: 12%; left: 25%;
-    display: none;}
+    position: fixed;
+    top: 12%;
+    left: 25%;
+    display: none;
+}
 
 .lightbox > div > div, .video {
     padding: 8px;
@@ -1177,28 +1231,46 @@ input {
 }
 
 .lightbox img {
-    width: 100%; padding: 0px; display: block;
+    width: 100%;
+    padding: 0px;
+    display: block;
 }
 
 .video > div {
-    padding-bottom:75%;
+    padding-bottom: 75%;
     height: 0;
-    position: relative;}
+    position: relative;
+}
 
-.video iframe, .video object, .video embed {position: absolute; left: 0; top: 0;}
+.video iframe, .video object, .video embed {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
 a[href="#close"] {
-    position: fixed; top: 0; bottom: 0; right: 0; left: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     z-index: 100;
-    cursor: zoom-out; cursor: -moz-zoom-out; cursor: -webkit-zoom-out;
+    cursor: zoom-out;
+    cursor: -moz-zoom-out;
+    cursor: -webkit-zoom-out;
     background: rgba(0, 0, 0, 0.6);
     text-align: right;
     font-size: 200%;
     padding-right: 7px;
     text-decoration: none;
     color: #cccccc;
-    display: none;}
+    display: none;
+}
 
-a[href="#close"]:hover {color: #fff;}
+a[href="#close"]:hover {
+    color: #fff;
+}
 
-.video:target, .video:target ~ a[href="#close"], .lightbox:target ~ a[href="#close"] {display: block;}
+.video:target, .video:target ~ a[href="#close"], .lightbox:target ~ a[href="#close"] {
+    display: block;
+}
