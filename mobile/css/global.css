@@ -185,7 +185,7 @@ html, body {
     margin: 114px auto 18px;
 }
 
-.ab-navigtaion span.button {
+.ab-navigtaion a.button {
     display: block;
     background: #69d2e7;
     height: 30px;
@@ -196,11 +196,19 @@ html, body {
     font: 1em/1.6em Hlvb;
     text-shadow: 1px 0 0 rgba(0, 0, 0, 0.24);
     margin: 0 0 12px;
+    text-decoration: none;
 }
 
-.ab-navigtaion span.button.no_shadow {
+.ab-navigtaion a.button.no_shadow {
     text-shadow: none;
     margin: 0;
+    }
+.ab-navigtaion a:active {
+    text-shadow: 3px 0 0 rgba(0, 0, 0, 0.24);
+    border: 1px solid #404040;
+    MARGIN-TOP: -1px;
+    margin-bottom:11px;
+
 }
 
 .sm_padding .txt {
@@ -1189,95 +1197,7 @@ x-list-header-wrap x-list-footer-wrap x-list-item-first x-list-item x-stretched 
     margin-top:2px;
 }
 
+a:active {
+    color:#ccc;
+}
 /*lightbox */
-.vkl {
-    cursor: zoom-in;
-    cursor: -moz-zoom-in;
-    cursor: -webkit-zoom-in;
-}
-
-.lightbox {
-    display: none;
-
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: -10px;
-    left: 0%;
-}
-
-.lightbox:target {
-    display: table;
-}
-
-.lightbox > div {
-    vertical-align: middle;
-    display: table-cell;
-    text-align: center;
-}
-
-.lightbox > div > div {
-    display: inline-block;
-    position: relative;
-}
-
-.video {
-    width: 50%;
-    position: fixed;
-    top: 12%;
-    left: 25%;
-    display: none;
-}
-
-.lightbox > div > div, .video {
-    padding: 8px;
-    background: #fff;
-    text-align: left;
-    box-shadow: 0 0 5px #fff;
-    z-index: 101;
-}
-
-.lightbox img {
-    width: 100%;
-    padding: 0px;
-    display: block;
-}
-
-.video > div {
-    padding-bottom: 75%;
-    height: 0;
-    position: relative;
-}
-
-.video iframe, .video object, .video embed {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-a[href="#close"] {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    cursor: zoom-out;
-    cursor: -moz-zoom-out;
-    cursor: -webkit-zoom-out;
-    background: rgba(0, 0, 0, 0.6);
-    text-align: right;
-    font-size: 200%;
-    padding-right: 7px;
-    text-decoration: none;
-    color: #cccccc;
-    display: none;
-}
-
-a[href="#close"]:hover {
-    color: #fff;
-}
-
-.video:target, .video:target ~ a[href="#close"], .lightbox:target ~ a[href="#close"] {
-    display: block;
-}
