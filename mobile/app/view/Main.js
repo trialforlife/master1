@@ -728,7 +728,7 @@ treestore = Ext.create("Ext.NestedList", {
                             dataIndex: 'name',
                             style: 'margin-left: -1px;',
                             width: '100%',
-                            height:"67px",
+                            height: "67px",
                             filter: { type: 'string' }
                         }
                     ],
@@ -884,13 +884,26 @@ treestore = Ext.create("Ext.NestedList", {
                                             phone = post.get('phone');
                                             ds_name = post.get('list');
                                             ditem = favestore.findRecord('name', ds_name);
+
+                                            if (ditem == null) {
+                                                display="block";
+                                            }
+                                            else {
+                                                display="none";
+                                                if(typeof Ext.getCmp('fs_id')!= 'undefined'){
+                                                    Ext.getCmp('fs_id').destroy();
+                                                }
+                                            }
                                             if (typeof ttt != 'undefined') {
                                             }
                                             else {
                                                 ttt = (tb2.insert(3, [
                                                     {xtype: 'spacer'},
-                                                    {align: 'right', xtype: 'button', id: 'fs_id',
+                                                    {align: 'right', xtype: 'button', id: 'fs_id_tap'},
+                                                    {align: 'right', xtype: 'button', style:'display:'+display +'' ,id: 'fs_id',
                                                         handler: function (button) {
+                                                            Ext.getCmp('fs_id').destroy();
+
                                                             if (ditem != null) {
                                                                 favestore.remove(ditem);
                                                             }
@@ -926,52 +939,11 @@ treestore = Ext.create("Ext.NestedList", {
                                                                 setTimeout(function () {
                                                                     element.parentNode.removeChild(element)
                                                                 }, 1000);
+
                                                             }
                                                             favestore.sync();
                                                             delete window.ditem;
                                                             //adding to favorite
-                                                            /*db.transaction(function(tx) {
-                                                             tx.executeSql("SELECT * FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1], function (tx, results) {
-                                                             len = results.rows.length;
-                                                             console.log(len);
-                                                             if (len  > 0 ) {
-                                                             Ext.Msg.alert("Удалено");
-                                                             tx.executeSql("DELETE FROM Favorite WHERE fid=? AND ftype=?", [cfid,cat1],  function(result1){
-
-                                                             });
-                                                             }
-                                                             else{
-                                                             Ext.Msg.alert("Добавлено");
-                                                             favestore.add([{
-                                                             name: s_name,
-                                                             ftype: cat1,
-                                                             image: s_image,
-                                                             site: site,
-                                                             banner: banner,
-                                                             adress: adress,
-                                                             phone:phone,
-                                                             fid : cfid
-                                                             }]);
-                                                             favestore.sync();
-                                                             }
-
-                                                             },
-                                                             function (tx, error)
-                                                             {
-                                                             favestore .add([{
-                                                             name: s_name,
-                                                             ftype: cat1,
-                                                             image: s_image,
-                                                             site: site,
-                                                             banner: banner,
-                                                             adress: adress,
-                                                             phone:phone,
-                                                             fid : cfid
-
-                                                             }]);
-                                                             favestore.sync();
-                                                             }
-                                                             )});*/
 
                                                         }
 
@@ -988,6 +960,7 @@ treestore = Ext.create("Ext.NestedList", {
 
 
                                         deactivate: function () {
+                                            delete window.ttt;
                                             tb.show();
                                             tb2.hide();
                                         },
@@ -1373,16 +1346,26 @@ treestore = Ext.create("Ext.NestedList", {
                                                     phone = post.get('phone');
                                                     ds_name = post.get('list');
                                                     ditem = favestore.findRecord('name', ds_name);
+                                                    if (ditem == null) {
+                                                        display="block";
+                                                    }
+                                                    else {
+                                                        display="none";
+                                                        if(typeof Ext.getCmp('fs_id')!= 'undefined'){
+                                                            Ext.getCmp('fs_id').destroy();
+                                                        }
+                                                    }
                                                     if (typeof ttt != 'undefined') {
                                                     }
                                                     else {
                                                         ttt = (tb2.insert(3, [
                                                             {xtype: 'spacer'},
-                                                            {align: 'right', xtype: 'button', id: 'fs_id',
+                                                            {align: 'right', xtype: 'button', id: 'fs_id_tap'},
+                                                            {align: 'right', xtype: 'button', style:'display:'+display +'' ,id: 'fs_id',
                                                                 handler: function () {
-                                                                    //console.log(ditem);
+                                                                    Ext.getCmp('fs_id').destroy();
                                                                     if (ditem != null) {
-                                                                        favestore.remove(ditem);
+                                                                        //favestore.remove(ditem);
                                                                     }
                                                                     else {
                                                                         favestore.add([
@@ -1416,6 +1399,21 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         setTimeout(function () {
                                                                             element.parentNode.removeChild(element)
                                                                         }, 1000);
+                                                                        try {
+                                                                            document.getElementById('fs_id').id = 'fs_id_tap';
+                                                                            try {
+                                                                                document.getElementById('fs_id').id = 'fs_id_tap';
+                                                                            }catch (e) {
+                                                                                //alert(e.name)
+                                                                            }
+                                                                            fav_button_id = 'fs_id_tap';
+                                                                        }
+                                                                        catch (e) {
+                                                                            //alert(e.name)
+                                                                        }
+                                                                        finally {
+                                                                            //alert("готово")
+                                                                        }
                                                                     }
                                                                     favestore.sync();
                                                                     delete window.ditem;
@@ -1429,6 +1427,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                 },
                                                 deactivate: function () {
+                                                    delete window.ttt;
                                                     tb.show();
                                                     tb2.hide();
                                                 }
@@ -1953,38 +1952,25 @@ treestore = Ext.create("Ext.NestedList", {
                                                     ds_name = post.get('list');
                                                     ditem = favestore.findRecord('name', ds_name);
 
-                                                    if(ditem == null){
-                                                        fav_button_id= 'fs_id';
-                                                        //alert('dddddddddddddddd');
-                                                        try {
-                                                            //document.getElementById('fs_id').id = 'fs_id_tap';
-                                                        }
-                                                        catch (e) {
-                                                            //alert(e.name)
-                                                        }
-                                                        finally {
-                                                        }
+                                                    if (ditem == null) {
+                                                        display="block";
                                                     }
-                                                    else{
-                                                        fav_button_id= 'fs_id_tap';
-                                                        try {
-                                                            //document.getElementById('fs_id_tap').id = 'fs_id';
-                                                        }
-                                                        catch (e) {
-                                                            //alert(e.name)
-                                                        }
-                                                        finally {
+                                                    else {
+                                                        display="none";
+                                                        if(typeof Ext.getCmp('fs_id')!= 'undefined'){
+                                                            Ext.getCmp('fs_id').destroy();
                                                         }
                                                     }
                                                     if (typeof ttt != 'undefined') {
                                                     }
                                                     else {
+
                                                         ttt = (tb2.insert(3, [
                                                             {xtype: 'spacer'},
-                                                            {align: 'right', xtype: 'button', id: fav_button_id,
+                                                            {align: 'right', xtype: 'button', id: 'fs_id_tap'},
+                                                            {align: 'right', xtype: 'button', style:'display:'+display +'' ,id: 'fs_id',
                                                                 handler: function () {
-
-
+                                                                    Ext.getCmp('fs_id').destroy();
                                                                     if (ditem != null) {
                                                                         //favestore.remove(ditem);
                                                                         alert(0);
@@ -2023,24 +2009,10 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         setTimeout(function () {
                                                                             element.parentNode.removeChild(element)
                                                                         }, 1000);
-                                                                        try {
-                                                                            document.getElementById('fs_id').id = 'fs_id_tap';
-                                                                        }
-                                                                        catch (e) {
-                                                                            //alert(e.name)
-                                                                        }
-                                                                        finally {
-                                                                            //alert("готово")
-                                                                        }
 
                                                                     }
                                                                     favestore.sync();
-                                                                    //ditem = 0;
-
                                                                     delete window.ditem;
-
-
-                                                                    //adding to favorite
                                                                 }
                                                             }
                                                         ]));
