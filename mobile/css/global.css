@@ -849,6 +849,14 @@ pf {
     position: absolute;
     z-index: 111111;
 }
+#fs_id_tap{
+    margin: -36px 0 0 0;
+    right: -0.8em;
+    float: right;
+    position: absolute;
+    z-index: 111111;
+    background: url(../img/star.png) no-repeat;
+}
 
 .f_con {
     float: left;

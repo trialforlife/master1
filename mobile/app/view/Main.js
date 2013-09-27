@@ -1849,12 +1849,10 @@ treestore = Ext.create("Ext.NestedList", {
                                         var fil = Ext.create('Ext.Container', {
                                             fullscreen: true,
                                             updateTitleText: false,
-                                            //useToolbar:true,
                                             scrollable: {
                                                 direction: 'vertical',
                                                 directionLock: true
                                             },
-
                                             layout: 'vbox',
                                             flex: 1,
                                             items: [
@@ -1866,7 +1864,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                         {
                                                             listeners: {
                                                                 initialize: function () {
-
                                                                     //banner stores
                                                                     Ext.define('banner', {
                                                                         extend: 'Ext.data.Model',
@@ -1924,9 +1921,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                             xtype: 'nestedlist',
                                                             displayField: 'filmpage',
                                                             store: {
-
                                                                 type: 'tree',
-
                                                                 fields: [
                                                                     'name', 'image', 'id', 'filmpage', 'scat',
                                                                     {name: 'leaf', defaultValue: true}
@@ -1942,7 +1937,6 @@ treestore = Ext.create("Ext.NestedList", {
                                                                         rootProperty: 'films'
                                                                     }
                                                                 }}}
-
                                                     ]
                                                 }
                                             ],
@@ -1958,20 +1952,42 @@ treestore = Ext.create("Ext.NestedList", {
                                                     phone = post.get('phone');
                                                     ds_name = post.get('list');
                                                     ditem = favestore.findRecord('name', ds_name);
+
+                                                    if(ditem == null){
+                                                        fav_button_id= 'fs_id';
+                                                        //alert('dddddddddddddddd');
+                                                        try {
+                                                            //document.getElementById('fs_id').id = 'fs_id_tap';
+                                                        }
+                                                        catch (e) {
+                                                            //alert(e.name)
+                                                        }
+                                                        finally {
+                                                        }
+                                                    }
+                                                    else{
+                                                        fav_button_id= 'fs_id_tap';
+                                                        try {
+                                                            //document.getElementById('fs_id_tap').id = 'fs_id';
+                                                        }
+                                                        catch (e) {
+                                                            //alert(e.name)
+                                                        }
+                                                        finally {
+                                                        }
+                                                    }
                                                     if (typeof ttt != 'undefined') {
                                                     }
                                                     else {
-                                                        fav_button_id= 'fs_id';
-
                                                         ttt = (tb2.insert(3, [
                                                             {xtype: 'spacer'},
                                                             {align: 'right', xtype: 'button', id: fav_button_id,
                                                                 handler: function () {
-                                                                    //Ext.getCmp('fs_id').setCls('id = fs_id_active');
 
-                                                                    //console.log(ditem);
+
                                                                     if (ditem != null) {
-                                                                        favestore.remove(ditem);
+                                                                        //favestore.remove(ditem);
+                                                                        alert(0);
                                                                     }
                                                                     else {
                                                                         favestore.add([
@@ -1997,18 +2013,33 @@ treestore = Ext.create("Ext.NestedList", {
                                                                                     this.parentNode.removeChild(this)
                                                                                 }
                                                                             }
+
                                                                             div.innerHTML = "<div id='del' style='margin-top: -100px; margin-left: -50px; width: 320px; height: 155px; position:absolute; z-index: 10000; background: url(./img/error_wind.png) top center no-repeat;'><p style='color: #fff; font: 24px Hlvl; text-align: center; padding: 85px 0 33px;'>Добавлено</p><input class='x-msgbox-buttons x-add' type='button' value='Ок'></div>";
                                                                             return document.body.appendChild(div);
+
                                                                         }
 
                                                                         var element = document.getElementById("del");
                                                                         setTimeout(function () {
                                                                             element.parentNode.removeChild(element)
                                                                         }, 1000);
+                                                                        try {
+                                                                            document.getElementById('fs_id').id = 'fs_id_tap';
+                                                                        }
+                                                                        catch (e) {
+                                                                            //alert(e.name)
+                                                                        }
+                                                                        finally {
+                                                                            //alert("готово")
+                                                                        }
+
                                                                     }
                                                                     favestore.sync();
+                                                                    //ditem = 0;
 
                                                                     delete window.ditem;
+
+
                                                                     //adding to favorite
                                                                 }
                                                             }
@@ -2020,6 +2051,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                 },
                                                 deactivate: function () {
+                                                    delete window.ttt;
                                                     f_count = favestore._totalCount;
                                                     tb1.show();
                                                     tb2.hide();
