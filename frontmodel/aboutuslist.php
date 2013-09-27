@@ -22,7 +22,7 @@ if (mysql_affected_rows() > 0) {
 			"logo"=>addslashes((string)$row["com_logo"]),
 			"site"=>addslashes((string)$row["com_site"]),
 			"description"=>addslashes((string)$row["com_decription"]),
-			"list"=>'<div class="container about"><span class="h2">'.addslashes((string)$row["com_quote"]).'</span><p>'.addslashes((string)$row["com_description"]).'</p><div class="ab-navigtaion"><a href="tel:'.$row["com_phone"].'"><span class="button">'.$row["com_phone"].'</span></a><a href="'.$row["com_site"].'"><span class="button">'.$row["com_site"].'</span></a> <a href="mailto:'.$row["com_site"].'"><span class="button no_shadow">Отправить сообщение</span></a> </div></div>',
+			"list"=>'<div class="container about"><span class="h2">'.addslashes((string)$row["com_quote"]).'</span><p>'.addslashes((string)$row["com_description"]).'</p><div class="ab-navigtaion"><a href="tel:'.$row["com_phone"].'"><span class="button">'.$row["com_phone"].'</span></a><a href="./'.$row["com_site"].'"><span class="button">'.$row["com_site"].'</span></a> <a href="mailto:'.$row["com_site"].'"><span class="button no_shadow">Отправить сообщение</span></a> </div></div>',
 
 			"img_full"=> "<img src=http://now/".addslashes((string)$row["com_logo"]).">",
 
