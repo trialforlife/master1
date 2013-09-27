@@ -1961,10 +1961,14 @@ treestore = Ext.create("Ext.NestedList", {
                                                     if (typeof ttt != 'undefined') {
                                                     }
                                                     else {
+                                                        fav_button_id= 'fs_id';
+
                                                         ttt = (tb2.insert(3, [
                                                             {xtype: 'spacer'},
-                                                            {align: 'right', xtype: 'button', id: 'fs_id',
+                                                            {align: 'right', xtype: 'button', id: fav_button_id,
                                                                 handler: function () {
+                                                                    //Ext.getCmp('fs_id').setCls('id = fs_id_active');
+
                                                                     //console.log(ditem);
                                                                     if (ditem != null) {
                                                                         favestore.remove(ditem);

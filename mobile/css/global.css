@@ -229,7 +229,7 @@ html, body {
     position: absolute;
     right: 10px;
     top: 50%;
-    margin-top: -15px;
+    margin-top: -13px;
     width: 19px;
     height: 30px;
     z-index: 10;
@@ -763,11 +763,11 @@ pf {
 .nav-element-sub .txt {
     padding: 0 0 0 1em;
     color: #fff;
-    font: 1.1em/2.7em Hlvl;
+    font: 1.1em/3.1em Hlvl;
 }
 
 .nav-element1 .txt {
-    padding: 1px 0 0 1em;
+    padding: 3px 0 0 1em;
     color: #fff;
     font: 1.1em/2.7em Hlvl;
     float: left;
@@ -974,8 +974,8 @@ pf {
     width: 44px !important;
     height: 40px !important;
     border-radius: 0px !important;
-    margin-top: 9px !important;
-    margin-left: 15px !important;
+    margin-top: 5px !important;
+    margin-left: 13px !important;
     position: absolute;
 }
 
@@ -1191,13 +1191,12 @@ x-list-header-wrap x-list-footer-wrap x-list-item-first x-list-item x-stretched 
     position: absolute;
     top: 0em;
     float: right;
-    height: 3.3em;
+    height: 3.1em;
     z-index: 111;
     right: 0;
-    margin-top:2px;
+    margin-top: 3px;
 }
-
-a:active {
-    color:#ccc;
+.touchgridpanel .x-grid-cell{
+    white-space: normal !important;
 }
 /*lightbox */
