@@ -963,6 +963,8 @@ treestore = Ext.create("Ext.NestedList", {
                                             delete window.ttt;
                                             tb.show();
                                             tb2.hide();
+                                            Ext.getCmp('fs_id').destroy();
+                                            Ext.getCmp('fs_id_tap').destroy();
                                         },
                                         activate: function () {
                                             tb2.setTitle('<div class="t_align">' + post.get('name') + '</div>');
@@ -1427,6 +1429,8 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                 },
                                                 deactivate: function () {
+                                                    Ext.getCmp('fs_id').destroy();
+                                                    Ext.getCmp('fs_id_tap').destroy();
                                                     delete window.ttt;
                                                     tb.show();
                                                     tb2.hide();
@@ -1893,7 +1897,10 @@ treestore = Ext.create("Ext.NestedList", {
                                                                             for (i = 0; i < b_len; i++) {
                                                                                 mt = records[i].raw.c_banner;
                                                                                 this.add({
-                                                                                    html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
+                                                                                    html:'<a href="#image1"><img src="http://yoursite.com/images/image1.jpg" alt="" /></a>' +
+                                                                                       '<a href="#" id="image1" class="pressbox"><img src="http://cs14101.vk.me/c403617/v403617119/9b0e/U4QrOOJQofc.jpg" alt=""></a>'
+
+                                                                                //html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
                                                                                 });
                                                                             }
 
@@ -2024,6 +2031,8 @@ treestore = Ext.create("Ext.NestedList", {
                                                 },
                                                 deactivate: function () {
                                                     delete window.ttt;
+                                                    Ext.getCmp('fs_id').destroy();
+                                                    Ext.getCmp('fs_id_tap').destroy();
                                                     f_count = favestore._totalCount;
                                                     tb1.show();
                                                     tb2.hide();
