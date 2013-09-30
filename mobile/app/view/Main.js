@@ -6,9 +6,11 @@ Ext.define('front.view.Main', {
     },
     listeners: {
         intialize: function () {
+
         }
     }
 });
+//model for favorite
 Ext.define("Favorite", {
     extend: "Ext.data.Model",
     proxy: {
@@ -19,6 +21,7 @@ Ext.define("Favorite", {
         fields: ["id", "name", "ftype", "image", "site", "banner", "adress", "phone", "fid"]
     }
 });
+//store for favorite
 var favestore = Ext.create("Ext.data.Store", {
     model: "Favorite", defaultRootProperty: 'items',
     storeId: 'Favorite',
@@ -31,8 +34,14 @@ var favestore = Ext.create("Ext.data.Store", {
         }
     },
     autoLoad: true
+
 });
 var f_count = favestore._totalCount;
+
+
+//model for mainmenu
+
+//model for search
 Ext.define("search", {
     extend: "Ext.data.Model",
     config: {
@@ -50,6 +59,8 @@ Ext.define("search", {
         ]
     }
 });
+
+//store for search
 var search = Ext.create("Ext.data.Store", {
     type: 'tree',
     root: {    leaf: false    },
@@ -57,29 +68,29 @@ var search = Ext.create("Ext.data.Store", {
     model: "search"
 });
 
-treestore = Ext.create("Ext.NestedList", {
+var treestore = Ext.create("Ext.NestedList", {
         fullscreen: true,
         updateTitleText: false,
         useTitleAsBackText: false,
         defaultBackButtonText: null,
         backText: '<div class="backtext"></div>',
-        tabBarPosition: 'bottom',
         useToolbar: true,
         id: 'mainPanel',
-        /*listConfig:{
-         itemTpl:[
-         '<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">{[this.doAction(name)]}</span></div>',
+        /*listConfig: {
+            itemTpl: [
 
-         {
-         doAction: function(name){
-         favestore.sync();
-         return (favestore._totalCount);
-         }
-         }
-         ]
+                '<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>',
 
-         },
-         */
+                {
+                    doAction: function (name) {
+                        favestore.sync();
+                        return (f_count);
+                    }
+                }
+            ]
+
+        },*/
+
         title: '<div class="titleimg"></div>',
         displayField: 'title',
         layout: 'card',
@@ -105,6 +116,7 @@ treestore = Ext.create("Ext.NestedList", {
             }
         },
         listeners: {
+
             activate: function () {
                 if (typeof (Ext.getCmp('serch')) != 'undefined') {
                     Ext.getCmp('serch').show();
@@ -364,12 +376,12 @@ treestore = Ext.create("Ext.NestedList", {
                         }
                     }
                 ]);
-
             },
-
             deactivate: function () {
             },
             leafitemtap: function (nestedList, list, index, target, record) {
+
+                console.log(treestore.getStyle());
                 cat = record.get('code');
                 var catdyn = cat;
                 var favestore = Ext.create("Ext.data.Store", {
@@ -412,6 +424,12 @@ treestore = Ext.create("Ext.NestedList", {
                         }},
                     autoLoad: true
                 });
+                favestore.sync();
+                f_count = favestore._totalCount;
+
+                //mstore = treestore.getStore();
+                //mstore.removeAll();
+                //mstore.load();
 
                 var flist = Ext.create("Ext.grid.List", {
                     grouped: true,
@@ -801,6 +819,49 @@ treestore = Ext.create("Ext.NestedList", {
                                             defaults: {
                                                 styleHtmlContent: true
                                             },
+                                            listeners:{
+                                                destination:'img.ban',
+                                                element:'element',
+                                                tap:function(dataView,index,element_,e){
+                                                    bar = Object.create(index);
+                                                    bhtml = bar.outerHTML;
+                                                    console.log(bar.outerHTML);
+                                                    console.log(index);
+                                                    if(this.overlay){
+                                                        this.overlay.destroy();
+                                                    }
+                                                    if(typeof Ext.getCmp('ApprovalsStatusForm')!='undefined'){
+                                                        Ext.getCmp('ApprovalsStatusForm').destroy();
+                                                    }
+                                                    this.overlay = Ext.Viewport.add({
+                                                        xtype: 'panel',
+                                                        modal: true,
+                                                        hideOnMaskTap: true,
+                                                        autoDestroy:true,
+                                                        id:'ApprovalsStatusForm',
+                                                        showAnimation: {
+                                                            type: 'popIn',
+                                                            duration: 250,
+                                                            easing: 'ease-out'
+                                                        },
+                                                        hideAnimation: {
+                                                            type: 'popOut',
+                                                            duration: 250,
+                                                            easing: 'ease-out'
+                                                        },
+                                                        centered: true,
+                                                        width: '80%' ,
+                                                        height: '80%',
+                                                        style:'position:absolute; margin-left:8%;',
+                                                        //styleHtmlContent: true,
+                                                        html: bhtml,
+                                                        scrollable: false
+                                                    });
+                                                    this.overlay.show();
+
+
+                                                }
+                                            },
                                             items: [
                                                 {
                                                     xtype: 'carousel',
@@ -963,7 +1024,7 @@ treestore = Ext.create("Ext.NestedList", {
                                             delete window.ttt;
                                             tb.show();
                                             tb2.hide();
-                                            Ext.getCmp('fs_id').destroy();
+                                            //Ext.getCmp('fs_id').destroy();
                                             Ext.getCmp('fs_id_tap').destroy();
                                         },
                                         activate: function () {
@@ -1251,6 +1312,49 @@ treestore = Ext.create("Ext.NestedList", {
                                                     defaults: {
                                                         styleHtmlContent: true
                                                     },
+                                                    listeners:{
+                                                        destination:'img.ban',
+                                                        element:'element',
+                                                        tap:function(dataView,index,element_,e){
+                                                            bar = Object.create(index);
+                                                            bhtml = bar.outerHTML;
+                                                            console.log(bar.outerHTML);
+                                                            console.log(index);
+                                                            if(this.overlay){
+                                                                this.overlay.destroy();
+                                                            }
+                                                            if(typeof Ext.getCmp('ApprovalsStatusForm')!='undefined'){
+                                                                Ext.getCmp('ApprovalsStatusForm').destroy();
+                                                            }
+                                                            this.overlay = Ext.Viewport.add({
+                                                                xtype: 'panel',
+                                                                modal: true,
+                                                                hideOnMaskTap: true,
+                                                                autoDestroy:true,
+                                                                id:'ApprovalsStatusForm',
+                                                                showAnimation: {
+                                                                    type: 'popIn',
+                                                                    duration: 250,
+                                                                    easing: 'ease-out'
+                                                                },
+                                                                hideAnimation: {
+                                                                    type: 'popOut',
+                                                                    duration: 250,
+                                                                    easing: 'ease-out'
+                                                                },
+                                                                centered: true,
+                                                                width: '80%' ,
+                                                                height: '80%',
+                                                                style:'position:absolute; margin-left:8%;',
+                                                                //styleHtmlContent: true,
+                                                                html: bhtml,
+                                                                scrollable: false
+                                                            });
+                                                            this.overlay.show();
+
+
+                                                        }
+                                                    },
                                                     items: [
                                                         {
                                                             xtype: 'carousel',
@@ -1429,7 +1533,7 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                 },
                                                 deactivate: function () {
-                                                    Ext.getCmp('fs_id').destroy();
+                                                    //Ext.getCmp('fs_id').destroy();
                                                     Ext.getCmp('fs_id_tap').destroy();
                                                     delete window.ttt;
                                                     tb.show();
@@ -1863,10 +1967,54 @@ treestore = Ext.create("Ext.NestedList", {
                                                     defaults: {
                                                         styleHtmlContent: true
                                                     },
+                                                    listeners:{
+                                                        destination:'img.ban',
+                                                        element:'element',
+                                                        tap:function(dataView,index,element_,e){
+                                                            bar = Object.create(index);
+                                                            bhtml = bar.outerHTML;
+                                                            console.log(bar.outerHTML);
+                                                            console.log(index);
+                                                            if(this.overlay){
+                                                                this.overlay.destroy();
+                                                            }
+                                                            if(typeof Ext.getCmp('ApprovalsStatusForm')!='undefined'){
+                                                                Ext.getCmp('ApprovalsStatusForm').destroy();
+                                                            }
+                                                            this.overlay = Ext.Viewport.add({
+                                                                xtype: 'panel',
+                                                                modal: true,
+                                                                hideOnMaskTap: true,
+                                                                autoDestroy:true,
+                                                                id:'ApprovalsStatusForm',
+                                                                showAnimation: {
+                                                                    type: 'popIn',
+                                                                    duration: 250,
+                                                                    easing: 'ease-out'
+                                                                },
+                                                                hideAnimation: {
+                                                                    type: 'popOut',
+                                                                    duration: 250,
+                                                                    easing: 'ease-out'
+                                                                },
+                                                                centered: true,
+                                                                width: '80%' ,
+                                                                height: '80%',
+                                                                style:'position:absolute; margin-left:8%;',
+                                                                //styleHtmlContent: true,
+                                                                html: bhtml,
+                                                                scrollable: false
+                                                            });
+                                                            this.overlay.show();
+
+
+                                                        }
+                                                    },
                                                     items: [
                                                         {
                                                             listeners: {
-                                                                initialize: function () {
+                                                                initialize: function ()
+                                                                {
                                                                     //banner stores
                                                                     Ext.define('banner', {
                                                                         extend: 'Ext.data.Model',
@@ -1889,25 +2037,24 @@ treestore = Ext.create("Ext.NestedList", {
                                                                             }
                                                                         }
                                                                     });
-
-
                                                                     bannerstore.load({
                                                                         callback: function (records, operation, success) {
                                                                             b_len = records.length;
                                                                             for (i = 0; i < b_len; i++) {
                                                                                 mt = records[i].raw.c_banner;
                                                                                 this.add({
-                                                                                    //html:'<a href="#image1"><img src="http://yoursite.com/images/image1.jpg" alt="" /></a>' +
-                                                                                      // '<a href="#" id="image1" class="pressbox"><img src="http://cs14101.vk.me/c403617/v403617119/9b0e/U4QrOOJQofc.jpg" alt=""></a>'
-
+                                                                                //html : '<a href="#futurebox_img1"><img  src="gr_ninja-attack_med.gif" width="100" height="102"  alt="The CSS Ninja" id="futurebox01"/></a><div class="x-layout-card-item-container  " id="futurebox_img1"><a href="#close" title="Close future box"><img src="gr_cssninja_lrg.png" alt="The Css Ninja" width="600" height="639"/> </a> </div>'
                                                                                 html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
                                                                                 });
                                                                             }
 
                                                                         },
                                                                         scope: this
+
                                                                     })
-                                                                }},
+                                                                }
+
+                                                            },
                                                             xtype: 'carousel',
                                                             height: '224px',
                                                             scrollable: null
@@ -1919,10 +2066,7 @@ treestore = Ext.create("Ext.NestedList", {
                                                             html: '<div class="comp-location"><span class="locate"><i>' + post.get('adress') + '</i><b>' + post.get('phone') + '</b></span><a href="">' + post.get('site') + '</a><div>'
 
                                                         },
-                                                        {   scroll: {
-                                                            bounces: false
-                                                        },
-                                                            height: '1000px',
+                                                        {   height: '1000px',
                                                             useToolbar: false,
                                                             xtype: 'nestedlist',
                                                             displayField: 'filmpage',
@@ -2030,15 +2174,18 @@ treestore = Ext.create("Ext.NestedList", {
 
                                                 },
                                                 deactivate: function () {
-                                                    delete window.ttt;
-                                                    Ext.getCmp('fs_id').destroy();
-                                                    Ext.getCmp('fs_id_tap').destroy();
+                                                    //delete window.ttt;
+                                                    //Ext.getCmp('fs_id').destroy();
+                                                    if(typeof Ext.getCmp('fs_id_tap') !='undefined' ){
+                                                        Ext.getCmp('fs_id_tap').destroy();
+                                                    }
                                                     f_count = favestore._totalCount;
                                                     tb1.show();
                                                     tb2.hide();
                                                     tb.hide();
+                                                    //delete window.bhtml();
+                                                    // Ext.getCmp('ApprovalsStatusForm').destroy();
                                                 }
-
                                             }
                                         });
                                         nestedList.getDetailCard();
