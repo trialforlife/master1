@@ -1897,10 +1897,10 @@ treestore = Ext.create("Ext.NestedList", {
                                                                             for (i = 0; i < b_len; i++) {
                                                                                 mt = records[i].raw.c_banner;
                                                                                 this.add({
-                                                                                    html:'<a href="#image1"><img src="http://yoursite.com/images/image1.jpg" alt="" /></a>' +
-                                                                                       '<a href="#" id="image1" class="pressbox"><img src="http://cs14101.vk.me/c403617/v403617119/9b0e/U4QrOOJQofc.jpg" alt=""></a>'
+                                                                                    //html:'<a href="#image1"><img src="http://yoursite.com/images/image1.jpg" alt="" /></a>' +
+                                                                                      // '<a href="#" id="image1" class="pressbox"><img src="http://cs14101.vk.me/c403617/v403617119/9b0e/U4QrOOJQofc.jpg" alt=""></a>'
 
-                                                                                //html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
+                                                                                html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
                                                                                 });
                                                                             }
 
