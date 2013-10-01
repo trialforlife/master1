@@ -64,6 +64,6 @@ if (isset($_REQUEST["callback"])) {
 else {
 	header("Content-Type: application/x-json");
 	echo json_encode($result);
-    unset($f_count);
+    unset($f_count);unset($cc);
 }
 ?>
