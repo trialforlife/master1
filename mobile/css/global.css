@@ -922,7 +922,7 @@ pf {
     /*background: #1e3244 !important;
 */
 }
-
+/* search */
 .x-form-fieldset .x-form-fieldset-inner {
     position: relative;
     z-index: 4;
@@ -932,13 +932,11 @@ pf {
     float: left;
     border-radius: 20px !important;
     border: 1px solid #5a0cff !important;
-    padding-left: -1.35em;
+    padding-left: 1em;
     padding-right: 2.35em !important;
-    width: 80%;
-    margin-left: 8%;
-    margin-right: 8%;
-    background: url(../img/grs-ico.png) 16px center no-repeat #fff;
-
+    width: 77%;
+    margin-right: 20%;
+    background: url(../img/grs-ico.png) 10px center no-repeat #fff !important;
 }
 
 .nav-element-s {
@@ -967,6 +965,22 @@ pf {
     color: white;
     float: right;
     margin-top: -47px;
+}
+#search_discard {
+    width: 88px !important;
+    color: #b4b3b4;
+    font: 1.04em Hlvl;
+    border: none;
+    border-left: 8px solid #192a3a;
+    background: #273c4e;
+    border-radius: 40px;
+    height: 30px;
+    padding: 0 5px;
+    float: right;
+    margin-top: -51px;
+    position: absolute;
+    right: 0.5em;
+    z-index: 5;
 }
 
 #save1 {
@@ -1177,10 +1191,6 @@ input {
     width: 100%;
     position: absolute;
 }
-x-list-header-wrap x-list-footer-wrap x-list-item-first x-list-item x-stretched x-list-item-tpl x-touchgrid-item x-list-item-relative{
-
-}
-
 .t_align {
     position: fixed;
     width: 80%;
@@ -1190,8 +1200,8 @@ x-list-header-wrap x-list-footer-wrap x-list-item-first x-list-item x-stretched 
 
 .x-field .x-field-input, .x-field .x-input-el {
     width: 103.5% !important;
-    margin-left: -10%;
-    padding-left: 7%;
+    padding-left: 2%;
+    margin-left:0!important;
 }
 
 .list_image {

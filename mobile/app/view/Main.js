@@ -6,7 +6,6 @@ Ext.define('front.view.Main', {
     },
     listeners: {
         intialize: function () {
-
         }
     }
 });
@@ -36,9 +35,7 @@ var favestore = Ext.create("Ext.data.Store", {
     autoLoad: true
 
 });
-var f_count = favestore._totalCount;
-
-
+//var f_count = favestore._totalCount;
 //model for mainmenu
 
 //model for search
@@ -77,20 +74,17 @@ var treestore = Ext.create("Ext.NestedList", {
         useToolbar: true,
         id: 'mainPanel',
         /*listConfig: {
-            itemTpl: [
+         itemTpl: [
+         '<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>',
+         {
+         doAction: function (name) {
+         favestore.sync();
+         return (f_count);
+         }
+         }
+         ]
 
-                '<div class="nav-element"><span style="" class="txt">{name}</span><span class="calc">'+f_count+'</span></div>',
-
-                {
-                    doAction: function (name) {
-                        favestore.sync();
-                        return (f_count);
-                    }
-                }
-            ]
-
-        },*/
-
+         },*/
         title: '<div class="titleimg"></div>',
         displayField: 'title',
         layout: 'card',
@@ -108,7 +102,7 @@ var treestore = Ext.create("Ext.NestedList", {
             },
             proxy: {
                 type: 'jsonp',
-                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist.php?f_count=' + f_count,
+                url: 'http://now-yakutsk.stairwaysoft.net/frontmodel/catlist.php?f_count=' + favestore._totalCount,
                 reader: {
                     type: 'json',
                     rootProperty: 'cat'
@@ -161,7 +155,6 @@ var treestore = Ext.create("Ext.NestedList", {
                                                 xtype: 'searchfield',
                                                 placeHolder: 'Поиск...',
                                                 name: 'title',
-
                                                 id: 'inpt',
                                                 listeners: {
                                                     scope: this,
@@ -178,9 +171,16 @@ var treestore = Ext.create("Ext.NestedList", {
                                                     }
                                                 }
                                             }
-                                        ]
 
+                                        ]
                                     },
+                                    {
+                                        xtype: 'button',
+                                        align: 'right', id: 'search_discard',
+                                        text: 'Отмена',
+                                        handler: function () {
+                                            alert(0);
+                                        }},
                                     {
                                         height: '100%',
                                         xtype: 'list',
@@ -191,7 +191,6 @@ var treestore = Ext.create("Ext.NestedList", {
                                                 f_cid = record.get('cid');
                                                 catdyn = record.get('scat');
                                                 // ser.hide();
-
                                                 var fil = Ext.create('Ext.Container', {
                                                     fullscreen: true,
                                                     scrollable: 'vertical',
@@ -379,7 +378,13 @@ var treestore = Ext.create("Ext.NestedList", {
             },
             deactivate: function () {
             },
+
             leafitemtap: function (nestedList, list, index, target, record) {
+                /*var div = target.element.down('.nav-element');
+                // avoid crashing for items with no extra info
+                if (div) {
+                    div.toggleCls('x-my');
+                }*/
 
                 console.log(treestore.getStyle());
                 cat = record.get('code');
@@ -425,11 +430,11 @@ var treestore = Ext.create("Ext.NestedList", {
                     autoLoad: true
                 });
                 favestore.sync();
-                f_count = favestore._totalCount;
-
-                //mstore = treestore.getStore();
-                //mstore.removeAll();
-                //mstore.load();
+                favestore.load();
+                 console.log(favestore._totalCount);
+                // mstore = treestore.getStore();
+                // mstore.removeAll();
+                 //mstore.load();
 
                 var flist = Ext.create("Ext.grid.List", {
                     grouped: true,
@@ -819,26 +824,26 @@ var treestore = Ext.create("Ext.NestedList", {
                                             defaults: {
                                                 styleHtmlContent: true
                                             },
-                                            listeners:{
-                                                destination:'img.ban',
-                                                element:'element',
-                                                tap:function(dataView,index,element_,e){
+                                            listeners: {
+                                                destination: 'img.ban',
+                                                element: 'element',
+                                                tap: function (dataView, index, element_, e) {
                                                     bar = Object.create(index);
                                                     bhtml = bar.outerHTML;
                                                     console.log(bar.outerHTML);
                                                     console.log(index);
-                                                    if(this.overlay){
+                                                    if (this.overlay) {
                                                         this.overlay.destroy();
                                                     }
-                                                    if(typeof Ext.getCmp('ApprovalsStatusForm')!='undefined'){
+                                                    if (typeof Ext.getCmp('ApprovalsStatusForm') != 'undefined') {
                                                         Ext.getCmp('ApprovalsStatusForm').destroy();
                                                     }
                                                     this.overlay = Ext.Viewport.add({
                                                         xtype: 'panel',
                                                         modal: true,
                                                         hideOnMaskTap: true,
-                                                        autoDestroy:true,
-                                                        id:'ApprovalsStatusForm',
+                                                        autoDestroy: true,
+                                                        id: 'ApprovalsStatusForm',
                                                         showAnimation: {
                                                             type: 'popIn',
                                                             duration: 250,
@@ -850,9 +855,9 @@ var treestore = Ext.create("Ext.NestedList", {
                                                             easing: 'ease-out'
                                                         },
                                                         centered: true,
-                                                        width: '80%' ,
+                                                        width: '80%',
                                                         height: '80%',
-                                                        style:'position:absolute; margin-left:8%;',
+                                                        style: 'position:absolute; margin-left:8%;',
                                                         //styleHtmlContent: true,
                                                         html: bhtml,
                                                         scrollable: false
@@ -947,11 +952,11 @@ var treestore = Ext.create("Ext.NestedList", {
                                             ditem = favestore.findRecord('name', ds_name);
 
                                             if (ditem == null) {
-                                                display="block";
+                                                display = "block";
                                             }
                                             else {
-                                                display="none";
-                                                if(typeof Ext.getCmp('fs_id')!= 'undefined'){
+                                                display = "none";
+                                                if (typeof Ext.getCmp('fs_id') != 'undefined') {
                                                     Ext.getCmp('fs_id').destroy();
                                                 }
                                             }
@@ -961,7 +966,7 @@ var treestore = Ext.create("Ext.NestedList", {
                                                 ttt = (tb2.insert(3, [
                                                     {xtype: 'spacer'},
                                                     {align: 'right', xtype: 'button', id: 'fs_id_tap'},
-                                                    {align: 'right', xtype: 'button', style:'display:'+display +'' ,id: 'fs_id',
+                                                    {align: 'right', xtype: 'button', style: 'display:' + display + '', id: 'fs_id',
                                                         handler: function (button) {
                                                             Ext.getCmp('fs_id').destroy();
 
@@ -1312,26 +1317,26 @@ var treestore = Ext.create("Ext.NestedList", {
                                                     defaults: {
                                                         styleHtmlContent: true
                                                     },
-                                                    listeners:{
-                                                        destination:'img.ban',
-                                                        element:'element',
-                                                        tap:function(dataView,index,element_,e){
+                                                    listeners: {
+                                                        destination: 'img.ban',
+                                                        element: 'element',
+                                                        tap: function (dataView, index, element_, e) {
                                                             bar = Object.create(index);
                                                             bhtml = bar.outerHTML;
                                                             console.log(bar.outerHTML);
                                                             console.log(index);
-                                                            if(this.overlay){
+                                                            if (this.overlay) {
                                                                 this.overlay.destroy();
                                                             }
-                                                            if(typeof Ext.getCmp('ApprovalsStatusForm')!='undefined'){
+                                                            if (typeof Ext.getCmp('ApprovalsStatusForm') != 'undefined') {
                                                                 Ext.getCmp('ApprovalsStatusForm').destroy();
                                                             }
                                                             this.overlay = Ext.Viewport.add({
                                                                 xtype: 'panel',
                                                                 modal: true,
                                                                 hideOnMaskTap: true,
-                                                                autoDestroy:true,
-                                                                id:'ApprovalsStatusForm',
+                                                                autoDestroy: true,
+                                                                id: 'ApprovalsStatusForm',
                                                                 showAnimation: {
                                                                     type: 'popIn',
                                                                     duration: 250,
@@ -1343,9 +1348,9 @@ var treestore = Ext.create("Ext.NestedList", {
                                                                     easing: 'ease-out'
                                                                 },
                                                                 centered: true,
-                                                                width: '80%' ,
+                                                                width: '80%',
                                                                 height: '80%',
-                                                                style:'position:absolute; margin-left:8%;',
+                                                                style: 'position:absolute; margin-left:8%;',
                                                                 //styleHtmlContent: true,
                                                                 html: bhtml,
                                                                 scrollable: false
@@ -1453,11 +1458,11 @@ var treestore = Ext.create("Ext.NestedList", {
                                                     ds_name = post.get('list');
                                                     ditem = favestore.findRecord('name', ds_name);
                                                     if (ditem == null) {
-                                                        display="block";
+                                                        display = "block";
                                                     }
                                                     else {
-                                                        display="none";
-                                                        if(typeof Ext.getCmp('fs_id')!= 'undefined'){
+                                                        display = "none";
+                                                        if (typeof Ext.getCmp('fs_id') != 'undefined') {
                                                             Ext.getCmp('fs_id').destroy();
                                                         }
                                                     }
@@ -1467,7 +1472,7 @@ var treestore = Ext.create("Ext.NestedList", {
                                                         ttt = (tb2.insert(3, [
                                                             {xtype: 'spacer'},
                                                             {align: 'right', xtype: 'button', id: 'fs_id_tap'},
-                                                            {align: 'right', xtype: 'button', style:'display:'+display +'' ,id: 'fs_id',
+                                                            {align: 'right', xtype: 'button', style: 'display:' + display + '', id: 'fs_id',
                                                                 handler: function () {
                                                                     Ext.getCmp('fs_id').destroy();
                                                                     if (ditem != null) {
@@ -1509,7 +1514,7 @@ var treestore = Ext.create("Ext.NestedList", {
                                                                             document.getElementById('fs_id').id = 'fs_id_tap';
                                                                             try {
                                                                                 document.getElementById('fs_id').id = 'fs_id_tap';
-                                                                            }catch (e) {
+                                                                            } catch (e) {
                                                                                 //alert(e.name)
                                                                             }
                                                                             fav_button_id = 'fs_id_tap';
@@ -1941,7 +1946,6 @@ var treestore = Ext.create("Ext.NestedList", {
                                         tb.hide();
                                     },
                                     deactivate: function () {
-
                                         //Ext.getCmp('serch1').destroy();
                                         tb.show();
                                         tb1.hide();
@@ -1961,60 +1965,70 @@ var treestore = Ext.create("Ext.NestedList", {
                                                 directionLock: true
                                             },
                                             layout: 'vbox',
+                                            pack:'center',
                                             flex: 1,
+                                            //height:'100%',
                                             items: [
                                                 {
                                                     defaults: {
                                                         styleHtmlContent: true
                                                     },
-                                                    listeners:{
-                                                        destination:'img.ban',
-                                                        element:'element',
-                                                        tap:function(dataView,index,element_,e){
+
+                                                    listeners: {
+                                                        destination: 'img.ban',
+                                                        element: 'element',
+                                                        tap: function (dataView, index, element_, e) {
                                                             bar = Object.create(index);
                                                             bhtml = bar.outerHTML;
-                                                            console.log(bar.outerHTML);
-                                                            console.log(index);
-                                                            if(this.overlay){
-                                                                this.overlay.destroy();
-                                                            }
-                                                            if(typeof Ext.getCmp('ApprovalsStatusForm')!='undefined'){
-                                                                Ext.getCmp('ApprovalsStatusForm').destroy();
-                                                            }
-                                                            this.overlay = Ext.Viewport.add({
-                                                                xtype: 'panel',
-                                                                modal: true,
-                                                                hideOnMaskTap: true,
-                                                                autoDestroy:true,
-                                                                id:'ApprovalsStatusForm',
-                                                                showAnimation: {
-                                                                    type: 'popIn',
-                                                                    duration: 250,
-                                                                    easing: 'ease-out'
-                                                                },
-                                                                hideAnimation: {
-                                                                    type: 'popOut',
-                                                                    duration: 250,
-                                                                    easing: 'ease-out'
-                                                                },
-                                                                centered: true,
-                                                                width: '80%' ,
-                                                                height: '80%',
-                                                                style:'position:absolute; margin-left:8%;',
-                                                                //styleHtmlContent: true,
-                                                                html: bhtml,
-                                                                scrollable: false
-                                                            });
-                                                            this.overlay.show();
+                                                            console.log(bar.style.backgroundImage);
+                                                            var str = bar.style.backgroundImage;
+                                                            //for banners only!
+                                                            test_str = (str.substring(0, 3));
+                                                            if(test_str == 'url'){
+                                                                if (this.overlay) {
+                                                                    this.overlay.destroy();
+                                                                }
+                                                                if (typeof Ext.getCmp('ApprovalsStatusForm') != 'undefined') {
+                                                                    Ext.getCmp('ApprovalsStatusForm').destroy();
+                                                                }
+                                                                this.overlay = Ext.Viewport.add({
+                                                                    xtype: 'panel',
+                                                                    modal: true,
+                                                                    hideOnMaskTap: true,
+                                                                    autoDestroy: true,
+                                                                    id: 'ApprovalsStatusForm',
+                                                                    showAnimation: {
+                                                                        type: 'popIn',
+                                                                        duration: 250,
+                                                                        easing: 'ease-out'
+                                                                    },
+                                                                    hideAnimation: {
+                                                                        type: 'popOut',
+                                                                        duration: 250,
+                                                                        easing: 'ease-out'
+                                                                    },
+                                                                    centered: true,
+                                                                    width: '80%',
+                                                                    height: '220px',
+                                                                    style: 'position:absolute; margin-left:8%;',
+                                                                    //styleHtmlContent: true,
+                                                                    items: [
+                                                                        {
+                                                                            html: bar.outerHTML
+                                                                        }
+                                                                    ],
+                                                                    scrollable: false
+                                                                });
+                                                                this.overlay.show();
 
-
+                                                            }
                                                         }
                                                     },
                                                     items: [
                                                         {
                                                             listeners: {
-                                                                initialize: function ()
-                                                                {
+
+                                                                initialize: function () {
                                                                     //banner stores
                                                                     Ext.define('banner', {
                                                                         extend: 'Ext.data.Model',
@@ -2043,8 +2057,8 @@ var treestore = Ext.create("Ext.NestedList", {
                                                                             for (i = 0; i < b_len; i++) {
                                                                                 mt = records[i].raw.c_banner;
                                                                                 this.add({
-                                                                                //html : '<a href="#futurebox_img1"><img  src="gr_ninja-attack_med.gif" width="100" height="102"  alt="The CSS Ninja" id="futurebox01"/></a><div class="x-layout-card-item-container  " id="futurebox_img1"><a href="#close" title="Close future box"><img src="gr_cssninja_lrg.png" alt="The Css Ninja" width="600" height="639"/> </a> </div>'
-                                                                                html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
+                                                                                    //html : '<a href="#futurebox_img1"><img  src="gr_ninja-attack_med.gif" width="100" height="102"  alt="The CSS Ninja" id="futurebox01"/></a><div class="x-layout-card-item-container  " id="futurebox_img1"><a href="#close" title="Close future box"><img src="gr_cssninja_lrg.png" alt="The Css Ninja" width="600" height="639"/> </a> </div>'
+                                                                                    html: '<img class="ban" style="background: url(http://now-yakutsk.stairwaysoft.net' + records[i].raw.c_banner + ');   background-repeat:no-repeat !important; background-size:100% 100% !important; float: left; width: 100%; height: 224px !important;"/>'
                                                                                 });
                                                                             }
 
@@ -2057,20 +2071,34 @@ var treestore = Ext.create("Ext.NestedList", {
                                                             },
                                                             xtype: 'carousel',
                                                             height: '224px',
-                                                            scrollable: null
+                                                            layout: 'auto',
+                                                            direction:'horizontal',
+                                                            directionLock: true
+
                                                         },
                                                         {
-                                                            scrollable: null,
+                                                            scrollable: {
+                                                                direction: 'no',
+                                                                directionLock: true
+                                                            },
                                                             xtype: 'panel',
                                                             height: '70px',
                                                             html: '<div class="comp-location"><span class="locate"><i>' + post.get('adress') + '</i><b>' + post.get('phone') + '</b></span><a href="">' + post.get('site') + '</a><div>'
 
                                                         },
-                                                        {   height: '1000px',
+                                                        {
+                                                            scrollable: {
+                                                                direction: 'no',
+                                                                directionLock: true
+                                                            },
+
+                                                            height: '1000px',
                                                             useToolbar: false,
                                                             xtype: 'nestedlist',
                                                             displayField: 'filmpage',
-                                                            store: {
+                                                            //html:'Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров  Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров Служба Яндекс.Рефераты предназначена для студентов и школьников, дизайнеров '
+                                                             store:{
+
                                                                 type: 'tree',
                                                                 fields: [
                                                                     'name', 'image', 'id', 'filmpage', 'scat',
@@ -2092,6 +2120,7 @@ var treestore = Ext.create("Ext.NestedList", {
                                             ],
                                             listeners: {
                                                 activate: function () {
+
                                                     //for favorite adding
                                                     s_image = post.get('image');
                                                     cfid = post.get('cid');
@@ -2104,11 +2133,11 @@ var treestore = Ext.create("Ext.NestedList", {
                                                     ditem = favestore.findRecord('name', ds_name);
 
                                                     if (ditem == null) {
-                                                        display="block";
+                                                        display = "block";
                                                     }
                                                     else {
-                                                        display="none";
-                                                        if(typeof Ext.getCmp('fs_id')!= 'undefined'){
+                                                        display = "none";
+                                                        if (typeof Ext.getCmp('fs_id') != 'undefined') {
                                                             Ext.getCmp('fs_id').destroy();
                                                         }
                                                     }
@@ -2119,7 +2148,7 @@ var treestore = Ext.create("Ext.NestedList", {
                                                         ttt = (tb2.insert(3, [
                                                             {xtype: 'spacer'},
                                                             {align: 'right', xtype: 'button', id: 'fs_id_tap'},
-                                                            {align: 'right', xtype: 'button', style:'display:'+display +'' ,id: 'fs_id',
+                                                            {align: 'right', xtype: 'button', style: 'display:' + display + '', id: 'fs_id',
                                                                 handler: function () {
                                                                     Ext.getCmp('fs_id').destroy();
                                                                     if (ditem != null) {
@@ -2176,7 +2205,7 @@ var treestore = Ext.create("Ext.NestedList", {
                                                 deactivate: function () {
                                                     //delete window.ttt;
                                                     //Ext.getCmp('fs_id').destroy();
-                                                    if(typeof Ext.getCmp('fs_id_tap') !='undefined' ){
+                                                    if (typeof Ext.getCmp('fs_id_tap') != 'undefined') {
                                                         Ext.getCmp('fs_id_tap').destroy();
                                                     }
                                                     f_count = favestore._totalCount;
