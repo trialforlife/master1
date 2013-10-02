@@ -923,6 +923,54 @@ pf {
 */
 }
 /* search */
+
+@media screen and (max-width: 390px) {
+    .x-form-fieldset .x-form-fieldset-inner {
+        width: auto;
+        margin-right: 110px;
+    }
+}
+@media screen and (max-width: 450px)  and (min-width: 391px) {
+    .x-form-fieldset .x-form-fieldset-inner {
+        margin-right: 110px !important;
+        width: auto;
+
+    }
+}
+@media screen and (max-width: 540px)  and (min-width: 451px) {
+    .x-form-fieldset .x-form-fieldset-inner {
+        width: 62.5%;
+    }
+}
+@media screen and (max-width: 630px)  and (min-width: 541px) {
+    .x-form-fieldset .x-form-fieldset-inner {
+        width: 68%;
+    }
+}
+@media screen and (min-width: 631px)and (max-width: 829px) {
+    .x-form-fieldset .x-form-fieldset-inner {
+        width: 72.5%;
+    }
+}
+@media screen and (min-width: 829px) {
+    .x-form-fieldset .x-form-fieldset-inner {
+        width: 79%;
+    }
+}
+.x-form-fieldset .x-form-fieldset-inner {
+    position: relative;
+    z-index: 4;
+    margin-top: 0.5em !important;
+    margin-bottom: 1.1em !important;
+    height: 28px;
+    float: left;
+    border-radius: 20px !important;
+    border: 1px solid #5a0cff !important;
+    padding-left: 1em;
+    padding-right: 2.35em !important;
+    background: url(../img/grs-ico.png) 10px center no-repeat #fff !important;
+}
+/*
 .x-form-fieldset .x-form-fieldset-inner {
     position: relative;
     z-index: 4;
@@ -937,7 +985,7 @@ pf {
     width: 77%;
     margin-right: 20%;
     background: url(../img/grs-ico.png) 10px center no-repeat #fff !important;
-}
+}*/
 
 .nav-element-s {
     border-bottom: 1px solid #820cff;
@@ -971,9 +1019,9 @@ pf {
     color: #b4b3b4;
     font: 1.04em Hlvl;
     border: none;
-    border-left: 8px solid #192a3a;
+    border-left: 4px solid #192a3a;
     background: #273c4e;
-    border-radius: 40px;
+    border-radius: 20px;
     height: 30px;
     padding: 0 5px;
     float: right;
@@ -1200,7 +1248,7 @@ input {
 
 .x-field .x-field-input, .x-field .x-input-el {
     width: 103.5% !important;
-    padding-left: 2%;
+    padding-left: 6px;
     margin-left:0!important;
 }
 

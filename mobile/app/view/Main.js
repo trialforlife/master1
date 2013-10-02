@@ -179,6 +179,8 @@ var treestore = Ext.create("Ext.NestedList", {
                                         align: 'right', id: 'search_discard',
                                         text: 'Отмена',
                                         handler: function () {
+                                            Ext.ComponentQuery.query('#inpt')[0].setValue('');
+                                            search.removeAll();
                                             alert(0);
                                         }},
                                     {
