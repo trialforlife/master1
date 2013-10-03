@@ -2661,12 +2661,12 @@ audio {
 }
 
 /* line 128, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/dataview/_List.scss */
-.x-ios .x-list-header {
+.x-ios .x-list-header {/*
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);*/
 }
 
 /* line 133, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/dataview/_List.scss */
@@ -3541,8 +3541,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 /* line 186, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/scroller/_Scroller.scss */
 .x-ios .x-scroll-scroller {
-  -webkit-transform: translate3d(0, 0, 0);
-}
+ /* -webkit-transform: translate3d(0, 0, 0);
+*/}
 
 /* line 191, /Users/jamieavins/git/SDK/touch/resources/themes/stylesheets/sencha-touch/base/src/scroller/_Scroller.scss */
 .x-ie .x-scroll-bar-y {

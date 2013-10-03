@@ -54,7 +54,7 @@
                         'Ext.carousel.Carousel',
                         'Ext.grid.List',
                         'Ext.grid.feature.Abstract',
-                        'Ext.grid.feature.CheckboxSelection'
+                        'Ext.grid.feature.CheckboxSelection','Ext.plugin.ListPaging'
                     ],
                     views: [
                         'Main'

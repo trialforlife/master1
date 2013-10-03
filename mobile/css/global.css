@@ -927,12 +927,12 @@ pf {
 @media screen and (max-width: 390px) {
     .x-form-fieldset .x-form-fieldset-inner {
         width: auto;
-        margin-right: 110px;
+        margin-right: 115px;
     }
 }
 @media screen and (max-width: 450px)  and (min-width: 391px) {
     .x-form-fieldset .x-form-fieldset-inner {
-        margin-right: 110px !important;
+        margin-right: 115px !important;
         width: auto;
 
     }
@@ -970,6 +970,17 @@ pf {
     padding-right: 2.35em !important;
     background: url(../img/grs-ico.png) 10px center no-repeat #fff !important;
 }
+#contentCls {
+    max-width: 100%;
+    background: red !important;
+    -webkit-transform: translate3d(0px, 0px, 0px) !important;
+}
+.myList .x-list-item {
+    min-height: 100px;
+}
+/*.myList .x-scroll-scroller{
+    -webkit-transform: translate3d(0px, 0px, 0px) !important;
+}*/
 /*
 .x-form-fieldset .x-form-fieldset-inner {
     position: relative;
